@@ -1,0 +1,77 @@
+name: Build (Linux, Windows, macOS)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: Linux
+          - os: windows-latest
+            name: Windows
+          - os: macos-latest
+            name: macOS
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure and build (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
+
+      - name: Configure and build (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -A x64
+          cmake --build build --config Release
+
+      - name: Configure and build (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
+
+      - name: Run executable (Linux)
+        if: matrix.os == 'ubuntu-latest' && success()
+        run: ./build/env_soc_cog_space
+
+      - name: Run executable (Windows)
+        if: matrix.os == 'windows-latest' && success()
+        run: ./build/Release/env_soc_cog_space.exe
+
+      - name: Run executable (macOS)
+        if: matrix.os == 'macos-latest' && success()
+        run: ./build/env_soc_cog_space
+
+      - name: Upload artifact (Linux)
+        if: matrix.os == 'ubuntu-latest' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: env_soc_cog_space-${{ matrix.name }}
+          path: build/env_soc_cog_space
+
+      - name: Upload artifact (Windows)
+        if: matrix.os == 'windows-latest' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: env_soc_cog_space-${{ matrix.name }}
+          path: build/Release/env_soc_cog_space.exe
+
+      - name: Upload artifact (macOS)
+        if: matrix.os == 'macos-latest' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: env_soc_cog_space-${{ matrix.name }}
+          path: build/env_soc_cog_space

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "random_seed": 42,
+  "time_step": 1.0,
+  "max_steps": 0,
+  "min_growth_rate_supported": 0.05,
+  "max_growth_rate_supported": 1.0,
+  "min_half_saturation_constant_supported": 0.01,
+  "max_half_saturation_constant_supported": 10.0,
+  "verbose": false
+}
