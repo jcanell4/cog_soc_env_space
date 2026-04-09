@@ -16,6 +16,10 @@ int Decomposer::getFoodType() const {
     return DietType::CATABOLIC_TYPE;
 }
 
+int Decomposer::getClassType() const {
+    return LivingBeingClassType::DECOMPOSER;
+}
+
 std::vector<std::vector<std::size_t>> Decomposer::getDietByCohortIndex() const {
     std::vector<std::size_t> row;
     row.push_back(static_cast<std::size_t>(DietType::CATABOLIC_TYPE));
@@ -48,10 +52,6 @@ std::size_t Decomposer::getDecomposerCohortIndex() const {
 
 double Decomposer::getMaxDecompositionRate() const {
     return max_decomposition_rate_;
-}
-
-bool Decomposer::isDecomposer() const {
-    return true;
 }
 
 Decomposer& Decomposer::setName(std::string name) {

@@ -22,7 +22,9 @@ public:
     double getTotalBiomass() const;
     const std::vector<double>& getDeathBiomass() const;
     double getTotalDeathBiomass() const;
-    bool isDecomposerCohort() const;
+
+    /** @brief Pointer to the species model, or nullptr if not set. */
+    const LivingBeing* getSpecie() const;
 
     Cohort& setSpecie(const LivingBeing& value);
     Cohort& setBiomass(std::vector<double> value);

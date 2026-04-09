@@ -25,8 +25,10 @@ public:
     virtual ~LivingBeing();
 
     virtual void initialize(const Niche& niche);
-    virtual bool isDecomposer() const;
     virtual int getFoodType() const = 0;
+
+    /** @brief Runtime subclass tag; compare to @c LivingBeingClassType::* in Constants.h. */
+    virtual int getClassType() const = 0;
 
     /**
      * @brief Per-stage cohort diet: row @a s lists niche cohort indices used as food at stage @a s.

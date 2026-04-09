@@ -36,6 +36,21 @@ public:
     double getLivingBiomass() const;
     double getDecomposerBiomass() const;
 
+    /**
+     * @brief Per-height-stratum sum of living autotroph biomass.
+     *        Each autotroph maps life-history stage -> stratum via @c Autotroph::getStratum();
+     *        result index @a h is total biomass in stratum @a h.
+     */
+    std::vector<double> getAutotrophBiomassPerStratum() const;
+
+    /**
+     * @brief Per-stratum light transmission fractions after canopy shading.
+     *        Shadow density is (sum of biomass×opacity per stratum) / surface; then from the
+     *        top stratum (highest index) down to 0: percent[h] = exp(-density[h]) × incoming,
+     *        with incoming = 1 above the top stratum and updated after each layer.
+     */
+    std::vector<double> getLithPerStratum() const;
+
     void update_nutrients();
     void update_ecological_health();
     void step();

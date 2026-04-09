@@ -30,10 +30,6 @@ void LivingBeing::initialize(const Niche& niche) {
     initialized_ = true;
 }
 
-bool LivingBeing::isDecomposer() const {
-    return false;
-}
-
 std::vector<std::vector<std::size_t>> LivingBeing::getDietByCohortIndex() const {
     return {};
 }

@@ -20,6 +20,8 @@ public:
 
     int getFoodType() const override;
 
+    int getClassType() const override;
+
     std::vector<std::vector<std::size_t>> getDietByCohortIndex() const override;
 
     const std::vector<double>& getSearchCaptureEfficiency() const;

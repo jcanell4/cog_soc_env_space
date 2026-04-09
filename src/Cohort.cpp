@@ -61,8 +61,8 @@ double Cohort::getTotalDeathBiomass() const {
     return death_biomass_[0] + death_biomass_[1];
 }
 
-bool Cohort::isDecomposerCohort() const {
-    return specie_ != nullptr && specie_->isDecomposer();
+const LivingBeing* Cohort::getSpecie() const {
+    return specie_;
 }
 
 Cohort& Cohort::setSpecie(const LivingBeing& value) {

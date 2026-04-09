@@ -26,13 +26,13 @@ public:
 
     int getFoodType() const override;
 
+    int getClassType() const override;
+
     std::vector<std::vector<std::size_t>> getDietByCohortIndex() const override;
 
     const std::vector<double>& getDonorEfficiency() const;
     std::size_t getDecomposerCohortIndex() const;
     double getMaxDecompositionRate() const;
-
-    bool isDecomposer() const override;
 
     Decomposer& setName(std::string name);
     Decomposer& setEnergyContent(float energy_content);

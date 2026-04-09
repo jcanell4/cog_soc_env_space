@@ -22,6 +22,15 @@ inline constexpr int HETEROTROPH_TYPE = NUTRIENTS_POS - 3;
 inline constexpr int DECOMPOSER_TYPE = NUTRIENTS_POS - 4;
 }  // namespace DietType
 
+/**
+ * @brief Concrete @c LivingBeing subclass identifiers (see @ref LivingBeing::getClassType).
+ */
+namespace LivingBeingClassType {
+inline constexpr int AUTOTROPH = 0;
+inline constexpr int HETEROTROPH = 1;
+inline constexpr int DECOMPOSER = 2;
+}  // namespace LivingBeingClassType
+
 /** @brief Default stochastic noise standard deviation for nutrient return processing. */
 inline constexpr double NOISE_STDDEV = 0.2;
 /** @brief Alias for growth / maintenance noise (same as @ref NOISE_STDDEV). */

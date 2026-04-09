@@ -16,6 +16,10 @@ int Heterotroph::getFoodType() const {
     return DietType::HETEROTROPH_TYPE;
 }
 
+int Heterotroph::getClassType() const {
+    return LivingBeingClassType::HETEROTROPH;
+}
+
 std::vector<std::vector<std::size_t>> Heterotroph::getDietByCohortIndex() const {
     const std::size_t n_stages = cycles_per_stages_.empty() ? 1 : cycles_per_stages_.size();
     const std::size_t hetero_code = static_cast<std::size_t>(DietType::HETEROTROPH_TYPE);

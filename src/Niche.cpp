@@ -1,8 +1,11 @@
 #include "Niche.h"
+#include "Autotroph.h"
 #include "Constants.h"
 #include "Utilities.h"
 
 #include <algorithm>
+#include <cmath>
+#include <cstddef>
 #include <utility>
 
 namespace {
@@ -110,11 +113,91 @@ double Niche::getLivingBiomass() const {
 double Niche::getDecomposerBiomass() const {
     double total = 0.0;
     for (const Cohort& cohort : cohort_set_) {
-        if (cohort.isDecomposerCohort()) {
+        const LivingBeing* sp = cohort.getSpecie();
+        if (sp != nullptr && sp->getClassType() == LivingBeingClassType::DECOMPOSER) {
             total += cohort.getTotalBiomass();
         }
     }
     return total;
+}
+
+std::vector<double> Niche::getAutotrophBiomassPerStratum() const {
+    std::vector<double> per_stratum;
+    for (const Cohort& cohort : cohort_set_) {
+        const LivingBeing* sp = cohort.getSpecie();
+        if (sp == nullptr || sp->getClassType() != LivingBeingClassType::AUTOTROPH) {
+            continue;
+        }
+        const Autotroph* autotroph = static_cast<const Autotroph*>(sp);
+        const std::vector<int>& stratum = autotroph->getStratum();
+        const std::vector<double>& biomass = cohort.getBiomass();
+        for (std::size_t stage = 0; stage < biomass.size(); ++stage) {
+            if (stage >= stratum.size()) {
+                continue;
+            }
+            const int h = stratum[stage];
+            if (h < 0) {
+                continue;
+            }
+            const std::size_t hi = static_cast<std::size_t>(h);
+            if (hi >= per_stratum.size()) {
+                per_stratum.resize(hi + 1, 0.0);
+            }
+            per_stratum[hi] += biomass[stage];
+        }
+    }
+    return per_stratum;
+}
+
+std::vector<double> Niche::getLithPerStratum() const {
+    std::vector<double> shadow_accumulated;
+    for (const Cohort& cohort : cohort_set_) {
+        const LivingBeing* sp = cohort.getSpecie();
+        if (sp == nullptr || sp->getClassType() != LivingBeingClassType::AUTOTROPH) {
+            continue;
+        }
+        const Autotroph* autotroph = static_cast<const Autotroph*>(sp);
+        const std::vector<int>& stratum = autotroph->getStratum();
+        const std::vector<double>& opacity = autotroph->getOpacity();
+        const std::vector<double>& biomass = cohort.getBiomass();
+        for (std::size_t stage = 0; stage < biomass.size(); ++stage) {
+            if (stage >= stratum.size() || stage >= opacity.size()) {
+                continue;
+            }
+            const int h = stratum[stage];
+            if (h < 0) {
+                continue;
+            }
+            const std::size_t hi = static_cast<std::size_t>(h);
+            if (hi >= shadow_accumulated.size()) {
+                shadow_accumulated.resize(hi + 1, 0.0);
+            }
+            shadow_accumulated[hi] += biomass[stage] * opacity[stage];
+        }
+    }
+    if (shadow_accumulated.empty()) {
+        return {};
+    }
+    const double surf = getSurface();
+    if (surf <= 0.0) {
+        return {};
+    }
+
+    const std::size_t n = shadow_accumulated.size();
+    std::vector<double> shadow_density(n);
+    for (std::size_t i = 0; i < n; ++i) {
+        shadow_density[i] = shadow_accumulated[i] / surf;
+    }
+
+    const int H = static_cast<int>(n);
+    std::vector<double> light_fraction_per_stratum(n);
+    double incoming = 1.0;
+    for (int h = H - 1; h >= 0; --h) {
+        const std::size_t u = static_cast<std::size_t>(h);
+        light_fraction_per_stratum[u] = std::exp(-shadow_density[u]) * incoming;
+        incoming = light_fraction_per_stratum[u];
+    }
+    return light_fraction_per_stratum;
 }
 
 void Niche::update_nutrients() {
