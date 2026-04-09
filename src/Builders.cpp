@@ -8,32 +8,12 @@ AutotrophBuilder& AutotrophBuilder::withName(std::string value) {
 }
 
 AutotrophBuilder& AutotrophBuilder::withEnergyContent(float value) {
-    object_.setEnergyContent(value);
+    object_.setBiomassToEnergyConversionFactor(value);
     return *this;
 }
 
-AutotrophBuilder& AutotrophBuilder::withSubstrate(double value) {
-    object_.setSubstrate(value);
-    return *this;
-}
-
-AutotrophBuilder& AutotrophBuilder::withStressDeathRatio(double value) {
-    object_.setStressDeathRatio(value);
-    return *this;
-}
-
-AutotrophBuilder& AutotrophBuilder::withMaxGrowthRate(float value) {
-    object_.setMaxGrowthRate(static_cast<double>(value));
-    return *this;
-}
-
-AutotrophBuilder& AutotrophBuilder::withBaseDeathRate(float value) {
-    object_.setBaseDeathRate(static_cast<double>(value));
-    return *this;
-}
-
-AutotrophBuilder& AutotrophBuilder::withBestConditions(std::vector<double> value) {
-    object_.setBestConditions(std::move(value));
+AutotrophBuilder& AutotrophBuilder::withBestEnvironmentalConditions(std::vector<std::vector<double>> value) {
+    object_.setBestEnvironmentalConditions(std::move(value));
     return *this;
 }
 
@@ -51,7 +31,7 @@ HeterotrophBuilder& HeterotrophBuilder::withName(std::string value) {
 }
 
 HeterotrophBuilder& HeterotrophBuilder::withEnergyContent(float value) {
-    object_.setEnergyContent(value);
+    object_.setBiomassToEnergyConversionFactor(value);
     return *this;
 }
 
@@ -75,11 +55,6 @@ HeterotrophBuilder& HeterotrophBuilder::withMaxIngestionRate(double value) {
     return *this;
 }
 
-HeterotrophBuilder& HeterotrophBuilder::withBaseDeathRate(double value) {
-    object_.setBaseDeathRate(value);
-    return *this;
-}
-
 HeterotrophBuilder& HeterotrophBuilder::fromJson(const nlohmann::json&) {
     return *this;
 }
@@ -93,12 +68,12 @@ CohortBuilder& CohortBuilder::withSpecie(const LivingBeing& value) {
     return *this;
 }
 
-CohortBuilder& CohortBuilder::withBiomass(double value) {
-    object_.setBiomass(value);
+CohortBuilder& CohortBuilder::withBiomass(std::vector<double> value) {
+    object_.setBiomass(std::move(value));
     return *this;
 }
 
-CohortBuilder& CohortBuilder::withDeathBiomass(double value) {
+CohortBuilder& CohortBuilder::withDeathBiomass(std::vector<double> value) {
     object_.setDeathBiomass(value);
     return *this;
 }
@@ -116,11 +91,6 @@ NicheBuilder& NicheBuilder::withSurface(double value) {
     return *this;
 }
 
-NicheBuilder& NicheBuilder::withBiologicalPotentialPerSurfaceUnit(double value) {
-    object_.setBiologicalPotentialPerSurfaceUnit(value);
-    return *this;
-}
-
 NicheBuilder& NicheBuilder::withEcologicalHealth(double value) {
     object_.setEcologicalHealth(value);
     return *this;
@@ -131,18 +101,13 @@ NicheBuilder& NicheBuilder::withNutrients(double value) {
     return *this;
 }
 
-NicheBuilder& NicheBuilder::withSubstrate(double value) {
-    object_.setSubstrate(value);
-    return *this;
-}
-
 NicheBuilder& NicheBuilder::withCohortSet(Niche::CohortSet value) {
     object_.setCohortSet(std::move(value));
     return *this;
 }
 
-NicheBuilder& NicheBuilder::withReturnRate(double value) {
-    object_.setReturnRate(value);
+NicheBuilder& NicheBuilder::withReturnRate(std::vector<double> value) {
+    object_.setReturnRate(std::move(value));
     return *this;
 }
 

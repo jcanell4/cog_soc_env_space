@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(env_soc_cog_space VERSION 0.1.0 LANGUAGES CXX)
+project(cog_soc_env_space VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,14 +15,14 @@ FetchContent_MakeAvailable(json)
 
 # Platform-specific settings
 if(WIN32)
-    add_definitions(-DENV_SOC_COG_SPACE_PLATFORM_WINDOWS)
+    add_definitions(-DCOG_SOC_ENV_SPACE_PLATFORM_WINDOWS)
 elseif(APPLE)
-    add_definitions(-DENV_SOC_COG_SPACE_PLATFORM_MACOS)
+    add_definitions(-DCOG_SOC_ENV_SPACE_PLATFORM_MACOS)
 elseif(UNIX)
-    add_definitions(-DENV_SOC_COG_SPACE_PLATFORM_LINUX)
+    add_definitions(-DCOG_SOC_ENV_SPACE_PLATFORM_LINUX)
 endif()
 
-add_executable(env_soc_cog_space
+add_executable(cog_soc_env_space
     src/main.cpp
     src/Builders.cpp
     src/Heterotroph.cpp
@@ -37,11 +37,11 @@ add_executable(env_soc_cog_space
     src/Utilities.cpp
 )
 
-target_include_directories(env_soc_cog_space PRIVATE
+target_include_directories(cog_soc_env_space PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries(env_soc_cog_space PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(cog_soc_env_space PRIVATE nlohmann_json::nlohmann_json)
 
 # Optional: install target
-install(TARGETS env_soc_cog_space RUNTIME DESTINATION bin)
+install(TARGETS cog_soc_env_space RUNTIME DESTINATION bin)

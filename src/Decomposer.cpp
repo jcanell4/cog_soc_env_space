@@ -1,16 +1,34 @@
 #include "Decomposer.h"
 
+#include "Constants.h"
 #include "Niche.h"
 
 #include <algorithm>
 #include <utility>
 
-Decomposer::Decomposer() {
-    setBaseDeathRate(0.02);
-}
+Decomposer::Decomposer() = default;
 
 void Decomposer::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
+}
+
+int Decomposer::getFoodType() const {
+    return DietType::CATABOLIC_TYPE;
+}
+
+std::vector<std::vector<std::size_t>> Decomposer::getDietByCohortIndex() const {
+    std::vector<std::size_t> row;
+    row.push_back(static_cast<std::size_t>(DietType::CATABOLIC_TYPE));
+    for (std::size_t j = 0; j < donor_efficiency_.size(); ++j) {
+        if (j == decomposer_cohort_index_) {
+            continue;
+        }
+        if (donor_efficiency_[j] > 0.0) {
+            row.push_back(j);
+        }
+    }
+    const std::size_t n_stages = cycles_per_stages_.empty() ? 1 : cycles_per_stages_.size();
+    return std::vector<std::vector<std::size_t>>(n_stages, row);
 }
 
 std::vector<double> Decomposer::clamp_unit_interval(std::vector<double> v) {
@@ -37,12 +55,12 @@ bool Decomposer::isDecomposer() const {
 }
 
 Decomposer& Decomposer::setName(std::string name) {
-    setNameValue(std::move(name));
+    LivingBeing::setName(std::move(name));
     return *this;
 }
 
 Decomposer& Decomposer::setEnergyContent(float energy_content) {
-    setEnergyContentValue(energy_content);
+    setBiomassToEnergyConversionFactor(energy_content);
     return *this;
 }
 
@@ -59,52 +77,4 @@ Decomposer& Decomposer::setDecomposerCohortIndex(std::size_t value) {
 Decomposer& Decomposer::setMaxDecompositionRate(double value) {
     max_decomposition_rate_ = std::max(0.0, value);
     return *this;
-}
-
-double Decomposer::calculate_death_biomass(double total_biomass, double /*accepted_growth*/) const {
-    return total_biomass * getBaseDeathRate();
-}
-
-std::vector<std::tuple<int, double>> Decomposer::calculate_growth_biomass(const Niche& niche,
-                                                                          double cohort_biomass) const {
-    const auto& cohorts = niche.getCohortSet();
-    const std::size_t n = cohorts.size();
-
-    if (n != donor_efficiency_.size()) {
-        return {};
-    }
-    if (cohort_biomass <= 0.0) {
-        return {};
-    }
-
-    double best_take = 0.0;
-    std::size_t best_donor = 0;
-
-    for (std::size_t j = 0; j < n; ++j) {
-        if (j == decomposer_cohort_index_) {
-            continue;
-        }
-        const double death_pool = cohorts[j].getDeathBiomass();
-        if (death_pool <= 0.0) {
-            continue;
-        }
-
-        const double eff = donor_efficiency_[j];
-        if (eff <= 0.0) {
-            continue;
-        }
-
-        const double desired = cohort_biomass * max_decomposition_rate_ * eff;
-        const double take = std::min(death_pool, desired);
-        if (take > best_take) {
-            best_take = take;
-            best_donor = j;
-        }
-    }
-
-    if (best_take <= 0.0) {
-        return {};
-    }
-    const int code = -static_cast<int>(best_donor) - 1;
-    return {{code, best_take}};
 }

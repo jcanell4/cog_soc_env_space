@@ -1,58 +1,19 @@
 #include "Autotroph.h"
-
-#include <algorithm>
-#include <utility>
+#include "Constants.h"
 
 Autotroph::Autotroph()
     : LivingBeing(std::string{}, 17.5f) {}
 
-Autotroph& Autotroph::setName(std::string name) {
-    setNameValue(std::move(name));
-    return *this;
+int Autotroph::getFoodType() const {
+    return DietType::NUTRIENTS_TYPE;
 }
 
-Autotroph& Autotroph::setEnergyContent(float energy_content) {
-    setEnergyContentValue(energy_content);
-    return *this;
-}
-
-double Autotroph::getSubstrate() const {
-    return substrate_;
-}
-
-Autotroph& Autotroph::setSubstrate(double substrate) {
-    substrate_ = std::clamp(substrate, 0.0, 1.0);
-    return *this;
-}
-
-double Autotroph::getFactorConditions() const {
-    return factor_conditions_;
-}
-
-double Autotroph::getFactorSubtrate() const {
-    return factor_subtrate_;
-}
-
-double Autotroph::getFactorNutrients() const {
-    return factor_nutrients_;
-}
-
-double Autotroph::getGrowthEffectiveRate() const {
-    return getMaxGrowthRate() * factor_conditions_ * factor_subtrate_ * factor_nutrients_;
-}
-
-double Autotroph::getMaxGrowthRate() const {
-    return LivingBeing::getMaxGrowthRate();
+std::vector<std::vector<std::size_t>> Autotroph::getDietByCohortIndex() const {
+    const std::size_t n_stages = cycles_per_stages_.empty() ? 1 : cycles_per_stages_.size();
+    const std::size_t nutrient_code = static_cast<std::size_t>(DietType::NUTRIENTS_TYPE);
+    return std::vector<std::vector<std::size_t>>(n_stages, std::vector<std::size_t>{nutrient_code});
 }
 
 void Autotroph::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
-}
-
-double Autotroph::calculate_death_biomass(double, double) const {
-    return 0.0;
-}
-
-std::vector<std::tuple<int, double>> Autotroph::calculate_growth_biomass(const Niche&, double) const {
-    return {};
 }

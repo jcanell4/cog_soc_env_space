@@ -45,33 +45,33 @@ jobs:
 
       - name: Run executable (Linux)
         if: matrix.os == 'ubuntu-latest' && success()
-        run: ./build/env_soc_cog_space
+        run: ./build/cog_soc_env_space
 
       - name: Run executable (Windows)
         if: matrix.os == 'windows-latest' && success()
-        run: ./build/Release/env_soc_cog_space.exe
+        run: ./build/Release/cog_soc_env_space.exe
 
       - name: Run executable (macOS)
         if: matrix.os == 'macos-latest' && success()
-        run: ./build/env_soc_cog_space
+        run: ./build/cog_soc_env_space
 
       - name: Upload artifact (Linux)
         if: matrix.os == 'ubuntu-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: env_soc_cog_space-${{ matrix.name }}
-          path: build/env_soc_cog_space
+          name: cog_soc_env_space-${{ matrix.name }}
+          path: build/cog_soc_env_space
 
       - name: Upload artifact (Windows)
         if: matrix.os == 'windows-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: env_soc_cog_space-${{ matrix.name }}
-          path: build/Release/env_soc_cog_space.exe
+          name: cog_soc_env_space-${{ matrix.name }}
+          path: build/Release/cog_soc_env_space.exe
 
       - name: Upload artifact (macOS)
         if: matrix.os == 'macos-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: env_soc_cog_space-${{ matrix.name }}
-          path: build/env_soc_cog_space
+          name: cog_soc_env_space-${{ matrix.name }}
+          path: build/cog_soc_env_space

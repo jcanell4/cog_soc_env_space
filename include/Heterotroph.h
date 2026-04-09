@@ -18,6 +18,10 @@ public:
 
     void initialize(const Niche& niche) override;
 
+    int getFoodType() const override;
+
+    std::vector<std::vector<std::size_t>> getDietByCohortIndex() const override;
+
     const std::vector<double>& getSearchCaptureEfficiency() const;
     const std::vector<double>& getHandlingTimePenalty() const;
     std::size_t getPredatorCohortIndex() const;
@@ -33,11 +37,6 @@ public:
     Heterotroph& setMaxIngestionRate(double value);
 
     void update_factor_resources(const Niche& niche);
-
-    double calculate_death_biomass(double total_biomass, double accepted_growth) const override;
-    std::vector<std::tuple<int, double>> calculate_growth_biomass(
-        const Niche& niche,
-        double cohort_biomass) const override;
 
 private:
     static std::vector<double> clamp_unit_interval(std::vector<double> values);
