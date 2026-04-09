@@ -9,11 +9,11 @@
 #include <iostream>
 #include <string>
 
-#if defined(ENV_SOC_COG_SPACE_PLATFORM_LINUX)
+#if defined(COG_SOC_ENV_SPACE_PLATFORM_LINUX)
 const char* platform_name = "Linux";
-#elif defined(ENV_SOC_COG_SPACE_PLATFORM_MACOS)
+#elif defined(COG_SOC_ENV_SPACE_PLATFORM_MACOS)
 const char* platform_name = "macOS";
-#elif defined(ENV_SOC_COG_SPACE_PLATFORM_WINDOWS)
+#elif defined(COG_SOC_ENV_SPACE_PLATFORM_WINDOWS)
 const char* platform_name = "Windows";
 #else
 const char* platform_name = "Unknown";
