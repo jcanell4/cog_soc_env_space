@@ -5,8 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# nlohmann/json
+# nlohmann/json (FetchContent)
+# CMP0168 OLD: use legacy FetchContent sub-build; avoids pkgRedirects / redirect issues on some CMake 4.x CI runners.
+if(POLICY CMP0168)
+    cmake_policy(SET CMP0168 OLD)
+endif()
 include(FetchContent)
+set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
 FetchContent_Declare(json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
     GIT_TAG v3.11.3
