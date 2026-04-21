@@ -5,11 +5,14 @@
  * @brief Minimal base class for the ecological domain restart.
  */
 
-#include <cstddef>
+#include "Constants.h"
+
 #include <string>
+#include <tuple>
 #include <vector>
 
 class Niche;
+class Cohort;
 
 /**
  * @class LivingBeing
@@ -25,39 +28,63 @@ public:
     virtual ~LivingBeing();
 
     virtual void initialize(const Niche& niche);
-    virtual int getFoodType() const = 0;
+    const std::string& getFoodType() const;
+    void setFoodType(std::string food_type);
 
     /** @brief Runtime subclass tag; compare to @c LivingBeingClassType::* in Constants.h. */
     virtual int getClassType() const = 0;
 
     /**
-     * @brief Per-stage cohort diet: row @a s lists niche cohort indices used as food at stage @a s.
-     *        Empty outer vector when diet is not cohort-based (e.g. autotrophs on nutrients).
+     * @brief Cohort diet links: each tuple is (source_cohort_index, min_k, max_k inclusive) into the niche cohort array.
+     *        For heterotrophs, @a min_k/@a max_k are prey life-history stages; for decomposers, donor dead-biomass
+     *        size-bin indices. Empty when not using cohort-indexed sources (e.g. autotrophs on nutrients only).
      */
-    virtual std::vector<std::vector<std::size_t>> getDietByCohortIndex() const;
+    const std::vector<std::tuple<int, int, int>>& getDietByCohortIndex() const;
+    void setDietByCohortIndex(std::vector<std::tuple<int, int, int>> diet_by_cohort_index);
 
     const std::string& getName() const;
     float getBiomassToEnergyConversionFactor() const;
     const std::vector<double>& getMaintenanceCost() const;
-    const std::vector<double>& getFertility() const;
+    const std::vector<double>& getMaxFertility() const;
     const std::vector<double>& getResilience() const;
     double getVulnerability() const;
     const std::vector<double>& getBiomassPerIndividualAmount() const;
+    const std::vector<double>& getIndividualOccupiedSurface() const;
+    /**
+     * @brief Per-species descriptors of dead matter by size class.
+     *        Outer index is dead-biomass bin (same order as Cohort::death_biomass_);
+     *        each row stores chemical/physical/structural traits for that bin.
+     */
+    const std::vector<std::vector<double>>& getCharacteristicsDeathBiomass() const;
+    /**
+     * @brief Per-stage dead-matter size distribution.
+     *        Row i corresponds to life stage i and contains bin proportions that sum to 1.
+     */
+    const std::vector<std::vector<double>>& getDeathBiomassFractionBySize() const;
     const std::vector<std::vector<double>>& getBestEnvironmentalConditions() const;
     const std::vector<int>& getCyclesPerStages() const;
     const std::vector<std::vector<double>>& getDefenseStrategies() const;
     const std::vector<std::vector<double>>& getRecruitmentStrategies() const;
+    /** @brief Per-stage cap on individual growth; each component in [0,1]. */
+    const std::vector<double>& getMaxIndividualGrowth() const;
+    /** @brief Capacity to form colonies and colony size tendency; clamped to [0,1]. */
+    double getColonyAbilityRate() const;
 
     void setName(std::string name);
     void setBiomassToEnergyConversionFactor(float energy_content);
     void setMaintenanceCost(std::vector<double> maintenance_cost);
-    void setFertility(std::vector<double> fertility);
+    void setMaxFertility(std::vector<double> max_fertility);
     void setResilience(std::vector<double> resilience);
     void setBiomassPerIndividualAmount(std::vector<double> biomass_per_individual_amount);
+    void setIndividualOccupiedSurface(std::vector<double> individual_occupied_surface);
+    void setCharacteristicsDeathBiomass(std::vector<std::vector<double>> characteristics_death_biomass);
+    void setDeathBiomassFractionBySize(std::vector<std::vector<double>> death_biomass_fraction_by_size);
     void setBestEnvironmentalConditions(std::vector<std::vector<double>> best_environmental_conditions);
-    void setCyclesPerStages(std::vector<int> cycles_per_stages);
+    virtual void setCyclesPerStages(std::vector<int> cycles_per_stages);
     void setDefenseStrategies(std::vector<std::vector<double>> defense_strategies);
     void setRecruitmentStrategies(std::vector<std::vector<double>> recruitment_strategies);
+    void setMaxIndividualGrowth(std::vector<double> max_individual_growth);
+    void setColonyAbilityRate(double colony_ability_rate);
 
     /**
      * @brief Stage index i using relative durations in cycles_per_stages_: stage i covers
@@ -89,18 +116,39 @@ public:
                                                      int cohort_index,
                                                      int stage_index) const;
 
+    /**
+     * @brief Per-stage individual growth for this species on the given cohort.
+     * @param stage_index Life-history stage to process.
+     */
+    virtual void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const;
+
+    /**
+     * @brief Reproductive transfer from the current stage to stage 0 after individual growth.
+     * @param biomass_increment_this_cycle Net biomass increment at @p stage_index caused by the growth step.
+     */
+    virtual void process_reproductive_growth(Cohort& cohort,
+                                             int stage_index,
+                                             double biomass_increment_this_cycle) const;
+
 protected:
     std::string name_;
+    std::string food_type_{std::string{FoodType::LIVING_BEING}};
     float biomass_to_energy_conversion_factor_{19.5f};
     std::vector<double> maintenance_cost_;
-    std::vector<double> fertility_;
+    std::vector<double> max_fertility_;
     std::vector<double> resilience_;
     std::vector<double> biomass_per_individual_amount_;
+    std::vector<double> individual_occupied_surface_;
+    std::vector<std::vector<double>> characteristics_death_biomass_;
+    std::vector<std::vector<double>> death_biomass_fraction_by_size_;
     std::vector<std::vector<double>> best_environmental_conditions_;
     /** Relative number of cycles spent in each stage; e.g. {3,10,15} => stage 0 on [0,3), 1 on [3,13), 2 on [13,28). */
     std::vector<int> cycles_per_stages_;
     std::vector<std::vector<double>> defense_strategies_;
     std::vector<std::vector<double>> recruitment_strategies_;
+    std::vector<double> max_individual_growth_;
+    double colony_ability_rate_{0.0};
+    std::vector<std::tuple<int, int, int>> diet_by_cohort_index_{};
     double vulnerability_{0.0};
     bool initialized_{false};
 };

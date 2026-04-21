@@ -5,48 +5,68 @@
  * @brief Minimal heterotroph placeholder for the restart.
  */
 
-#include "LivingBeing.h"
+#include "ConsumerLivingBeing.h"
 
-#include <cstddef>
+#include <string>
 #include <vector>
 
 class Niche;
 
-class Heterotroph : public LivingBeing {
+class Heterotroph : public ConsumerLivingBeing {
 public:
     Heterotroph();
 
     void initialize(const Niche& niche) override;
 
-    int getFoodType() const override;
+    /**
+     * @brief Stage-level predation and growth update for heterotroph cohorts.
+     *
+     * The routine models prey finding, capture, and biomass transfers in three phases:
+     * 1) Build theoretical captures across all prey cohorts/stages from encounter probability and
+     *    recruitment-vs-defense compatibility, then enforce a global growth-limited ingestion cap.
+     * 2) Apply handling-time reduction, subtract consumed biomass from prey cohorts, and route
+     *    non-assimilated fractions to prey dead-biomass size bins.
+     * 3) Optionally complement missing ingestion via parental supply (if diet contains
+     *    @c DietType::PARENTAL_SUPPLY_TYPE), taking biomass proportionally from fertile donor stages,
+     *    with stochastic correction to avoid deterministic maximum attainment every step.
+     *
+     * Final predator-stage biomass is updated as:
+     * assimilated intake minus maintenance cost.
+     */
+    void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const override;
+    void process_reproductive_growth(Cohort& cohort,
+                                     int stage_index,
+                                     double biomass_increment_this_cycle) const override;
 
     int getClassType() const override;
 
-    std::vector<std::vector<std::size_t>> getDietByCohortIndex() const override;
+    void setCyclesPerStages(std::vector<int> cycles_per_stages) override;
+
+    using ConsumerLivingBeing::getDietByFoodType;
+    using ConsumerLivingBeing::setDietByFoodType;
+    using ConsumerLivingBeing::isFoodTypeMyDiet;
+    using ConsumerLivingBeing::getRangeForFoodType;
 
     const std::vector<double>& getSearchCaptureEfficiency() const;
-    const std::vector<double>& getHandlingTimePenalty() const;
-    std::size_t getPredatorCohortIndex() const;
-    double getMaxIngestionRate() const;
-    double getFactorConditions() const;
-    double getFactorResources() const;
+    using ConsumerLivingBeing::getProspectingAbilityRate;
+    using ConsumerLivingBeing::getHandlingTimePenalty;
+    using ConsumerLivingBeing::getAssimilationEfficiency;
+    using ConsumerLivingBeing::getIngestionResidueFractionBySize;
 
     Heterotroph& setName(std::string name);
     Heterotroph& setEnergyContent(float energy_content);
     Heterotroph& setSearchCaptureEfficiency(std::vector<double> values);
+    Heterotroph& setProspectingAbilityRate(std::vector<double> values);
     Heterotroph& setHandlingTimePenalty(std::vector<double> values);
-    Heterotroph& setPredatorCohortIndex(std::size_t value);
-    Heterotroph& setMaxIngestionRate(double value);
+    Heterotroph& setAssimilationEfficiency(std::vector<double> values);
+    Heterotroph& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 
-    void update_factor_resources(const Niche& niche);
+    /**
+     * @brief Fills @ref LivingBeing::diet_by_cohort_index_ from taxonomic diet rules and cohort species
+     *        food types in @a niche (one tuple per cohort whose prey taxonomy matches a diet rule).
+     */
+    void rebuild_diet_by_cohort_index_from_food_type(const Niche& niche);
 
 private:
-    static std::vector<double> clamp_unit_interval(std::vector<double> values);
-
-    double factor_conditions_{1.0};
-    double factor_resources_{1.0};
     std::vector<double> search_capture_efficiency_;
-    std::vector<double> handling_time_penalty_;
-    std::size_t predator_cohort_index_{0};
-    double max_ingestion_rate_{0.0};
 };

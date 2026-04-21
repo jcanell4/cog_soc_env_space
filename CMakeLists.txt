@@ -30,8 +30,10 @@ endif()
 add_executable(cog_soc_env_space
     src/main.cpp
     src/Builders.cpp
+    src/JsonEcosystem.cpp
     src/Heterotroph.cpp
     src/Decomposer.cpp
+    src/ConsumerLivingBeing.cpp
     src/LivingBeing.cpp
     src/Autotroph.cpp
     src/Cohort.cpp

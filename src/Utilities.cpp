@@ -46,6 +46,14 @@ double randomUniform(double min, double max) {
     return dist(thread_engine());
 }
 
+int randomInt(int min, int max) {
+    if (min > max) {
+        std::swap(min, max);
+    }
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(thread_engine());
+}
+
 double randomNormal(double mean, double stddev) {
     if (stddev < 0.0) {
         throw std::invalid_argument("utilities::randomNormal: stddev must be non-negative");

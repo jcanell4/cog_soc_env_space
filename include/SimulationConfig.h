@@ -19,20 +19,13 @@ struct SimulationConfig {
     std::uint32_t version = 1;
     /** RNG seed; 0 means "not set" (callers may substitute a runtime default). */
     std::uint64_t random_seed = 0;
-    /** Nominal integration step length (simulation units). */
-    double time_step = 1.0;
-    /** Upper bound on step count; 0 means no fixed cap (policy for the main loop). */
-    std::uint64_t max_steps = 0;
-    /** Global lower bound for supported growth rate (model units; used by growth logic). */
-    double min_growth_rate_supported = 0.0;
-    /** Global upper bound for supported growth rate (must be >= @ref min_growth_rate_supported when both set from JSON). */
-    double max_growth_rate_supported = 1.0;
-    /** Global lower bound for supported half-saturation constant (e.g. Michaelis–Menten / Monod K). */
-    double min_half_saturation_constant_supported = 0.03;
-    /** Global upper bound for supported half-saturation constant (must be >= @ref min_half_saturation_constant_supported). */
-    double max_half_saturation_constant_supported = 8.0;
-    bool verbose = false;
-
+    /** Default stochastic noise standard deviation (legacy replacement for NOISE_STDDEV). */
+    double noise_stddev = 0.2;
+    /** Alias noise for growth / maintenance paths (legacy replacement for NOISE_STDV). */
+    double noise_stdv = 0.2;
+    /** Path to environment JSON snapshot/config file. */
+    std::string environment_path;
+    
     /**
      * @brief Load from UTF-8 JSON file.
      *

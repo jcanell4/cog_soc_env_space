@@ -1,8 +1,14 @@
 #include "LivingBeing.h"
+#include "Cohort.h"
 #include "Niche.h"
+#include "SimulationConfig.h"
+#include "Utilities.h"
 
 #include <algorithm>
 #include <cmath>
+#include <numeric>
+#include <stdexcept>
+#include <tuple>
 #include <utility>
 
 namespace {
@@ -13,6 +19,20 @@ void clampMatrixToZeroOne(std::vector<std::vector<double>>& matrix) {
             value = std::clamp(value, 0.0, 1.0);
         }
     }
+}
+
+std::vector<double> normalizeFractionRow(std::vector<double> row) {
+    for (double& value : row) {
+        value = std::max(0.0, value);
+    }
+    const double sum = std::accumulate(row.begin(), row.end(), 0.0);
+    if (sum <= 0.0) {
+        return {};
+    }
+    for (double& value : row) {
+        value /= sum;
+    }
+    return row;
 }
 
 }  // namespace
@@ -30,8 +50,20 @@ void LivingBeing::initialize(const Niche& niche) {
     initialized_ = true;
 }
 
-std::vector<std::vector<std::size_t>> LivingBeing::getDietByCohortIndex() const {
-    return {};
+const std::vector<std::tuple<int, int, int>>& LivingBeing::getDietByCohortIndex() const {
+    return diet_by_cohort_index_;
+}
+
+void LivingBeing::setDietByCohortIndex(std::vector<std::tuple<int, int, int>> diet_by_cohort_index) {
+    diet_by_cohort_index_ = std::move(diet_by_cohort_index);
+}
+
+const std::string& LivingBeing::getFoodType() const {
+    return food_type_;
+}
+
+void LivingBeing::setFoodType(std::string food_type) {
+    food_type_ = std::move(food_type);
 }
 
 const std::string& LivingBeing::getName() const {
@@ -46,8 +78,8 @@ const std::vector<double>& LivingBeing::getMaintenanceCost() const {
     return maintenance_cost_;
 }
 
-const std::vector<double>& LivingBeing::getFertility() const {
-    return fertility_;
+const std::vector<double>& LivingBeing::getMaxFertility() const {
+    return max_fertility_;
 }
 
 const std::vector<double>& LivingBeing::getResilience() const {
@@ -60,6 +92,18 @@ double LivingBeing::getVulnerability() const {
 
 const std::vector<double>& LivingBeing::getBiomassPerIndividualAmount() const {
     return biomass_per_individual_amount_;
+}
+
+const std::vector<double>& LivingBeing::getIndividualOccupiedSurface() const {
+    return individual_occupied_surface_;
+}
+
+const std::vector<std::vector<double>>& LivingBeing::getCharacteristicsDeathBiomass() const {
+    return characteristics_death_biomass_;
+}
+
+const std::vector<std::vector<double>>& LivingBeing::getDeathBiomassFractionBySize() const {
+    return death_biomass_fraction_by_size_;
 }
 
 const std::vector<std::vector<double>>& LivingBeing::getBestEnvironmentalConditions() const {
@@ -78,6 +122,14 @@ const std::vector<std::vector<double>>& LivingBeing::getRecruitmentStrategies() 
     return recruitment_strategies_;
 }
 
+const std::vector<double>& LivingBeing::getMaxIndividualGrowth() const {
+    return max_individual_growth_;
+}
+
+double LivingBeing::getColonyAbilityRate() const {
+    return colony_ability_rate_;
+}
+
 void LivingBeing::setName(std::string name) {
     name_ = std::move(name);
 }
@@ -93,11 +145,11 @@ void LivingBeing::setMaintenanceCost(std::vector<double> maintenance_cost) {
     maintenance_cost_ = std::move(maintenance_cost);
 }
 
-void LivingBeing::setFertility(std::vector<double> fertility) {
-    for (double& value : fertility) {
+void LivingBeing::setMaxFertility(std::vector<double> max_fertility) {
+    for (double& value : max_fertility) {
         value = std::clamp(value, 0.0, 1.0);
     }
-    fertility_ = std::move(fertility);
+    max_fertility_ = std::move(max_fertility);
 }
 
 void LivingBeing::setResilience(std::vector<double> resilience) {
@@ -109,6 +161,31 @@ void LivingBeing::setResilience(std::vector<double> resilience) {
 
 void LivingBeing::setBiomassPerIndividualAmount(std::vector<double> biomass_per_individual_amount) {
     biomass_per_individual_amount_ = std::move(biomass_per_individual_amount);
+}
+
+void LivingBeing::setIndividualOccupiedSurface(std::vector<double> individual_occupied_surface) {
+    for (double& value : individual_occupied_surface) {
+        value = std::max(0.0, value);
+    }
+    individual_occupied_surface_ = std::move(individual_occupied_surface);
+}
+
+void LivingBeing::setCharacteristicsDeathBiomass(
+    std::vector<std::vector<double>> characteristics_death_biomass) {
+    for (std::vector<double>& row : characteristics_death_biomass) {
+        for (double& value : row) {
+            value = std::max(0.0, value);
+        }
+    }
+    characteristics_death_biomass_ = std::move(characteristics_death_biomass);
+}
+
+void LivingBeing::setDeathBiomassFractionBySize(
+    std::vector<std::vector<double>> death_biomass_fraction_by_size) {
+    for (std::vector<double>& row : death_biomass_fraction_by_size) {
+        row = normalizeFractionRow(std::move(row));
+    }
+    death_biomass_fraction_by_size_ = std::move(death_biomass_fraction_by_size);
 }
 
 void LivingBeing::setBestEnvironmentalConditions(std::vector<std::vector<double>> best_environmental_conditions) {
@@ -128,6 +205,17 @@ void LivingBeing::setDefenseStrategies(std::vector<std::vector<double>> defense_
 void LivingBeing::setRecruitmentStrategies(std::vector<std::vector<double>> recruitment_strategies) {
     clampMatrixToZeroOne(recruitment_strategies);
     recruitment_strategies_ = std::move(recruitment_strategies);
+}
+
+void LivingBeing::setMaxIndividualGrowth(std::vector<double> max_individual_growth) {
+    for (double& value : max_individual_growth) {
+        value = std::clamp(value, 0.0, 1.0);
+    }
+    max_individual_growth_ = std::move(max_individual_growth);
+}
+
+void LivingBeing::setColonyAbilityRate(double colony_ability_rate) {
+    colony_ability_rate_ = std::clamp(colony_ability_rate, 0.0, 1.0);
 }
 
 int LivingBeing::calculateStage(int cycles_elapsed) const {
@@ -164,6 +252,59 @@ double LivingBeing::calculateObtainedBiomassIncrement(const Niche& /*niche*/,
                                                       int /*cohort_index*/,
                                                       int /*stage_index*/) const {
     return 0.0;
+}
+
+void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, int stage) const {
+    if (cohort.getSpecie() == nullptr || cohort.getBiomass().empty() || stage < 0) {
+        throw std::invalid_argument("Invalid cohort specie or stage");
+    }
+    const std::size_t su = static_cast<std::size_t>(stage);
+    if (su >= cohort.getBiomass().size()) {
+        throw std::invalid_argument("Invalid stage index");
+    }
+
+}
+
+void LivingBeing::process_reproductive_growth(Cohort& cohort,
+                                              int stage_index,
+                                              double biomass_increment_this_cycle) const {
+    if (cohort.getSpecie() == nullptr || cohort.getBiomass().empty() || stage_index < 0) {
+        throw std::invalid_argument("Invalid cohort specie or stage");
+    }
+    const std::size_t su = static_cast<std::size_t>(stage_index);
+    std::vector<double> biomass = cohort.getBiomass();
+    if (su >= biomass.size()) {
+        throw std::invalid_argument("Invalid stage index");
+    }
+    if (su == 0) {
+        return;
+    }
+
+    const double B_after = std::max(0.0, biomass[su]);
+    const double delta = std::max(0.0, biomass_increment_this_cycle);
+    const double B_before_growth = std::max(0.0, B_after - delta);
+
+    const std::vector<double>& fertility = getMaxFertility();
+    const double f = su < fertility.size() ? std::clamp(fertility[su], 0.0, 1.0) : 0.0;
+
+    const std::vector<double>& max_growth = getMaxIndividualGrowth();
+    const double g_max = su < max_growth.size() ? std::clamp(max_growth[su], 0.0, 1.0) : 0.0;
+
+    constexpr double kEps = 1e-12;
+    const double cap = g_max * B_before_growth;
+    const double r = cap > kEps ? std::clamp(delta / cap, 0.0, 1.0) : 0.0;
+
+    const double stochastic_factor =
+        std::max(0.0, 1.0 + utilities::randomNormal(0.0, SimulationConfig::global().noise_stddev));
+    double reproductive_biomass = B_after * f * r * stochastic_factor;
+    reproductive_biomass = std::clamp(reproductive_biomass, 0.0, B_after);
+    if (reproductive_biomass <= 0.0) {
+        return;
+    }
+
+    biomass[su] = std::max(0.0, biomass[su] - reproductive_biomass);
+    biomass[0] += reproductive_biomass;
+    cohort.setBiomass(std::move(biomass));
 }
 
 double LivingBeing::calculateVulnerability(const std::vector<double>& current_conditions,

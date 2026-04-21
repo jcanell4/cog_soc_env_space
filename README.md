@@ -82,6 +82,9 @@ doxygen Doxyfile
 | Type | Header | Role |
 |------|--------|------|
 | **LivingBeing** | `LivingBeing.h` | Abstract species: name, energy per biomass, death & growth demand contracts. |
+| **ConsumerLivingBeing** | `ConsumerLivingBeing.h` | Intermediate base for heterotrophs and decomposers: assimilation efficiency, handling penalty, prospecting, per-stage residue fractions; helpers for waste routing to death bins and optional parental supply. |
+| **Heterotroph** | `Heterotroph.h` | Predator: search/capture efficiency, taxonomic diet; `process_individual_growth` uses the shared two-pass ingestion pipeline (see below). |
+| **Decomposer** | `Decomposer.h` | Detritivore: uptake from other cohorts’ dead biomass pools; same two-pass pipeline as `Heterotroph` but theory built from donor death bins and trait compatibility (fixed decomposition intensity in implementation). |
 | **Autotroph** | `Autotroph.h` | Producer: tolerances, stress death ratio, environment coupling, nutrient-limited growth/death; JSON via `AutotrophBuilder`. |
 | **Cohort** | `Cohort.h` | Population of one species: living/dead biomass, `update_biomass`, `calculate_growth_demand`. |
 | **Niche** | `Niche.h` | Contains cohorts, nutrients, conditions; `step()` runs nutrient recycling and cohort updates. |
@@ -96,10 +99,75 @@ doxygen Doxyfile
 - **Negative `code`** — decomposer: donor cohort index = `-(code + 1)`.
 - **Non-negative `code`** (and not `NUTRIENTS_POS`) — heterotroph: prey cohort index = `code`; a predator may emit several tuples (split intake across preys).
 
+`LivingBeing::diet_by_cohort_index` (built for heterotrophs and decomposers) stores `(source_cohort_index, min_k, max_k)` with **inclusive** bounds: for **heterotrophs**, `min_k`…`max_k` are prey life-history stages; for **decomposers**, they are donor **dead-biomass bin** indices. Ingestion loops use only that interval.
+
 ### Simulation flow (niche)
 
 1. **`Niche::update_nutrients`** — per cohort, move `return_rate × death_biomass` into `nutrients` and out of dead pool; then **`update_ecological_health`** with the nutrient delta.
 2. **`Niche::update_cohorts`** — random starting index, for each cohort resolve growth demand tuples and update nutrients / biomass transfers.
+
+### Heterotroph encounter and ingestion model
+
+`Heterotroph` and `Decomposer` both inherit **`ConsumerLivingBeing`**. Ingestion—global gross cap, handling reduction, assimilation vs. residue return to donor death bins, and optional parental supply—follows the **same staged sequence**. Predators differ only in how **theoretical** intake per source is computed (live prey encounter/capture vs. dead-pool scanning on donor bins).
+
+`Heterotroph::process_individual_growth` applies a staged predation model aligned with the ecological restart design:
+
+1. **Encounter probability**
+   - Per prey stage, occupied area is estimated from:
+     - prey biomass,
+     - prey biomass-per-individual,
+     - prey occupied surface-per-individual.
+   - Colony behavior modifies detectability with:
+     - `COLONY_SURFACE_GAIN_ETA`,
+     - `COLONY_MIX_GAMMA`.
+   - Predator movement/prospecting rate is converted into scanned niche fraction with:
+     - `PROSPECTING_SCAN_SHARPNESS`.
+   - Final per-stage find probability mixes individual-stage and whole-colony channels.
+
+2. **Capture and growth cap**
+   - Capture compatibility is computed via
+     `LivingBeing::calculate_effective_recruitment_efficiency(recruitment, defense)`.
+   - The algorithm performs two passes:
+     - build theoretical captures for every prey cohort/stage,
+     - scale all captures uniformly so total gross ingestion does not exceed the growth-limited cap derived from:
+       - predator stage biomass,
+       - `max_individual_growth`,
+       - `assimilation_efficiency`.
+   - This avoids iteration-order bias across prey species/stages.
+
+3. **Handling, assimilation, and biomass transfers**
+   - Gross intake is reduced by a saturating handling penalty:
+     `I_eff = I / (1 + h * I)`.
+   - Prey biomass is reduced by realized intake.
+   - Non-assimilated prey intake is routed to prey dead-biomass size bins
+     (`death_biomass[s]`, configurable per predator stage).
+   - Predator gain is assimilated intake minus maintenance cost.
+
+4. **Parental supply extension**
+   - If diet contains `DietType::PARENTAL_SUPPLY_TYPE`, remaining unmet ingestion can be sourced from fertile stages of the same cohort.
+  - Donor contribution is proportional to fertility weights, with stochastic correction (`SimulationConfig::noise_stdv`) to avoid deterministic full-cap attainment each step.
+   - Non-assimilated parental intake is routed to the cohort dead-biomass size bins.
+
+### Decomposer detritus ingestion model
+
+`Decomposer::process_individual_growth` mirrors the heterotroph pipeline:
+
+1. **Theory pass** — For each diet rule and donor cohort (not self), for each death-bin index `s` with positive mass, a theoretical gross take is built from prospecting (scan), a fixed decomposition-intensity factor, donor availability in that bin, and `calculate_effective_recruitment_efficiency` using the donor’s death-trait row for `s`. Entries are keyed by `(donor_cohort_index, bin_index)` like heterotroph’s `(prey_cohort, prey_stage)`.
+
+2. **Global cap** — `α = min(1, max_gross_ingestion / theory_total)` uses the same growth-limited cap as predators (stage biomass, `max_individual_growth`, assimilation efficiency).
+
+3. **Handling, assimilation, residues** — Same `I_eff = I / (1 + h × I)` handling when configured. Realized take is debited from the donor’s dead biomass, then assimilated fraction updates decomposer biomass; non-assimilated mass is returned to the **donor’s** death bins via `ingestion_residue_fraction_by_size`.
+
+4. **Parental supply** — Same optional `DietType::PARENTAL_SUPPLY_TYPE` branch as `Heterotroph`, implemented in `ConsumerLivingBeing::applyParentalSupplyGross`.
+
+Restart scaffolding builders: `HeterotrophBuilder` and **`DecomposerBuilder`** expose the shared consumer parameters (prospecting, assimilation, handling, residue grids); `HeterotrophBuilder` also supports search/capture efficiency.
+
+### Dead biomass size bins (dynamic length)
+
+- `death_biomass` is a dynamic vector (`std::vector<double>`) per cohort; there is no fixed bin count.
+- Bin convention: index `0` is the finest / most degraded detritus class.
+- `Niche::return_rate` is also dynamic; nutrient recycling applies per bin index and treats missing
+  indices as `0`.
 
 ### Global simulation configuration (`SimulationConfig`)
 
@@ -122,6 +190,34 @@ Runtime parameters are loaded **once** at startup from JSON and exposed read-onl
 | `verbose` | boolean | `false` | If true, the program may print extra diagnostics. |
 
 Example: [`config/simulation.example.json`](config/simulation.example.json).
+
+### Ecosystem JSON snapshots (`JsonEcosystem`)
+
+`JsonEcosystem` provides helper methods to serialize runtime ecosystem state into an append-only JSON structure:
+
+- `createJson(const Niche&)` creates:
+  - `initial_data` with a full `Niche` snapshot (including cohorts and species details)
+  - `step_data` as an empty array
+- `updateJson(const Niche&, int elapsed_cycles, json&)` appends one full niche snapshot to `step_data`
+- `saveJsonToFile(const json&, const std::string&, int indent = 2)` writes JSON to disk
+
+Output shape:
+
+```json
+{
+  "initial_data": {
+    "type": "Niche",
+    "data": { "...": "full initial niche snapshot" }
+  },
+  "step_data": [
+    {
+      "type": "Niche",
+      "elapsed_cycles": 10,
+      "data": { "...": "full niche snapshot at cycle 10" }
+    }
+  ]
+}
+```
 
 ## Licence
 

@@ -5,45 +5,61 @@
  * @brief Decomposer species: uptake from other cohorts' dead biomass pools.
  */
 
-#include "LivingBeing.h"
+#include "ConsumerLivingBeing.h"
 
-#include <cstddef>
+#include <string>
 #include <vector>
 
 class Niche;
 
 /**
  * @class Decomposer
- * @brief Decomposer with per-donor efficiency on death biomass, fixed niche cohort index.
+ * @brief Decomposer species: uptake from other cohorts' dead biomass pools.
  *
- * Dead-biomass uptake is modeled via niche/cohort updates (not via species callbacks in this restart).
+ * Decomposition uptake follows the same two-pass structure as @c Heterotroph (theory → global cap α →
+ * handling → assimilation with residue routing to donor death bins; optional parental supply).
+ *
+ * Dead-biomass transfers are modeled via niche/cohort updates (not via species callbacks in this restart).
  */
-class Decomposer : public LivingBeing {
+class Decomposer : public ConsumerLivingBeing {
 public:
     Decomposer();
 
     void initialize(const Niche& niche) override;
 
-    int getFoodType() const override;
+    void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const override;
+    void process_reproductive_growth(Cohort& cohort,
+                                     int stage_index,
+                                     double biomass_increment_this_cycle) const override;
 
     int getClassType() const override;
 
-    std::vector<std::vector<std::size_t>> getDietByCohortIndex() const override;
+    void setCyclesPerStages(std::vector<int> cycles_per_stages) override;
 
-    const std::vector<double>& getDonorEfficiency() const;
-    std::size_t getDecomposerCohortIndex() const;
-    double getMaxDecompositionRate() const;
+    using ConsumerLivingBeing::getDietByFoodType;
+    using ConsumerLivingBeing::setDietByFoodType;
+    using ConsumerLivingBeing::isFoodTypeMyDiet;
+    using ConsumerLivingBeing::getRangeForFoodType;
+
+    /**
+     * @brief Fills @ref LivingBeing::diet_by_cohort_index_ with tuples
+     *        @c (donor_cohort_index, min_dead_bin, max_dead_bin inclusive). Taxonomic rules from
+     *        @ref ConsumerLivingBeing::diet_by_food_type_ supply bin ranges via the same hierarchy match
+     *        as prey diets (interpreted as dead-matter size-bin indices for decomposers).
+     *        If @ref ConsumerLivingBeing::diet_by_food_type_ is empty, the decomposer is a generalist:
+     *        every cohort with a species is linked with donor bins @c 0 … @c max_bin (from death/traits size).
+     */
+    void rebuild_diet_by_cohort_index_from_food_type(const Niche& niche);
+
+    using ConsumerLivingBeing::getProspectingAbilityRate;
+    using ConsumerLivingBeing::getHandlingTimePenalty;
+    using ConsumerLivingBeing::getAssimilationEfficiency;
+    using ConsumerLivingBeing::getIngestionResidueFractionBySize;
 
     Decomposer& setName(std::string name);
     Decomposer& setEnergyContent(float energy_content);
-    Decomposer& setDonorEfficiency(std::vector<double> values);
-    Decomposer& setDecomposerCohortIndex(std::size_t value);
-    Decomposer& setMaxDecompositionRate(double value);
-
-private:
-    static std::vector<double> clamp_unit_interval(std::vector<double> v);
-
-    std::vector<double> donor_efficiency_;
-    std::size_t decomposer_cohort_index_{0};
-    double max_decomposition_rate_{0.15};
+    Decomposer& setProspectingAbilityRate(std::vector<double> values);
+    Decomposer& setHandlingTimePenalty(std::vector<double> values);
+    Decomposer& setAssimilationEfficiency(std::vector<double> values);
+    Decomposer& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 };

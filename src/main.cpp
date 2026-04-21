@@ -3,6 +3,7 @@
  * Cross-platform C++ entry point.
  */
 
+#include "Builders.h"
 #include "SimulationConfig.h"
 #include "Utilities.h"
 
@@ -27,7 +28,7 @@ constexpr const char* kDefaultSimulationConfig = "config/simulation.example.json
 } // namespace
 
 int main(int argc, char* argv[]) {
-    std::cout << "env_soc_cog_space v0.1.0 - Environmental Social Cognitive Space\n";
+    std::cout << "cog_soc_env_space v0.1.0 - Cognitive-social environment space\n";
     std::cout << "Platform: " << platform_name << "\n";
 
     const std::string config_path = (argc >= 2 && argv[1] != nullptr && argv[1][0] != '\0')
@@ -46,14 +47,17 @@ int main(int argc, char* argv[]) {
     const SimulationConfig& cfg = SimulationConfig::global();
     utilities::seedRng(cfg.random_seed);
 
-    if (cfg.verbose) {
-        std::cout << "Simulation config: version=" << cfg.version << " seed=" << cfg.random_seed
-                  << " time_step=" << cfg.time_step << " max_steps=" << cfg.max_steps
-                  << " growth_rate=[" << cfg.min_growth_rate_supported << ","
-                  << cfg.max_growth_rate_supported << "]"
-                  << " half_saturation=[" << cfg.min_half_saturation_constant_supported << ","
-                  << cfg.max_half_saturation_constant_supported << "]\n";
-    }
+    std::cout << "Simulation config: version=" << cfg.version << " seed=" << cfg.random_seed << "\n";
+
+    Niche niche = NicheBuilder().loadEnvironment(cfg.environment_path).build();
+    std::cout << "Niche nutrients: " << niche.getNutrients() << "\n";
+    niche.update_nutrients();
+    std::cout << "Niche nutrients after update: " << niche.getNutrients() << "\n";
+
+    //Cohort cohort = niche.getCohortSet()[0];
+    
+    //cohort.update_deaths(int stage)
+
 
     return 0;
 }

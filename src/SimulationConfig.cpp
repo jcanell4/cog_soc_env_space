@@ -2,9 +2,9 @@
 
 #include <nlohmann/json.hpp>
 
+#include <cmath>
 #include <fstream>
 #include <memory>
-#include <optional>
 #include <stdexcept>
 
 namespace {
@@ -45,104 +45,49 @@ SimulationConfig SimulationConfig::parseObject(const nlohmann::json& obj) {
         }
     }
 
-    if (obj.contains("time_step")) {
-        const auto& v = obj["time_step"];
+    bool has_noise_stddev = false;
+    bool has_noise_stdv = false;
+    if (obj.contains("noise_stddev")) {
+        const auto& v = obj["noise_stddev"];
         if (!v.is_number()) {
-            throw std::runtime_error("Simulation config: \"time_step\" must be a number");
+            throw std::runtime_error("Simulation config: \"noise_stddev\" must be a number");
         }
-        out.time_step = v.get<double>();
-        if (!(out.time_step > 0.0)) {
-            throw std::runtime_error("Simulation config: \"time_step\" must be positive");
+        out.noise_stddev = v.get<double>();
+        if (out.noise_stddev < 0.0) {
+            throw std::runtime_error("Simulation config: \"noise_stddev\" must be non-negative");
         }
+        has_noise_stddev = true;
     }
-
-    if (obj.contains("max_steps")) {
-        const auto& v = obj["max_steps"];
-        if (!v.is_number_unsigned() && !v.is_number_integer()) {
-            throw std::runtime_error("Simulation config: \"max_steps\" must be a non-negative integer");
-        }
-        if (v.is_number_integer()) {
-            const auto i = v.get<std::int64_t>();
-            if (i < 0) {
-                throw std::runtime_error("Simulation config: \"max_steps\" must be non-negative");
-            }
-            out.max_steps = static_cast<std::uint64_t>(i);
-        } else {
-            out.max_steps = v.get<std::uint64_t>();
-        }
-    }
-
-    if (obj.contains("verbose")) {
-        const auto& v = obj["verbose"];
-        if (!v.is_boolean()) {
-            throw std::runtime_error("Simulation config: \"verbose\" must be a boolean");
-        }
-        out.verbose = v.get<bool>();
-    }
-
-    std::optional<double> omin;
-    std::optional<double> omax;
-    if (obj.contains("min_growth_rate_supported")) {
-        const auto& v = obj["min_growth_rate_supported"];
+    if (obj.contains("noise_stdv")) {
+        const auto& v = obj["noise_stdv"];
         if (!v.is_number()) {
-            throw std::runtime_error("Simulation config: \"min_growth_rate_supported\" must be a number");
+            throw std::runtime_error("Simulation config: \"noise_stdv\" must be a number");
         }
-        omin = v.get<double>();
-    }
-    if (obj.contains("max_growth_rate_supported")) {
-        const auto& v = obj["max_growth_rate_supported"];
-        if (!v.is_number()) {
-            throw std::runtime_error("Simulation config: \"max_growth_rate_supported\" must be a number");
+        out.noise_stdv = v.get<double>();
+        if (out.noise_stdv < 0.0) {
+            throw std::runtime_error("Simulation config: \"noise_stdv\" must be non-negative");
         }
-        omax = v.get<double>();
+        has_noise_stdv = true;
     }
-    if (omin && omax) {
-        out.min_growth_rate_supported = *omin;
-        out.max_growth_rate_supported = *omax;
-    } else if (omin && !omax) {
-        out.min_growth_rate_supported = *omin;
-        out.max_growth_rate_supported = *omin;
-    } else if (!omin && omax) {
-        out.min_growth_rate_supported = *omax;
-        out.max_growth_rate_supported = *omax;
-    }
-    if (out.min_growth_rate_supported > out.max_growth_rate_supported) {
+    if (has_noise_stddev && !has_noise_stdv) {
+        out.noise_stdv = out.noise_stddev;
+    } else if (!has_noise_stddev && has_noise_stdv) {
+        out.noise_stddev = out.noise_stdv;
+    } else if (has_noise_stddev && has_noise_stdv &&
+               std::fabs(out.noise_stddev - out.noise_stdv) > 1e-12) {
         throw std::runtime_error(
-            "Simulation config: min_growth_rate_supported must be <= max_growth_rate_supported");
+            "Simulation config: \"noise_stddev\" and \"noise_stdv\" must be equal when both are provided");
     }
 
-    std::optional<double> hmin;
-    std::optional<double> hmax;
-    if (obj.contains("min_half_saturation_constant_supported")) {
-        const auto& v = obj["min_half_saturation_constant_supported"];
-        if (!v.is_number()) {
-            throw std::runtime_error(
-                "Simulation config: \"min_half_saturation_constant_supported\" must be a number");
+    if (obj.contains("environment_path")) {
+        const auto& v = obj["environment_path"];
+        if (!v.is_string()) {
+            throw std::runtime_error("Simulation config: \"environment_path\" must be a string");
         }
-        hmin = v.get<double>();
+        out.environment_path = v.get<std::string>();
     }
-    if (obj.contains("max_half_saturation_constant_supported")) {
-        const auto& v = obj["max_half_saturation_constant_supported"];
-        if (!v.is_number()) {
-            throw std::runtime_error(
-                "Simulation config: \"max_half_saturation_constant_supported\" must be a number");
-        }
-        hmax = v.get<double>();
-    }
-    if (hmin && hmax) {
-        out.min_half_saturation_constant_supported = *hmin;
-        out.max_half_saturation_constant_supported = *hmax;
-    } else if (hmin && !hmax) {
-        out.min_half_saturation_constant_supported = *hmin;
-        out.max_half_saturation_constant_supported = *hmin;
-    } else if (!hmin && hmax) {
-        out.min_half_saturation_constant_supported = *hmax;
-        out.max_half_saturation_constant_supported = *hmax;
-    }
-    if (out.min_half_saturation_constant_supported > out.max_half_saturation_constant_supported) {
-        throw std::runtime_error(
-            "Simulation config: min_half_saturation_constant_supported must be <= "
-            "max_half_saturation_constant_supported");
+    if (out.environment_path.empty()) {
+        throw std::runtime_error("Simulation config: \"environment_path\" must be a non-empty string");
     }
 
     return out;
@@ -152,10 +97,10 @@ void SimulationConfig::loadFromJson(const nlohmann::json& root) {
     ensureNotLoaded();
 
     const nlohmann::json* body = &root;
-    if (root.is_object() && root.contains("simulation")) {
-        const auto& sub = root["simulation"];
+    if (root.is_object() && root.contains("simulation_config")) {
+        const auto& sub = root["simulation_config"];
         if (!sub.is_object()) {
-            throw std::runtime_error("Simulation config: \"simulation\" must be an object");
+            throw std::runtime_error("Simulation config: \"simulation_config\" must be an object");
         }
         body = &sub;
     }

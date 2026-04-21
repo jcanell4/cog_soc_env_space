@@ -1,6 +1,7 @@
 #include "Niche.h"
 #include "Autotroph.h"
 #include "Constants.h"
+#include "SimulationConfig.h"
 #include "Utilities.h"
 
 #include <algorithm>
@@ -17,8 +18,7 @@ std::vector<double> clampUnitInterval(std::vector<double> values) {
     return values;
 }
 
-std::vector<double> normalizeTwoNonNegative(std::vector<double> value) {
-    value.resize(2, 0.0);
+std::vector<double> normalizeNonNegative(std::vector<double> value) {
     for (double& v : value) {
         v = std::max(0.0, v);
     }
@@ -80,7 +80,7 @@ Niche& Niche::setCohortSet(CohortSet value) {
 }
 
 Niche& Niche::setReturnRate(std::vector<double> value) {
-    return_rate_ = normalizeTwoNonNegative(std::move(value));
+    return_rate_ = normalizeNonNegative(std::move(value));
     return *this;
 }
 
@@ -201,22 +201,26 @@ std::vector<double> Niche::getLithPerStratum() const {
 }
 
 void Niche::update_nutrients() {
-    const double noise_stddev = NOISE_STDDEV;
+    const double noise_stddev = SimulationConfig::global().noise_stddev;
     const double effective_return_cost = std::clamp(return_cost_, 0.0, 1.0);
     const double nutrient_factor = 1.0 - effective_return_cost;
 
     for (Cohort& cohort : cohort_set_) {
         const std::vector<double>& death = cohort.getDeathBiomass();
-        if (death.size() < 2) {
+        if (death.empty() || return_rate_.empty()) {
             continue;
         }
 
         const double noise = utilities::randomNormal(0.0, noise_stddev);
         const double multiplicative = std::max(0.0, 1.0 + noise);
 
-        std::vector<double> processed(2, 0.0);
-        processed[0] = death[0] * return_rate_[0] * multiplicative;
-        processed[1] = death[1] * return_rate_[1] * multiplicative;
+        const std::size_t n = std::max(death.size(), return_rate_.size());
+        std::vector<double> processed(n, 0.0);
+        for (std::size_t i = 0; i < n; ++i) {
+            const double death_i = i < death.size() ? death[i] : 0.0;
+            const double return_i = i < return_rate_.size() ? return_rate_[i] : 0.0;
+            processed[i] = death_i * return_i * multiplicative;
+        }
 
         const double extracted = cohort.decrement_death_biomass(std::move(processed));
         nutrients_ += extracted * nutrient_factor;
@@ -226,9 +230,14 @@ void Niche::update_nutrients() {
 void Niche::update_ecological_health() {
 }
 
+void Niche::update_niche() {
+    update_ecological_health();
+}
+
 void Niche::step() {
     update_nutrients();
     update_cohorts();
+    update_niche();
 }
 
 void Niche::initialize() {

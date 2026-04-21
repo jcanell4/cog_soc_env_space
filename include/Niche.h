@@ -53,6 +53,7 @@ public:
 
     void update_nutrients();
     void update_ecological_health();
+    void update_niche();
     void step();
     void initialize();
 
@@ -63,7 +64,7 @@ private:
     double ecological_health_{1.0};
     double nutrients_{0.0};
     CohortSet cohort_set_;
-    std::vector<double> return_rate_{0.0, 0.0};
+    std::vector<double> return_rate_{};
     double return_cost_{0.0};
     std::vector<double> conditions_;
     std::vector<double> limiting_factors_;

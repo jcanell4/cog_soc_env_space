@@ -6,6 +6,8 @@
  */
 
 #include <limits>
+#include <cstddef>
+#include <string_view>
 
 /**
  * @var NUTRIENTS_POS
@@ -19,7 +21,6 @@ inline constexpr int NUTRIENTS_TYPE = NUTRIENTS_POS;
 inline constexpr int CATABOLIC_TYPE = NUTRIENTS_POS - 1;
 inline constexpr int PARENTAL_SUPPLY_TYPE = NUTRIENTS_POS - 2;
 inline constexpr int HETEROTROPH_TYPE = NUTRIENTS_POS - 3;
-inline constexpr int DECOMPOSER_TYPE = NUTRIENTS_POS - 4;
 }  // namespace DietType
 
 /**
@@ -31,7 +32,20 @@ inline constexpr int HETEROTROPH = 1;
 inline constexpr int DECOMPOSER = 2;
 }  // namespace LivingBeingClassType
 
-/** @brief Default stochastic noise standard deviation for nutrient return processing. */
-inline constexpr double NOISE_STDDEV = 0.2;
-/** @brief Alias for growth / maintenance noise (same as @ref NOISE_STDDEV). */
-inline constexpr double NOISE_STDV = NOISE_STDDEV;
+namespace FoodType {
+inline constexpr std::string_view LIVING_BEING = "0";
+inline constexpr std::string_view VEGETABLE = "0.0";
+inline constexpr std::string_view ANIMAL = "0.1";
+}  // namespace FoodType
+/** @brief Colony-induced effective occupied-surface gain when colony ability is 1.0. */
+inline constexpr double COLONY_SURFACE_GAIN_ETA = 0.2;
+/** @brief Colony-vs-individual mixing exponent in prey-find probability interpolation. */
+inline constexpr double COLONY_MIX_GAMMA = 1.0;
+/** @brief Sharpness of the movement-rate to scanned-surface exponential transform. */
+inline constexpr double PROSPECTING_SCAN_SHARPNESS = 3.0;
+
+/**
+ * @brief Dead-biomass size-bin convention (dynamic-size vectors):
+ *        index 0 is the finest/most degraded detritus class.
+ */
+inline constexpr std::size_t DEATH_BIOMASS_FINEST_BIN = 0;

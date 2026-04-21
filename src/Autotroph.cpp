@@ -1,28 +1,88 @@
 #include "Autotroph.h"
+#include "Cohort.h"
 #include "Constants.h"
+#include "Niche.h"
+#include "SimulationConfig.h"
+#include "Utilities.h"
 
 #include <algorithm>
 #include <utility>
 
 Autotroph::Autotroph()
-    : LivingBeing(std::string{}, 17.5f) {}
-
-int Autotroph::getFoodType() const {
-    return DietType::NUTRIENTS_TYPE;
+    : LivingBeing(std::string{}, 17.5f) {
+    setFoodType(std::string{FoodType::VEGETABLE});
 }
 
 int Autotroph::getClassType() const {
     return LivingBeingClassType::AUTOTROPH;
 }
 
-std::vector<std::vector<std::size_t>> Autotroph::getDietByCohortIndex() const {
-    const std::size_t n_stages = cycles_per_stages_.empty() ? 1 : cycles_per_stages_.size();
-    const std::size_t nutrient_code = static_cast<std::size_t>(DietType::NUTRIENTS_TYPE);
-    return std::vector<std::vector<std::size_t>>(n_stages, std::vector<std::size_t>{nutrient_code});
+void Autotroph::setCyclesPerStages(std::vector<int> cycles_per_stages) {
+    LivingBeing::setCyclesPerStages(std::move(cycles_per_stages));
 }
 
 void Autotroph::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
+}
+
+void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const {
+    LivingBeing::process_individual_growth(niche, cohort, stage_index);
+    const LivingBeing* specie = cohort.getSpecie();
+    if (specie == nullptr) {
+        return;
+    }
+    const std::size_t su = static_cast<std::size_t>(stage_index);
+    const std::vector<std::tuple<int, int, int>> diet_by_cohort_index = specie->getDietByCohortIndex();
+
+    const std::vector<double>& maintenance = specie->getMaintenanceCost();
+    const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
+
+    for (const auto& rule : diet_by_cohort_index) {
+        const int food_index = std::get<0>(rule);
+        const double gross_noise = utilities::randomNormal(0.0, SimulationConfig::global().noise_stdv);
+        const double cost_noise = utilities::randomNormal(0.0, SimulationConfig::global().noise_stdv);
+        if (food_index == DietType::NUTRIENTS_TYPE) {
+            // Nutrient-limited autotroph growth (not expressed via cohort-index diet tuples).
+            const auto& rec_matrix = specie->getRecruitmentStrategies();
+            std::vector<double> rec_row;
+            if (su < rec_matrix.size()) {
+                rec_row = rec_matrix[su];
+            }
+            const std::vector<double> lith = niche.getLithPerStratum();
+            const double lith_s = su < lith.size() ? lith[su] : 0.0;
+            const double min_l = su < this->getMinLight().size() ? this->getMinLight()[su] : 0.0;
+            const double lf = std::clamp(1.0 - (lith_s - min_l), 0.0, 1.0);
+            const double gross = LivingBeing::calculate_effective_recruitment_efficiency(
+                rec_row, niche.getLimitingFactors());
+            double effective = gross * lf + gross_noise;
+            std::vector<double> biomass = cohort.getBiomass();
+            if (su < biomass.size()) {
+                const std::vector<double>& mig = cohort.getSpecie()->getMaxIndividualGrowth();
+                effective = std::min(effective, mig[su]);
+                const double new_biomass = std::max(0.0, biomass[su] * (1.0 + effective));
+                niche.setNutrients(niche.getNutrients() - (new_biomass - biomass[su]));
+                biomass[su] = new_biomass - biomass[su] * (m_stage + cost_noise);
+                cohort.setBiomass(std::move(biomass));
+            }
+            continue;
+        }
+        if (food_index == DietType::CATABOLIC_TYPE) {
+            // Catabolic autotroph growth (not expressed via cohort-index diet tuples).
+            std::vector<double> biomass = cohort.getBiomass();
+            if (su >= biomass.size()) {
+                continue;
+            }
+            biomass[su] = std::max(0.0, biomass[su] * (1.0 - m_stage - cost_noise));
+            cohort.setBiomass(std::move(biomass));
+            continue;
+        }
+    }
+}
+
+void Autotroph::process_reproductive_growth(Cohort& cohort,
+                                            int stage_index,
+                                            double biomass_increment_this_cycle) const {
+    LivingBeing::process_reproductive_growth(cohort, stage_index, biomass_increment_this_cycle);
 }
 
 const std::vector<double>& Autotroph::getOpacity() const {
@@ -58,4 +118,12 @@ const std::vector<double>& Autotroph::getMinLight() const {
 
 void Autotroph::setMinLight(std::vector<double> value) {
     min_light_ = std::move(value);
+}
+
+double Autotroph::getSeedDispersalRate() const {
+    return seed_dispersal_rate_;
+}
+
+void Autotroph::setSeedDispersalRate(double value) {
+    seed_dispersal_rate_ = std::clamp(value, 0.0, 1.0);
 }

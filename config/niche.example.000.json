@@ -1,0 +1,64 @@
+{
+  "initial_data": {
+    "type": "Niche",
+    "data": {
+      "surface": 100.0,
+      "ecological_health": 1.0,
+      "nutrients": 50.0,
+      "return_rate": [0.4, 0.1, 0.02],
+      "conditions": [0.6, 0.7, 0.5],
+      "limiting_factors": [0.2, 0.1, 0.05],
+      "cohorts": [
+        {
+          "id": 1,
+          "biomass": [50.0],
+          "death_biomass": [20.0],
+          "specie": {
+            "class_type": 0,
+            "class_name": "Autotroph",
+            "name": "AutotrophExampleA",
+            "food_type": "0.0",
+            "biomass_to_energy_conversion_factor": 19.5,
+            "maintenance_cost": [0.03, 0.02, 0.3],
+            "max_fertility": [0, 0.3, 0.05],
+            "resilience": [0.75, 0.8, 0.7],
+            "biomass_per_individual_amount": [0.05, 0.04, 0.1],
+            "individual_occupied_surface": [0.001, 0.02, 0.1],
+            "characteristics_death_biomass": [
+              [0.4, 0.1, 0.1],
+              [0.4, 0.3, 0.3],
+              [0.2, 0.4, 0.4]
+            ],
+            "death_biomass_fraction_by_size": [
+              [0.0, 0.6, 0.4]
+            ],
+            "best_environmental_conditions": [
+              [0.6, 0.7, 0.5],
+              [0.6, 0.7, 0.5],
+              [0.6, 0.7, 0.5]
+            ],
+            "cycles_per_stages": [2, 3, 3],
+            "defense_strategies": [
+              [0.2, 0.2, 0.2],
+              [0.2, 0.3, 0.3],
+              [0.2, 0.4, 0.2]
+            ],
+            "recruitment_strategies": [
+              [0.2, 0.2, 0.2],
+              [0.3, 0.4, 0.3],
+              [0.3, 0.4, 0.5]
+            ],
+            "max_individual_growth": [0.5, 0.3, 0.1],
+            "colony_ability_rate": 0.3,
+            "opacity": [0.04, 0.1, 0.5],
+            "stratum": [0, 1, 1],
+            "max_density": [1.5, 1, 1],
+            "min_light": [0.2, 0.2, 0.4],
+            "seed_dispersal_rate": 0.15
+          }
+        }
+      ]
+    }
+  },
+  "step_data": []
+}

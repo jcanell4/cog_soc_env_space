@@ -30,6 +30,11 @@ double randomUniform01();
  */
 double randomUniform(double min, double max);
 
+/**
+ * @brief Discrete uniform on [min,max] (both inclusive). If min > max, arguments are swapped.
+ */
+int randomInt(int min, int max);
+
 /** @brief Normal (Gaussian) with given mean and standard deviation. @p stddev must be >= 0. */
 double randomNormal(double mean, double stddev);
 

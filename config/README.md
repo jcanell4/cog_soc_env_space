@@ -42,7 +42,7 @@ For `kind: "autotroph"` (or legacy `autotroph_by_rates`), the following optional
 | `biological_potential` | number | **yes** | Potential per unit surface (model units). |
 | `ecological_health` | number | no | Clamped to `[0, 1]` in code. |
 | `nutrients` | number | no | Inorganic nutrients pool. |
-| `return_rate` | number | **yes** | Recycling rate (e.g. dead biomass → nutrients). |
+| `return_rate` | array of numbers | **yes** | Recycling rate per dead-biomass size bin (dynamic length). |
 | `conditions` | array of numbers | no | Normalized traits in `[0, 1]` (e.g. humidity, light, temperature). |
 | `cohorts` | array | no | Cohorts living in this niche (see below). |
 
@@ -52,7 +52,7 @@ For `kind: "autotroph"` (or legacy `autotroph_by_rates`), the following optional
 |-------|------|----------|-------------|
 | `species_id` | string | **yes** | Must match a `species[].id`. |
 | `biomass` | number | no | Living biomass (default `0`). |
-| `death_biomass` | number | no | Dead biomass pool (default `0`). |
+| `death_biomass` | array of numbers | no | Dead biomass by size bin (default `[]`; index 0 = finest). |
 
 ## Adjacency (`adjacency[]`)
 
