@@ -46,7 +46,11 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
     const std::vector<std::vector<double>>& residue_by_size = decomp.getIngestionResidueFractionBySize();
     const std::vector<double>& max_growth = specie->getMaxIndividualGrowth();
     const std::vector<double>& prospecting = decomp.getProspectingAbilityRate();
-    const std::vector<std::tuple<int, int, int>>& diet_by_cohort_index = specie->getDietByCohortIndex();
+    const auto& diet_by_stage = specie->getDietByCohortIndex();
+    if (su >= diet_by_stage.size()) {
+        return;
+    }
+    const std::vector<std::tuple<int, int, int>>& stage_diet = diet_by_stage[su];
 
     const double old_biomass = std::max(0.0, decomposer_biomass[su]);
     const double assimilation_stage = su < assimilation.size() ? std::clamp(assimilation[su], 0.0, 1.0) : 0.0;
@@ -83,7 +87,7 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
     const double max_rate = kMaxDecompositionRate;
 
     // Pass 1: theoretical uptake per donor cohort and dead-biomass bin.
-    for (const auto& rule : diet_by_cohort_index) {
+    for (const auto& rule : stage_diet) {
         const int food_index = std::get<0>(rule);
         if (food_index == DietType::PARENTAL_SUPPLY_TYPE) {
             has_parental_supply_in_diet = true;
@@ -234,8 +238,10 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
 
 void Decomposer::process_reproductive_growth(Cohort& cohort,
                                              int stage_index,
+                                             double stage_biomass_before_growth,
                                              double biomass_increment_this_cycle) const {
-    LivingBeing::process_reproductive_growth(cohort, stage_index, biomass_increment_this_cycle);
+    LivingBeing::process_reproductive_growth(
+        cohort, stage_index, stage_biomass_before_growth, biomass_increment_this_cycle);
 }
 
 int Decomposer::getClassType() const {
@@ -247,41 +253,57 @@ void Decomposer::setCyclesPerStages(std::vector<int> cycles_per_stages) {
 }
 
 void Decomposer::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche) {
-    std::vector<std::tuple<int, int, int>> cohort_diet;
+    const std::size_t stage_count = getCyclesPerStages().size();
+    std::vector<std::vector<std::tuple<int, int, int>>> cohort_diet_by_stage(stage_count);
     const Niche::CohortSet& cohorts = niche.getCohortSet();
-
-    if (diet_by_food_type_.empty()) {
-        // Generalist detritivore: all dead-matter bins available per donor cohort (bin indices, not life stages).
-        for (std::size_t i = 0; i < cohorts.size(); ++i) {
-            const LivingBeing* sp = cohorts[i].getSpecie();
-            if (sp == nullptr) {
-                continue;
-            }
-            const std::vector<double>& death_bins = cohorts[i].getDeathBiomass();
-            const std::size_t n_traits = sp->getCharacteristicsDeathBiomass().size();
-            const std::size_t n_bin = std::max(death_bins.size(), n_traits);
-            if (n_bin == 0) {
-                continue;
-            }
-            const int max_bin = static_cast<int>(n_bin) - 1;
-            cohort_diet.emplace_back(static_cast<int>(i), 0, max_bin);
-        }
-    } else {
-        for (std::size_t i = 0; i < cohorts.size(); ++i) {
-            const LivingBeing* donor_species = cohorts[i].getSpecie();
-            if (donor_species == nullptr) {
-                continue;
-            }
-            const std::tuple<int, int> range = getRangeForFoodType(donor_species->getFoodType());
-            const int min_bin = std::get<0>(range);
-            const int max_bin = std::get<1>(range);
-            if (min_bin < 0 || max_bin < 0) {
-                continue;
-            }
-            cohort_diet.emplace_back(static_cast<int>(i), min_bin, max_bin);
+    const auto& food_type_by_stage = getDietByFoodType();
+    bool has_any_food_rules = false;
+    for (const auto& stage_rules : food_type_by_stage) {
+        if (!stage_rules.empty()) {
+            has_any_food_rules = true;
+            break;
         }
     }
-    setDietByCohortIndex(std::move(cohort_diet));
+
+    if (!has_any_food_rules) {
+        // Generalist detritivore: all dead-matter bins available per donor cohort (bin indices, not life stages).
+        for (std::size_t stage = 0; stage < stage_count; ++stage) {
+            std::vector<std::tuple<int, int, int>>& stage_diet = cohort_diet_by_stage[stage];
+            for (std::size_t i = 0; i < cohorts.size(); ++i) {
+                const LivingBeing* sp = cohorts[i].getSpecie();
+                if (sp == nullptr) {
+                    continue;
+                }
+                const std::vector<double>& death_bins = cohorts[i].getDeathBiomass();
+                const std::size_t n_traits = sp->getCharacteristicsDeathBiomass().size();
+                const std::size_t n_bin = std::max(death_bins.size(), n_traits);
+                if (n_bin == 0) {
+                    continue;
+                }
+                const int max_bin = static_cast<int>(n_bin) - 1;
+                stage_diet.emplace_back(static_cast<int>(i), 0, max_bin);
+            }
+        }
+    } else {
+        for (std::size_t stage = 0; stage < stage_count; ++stage) {
+            std::vector<std::tuple<int, int, int>>& stage_diet = cohort_diet_by_stage[stage];
+            for (std::size_t i = 0; i < cohorts.size(); ++i) {
+                const LivingBeing* donor_species = cohorts[i].getSpecie();
+                if (donor_species == nullptr) {
+                    continue;
+                }
+                const std::tuple<int, int> range =
+                    getRangeForFoodType(donor_species->getFoodType(), static_cast<int>(stage));
+                const int min_bin = std::get<0>(range);
+                const int max_bin = std::get<1>(range);
+                if (min_bin < 0 || max_bin < 0) {
+                    continue;
+                }
+                stage_diet.emplace_back(static_cast<int>(i), min_bin, max_bin);
+            }
+        }
+    }
+    setDietByCohortIndex(std::move(cohort_diet_by_stage));
 }
 
 Decomposer& Decomposer::setName(std::string name) {

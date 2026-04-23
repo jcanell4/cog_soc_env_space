@@ -23,6 +23,25 @@ void Autotroph::setCyclesPerStages(std::vector<int> cycles_per_stages) {
 
 void Autotroph::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
+    std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index = getDietByCohortIndex();
+    const std::size_t stage_count = getCyclesPerStages().size();
+    if (diet_by_cohort_index.size() < stage_count) {
+        diet_by_cohort_index.resize(stage_count);
+    }
+    for (std::size_t stage = 0; stage < stage_count; ++stage) {
+        std::vector<std::tuple<int, int, int>>& stage_rules = diet_by_cohort_index[stage];
+        bool has_nutrients_rule = false;
+        for (const auto& rule : stage_rules) {
+            if (std::get<0>(rule) == DietType::NUTRIENTS_TYPE) {
+                has_nutrients_rule = true;
+                break;
+            }
+        }
+        if (!has_nutrients_rule) {
+            stage_rules.insert(stage_rules.begin(), std::make_tuple(DietType::NUTRIENTS_TYPE, 0, 0));
+        }
+    }
+    setDietByCohortIndex(std::move(diet_by_cohort_index));
 }
 
 void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const {
@@ -31,13 +50,20 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
     if (specie == nullptr) {
         return;
     }
+    if (stage_index < 0) {
+        return;
+    }
     const std::size_t su = static_cast<std::size_t>(stage_index);
-    const std::vector<std::tuple<int, int, int>> diet_by_cohort_index = specie->getDietByCohortIndex();
+    const auto& diet_by_stage = specie->getDietByCohortIndex();
+    if (su >= diet_by_stage.size()) {
+        return;
+    }
+    const std::vector<std::tuple<int, int, int>>& stage_diet = diet_by_stage[su];
 
     const std::vector<double>& maintenance = specie->getMaintenanceCost();
     const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
 
-    for (const auto& rule : diet_by_cohort_index) {
+    for (const auto& rule : stage_diet) {
         const int food_index = std::get<0>(rule);
         const double gross_noise = utilities::randomNormal(0.0, SimulationConfig::global().noise_stdv);
         const double cost_noise = utilities::randomNormal(0.0, SimulationConfig::global().noise_stdv);
@@ -49,9 +75,13 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
                 rec_row = rec_matrix[su];
             }
             const std::vector<double> lith = niche.getLithPerStratum();
-            const double lith_s = su < lith.size() ? lith[su] : 0.0;
+            const int stratum = su < getStratum().size() ? getStratum()[su] : getStratum().back();
+            const double lith_s = stratum < lith.size() ? lith[stratum] : 1;
             const double min_l = su < this->getMinLight().size() ? this->getMinLight()[su] : 0.0;
-            const double lf = std::clamp(1.0 - (lith_s - min_l), 0.0, 1.0);
+            const double light_denominator = 1.0 - min_l;
+            const double lf = light_denominator == 0.0
+                                  ? std::clamp(lith_s, 0.0, 1.0)
+                                  : std::clamp((lith_s - min_l) / light_denominator, 0.0, 1.0);
             const double gross = LivingBeing::calculate_effective_recruitment_efficiency(
                 rec_row, niche.getLimitingFactors());
             double effective = gross * lf + gross_noise;
@@ -61,7 +91,7 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
                 effective = std::min(effective, mig[su]);
                 const double new_biomass = std::max(0.0, biomass[su] * (1.0 + effective));
                 niche.setNutrients(niche.getNutrients() - (new_biomass - biomass[su]));
-                biomass[su] = new_biomass - biomass[su] * (m_stage + cost_noise);
+                biomass[su] = new_biomass - biomass[su] * std::max(0.0, m_stage + cost_noise);
                 cohort.setBiomass(std::move(biomass));
             }
             continue;
@@ -81,8 +111,10 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
 
 void Autotroph::process_reproductive_growth(Cohort& cohort,
                                             int stage_index,
+                                            double stage_biomass_before_growth,
                                             double biomass_increment_this_cycle) const {
-    LivingBeing::process_reproductive_growth(cohort, stage_index, biomass_increment_this_cycle);
+    LivingBeing::process_reproductive_growth(
+        cohort, stage_index, stage_biomass_before_growth, biomass_increment_this_cycle);
 }
 
 const std::vector<double>& Autotroph::getOpacity() const {

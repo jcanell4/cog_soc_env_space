@@ -36,6 +36,7 @@ public:
     void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const override;
     void process_reproductive_growth(Cohort& cohort,
                                      int stage_index,
+                                     double stage_biomass_before_growth,
                                      double biomass_increment_this_cycle) const override;
 
     int getClassType() const override;

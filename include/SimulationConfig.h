@@ -19,6 +19,8 @@ struct SimulationConfig {
     std::uint32_t version = 1;
     /** RNG seed; 0 means "not set" (callers may substitute a runtime default). */
     std::uint64_t random_seed = 0;
+    /** Total number of simulation cycles to execute from main loop; must be non-negative. */
+    int total_cycles = 0;
     /** Default stochastic noise standard deviation (legacy replacement for NOISE_STDDEV). */
     double noise_stddev = 0.2;
     /** Alias noise for growth / maintenance paths (legacy replacement for NOISE_STDV). */

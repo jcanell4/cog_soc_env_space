@@ -10,6 +10,7 @@
 #include "Niche.h"
 
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <tuple>
 #include <utility>
@@ -33,26 +34,34 @@ const char* classTypeToName(int class_type) {
     }
 }
 
-json toJsonDietByCohortIndex(const std::vector<std::tuple<int, int, int>>& diet) {
+json toJsonDietByCohortIndex(const std::vector<std::vector<std::tuple<int, int, int>>>& diet_by_stage) {
     json out = json::array();
-    for (const auto& entry : diet) {
-        out.push_back({
-            {"cohort_index", std::get<0>(entry)},
-            {"min_index", std::get<1>(entry)},
-            {"max_index", std::get<2>(entry)},
-        });
+    for (const auto& stage_rules : diet_by_stage) {
+        json stage_json = json::array();
+        for (const auto& entry : stage_rules) {
+            stage_json.push_back({
+                {"cohort_index", std::get<0>(entry)},
+                {"min_stage", std::get<1>(entry)},
+                {"max_stage", std::get<2>(entry)},
+            });
+        }
+        out.push_back(std::move(stage_json));
     }
     return out;
 }
 
-json toJsonDietByFoodType(const std::vector<std::tuple<std::string, int, int>>& diet) {
+json toJsonDietByFoodType(const std::vector<std::vector<std::tuple<std::string, int, int>>>& diet_by_stage) {
     json out = json::array();
-    for (const auto& entry : diet) {
-        out.push_back({
-            {"food_type_prefix", std::get<0>(entry)},
-            {"min_index", std::get<1>(entry)},
-            {"max_index", std::get<2>(entry)},
-        });
+    for (const auto& stage_rules : diet_by_stage) {
+        json stage_json = json::array();
+        for (const auto& entry : stage_rules) {
+            stage_json.push_back({
+                {"food_type_prefix", std::get<0>(entry)},
+                {"min_stage", std::get<1>(entry)},
+                {"max_stage", std::get<2>(entry)},
+            });
+        }
+        out.push_back(std::move(stage_json));
     }
     return out;
 }
@@ -120,6 +129,16 @@ void JsonEcosystem::updateJson(const Niche& niche, int elapsed_cycles, nlohmann:
 }
 
 bool JsonEcosystem::saveJsonToFile(const nlohmann::json& root, const std::string& output_path, int indent) {
+    const std::filesystem::path target_path(output_path);
+    const std::filesystem::path parent_path = target_path.parent_path();
+    if (!parent_path.empty()) {
+        std::error_code ec;
+        std::filesystem::create_directories(parent_path, ec);
+        if (ec) {
+            return false;
+        }
+    }
+
     std::ofstream output(output_path);
     if (!output.is_open()) {
         return false;

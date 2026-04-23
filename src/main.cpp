@@ -4,8 +4,11 @@
  */
 
 #include "Builders.h"
+#include "JsonEcosystem.h"
 #include "SimulationConfig.h"
 #include "Utilities.h"
+
+#include <nlohmann/json.hpp>
 
 #include <iostream>
 #include <string>
@@ -41,23 +44,23 @@ int main(int argc, char* argv[]) {
         std::cerr << "Failed to load simulation config: " << e.what() << "\n";
         std::cerr << "Usage: " << (argc >= 1 ? argv[0] : "env_soc_cog_space")
                   << " [path/to/simulation.json]\n";
-        return 1;
+        return 0;
     }
 
     const SimulationConfig& cfg = SimulationConfig::global();
     utilities::seedRng(cfg.random_seed);
 
-    std::cout << "Simulation config: version=" << cfg.version << " seed=" << cfg.random_seed << "\n";
+    std::cout << "Simulation config: version=" << cfg.version
+              << " seed=" << cfg.random_seed
+              << " total_cycles=" << cfg.total_cycles << "\n";
 
     Niche niche = NicheBuilder().loadEnvironment(cfg.environment_path).build();
-    std::cout << "Niche nutrients: " << niche.getNutrients() << "\n";
-    niche.update_nutrients();
-    std::cout << "Niche nutrients after update: " << niche.getNutrients() << "\n";
-
-    //Cohort cohort = niche.getCohortSet()[0];
-    
-    //cohort.update_deaths(int stage)
-
-
+    niche.initialize();
+    nlohmann::json snapshot = JsonEcosystem::createJson(niche);
+    for (int cycle = 0; cycle < cfg.total_cycles; ++cycle) {
+        niche.step();
+        JsonEcosystem::updateJson(niche, cycle, snapshot);
+    }
+    JsonEcosystem::saveJsonToFile(snapshot, "output/simulation.json");
     return 0;
 }

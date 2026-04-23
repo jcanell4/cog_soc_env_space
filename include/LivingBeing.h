@@ -35,12 +35,13 @@ public:
     virtual int getClassType() const = 0;
 
     /**
-     * @brief Cohort diet links: each tuple is (source_cohort_index, min_k, max_k inclusive) into the niche cohort array.
-     *        For heterotrophs, @a min_k/@a max_k are prey life-history stages; for decomposers, donor dead-biomass
-     *        size-bin indices. Empty when not using cohort-indexed sources (e.g. autotrophs on nutrients only).
+     * @brief Cohort diet links grouped by consumer stage.
+     *        Outer index is consumer stage; each inner tuple is (source_cohort_index, min_stage, max_stage inclusive).
+     *        For heterotrophs, @a min_stage/@a max_stage are prey life-history stages; for decomposers, donor dead-biomass
+     *        size-bin indices. Empty per-stage vector means no cohort-indexed source for that stage.
      */
-    const std::vector<std::tuple<int, int, int>>& getDietByCohortIndex() const;
-    void setDietByCohortIndex(std::vector<std::tuple<int, int, int>> diet_by_cohort_index);
+    const std::vector<std::vector<std::tuple<int, int, int>>>& getDietByCohortIndex() const;
+    void setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index);
 
     const std::string& getName() const;
     float getBiomassToEnergyConversionFactor() const;
@@ -94,6 +95,15 @@ public:
     int calculateStage(int cycles_elapsed) const;
 
     /**
+     * @brief Redistributes cohort living biomass across life-history stages (mass moved only between stage bins).
+     * @param cohort Cohort bound to this species; must have matching @c getSpecie() == this.
+     * @param elapsed_cycles Monotonic cohort age in simulation cycles (typically incremented once per @c update_step).
+     *        Uses proportional transfer each cycle: stage i moves roughly @c 1/cycles_per_stages_[i]
+     *        to stage i+1 with a small stochastic perturbation.
+     */
+    virtual void updateStages(Cohort& cohort, int elapsed_cycles) const;
+
+    /**
      * @brief For each index i up to max(size), e_i = max(0, min(1, 1 - (D_i - R_i))) with D_i, R_i from the
      *        vectors; missing entries in the shorter vector are treated as 0. E_eff = product of e_i (1.0 if both empty).
      */
@@ -124,10 +134,12 @@ public:
 
     /**
      * @brief Reproductive transfer from the current stage to stage 0 after individual growth.
+     * @param stage_biomass_before_growth Stage biomass right before @ref process_individual_growth is applied.
      * @param biomass_increment_this_cycle Net biomass increment at @p stage_index caused by the growth step.
      */
     virtual void process_reproductive_growth(Cohort& cohort,
                                              int stage_index,
+                                             double stage_biomass_before_growth,
                                              double biomass_increment_this_cycle) const;
 
 protected:
@@ -148,7 +160,7 @@ protected:
     std::vector<std::vector<double>> recruitment_strategies_;
     std::vector<double> max_individual_growth_;
     double colony_ability_rate_{0.0};
-    std::vector<std::tuple<int, int, int>> diet_by_cohort_index_{};
+    std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index_{};
     double vulnerability_{0.0};
     bool initialized_{false};
 };

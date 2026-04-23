@@ -34,36 +34,93 @@ std::vector<std::vector<double>> readDoubleMatrix(const json& j, const char* key
     return j.at(key).get<std::vector<std::vector<double>>>();
 }
 
-std::vector<std::tuple<int, int, int>> readDietByCohortIndex(const json& j) {
-    std::vector<std::tuple<int, int, int>> out;
+bool readDietRule(const json& rule_json, std::tuple<int, int, int>& out_rule) {
+    if (rule_json.is_array()) {
+        if (rule_json.size() != 3U) {
+            return false;
+        }
+        if (!rule_json[0].is_number_integer() ||
+            !rule_json[1].is_number_integer() ||
+            !rule_json[2].is_number_integer()) {
+            return false;
+        }
+        out_rule = std::make_tuple(
+            rule_json[0].get<int>(),
+            rule_json[1].get<int>(),
+            rule_json[2].get<int>());
+        return true;
+    }
+    if (rule_json.is_object()) {
+        if (!rule_json.contains("cohort_index") || !rule_json["cohort_index"].is_number_integer()) {
+            return false;
+        }
+        const bool has_stage_names = rule_json.contains("min_stage") && rule_json.contains("max_stage");
+        const bool has_legacy_names = rule_json.contains("min_index") && rule_json.contains("max_index");
+        if (!has_stage_names && !has_legacy_names) {
+            return false;
+        }
+        const char* min_key = has_stage_names ? "min_stage" : "min_index";
+        const char* max_key = has_stage_names ? "max_stage" : "max_index";
+        if (!rule_json[min_key].is_number_integer() || !rule_json[max_key].is_number_integer()) {
+            return false;
+        }
+        out_rule = std::make_tuple(
+            rule_json["cohort_index"].get<int>(),
+            rule_json[min_key].get<int>(),
+            rule_json[max_key].get<int>());
+        return true;
+    }
+    return false;
+}
+
+std::vector<std::vector<std::tuple<int, int, int>>> readDietByCohortIndex(const json& j) {
+    std::vector<std::vector<std::tuple<int, int, int>>> out;
     if (!j.is_array()) {
         return out;
     }
-    for (const json& row : j) {
-        if (!row.is_object()) {
+    for (const json& stage_rules_json : j) {
+        if (!stage_rules_json.is_array()) {
             continue;
         }
-        out.emplace_back(
-            row.value("cohort_index", 0),
-            row.value("min_index", 0),
-            row.value("max_index", 0));
+        std::vector<std::tuple<int, int, int>> stage_rules;
+        for (const json& rule_json : stage_rules_json) {
+            std::tuple<int, int, int> parsed_rule{};
+            if (readDietRule(rule_json, parsed_rule)) {
+                stage_rules.push_back(parsed_rule);
+            }
+        }
+        out.push_back(std::move(stage_rules));
     }
     return out;
 }
 
-std::vector<std::tuple<std::string, int, int>> readDietByFoodType(const json& j) {
-    std::vector<std::tuple<std::string, int, int>> out;
+std::vector<std::vector<std::tuple<std::string, int, int>>> readDietByFoodType(const json& j) {
+    std::vector<std::vector<std::tuple<std::string, int, int>>> out;
     if (!j.is_array()) {
         return out;
     }
-    for (const json& row : j) {
-        if (!row.is_object()) {
+    for (const json& stage_rules_json : j) {
+        if (!stage_rules_json.is_array()) {
             continue;
         }
-        out.emplace_back(
-            row.value("food_type_prefix", std::string{}),
-            row.value("min_index", 0),
-            row.value("max_index", 0));
+        std::vector<std::tuple<std::string, int, int>> stage_rules;
+        for (const json& row : stage_rules_json) {
+            if (!row.is_object()) {
+                continue;
+            }
+            const bool has_stage_names = row.contains("min_stage") && row.contains("max_stage");
+            const bool has_legacy_names = row.contains("min_index") && row.contains("max_index");
+            if (!has_stage_names && !has_legacy_names) {
+                continue;
+            }
+            const char* min_key = has_stage_names ? "min_stage" : "min_index";
+            const char* max_key = has_stage_names ? "max_stage" : "max_index";
+            stage_rules.emplace_back(
+                row.value("food_type_prefix", std::string{}),
+                row.value(min_key, 0),
+                row.value(max_key, 0));
+        }
+        out.push_back(std::move(stage_rules));
     }
     return out;
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -44,6 +45,20 @@ inline bool isFoodTypeMyDiet(const std::vector<std::tuple<std::string, int, int>
     return false;
 }
 
+inline bool isFoodTypeMyDiet(const std::vector<std::vector<std::tuple<std::string, int, int>>>& rules_by_stage,
+                             int consumer_stage,
+                             const std::string& prey_food_type,
+                             int prey_stage) {
+    if (consumer_stage < 0) {
+        return false;
+    }
+    const std::size_t stage_index = static_cast<std::size_t>(consumer_stage);
+    if (stage_index >= rules_by_stage.size()) {
+        return false;
+    }
+    return isFoodTypeMyDiet(rules_by_stage[stage_index], prey_food_type, prey_stage);
+}
+
 /**
  * @return (min_prey_stage, max_prey_stage) for the first @a rules entry whose hierarchy matches
  *         @a prey_food_type; @c (-1, -1) if none match or all matching rows have invalid stage range.
@@ -62,6 +77,20 @@ inline std::tuple<int, int> rangeForMatchingFoodType(const std::vector<std::tupl
         }
     }
     return {-1, -1};
+}
+
+inline std::tuple<int, int> rangeForMatchingFoodType(
+    const std::vector<std::vector<std::tuple<std::string, int, int>>>& rules_by_stage,
+    int consumer_stage,
+    const std::string& prey_food_type) {
+    if (consumer_stage < 0) {
+        return {-1, -1};
+    }
+    const std::size_t stage_index = static_cast<std::size_t>(consumer_stage);
+    if (stage_index >= rules_by_stage.size()) {
+        return {-1, -1};
+    }
+    return rangeForMatchingFoodType(rules_by_stage[stage_index], prey_food_type);
 }
 
 }  // namespace diet_food_type_match

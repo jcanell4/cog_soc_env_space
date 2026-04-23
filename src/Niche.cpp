@@ -190,12 +190,17 @@ std::vector<double> Niche::getLithPerStratum() const {
     }
 
     const int H = static_cast<int>(n);
-    std::vector<double> light_fraction_per_stratum(n);
+    std::vector<double> light_fraction_per_stratum(n, 0.0);
+    const std::size_t top = n - 1U;
     double incoming = 1.0;
-    for (int h = H - 1; h >= 0; --h) {
+    light_fraction_per_stratum[top] = std::exp(-0.3 * shadow_density[top]) * incoming;
+    for (int h = H - 2; h >= 0; --h) {
         const std::size_t u = static_cast<std::size_t>(h);
-        light_fraction_per_stratum[u] = std::exp(-shadow_density[u]) * incoming;
-        incoming = light_fraction_per_stratum[u];
+        const std::size_t upper = u + 1U;
+        const double new_incoming = std::exp(-shadow_density[upper]) * incoming;
+        const double transmitted = std::exp(-(0.3*shadow_density[u]+shadow_density[upper])) * incoming;
+        light_fraction_per_stratum[u] = std::clamp(transmitted, 0.0, 1.0);
+        incoming = new_incoming;
     }
     return light_fraction_per_stratum;
 }
@@ -214,7 +219,7 @@ void Niche::update_nutrients() {
         const double noise = utilities::randomNormal(0.0, noise_stddev);
         const double multiplicative = std::max(0.0, 1.0 + noise);
 
-        const std::size_t n = std::max(death.size(), return_rate_.size());
+        const std::size_t n = std::min(death.size(), return_rate_.size());
         std::vector<double> processed(n, 0.0);
         for (std::size_t i = 0; i < n; ++i) {
             const double death_i = i < death.size() ? death[i] : 0.0;

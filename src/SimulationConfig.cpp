@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <fstream>
+#include <limits>
 #include <memory>
 #include <stdexcept>
 
@@ -43,6 +44,21 @@ SimulationConfig SimulationConfig::parseObject(const nlohmann::json& obj) {
         } else {
             throw std::runtime_error("Simulation config: \"random_seed\" must be a non-negative integer");
         }
+    }
+
+    if (obj.contains("total_cycles")) {
+        const auto& v = obj["total_cycles"];
+        if (!v.is_number_integer()) {
+            throw std::runtime_error("Simulation config: \"total_cycles\" must be an integer");
+        }
+        const auto i = v.get<std::int64_t>();
+        if (i < 0) {
+            throw std::runtime_error("Simulation config: \"total_cycles\" must be non-negative");
+        }
+        if (i > static_cast<std::int64_t>(std::numeric_limits<int>::max())) {
+            throw std::runtime_error("Simulation config: \"total_cycles\" is too large");
+        }
+        out.total_cycles = static_cast<int>(i);
     }
 
     bool has_noise_stddev = false;

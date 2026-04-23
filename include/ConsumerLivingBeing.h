@@ -34,16 +34,18 @@ public:
     ConsumerLivingBeing& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 
     /**
-     * @brief Taxonomic diet rules: each tuple is (hierarchy_prefix, min_prey_stage, max_prey_stage inclusive).
+     * @brief Taxonomic diet rules grouped by consumer stage.
+     *        Each tuple is (hierarchy_prefix, min_prey_stage, max_prey_stage inclusive).
      */
-    const std::vector<std::tuple<std::string, int, int>>& getDietByFoodType() const;
-    void setDietByFoodType(std::vector<std::tuple<std::string, int, int>> diet_by_food_type);
-    bool isFoodTypeMyDiet(const std::string& prey_food_type, int prey_stage) const;
+    const std::vector<std::vector<std::tuple<std::string, int, int>>>& getDietByFoodType() const;
+    void setDietByFoodType(std::vector<std::vector<std::tuple<std::string, int, int>>> diet_by_food_type);
+    bool isFoodTypeMyDiet(const std::string& prey_food_type, int consumer_stage, int prey_stage) const;
 
     /**
-     * @brief Stage range [min, max] if @a prey_food_type matches a row in @ref diet_by_food_type_; else (-1, -1).
+     * @brief Stage range [min, max] if @a prey_food_type matches a row in @ref diet_by_food_type_
+     *        for @a consumer_stage; else (-1, -1).
      */
-    std::tuple<int, int> getRangeForFoodType(const std::string& prey_food_type) const;
+    std::tuple<int, int> getRangeForFoodType(const std::string& prey_food_type, int consumer_stage) const;
 
 protected:
     static std::vector<double> clampUnitInterval(std::vector<double> values);
@@ -73,6 +75,6 @@ protected:
     std::vector<double> assimilation_efficiency_;
     std::vector<std::vector<double>> ingestion_residue_fraction_by_size_;
 
-    /** @brief Taxonomic diet for heterotrophs (prey) and decomposers (dead-matter sources). */
-    std::vector<std::tuple<std::string, int, int>> diet_by_food_type_{};
+    /** @brief Taxonomic diet per consumer stage for heterotrophs and decomposers. */
+    std::vector<std::vector<std::tuple<std::string, int, int>>> diet_by_food_type_{};
 };

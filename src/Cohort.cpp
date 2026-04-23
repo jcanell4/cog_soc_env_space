@@ -31,7 +31,7 @@ std::vector<double> normalizeNonNegative(std::vector<double> value) {
     return value;
 }
 
-}  // namespace
+}
 
 Cohort::Cohort() : id_(allocate_cohort_id()) {}
 
@@ -39,15 +39,18 @@ Cohort::Cohort(const Cohort& other)
     : id_(allocate_cohort_id()),
       specie_(other.specie_),
       biomass_(other.biomass_),
-      death_biomass_(other.death_biomass_) {}
+      death_biomass_(other.death_biomass_),
+      cohort_elapsed_cycles_(0) {}
 
 Cohort::Cohort(Cohort&& other) noexcept
     : id_(other.id_),
       specie_(other.specie_),
       biomass_(std::move(other.biomass_)),
-      death_biomass_(std::move(other.death_biomass_)) {
+      death_biomass_(std::move(other.death_biomass_)),
+      cohort_elapsed_cycles_(other.cohort_elapsed_cycles_) {
     other.specie_ = nullptr;
     other.id_ = 0;
+    other.cohort_elapsed_cycles_ = 0;
 }
 
 Cohort& Cohort::operator=(const Cohort& other) {
@@ -55,6 +58,7 @@ Cohort& Cohort::operator=(const Cohort& other) {
         specie_ = other.specie_;
         biomass_ = other.biomass_;
         death_biomass_ = other.death_biomass_;
+        cohort_elapsed_cycles_ = other.cohort_elapsed_cycles_;
     }
     return *this;
 }
@@ -64,8 +68,10 @@ Cohort& Cohort::operator=(Cohort&& other) noexcept {
         specie_ = other.specie_;
         biomass_ = std::move(other.biomass_);
         death_biomass_ = std::move(other.death_biomass_);
+        cohort_elapsed_cycles_ = other.cohort_elapsed_cycles_;
         other.specie_ = nullptr;
         other.id_ = 0;
+        other.cohort_elapsed_cycles_ = 0;
     }
     return *this;
 }
@@ -167,6 +173,28 @@ void Cohort::update_deaths(int stage) {
     }
 }
 
+std::uint64_t Cohort::getCohortElapsedCycles() const {
+    return cohort_elapsed_cycles_;
+}
+
+void Cohort::transferStageBiomass(int from_stage, int to_stage, double amount) {
+    if (from_stage < 0 || to_stage < 0 || amount <= 0.0) {
+        return;
+    }
+    const std::size_t from = static_cast<std::size_t>(from_stage);
+    const std::size_t to = static_cast<std::size_t>(to_stage);
+    const std::size_t required_size = std::max(from, to) + 1U;
+    if (required_size > biomass_.size()) {
+        biomass_.resize(required_size, 0.0);
+    }
+    const double take = std::min(amount, std::max(0.0, biomass_[from]));
+    if (take <= 0.0) {
+        return;
+    }
+    biomass_[from] -= take;
+    biomass_[to] += take;
+}
+
 double Cohort::decrement_death_biomass(std::vector<double> amounts) {
     amounts = normalizeDeathBins(std::move(amounts));
     const double before = getTotalDeathBiomass();
@@ -179,65 +207,34 @@ double Cohort::decrement_death_biomass(std::vector<double> amounts) {
 }
 
 void Cohort::update_step(Niche& niche) {
+    if (specie_ == nullptr || biomass_.empty()) {
+        return;
+    }
+    ++cohort_elapsed_cycles_;
+    specie_->updateStages(*this, static_cast<int>(cohort_elapsed_cycles_));
     for (std::size_t stage = 0; stage < biomass_.size(); ++stage) {
-        update_deaths(static_cast<int>(stage));
-        const std::vector<double>& biomass_after_death = getBiomass();
-        const double stage_biomass_after_death = stage < biomass_after_death.size() ? biomass_after_death[stage] : 0.0;
+        const std::vector<double>& biomass_before_growth = getBiomass();
+        const double stage_biomass_before_growth = stage < biomass_before_growth.size() ? biomass_before_growth[stage] : 0.0;
         getSpecie()->process_individual_growth(niche, *this, static_cast<int>(stage));
         const std::vector<double>& biomass_after_growth = getBiomass();
         const double stage_biomass_after_growth =
             stage < biomass_after_growth.size() ? biomass_after_growth[stage] : 0.0;
-        const double biomass_increment_this_cycle = stage_biomass_after_growth - stage_biomass_after_death;
-        getSpecie()->process_reproductive_growth(*this, static_cast<int>(stage), biomass_increment_this_cycle);
-        //        update_individual_growth(niche, static_cast<int>(self_cohort_index), static_cast<int>(stage));
+        const double biomass_increment_this_cycle = stage_biomass_after_growth - stage_biomass_before_growth;
+        getSpecie()->process_reproductive_growth(
+            *this,
+            static_cast<int>(stage),
+            stage_biomass_before_growth,
+            biomass_increment_this_cycle);
+        update_deaths(static_cast<int>(stage));
     }
 }
 
-void Cohort::initialize(const Niche&) {
-}
-
-void Cohort::update_individual_growth(Niche& niche, int self_cohort_index, int stage) {
-    // if (specie_ == nullptr || biomass_.empty() || stage < 0 || self_cohort_index < 0) {
-    //     return;
-    // }
-    // const std::size_t su = static_cast<std::size_t>(stage);
-    // if (su >= biomass_.size()) {
-    //     return;
-    // }
-
-    // const std::vector<std::tuple<int, int, int>>& diet_rules = specie_->getDietByCohortIndex();
-
-    // const std::vector<double>& maintenance = specie_->getMaintenanceCost();
-    // const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
-
-    // Niche::CohortSet& cohorts = niche.getCohortSet();
-
-    // for (const auto& rule : diet_rules) {
-    //     const int prey_cohort_idx = std::get<0>(rule);
-    //     const int min_prey_st = std::get<1>(rule);
-    //     const int max_prey_st = std::get<2>(rule);
-    //     if (min_prey_st > max_prey_st) {
-    //         continue;
-    //     }
-    //     if (prey_cohort_idx < 0 || static_cast<std::size_t>(prey_cohort_idx) >= cohorts.size()) {
-    //         continue;
-    //     }
-    //     if (prey_cohort_idx == self_cohort_index) {
-    //         continue;
-    //     }
-    //     Cohort& prey = cohorts[static_cast<std::size_t>(prey_cohort_idx)];
-    //     for (std::size_t st = 0; st < prey.biomass_.size(); ++st) {
-    //         const int st_i = static_cast<int>(st);
-    //         if (st_i < min_prey_st || st_i > max_prey_st) {
-    //             continue;
-    //         }
-    //         const double obtained =
-    //             specie_->calculateObtainedBiomassIncrement(niche, prey_cohort_idx, st_i);
-    //         const double take = std::min(std::max(0.0, obtained), prey.biomass_[st]);
-    //         prey.biomass_[st] -= take;
-    //         biomass_[su] += take;
-    //     }
-    // }
-    // biomass_[su] = std::max(0.0, biomass_[su] - biomass_[su] * m_stage);
+void Cohort::initialize(const Niche& niche) {
+    if (specie_ == nullptr) {
+        return;
+    }
+    // Species initialize is non-const, but cohorts store a const species pointer by design.
+    LivingBeing* specie = const_cast<LivingBeing*>(specie_);
+    specie->initialize(niche);
 }
 

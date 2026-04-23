@@ -21,6 +21,27 @@ cmake --build build
 # Windows: build\Release\env_soc_cog_space.exe
 ```
 
+## Raylib snapshot viewer (optional)
+
+The project can build an additional visualization executable that replays `output/simulation.json`.
+
+```bash
+# Configure with viewer enabled
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_RAYLIB_VIEWER=ON
+cmake --build build --target cog_soc_env_space_viewer
+
+# Run (optional argument: snapshot json path)
+./build/cog_soc_env_space_viewer
+./build/cog_soc_env_space_viewer output/simulation.json
+```
+
+Viewer controls:
+- `SPACE` play/pause timeline
+- `LEFT` / `RIGHT` step one frame while paused
+- `1` / `2` / `3` playback speed (`0.5x`, `1x`, `2x`)
+- `R` restart from first frame
+- `ESC` close window
+
 ## CI/CD (GitHub Actions)
 
 The workflow [`.github/workflows/build.yml`](.github/workflows/build.yml) builds the project on:
@@ -30,6 +51,11 @@ The workflow [`.github/workflows/build.yml`](.github/workflows/build.yml) builds
 - **macOS** (macos-latest)
 
 It runs on every `push` and `pull_request` to the `main` and `master` branches. Executables are published as workflow *artifacts*.
+
+Each CI run now uploads, for every platform:
+- a platform package containing both executables (`...-package`)
+- the simulation executable only (`...-sim`)
+- the viewer executable only (`...-viewer`)
 
 ## Creating the repository on GitHub
 
@@ -99,7 +125,49 @@ doxygen Doxyfile
 - **Negative `code`** — decomposer: donor cohort index = `-(code + 1)`.
 - **Non-negative `code`** (and not `NUTRIENTS_POS`) — heterotroph: prey cohort index = `code`; a predator may emit several tuples (split intake across preys).
 
-`LivingBeing::diet_by_cohort_index` (built for heterotrophs and decomposers) stores `(source_cohort_index, min_k, max_k)` with **inclusive** bounds: for **heterotrophs**, `min_k`…`max_k` are prey life-history stages; for **decomposers**, they are donor **dead-biomass bin** indices. Ingestion loops use only that interval.
+`LivingBeing::diet_by_cohort_index` is stage-indexed and stores per-consumer-stage diet rules:
+
+- C++ type: `std::vector<std::vector<std::tuple<int,int,int>>>`
+- Outer index: consumer stage
+- Inner tuple: `(source_cohort_index, min_stage, max_stage)` with **inclusive** bounds
+
+For **heterotrophs**, `min_stage`…`max_stage` are prey life-history stages; for **decomposers**, they are donor **dead-biomass bin** indices.
+
+JSON shape under each species:
+
+```json
+"diet_by_cohort_index": [
+  [
+    { "cohort_index": 3, "min_stage": 0, "max_stage": 1 }
+  ],
+  [
+    [5, 1, 2]
+  ]
+]
+```
+
+Rule formats accepted inside each stage list:
+- object: `{ "cohort_index": X, "min_stage": Y, "max_stage": Z }`
+- numeric triplet: `[X, Y, Z]`
+
+`ConsumerLivingBeing::diet_by_food_type` also uses stage-indexed structure:
+
+- C++ type: `std::vector<std::vector<std::tuple<std::string,int,int>>>`
+- Outer index: consumer stage
+- Inner tuple: `(food_type_prefix, min_stage, max_stage)` with inclusive bounds
+
+JSON shape:
+
+```json
+"diet_by_food_type": [
+  [
+    { "food_type_prefix": "0.1", "min_stage": 0, "max_stage": 1 }
+  ],
+  [
+    { "food_type_prefix": "0.1.2", "min_stage": 1, "max_stage": 2 }
+  ]
+]
+```
 
 ### Simulation flow (niche)
 

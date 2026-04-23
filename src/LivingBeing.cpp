@@ -50,11 +50,11 @@ void LivingBeing::initialize(const Niche& niche) {
     initialized_ = true;
 }
 
-const std::vector<std::tuple<int, int, int>>& LivingBeing::getDietByCohortIndex() const {
+const std::vector<std::vector<std::tuple<int, int, int>>>& LivingBeing::getDietByCohortIndex() const {
     return diet_by_cohort_index_;
 }
 
-void LivingBeing::setDietByCohortIndex(std::vector<std::tuple<int, int, int>> diet_by_cohort_index) {
+void LivingBeing::setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index) {
     diet_by_cohort_index_ = std::move(diet_by_cohort_index);
 }
 
@@ -234,6 +234,34 @@ int LivingBeing::calculateStage(int cycles_elapsed) const {
     return d.size() - 1;
 }
 
+void LivingBeing::updateStages(Cohort& cohort, int elapsed_cycles) const {
+    if (elapsed_cycles < 0) {
+        return;
+    }
+    if (cohort.getSpecie() != this) {
+        return;
+    }
+    const auto& d = cycles_per_stages_;
+    const std::size_t max_i = d.size();
+    if (max_i < 2U) {
+        return;
+    }
+
+    const double noise_scale = SimulationConfig::global().noise_stddev * 0.1;
+    for (std::size_t i = max_i - 1U; i > 0U; --i) {
+        const std::size_t from = i - 1U;
+        const int Ti = std::max(1, d[from]);
+        const double base = 1.0 / static_cast<double>(Ti);
+        const double frac = std::clamp(
+            base * (1.0 + utilities::randomNormal(0.0, noise_scale)), 0.0, 1.0);
+        const std::vector<double>& current_biomass = cohort.getBiomass();
+        const double available =
+            from < current_biomass.size() ? std::max(0.0, current_biomass[from]) : 0.0;
+        const double transfer = available * frac;
+        cohort.transferStageBiomass(static_cast<int>(from), static_cast<int>(i), transfer);
+    }
+}
+
 double LivingBeing::calculate_effective_recruitment_efficiency(
     const std::vector<double>& recruitment_strategies,
     const std::vector<double>& defense_strategies) {
@@ -267,6 +295,7 @@ void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, in
 
 void LivingBeing::process_reproductive_growth(Cohort& cohort,
                                               int stage_index,
+                                              double stage_biomass_before_growth,
                                               double biomass_increment_this_cycle) const {
     if (cohort.getSpecie() == nullptr || cohort.getBiomass().empty() || stage_index < 0) {
         throw std::invalid_argument("Invalid cohort specie or stage");
@@ -281,8 +310,8 @@ void LivingBeing::process_reproductive_growth(Cohort& cohort,
     }
 
     const double B_after = std::max(0.0, biomass[su]);
+    const double B_before_growth = std::max(0.0, stage_biomass_before_growth);
     const double delta = std::max(0.0, biomass_increment_this_cycle);
-    const double B_before_growth = std::max(0.0, B_after - delta);
 
     const std::vector<double>& fertility = getMaxFertility();
     const double f = su < fertility.size() ? std::clamp(fertility[su], 0.0, 1.0) : 0.0;

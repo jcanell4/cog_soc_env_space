@@ -1,10 +1,5 @@
 #pragma once
 
-/**
- * @file Cohort.h
- * @brief Minimal cohort container for the restart.
- */
-
 #include "LivingBeing.h"
 
 #include <cstdint>
@@ -20,7 +15,6 @@ public:
     Cohort& operator=(const Cohort& other);
     Cohort& operator=(Cohort&& other) noexcept;
 
-    /** @brief Unique stable identifier assigned at construction (read-only). */
     std::uint64_t getId() const;
 
     const std::string& getSpecieName() const;
@@ -31,7 +25,6 @@ public:
     const std::vector<double>& getDeathBiomass() const;
     double getTotalDeathBiomass() const;
 
-    /** @brief Pointer to the species model, or nullptr if not set. */
     const LivingBeing* getSpecie() const;
 
     Cohort& setSpecie(const LivingBeing& value);
@@ -43,19 +36,14 @@ public:
     void update_step(Niche& niche);
     void initialize(const Niche& niche);
 
-    /**
-     * @brief Updates living biomass at @a stage using @a specie_->getDietByCohortIndex() prey cohort rules.
-     * @param self_cohort_index Index of this cohort in @a niche.getCohortSet().
-     */
-    void update_individual_growth(Niche& niche, int self_cohort_index, int stage);
+    std::uint64_t getCohortElapsedCycles() const;
+
+    void transferStageBiomass(int from_stage, int to_stage, double amount);
 
 private:
     std::uint64_t id_;
     const LivingBeing* specie_{nullptr};
     std::vector<double> biomass_{0.0};
-    /**
-     * @brief Dead biomass by size class; index 0 is finest/most degraded.
-     *        Vector length is dynamic (no fixed number of bins).
-     */
     std::vector<double> death_biomass_;
+    std::uint64_t cohort_elapsed_cycles_{0};
 };

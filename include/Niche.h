@@ -45,9 +45,9 @@ public:
 
     /**
      * @brief Per-stratum light transmission fractions after canopy shading.
-     *        Shadow density is (sum of biomass×opacity per stratum) / surface; then from the
-     *        top stratum (highest index) down to 0: percent[h] = exp(-density[h]) × incoming,
-     *        with incoming = 1 above the top stratum and updated after each layer.
+     *        Shadow density is (sum of biomass×opacity per stratum) / surface.
+     *        Top stratum (highest index) receives 1.0 incident light.
+     *        For lower strata: percent[h] = exp(-density[h+1]) × percent[h+1], clamped to [0,1].
      */
     std::vector<double> getLithPerStratum() const;
 

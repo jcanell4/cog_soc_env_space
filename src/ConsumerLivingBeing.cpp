@@ -25,20 +25,38 @@ const std::vector<std::vector<double>>& ConsumerLivingBeing::getIngestionResidue
     return ingestion_residue_fraction_by_size_;
 }
 
-const std::vector<std::tuple<std::string, int, int>>& ConsumerLivingBeing::getDietByFoodType() const {
+const std::vector<std::vector<std::tuple<std::string, int, int>>>& ConsumerLivingBeing::getDietByFoodType() const {
     return diet_by_food_type_;
 }
 
-void ConsumerLivingBeing::setDietByFoodType(std::vector<std::tuple<std::string, int, int>> diet_by_food_type) {
+void ConsumerLivingBeing::setDietByFoodType(
+    std::vector<std::vector<std::tuple<std::string, int, int>>> diet_by_food_type) {
     diet_by_food_type_ = std::move(diet_by_food_type);
 }
 
-bool ConsumerLivingBeing::isFoodTypeMyDiet(const std::string& prey_food_type, int prey_stage) const {
-    return diet_food_type_match::isFoodTypeMyDiet(diet_by_food_type_, prey_food_type, prey_stage);
+bool ConsumerLivingBeing::isFoodTypeMyDiet(const std::string& prey_food_type,
+                                           int consumer_stage,
+                                           int prey_stage) const {
+    if (consumer_stage < 0) {
+        return false;
+    }
+    const std::size_t stage_index = static_cast<std::size_t>(consumer_stage);
+    if (stage_index >= diet_by_food_type_.size()) {
+        return false;
+    }
+    return diet_food_type_match::isFoodTypeMyDiet(diet_by_food_type_[stage_index], prey_food_type, prey_stage);
 }
 
-std::tuple<int, int> ConsumerLivingBeing::getRangeForFoodType(const std::string& prey_food_type) const {
-    return diet_food_type_match::rangeForMatchingFoodType(diet_by_food_type_, prey_food_type);
+std::tuple<int, int> ConsumerLivingBeing::getRangeForFoodType(const std::string& prey_food_type,
+                                                              int consumer_stage) const {
+    if (consumer_stage < 0) {
+        return {-1, -1};
+    }
+    const std::size_t stage_index = static_cast<std::size_t>(consumer_stage);
+    if (stage_index >= diet_by_food_type_.size()) {
+        return {-1, -1};
+    }
+    return diet_food_type_match::rangeForMatchingFoodType(diet_by_food_type_[stage_index], prey_food_type);
 }
 
 std::vector<double> ConsumerLivingBeing::clampUnitInterval(std::vector<double> values) {

@@ -25,11 +25,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Linux dependencies (raylib/glfw)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libx11-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxcursor-dev \
+            libxi-dev \
+            libgl1-mesa-dev \
+            libasound2-dev \
+            libudev-dev \
+            libwayland-dev \
+            libxkbcommon-dev
+
       - name: Configure and build (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
           rm -rf build
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_RAYLIB_VIEWER=ON
           cmake --build build
 
       # -A x64 is only valid for Visual Studio generators; the default on windows-latest
@@ -38,14 +54,14 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           if (Test-Path build) { Remove-Item -Recurse -Force build }
-          cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+          cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DENABLE_RAYLIB_VIEWER=ON
           cmake --build build --config Release
 
       - name: Configure and build (macOS)
         if: matrix.os == 'macos-latest'
         run: |
           rm -rf build
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_RAYLIB_VIEWER=ON
           cmake --build build
 
       - name: Run executable (Linux)
@@ -60,23 +76,72 @@ jobs:
         if: matrix.os == 'macos-latest' && success()
         run: ./build/cog_soc_env_space
 
-      - name: Upload artifact (Linux)
+      - name: Create package (Linux)
+        if: matrix.os == 'ubuntu-latest' && success()
+        run: |
+          rm -rf dist
+          cmake --install build --prefix dist/package
+          tar -czf dist/cog_soc_env_space-${{ matrix.name }}-package.tar.gz -C dist/package .
+
+      - name: Create package (Windows)
+        if: matrix.os == 'windows-latest' && success()
+        run: |
+          if (Test-Path dist) { Remove-Item -Recurse -Force dist }
+          cmake --install build --config Release --prefix dist/package
+          Compress-Archive -Path dist/package/* -DestinationPath dist/cog_soc_env_space-${{ matrix.name }}-package.zip
+
+      - name: Create package (macOS)
+        if: matrix.os == 'macos-latest' && success()
+        run: |
+          rm -rf dist
+          cmake --install build --prefix dist/package
+          tar -czf dist/cog_soc_env_space-${{ matrix.name }}-package.tar.gz -C dist/package .
+
+      - name: Upload package artifact (Linux)
         if: matrix.os == 'ubuntu-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: cog_soc_env_space-${{ matrix.name }}
-          path: build/cog_soc_env_space
+          name: cog_soc_env_space-${{ matrix.name }}-package
+          path: dist/cog_soc_env_space-${{ matrix.name }}-package.tar.gz
 
-      - name: Upload artifact (Windows)
+      - name: Upload package artifact (Windows)
         if: matrix.os == 'windows-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: cog_soc_env_space-${{ matrix.name }}
-          path: build/Release/cog_soc_env_space.exe
+          name: cog_soc_env_space-${{ matrix.name }}-package
+          path: dist/cog_soc_env_space-${{ matrix.name }}-package.zip
 
-      - name: Upload artifact (macOS)
+      - name: Upload package artifact (macOS)
         if: matrix.os == 'macos-latest' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: cog_soc_env_space-${{ matrix.name }}
+          name: cog_soc_env_space-${{ matrix.name }}-package
+          path: dist/cog_soc_env_space-${{ matrix.name }}-package.tar.gz
+
+      - name: Upload simulation executable (Linux/macOS)
+        if: (matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest') && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cog_soc_env_space-${{ matrix.name }}-sim
           path: build/cog_soc_env_space
+
+      - name: Upload simulation executable (Windows)
+        if: matrix.os == 'windows-latest' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cog_soc_env_space-${{ matrix.name }}-sim
+          path: build/Release/cog_soc_env_space.exe
+
+      - name: Upload viewer executable (Linux/macOS)
+        if: (matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest') && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cog_soc_env_space-${{ matrix.name }}-viewer
+          path: build/cog_soc_env_space_viewer
+
+      - name: Upload viewer executable (Windows)
+        if: matrix.os == 'windows-latest' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cog_soc_env_space-${{ matrix.name }}-viewer
+          path: build/Release/cog_soc_env_space_viewer.exe
