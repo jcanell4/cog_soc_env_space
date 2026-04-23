@@ -57,6 +57,24 @@ Each CI run now uploads, for every platform:
 - the simulation executable only (`...-sim`)
 - the viewer executable only (`...-viewer`)
 
+Linux packages also include helper launchers:
+- `bin/run_sim.sh`
+- `bin/run_viewer.sh`
+
+These scripts check for missing runtime libraries and print a suggested `apt install` command instead of failing silently.
+
+### Quick start (Linux package)
+
+After extracting the Linux package, use the helper launchers first:
+
+```bash
+cd path/to/extracted/package
+./bin/run_sim.sh
+./bin/run_viewer.sh output/simulation.json
+```
+
+If runtime libraries are missing, the scripts print a suggested `apt install` command.
+
 ## Creating the repository on GitHub
 
 1. Create a new repository at [github.com/new](https://github.com/new):

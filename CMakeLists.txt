@@ -114,3 +114,15 @@ if(ENABLE_RAYLIB_VIEWER)
 endif()
 install(FILES README.md LICENSE DESTINATION .)
 install(DIRECTORY config DESTINATION .)
+if(UNIX AND NOT APPLE)
+    install(
+        FILES
+            scripts/linux/run_sim.sh
+            scripts/linux/run_viewer.sh
+        DESTINATION bin
+        PERMISSIONS
+            OWNER_READ OWNER_WRITE OWNER_EXECUTE
+            GROUP_READ GROUP_EXECUTE
+            WORLD_READ WORLD_EXECUTE
+    )
+endif()
