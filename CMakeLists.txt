@@ -30,6 +30,7 @@ endif()
 
 set(COG_SOC_ENV_SPACE_LIB_SOURCES
     src/Builders.cpp
+    src/JsonEnumNames.cpp
     src/JsonEcosystem.cpp
     src/JsonFrameSource.cpp
     src/Heterotroph.cpp
@@ -94,6 +95,7 @@ if(ENABLE_RAYLIB_VIEWER)
 
     add_executable(cog_soc_env_space_viewer
         src/viewer_main.cpp
+        src/JsonEnumNames.cpp
         src/JsonFrameSource.cpp
         src/SimulationSnapshotReader.cpp
     )

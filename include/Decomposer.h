@@ -17,7 +17,7 @@ class Niche;
  * @brief Decomposer species: uptake from other cohorts' dead biomass pools.
  *
  * Decomposition uptake follows the same two-pass structure as @c Heterotroph (theory → global cap α →
- * handling → assimilation with residue routing to donor death bins; optional parental supply).
+ * assimilation with residue routing to donor death bins; optional parental supply).
  *
  * Dead-biomass transfers are modeled via niche/cohort updates (not via species callbacks in this restart).
  */
@@ -53,14 +53,12 @@ public:
     void rebuild_diet_by_cohort_index_from_food_type(const Niche& niche);
 
     using ConsumerLivingBeing::getProspectingAbilityRate;
-    using ConsumerLivingBeing::getHandlingTimePenalty;
     using ConsumerLivingBeing::getAssimilationEfficiency;
     using ConsumerLivingBeing::getIngestionResidueFractionBySize;
 
     Decomposer& setName(std::string name);
     Decomposer& setEnergyContent(float energy_content);
     Decomposer& setProspectingAbilityRate(std::vector<double> values);
-    Decomposer& setHandlingTimePenalty(std::vector<double> values);
     Decomposer& setAssimilationEfficiency(std::vector<double> values);
     Decomposer& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 };

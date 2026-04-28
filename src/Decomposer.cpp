@@ -11,7 +11,7 @@
 
 namespace {
 /** Per-step decomposition intensity factor in the theoretical uptake term (former default member value). */
-constexpr double kMaxDecompositionRate = 0.15;
+constexpr double kMaxDecompositionRate = 1.0;
 }  // namespace
 
 Decomposer::Decomposer() {
@@ -21,6 +21,7 @@ Decomposer::Decomposer() {
 
 void Decomposer::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
+    rebuild_diet_by_cohort_index_from_food_type(niche);
 }
 
 void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const {
@@ -42,7 +43,6 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
     const std::vector<double>& maintenance = specie->getMaintenanceCost();
     const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
     const std::vector<double>& assimilation = decomp.getAssimilationEfficiency();
-    const std::vector<double>& handling_penalty = decomp.getHandlingTimePenalty();
     const std::vector<std::vector<double>>& residue_by_size = decomp.getIngestionResidueFractionBySize();
     const std::vector<double>& max_growth = specie->getMaxIndividualGrowth();
     const std::vector<double>& prospecting = decomp.getProspectingAbilityRate();
@@ -54,7 +54,6 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
 
     const double old_biomass = std::max(0.0, decomposer_biomass[su]);
     const double assimilation_stage = su < assimilation.size() ? std::clamp(assimilation[su], 0.0, 1.0) : 0.0;
-    const double handling_stage = su < handling_penalty.size() ? std::clamp(handling_penalty[su], 0.0, 1.0) : 0.0;
     const double max_growth_stage = su < max_growth.size() ? std::clamp(max_growth[su], 0.0, 1.0) : 0.0;
     const double movement_rate_stage = su < prospecting.size() ? std::max(0.0, prospecting[su]) : 0.0;
 
@@ -101,9 +100,6 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
             continue;
         }
         Cohort& donor_cohort = cohorts[donor_cohort_index];
-        if (&donor_cohort == &cohort) {
-            continue;
-        }
         const LivingBeing* donor_specie = donor_cohort.getSpecie();
         if (donor_specie == nullptr) {
             continue;
@@ -173,10 +169,6 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
         gross_intake += item.take;
     }
 
-    const double gross_intake_effective =
-        gross_intake > 0.0 ? (gross_intake / (1.0 + handling_stage * gross_intake)) : 0.0;
-    const double handling_scale = gross_intake > kEps ? std::clamp(gross_intake_effective / gross_intake, 0.0, 1.0) : 0.0;
-
     std::map<std::size_t, std::vector<double>> decrement_by_donor;
     double total_from_donors = 0.0;
 
@@ -184,7 +176,7 @@ void Decomposer::process_individual_growth(Niche& niche, Cohort& cohort, int sta
         if (item.take <= 0.0) {
             continue;
         }
-        item.take_effective = item.take * handling_scale;
+        item.take_effective = item.take;
         if (item.take_effective <= kEps) {
             continue;
         }
@@ -254,9 +246,16 @@ void Decomposer::setCyclesPerStages(std::vector<int> cycles_per_stages) {
 
 void Decomposer::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche) {
     const std::size_t stage_count = getCyclesPerStages().size();
-    std::vector<std::vector<std::tuple<int, int, int>>> cohort_diet_by_stage(stage_count);
+    std::vector<std::vector<std::tuple<int, int, int>>> cohort_diet_by_stage = getDietByCohortIndex();
+    cohort_diet_by_stage.resize(stage_count);
     const Niche::CohortSet& cohorts = niche.getCohortSet();
     const auto& food_type_by_stage = getDietByFoodType();
+    const auto append_unique_rule =
+        [](std::vector<std::tuple<int, int, int>>& stage_diet, const std::tuple<int, int, int>& rule) {
+            if (std::find(stage_diet.begin(), stage_diet.end(), rule) == stage_diet.end()) {
+                stage_diet.push_back(rule);
+            }
+        };
     bool has_any_food_rules = false;
     for (const auto& stage_rules : food_type_by_stage) {
         if (!stage_rules.empty()) {
@@ -281,7 +280,7 @@ void Decomposer::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche)
                     continue;
                 }
                 const int max_bin = static_cast<int>(n_bin) - 1;
-                stage_diet.emplace_back(static_cast<int>(i), 0, max_bin);
+                append_unique_rule(stage_diet, std::make_tuple(static_cast<int>(i), 0, max_bin));
             }
         }
     } else {
@@ -299,7 +298,7 @@ void Decomposer::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche)
                 if (min_bin < 0 || max_bin < 0) {
                     continue;
                 }
-                stage_diet.emplace_back(static_cast<int>(i), min_bin, max_bin);
+                append_unique_rule(stage_diet, std::make_tuple(static_cast<int>(i), min_bin, max_bin));
             }
         }
     }
@@ -318,11 +317,6 @@ Decomposer& Decomposer::setEnergyContent(float energy_content) {
 
 Decomposer& Decomposer::setProspectingAbilityRate(std::vector<double> values) {
     ConsumerLivingBeing::setProspectingAbilityRate(std::move(values));
-    return *this;
-}
-
-Decomposer& Decomposer::setHandlingTimePenalty(std::vector<double> values) {
-    ConsumerLivingBeing::setHandlingTimePenalty(std::move(values));
     return *this;
 }
 

@@ -126,7 +126,7 @@ doxygen Doxyfile
 | Type | Header | Role |
 |------|--------|------|
 | **LivingBeing** | `LivingBeing.h` | Abstract species: name, energy per biomass, death & growth demand contracts. |
-| **ConsumerLivingBeing** | `ConsumerLivingBeing.h` | Intermediate base for heterotrophs and decomposers: assimilation efficiency, handling penalty, prospecting, per-stage residue fractions; helpers for waste routing to death bins and optional parental supply. |
+| **ConsumerLivingBeing** | `ConsumerLivingBeing.h` | Intermediate base for heterotrophs and decomposers: assimilation efficiency, prospecting, per-stage residue fractions; helpers for waste routing to death bins and optional parental supply. |
 | **Heterotroph** | `Heterotroph.h` | Predator: search/capture efficiency, taxonomic diet; `process_individual_growth` uses the shared two-pass ingestion pipeline (see below). |
 | **Decomposer** | `Decomposer.h` | Detritivore: uptake from other cohorts’ dead biomass pools; same two-pass pipeline as `Heterotroph` but theory built from donor death bins and trait compatibility (fixed decomposition intensity in implementation). |
 | **Autotroph** | `Autotroph.h` | Producer: tolerances, stress death ratio, environment coupling, nutrient-limited growth/death; JSON via `AutotrophBuilder`. |
@@ -150,6 +150,10 @@ doxygen Doxyfile
 - Inner tuple: `(source_cohort_index, min_stage, max_stage)` with **inclusive** bounds
 
 For **heterotrophs**, `min_stage`…`max_stage` are prey life-history stages; for **decomposers**, they are donor **dead-biomass bin** indices.
+
+`cohort_index` accepts both formats in input JSON:
+- integer code (legacy/current)
+- strict constant name (exact match): `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 
 JSON shape under each species:
 
@@ -194,7 +198,7 @@ JSON shape:
 
 ### Heterotroph encounter and ingestion model
 
-`Heterotroph` and `Decomposer` both inherit **`ConsumerLivingBeing`**. Ingestion—global gross cap, handling reduction, assimilation vs. residue return to donor death bins, and optional parental supply—follows the **same staged sequence**. Predators differ only in how **theoretical** intake per source is computed (live prey encounter/capture vs. dead-pool scanning on donor bins).
+`Heterotroph` and `Decomposer` both inherit **`ConsumerLivingBeing`**. Ingestion—global gross cap, assimilation vs. residue return to donor death bins, and optional parental supply—follows the **same staged sequence**. Predators differ only in how **theoretical** intake per source is computed (live prey encounter/capture vs. dead-pool scanning on donor bins).
 
 `Heterotroph::process_individual_growth` applies a staged predation model aligned with the ecological restart design:
 
@@ -221,10 +225,8 @@ JSON shape:
        - `assimilation_efficiency`.
    - This avoids iteration-order bias across prey species/stages.
 
-3. **Handling, assimilation, and biomass transfers**
-   - Gross intake is reduced by a saturating handling penalty:
-     `I_eff = I / (1 + h * I)`.
-   - Prey biomass is reduced by realized intake.
+3. **Assimilation and biomass transfers**
+   - Prey biomass is reduced by realized gross intake (after the global cap `α`).
    - Non-assimilated prey intake is routed to prey dead-biomass size bins
      (`death_biomass[s]`, configurable per predator stage).
    - Predator gain is assimilated intake minus maintenance cost.
@@ -242,11 +244,11 @@ JSON shape:
 
 2. **Global cap** — `α = min(1, max_gross_ingestion / theory_total)` uses the same growth-limited cap as predators (stage biomass, `max_individual_growth`, assimilation efficiency).
 
-3. **Handling, assimilation, residues** — Same `I_eff = I / (1 + h × I)` handling when configured. Realized take is debited from the donor’s dead biomass, then assimilated fraction updates decomposer biomass; non-assimilated mass is returned to the **donor’s** death bins via `ingestion_residue_fraction_by_size`.
+3. **Assimilation, residues** — Realized take is debited from the donor’s dead biomass, then assimilated fraction updates decomposer biomass; non-assimilated mass is returned to the **donor’s** death bins via `ingestion_residue_fraction_by_size`.
 
 4. **Parental supply** — Same optional `DietType::PARENTAL_SUPPLY_TYPE` branch as `Heterotroph`, implemented in `ConsumerLivingBeing::applyParentalSupplyGross`.
 
-Restart scaffolding builders: `HeterotrophBuilder` and **`DecomposerBuilder`** expose the shared consumer parameters (prospecting, assimilation, handling, residue grids); `HeterotrophBuilder` also supports search/capture efficiency.
+Restart scaffolding builders: `HeterotrophBuilder` and **`DecomposerBuilder`** expose the shared consumer parameters (prospecting, assimilation, residue grids); `HeterotrophBuilder` also supports search/capture efficiency.
 
 ### Dead biomass size bins (dynamic length)
 
@@ -286,6 +288,11 @@ Example: [`config/simulation.example.json`](config/simulation.example.json).
   - `step_data` as an empty array
 - `updateJson(const Niche&, int elapsed_cycles, json&)` appends one full niche snapshot to `step_data`
 - `saveJsonToFile(const json&, const std::string&, int indent = 2)` writes JSON to disk
+
+Enum-like fields support mixed input and named output:
+- `specie.class_type` input accepts integer or strict constant name: `AUTOTROPH`, `HETEROTROPH`, `DECOMPOSER`
+- `specie.diet_by_cohort_index[].cohort_index` input accepts integer or strict constant name: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
+- Output prefers constant names when a mapping exists; otherwise writes the numeric literal in the same field
 
 Output shape:
 

@@ -10,6 +10,8 @@
 
 #include "Autotroph.h"
 #include "Builders.h"
+#include "Constants.h"
+#include "JsonEnumNames.h"
 #include "JsonEcosystem.h"
 #include "SimulationSnapshotReader.h"
 #include "LivingBeing.h"
@@ -94,8 +96,98 @@ int main(int argc, char* argv[]) {
             log_fail("snapshot interpolation at 0.0 must match first frame");
             return 1;
         }
+
+        nlohmann::json named_snapshot = snapshot;
+        named_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"] = "AUTOTROPH";
+        JsonEcosystem::saveJsonToFile(named_snapshot, "output/test_snapshot.json");
+        SimulationSnapshotReader named_reader;
+        named_reader.load("output/test_snapshot.json");
+        if (named_reader.frameAt(0).cohorts.empty() ||
+            named_reader.frameAt(0).cohorts[0].class_type != LivingBeingClassType::AUTOTROPH) {
+            log_fail("snapshot reader must accept class_type as string constant");
+            return 1;
+        }
     } catch (const std::exception& e) {
         std::cerr << "snapshot reader: " << e.what() << "\n";
+        return 1;
+    }
+
+    {
+        nlohmann::json mixed_input = {
+            {"initial_data",
+             {
+                 {"data",
+                  {{"cohorts",
+                    nlohmann::json::array(
+                        {{{"biomass", {1.0}},
+                          {"death_biomass", {0.0}},
+                          {"specie",
+                           {{"name", "string_class_type"},
+                            {"class_type", "AUTOTROPH"},
+                            {"diet_by_cohort_index",
+                             nlohmann::json::array(
+                                 {nlohmann::json::array(
+                                     {{{"cohort_index", "NUTRIENTS_TYPE"}, {"min_stage", 0}, {"max_stage", 0}},
+                                      {{"cohort_index", 12345}, {"min_stage", 0}, {"max_stage", 0}}})})}}}},
+                         {{"biomass", {1.0}},
+                          {"death_biomass", {0.0}},
+                          {"specie", {{"name", "int_class_type"}, {"class_type", LivingBeingClassType::HETEROTROPH}}}}})}}}}}};
+
+        Niche mixed_niche;
+        try {
+            mixed_niche = NicheBuilder().fromJson(mixed_input).build();
+        } catch (const std::exception& e) {
+            std::cerr << "mixed parse: " << e.what() << "\n";
+            return 1;
+        }
+
+        if (mixed_niche.getCohortSet().size() < 2U) {
+            log_fail("mixed parse should build two cohorts");
+            return 1;
+        }
+        const LivingBeing* first_specie = mixed_niche.getCohortSet()[0].getSpecie();
+        const LivingBeing* second_specie = mixed_niche.getCohortSet()[1].getSpecie();
+        if (first_specie == nullptr || second_specie == nullptr) {
+            log_fail("mixed parse should build species pointers");
+            return 1;
+        }
+        if (first_specie->getClassType() != LivingBeingClassType::AUTOTROPH ||
+            second_specie->getClassType() != LivingBeingClassType::HETEROTROPH) {
+            log_fail("class_type should parse from both string and integer");
+            return 1;
+        }
+
+        const auto& diet_rules = first_specie->getDietByCohortIndex();
+        if (diet_rules.empty() || diet_rules[0].size() < 2U ||
+            std::get<0>(diet_rules[0][0]) != DietType::NUTRIENTS_TYPE ||
+            std::get<0>(diet_rules[0][1]) != 12345) {
+            log_fail("cohort_index should parse from string and integer");
+            return 1;
+        }
+
+        const nlohmann::json mixed_snapshot = JsonEcosystem::createJson(mixed_niche);
+        const nlohmann::json& mixed_rules =
+            mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["diet_by_cohort_index"][0];
+        if (!mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"].is_string() ||
+            mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"].get<std::string>() != "AUTOTROPH") {
+            log_fail("known class_type should serialize to string constant");
+            return 1;
+        }
+        if (!mixed_rules[0]["cohort_index"].is_string() ||
+            mixed_rules[0]["cohort_index"].get<std::string>() != "NUTRIENTS_TYPE") {
+            log_fail("known cohort_index should serialize to string constant");
+            return 1;
+        }
+        if (!mixed_rules[1]["cohort_index"].is_number_integer() ||
+            mixed_rules[1]["cohort_index"].get<int>() != 12345) {
+            log_fail("unknown cohort_index should serialize as numeric fallback");
+            return 1;
+        }
+    }
+
+    if (!json_enum_names::classTypeToJson(999).is_number_integer() ||
+        json_enum_names::classTypeToJson(999).get<int>() != 999) {
+        log_fail("unknown class_type should serialize as numeric fallback");
         return 1;
     }
 

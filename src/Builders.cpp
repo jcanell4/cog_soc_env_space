@@ -1,4 +1,5 @@
 #include "Builders.h"
+#include "JsonEnumNames.h"
 
 #include <nlohmann/json.hpp>
 
@@ -39,19 +40,17 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int>& out_rule) {
         if (rule_json.size() != 3U) {
             return false;
         }
-        if (!rule_json[0].is_number_integer() ||
-            !rule_json[1].is_number_integer() ||
-            !rule_json[2].is_number_integer()) {
+        if (!rule_json[1].is_number_integer() || !rule_json[2].is_number_integer()) {
             return false;
         }
         out_rule = std::make_tuple(
-            rule_json[0].get<int>(),
+            json_enum_names::parseDietCohortIndexValue(rule_json[0], "diet_by_cohort_index[][0]"),
             rule_json[1].get<int>(),
             rule_json[2].get<int>());
         return true;
     }
     if (rule_json.is_object()) {
-        if (!rule_json.contains("cohort_index") || !rule_json["cohort_index"].is_number_integer()) {
+        if (!rule_json.contains("cohort_index")) {
             return false;
         }
         const bool has_stage_names = rule_json.contains("min_stage") && rule_json.contains("max_stage");
@@ -65,7 +64,7 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int>& out_rule) {
             return false;
         }
         out_rule = std::make_tuple(
-            rule_json["cohort_index"].get<int>(),
+            json_enum_names::parseDietCohortIndexValue(rule_json["cohort_index"], "diet_by_cohort_index[].cohort_index"),
             rule_json[min_key].get<int>(),
             rule_json[max_key].get<int>());
         return true;
@@ -136,6 +135,10 @@ void applyLivingBeingCommonFields(LivingBeing& target, const json& specie_j) {
         target.setBiomassToEnergyConversionFactor(
             specie_j["biomass_to_energy_conversion_factor"].get<float>());
     }
+    if (specie_j.contains("death_biomass_to_energy_conversion_factor")) {
+        target.setDeathBiomassToEnergyConversionFactor(
+            specie_j["death_biomass_to_energy_conversion_factor"].get<float>());
+    }
     if (specie_j.contains("maintenance_cost")) {
         target.setMaintenanceCost(readDoubleVector(specie_j, "maintenance_cost"));
     }
@@ -184,9 +187,6 @@ void applyConsumerCommonFields(ConsumerLivingBeing& target, const json& specie_j
     if (specie_j.contains("prospecting_ability_rate")) {
         target.setProspectingAbilityRate(readDoubleVector(specie_j, "prospecting_ability_rate"));
     }
-    if (specie_j.contains("handling_time_penalty")) {
-        target.setHandlingTimePenalty(readDoubleVector(specie_j, "handling_time_penalty"));
-    }
     if (specie_j.contains("assimilation_efficiency")) {
         target.setAssimilationEfficiency(readDoubleVector(specie_j, "assimilation_efficiency"));
     }
@@ -203,7 +203,10 @@ const LivingBeing* buildSpecieFromSnapshotJson(const json& cohort_j) {
         return nullptr;
     }
     const json& specie_j = cohort_j["specie"];
-    const int class_type = specie_j.value("class_type", LivingBeingClassType::AUTOTROPH);
+    int class_type = LivingBeingClassType::AUTOTROPH;
+    if (specie_j.contains("class_type")) {
+        class_type = json_enum_names::parseClassTypeValue(specie_j["class_type"], "specie.class_type");
+    }
     static std::vector<std::unique_ptr<LivingBeing>> owned_species;
 
     if (class_type == LivingBeingClassType::AUTOTROPH) {
@@ -233,9 +236,6 @@ const LivingBeing* buildSpecieFromSnapshotJson(const json& cohort_j) {
         auto specie = std::make_unique<Heterotroph>();
         applyLivingBeingCommonFields(*specie, specie_j);
         applyConsumerCommonFields(*specie, specie_j);
-        if (specie_j.contains("search_capture_efficiency")) {
-            specie->setSearchCaptureEfficiency(readDoubleVector(specie_j, "search_capture_efficiency"));
-        }
         const LivingBeing* ptr = specie.get();
         owned_species.push_back(std::move(specie));
         return ptr;
@@ -287,6 +287,11 @@ AutotrophBuilder& AutotrophBuilder::withEnergyContent(float value) {
     return *this;
 }
 
+AutotrophBuilder& AutotrophBuilder::withDeathEnergyContent(float value) {
+    object_.setDeathBiomassToEnergyConversionFactor(value);
+    return *this;
+}
+
 AutotrophBuilder& AutotrophBuilder::withBestEnvironmentalConditions(std::vector<std::vector<double>> value) {
     object_.setBestEnvironmentalConditions(std::move(value));
     return *this;
@@ -310,8 +315,8 @@ HeterotrophBuilder& HeterotrophBuilder::withEnergyContent(float value) {
     return *this;
 }
 
-HeterotrophBuilder& HeterotrophBuilder::withSearchCaptureEfficiency(std::vector<double> value) {
-    object_.setSearchCaptureEfficiency(std::move(value));
+HeterotrophBuilder& HeterotrophBuilder::withDeathEnergyContent(float value) {
+    object_.setDeathBiomassToEnergyConversionFactor(value);
     return *this;
 }
 
@@ -322,11 +327,6 @@ HeterotrophBuilder& HeterotrophBuilder::withProspectingAbilityRate(std::vector<d
 
 HeterotrophBuilder& HeterotrophBuilder::withAssimilationEfficiency(std::vector<double> value) {
     object_.setAssimilationEfficiency(std::move(value));
-    return *this;
-}
-
-HeterotrophBuilder& HeterotrophBuilder::withHandlingTimePenalty(std::vector<double> value) {
-    object_.setHandlingTimePenalty(std::move(value));
     return *this;
 }
 
@@ -353,6 +353,11 @@ DecomposerBuilder& DecomposerBuilder::withEnergyContent(float value) {
     return *this;
 }
 
+DecomposerBuilder& DecomposerBuilder::withDeathEnergyContent(float value) {
+    object_.setDeathBiomassToEnergyConversionFactor(value);
+    return *this;
+}
+
 DecomposerBuilder& DecomposerBuilder::withProspectingAbilityRate(std::vector<double> value) {
     object_.setProspectingAbilityRate(std::move(value));
     return *this;
@@ -360,11 +365,6 @@ DecomposerBuilder& DecomposerBuilder::withProspectingAbilityRate(std::vector<dou
 
 DecomposerBuilder& DecomposerBuilder::withAssimilationEfficiency(std::vector<double> value) {
     object_.setAssimilationEfficiency(std::move(value));
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withHandlingTimePenalty(std::vector<double> value) {
-    object_.setHandlingTimePenalty(std::move(value));
     return *this;
 }
 

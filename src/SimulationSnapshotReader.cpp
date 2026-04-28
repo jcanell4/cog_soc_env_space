@@ -1,4 +1,5 @@
 #include "SimulationSnapshotReader.h"
+#include "JsonEnumNames.h"
 
 #include <nlohmann/json.hpp>
 
@@ -32,6 +33,13 @@ int readIntOrDefault(const json& object, const char* key, int default_value = 0)
     return object[key].get<int>();
 }
 
+int readClassTypeOrDefault(const json& object, const char* key, int default_value = -1) {
+    if (!object.contains(key) || object[key].is_null()) {
+        return default_value;
+    }
+    return json_enum_names::parseClassTypeValue(object[key], key);
+}
+
 std::string readStringOrDefault(const json& object, const char* key, const std::string& default_value = "") {
     if (!object.contains(key) || object[key].is_null()) {
         return default_value;
@@ -42,6 +50,23 @@ std::string readStringOrDefault(const json& object, const char* key, const std::
     return object[key].get<std::string>();
 }
 
+std::vector<double> readNumberArrayOrDefault(const json& object, const char* key) {
+    std::vector<double> values;
+    if (!object.contains(key) || object[key].is_null()) {
+        return values;
+    }
+    if (!object[key].is_array()) {
+        throw std::runtime_error(std::string("Expected numeric array field: ") + key);
+    }
+    for (const json& value : object[key]) {
+        if (!value.is_number()) {
+            throw std::runtime_error(std::string("Expected numeric element in array field: ") + key);
+        }
+        values.push_back(value.get<double>());
+    }
+    return values;
+}
+
 SimulationFrameData parseFrameData(const json& data_object, int elapsed_cycles) {
     if (!data_object.is_object()) {
         throw std::runtime_error("Frame data entry must be an object");
@@ -50,10 +75,18 @@ SimulationFrameData parseFrameData(const json& data_object, int elapsed_cycles) 
     SimulationFrameData frame;
     frame.elapsed_cycles = std::max(0, elapsed_cycles);
     frame.nutrients = readNumberOrDefault(data_object, "nutrients");
+    frame.total_energy = readNumberOrDefault(data_object, "total_energy");
     frame.ecological_health = readNumberOrDefault(data_object, "ecological_health");
     frame.living_biomass = readNumberOrDefault(data_object, "living_biomass");
     frame.death_biomass = readNumberOrDefault(data_object, "death_biomass");
     frame.decomposer_biomass = readNumberOrDefault(data_object, "decomposer_biomass");
+    if (data_object.contains("biomass_by_class") && data_object["biomass_by_class"].is_object()) {
+        const json& by_class = data_object["biomass_by_class"];
+        frame.autotroph_biomass = readNumberOrDefault(by_class, "autotroph");
+        frame.heterotroph_biomass = readNumberOrDefault(by_class, "heterotroph");
+        frame.decomposer_biomass = readNumberOrDefault(by_class, "decomposer", frame.decomposer_biomass);
+        frame.other_living_biomass = readNumberOrDefault(by_class, "other");
+    }
 
     if (data_object.contains("cohorts") && data_object["cohorts"].is_array()) {
         for (const json& cohort_json : data_object["cohorts"]) {
@@ -66,10 +99,11 @@ SimulationFrameData parseFrameData(const json& data_object, int elapsed_cycles) 
             cohort.energy = readNumberOrDefault(cohort_json, "energy");
             cohort.total_biomass = readNumberOrDefault(cohort_json, "total_biomass");
             cohort.total_death_biomass = readNumberOrDefault(cohort_json, "total_death_biomass");
+            cohort.stage_biomass = readNumberArrayOrDefault(cohort_json, "biomass");
 
             if (cohort_json.contains("specie") && cohort_json["specie"].is_object()) {
                 const json& specie_json = cohort_json["specie"];
-                cohort.class_type = readIntOrDefault(specie_json, "class_type", -1);
+                cohort.class_type = readClassTypeOrDefault(specie_json, "class_type", -1);
                 cohort.class_name = readStringOrDefault(specie_json, "class_name");
             }
             frame.cohorts.push_back(std::move(cohort));
@@ -158,9 +192,13 @@ SimulationFrameData SimulationSnapshotReader::interpolate(double frame_position)
     SimulationFrameData out = (t < 0.5) ? left : right;
     out.elapsed_cycles = static_cast<int>(std::lround(lerp(static_cast<double>(left.elapsed_cycles), static_cast<double>(right.elapsed_cycles), t)));
     out.nutrients = lerp(left.nutrients, right.nutrients, t);
+    out.total_energy = lerp(left.total_energy, right.total_energy, t);
     out.ecological_health = lerp(left.ecological_health, right.ecological_health, t);
     out.living_biomass = lerp(left.living_biomass, right.living_biomass, t);
     out.death_biomass = lerp(left.death_biomass, right.death_biomass, t);
     out.decomposer_biomass = lerp(left.decomposer_biomass, right.decomposer_biomass, t);
+    out.autotroph_biomass = lerp(left.autotroph_biomass, right.autotroph_biomass, t);
+    out.heterotroph_biomass = lerp(left.heterotroph_biomass, right.heterotroph_biomass, t);
+    out.other_living_biomass = lerp(left.other_living_biomass, right.other_living_biomass, t);
     return out;
 }

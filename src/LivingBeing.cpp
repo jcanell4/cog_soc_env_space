@@ -74,6 +74,10 @@ float LivingBeing::getBiomassToEnergyConversionFactor() const {
     return biomass_to_energy_conversion_factor_;
 }
 
+float LivingBeing::getDeathBiomassToEnergyConversionFactor() const {
+    return death_biomass_to_energy_conversion_factor_;
+}
+
 const std::vector<double>& LivingBeing::getMaintenanceCost() const {
     return maintenance_cost_;
 }
@@ -136,6 +140,10 @@ void LivingBeing::setName(std::string name) {
 
 void LivingBeing::setBiomassToEnergyConversionFactor(float energy_content) {
     biomass_to_energy_conversion_factor_ = energy_content;
+}
+
+void LivingBeing::setDeathBiomassToEnergyConversionFactor(float energy_content) {
+    death_biomass_to_energy_conversion_factor_ = energy_content;
 }
 
 void LivingBeing::setMaintenanceCost(std::vector<double> maintenance_cost) {
@@ -247,8 +255,8 @@ void LivingBeing::updateStages(Cohort& cohort, int elapsed_cycles) const {
         return;
     }
 
-    const double noise_scale = SimulationConfig::global().noise_stddev * 0.1;
-    for (std::size_t i = max_i - 1U; i > 0U; --i) {
+    double noise_scale = SimulationConfig::global().noise_stddev * 0.1;
+    for (std::size_t i = max_i; i > 0U; --i) {
         const std::size_t from = i - 1U;
         const int Ti = std::max(1, d[from]);
         const double base = 1.0 / static_cast<double>(Ti);
@@ -258,10 +266,23 @@ void LivingBeing::updateStages(Cohort& cohort, int elapsed_cycles) const {
         const double available =
             from < current_biomass.size() ? std::max(0.0, current_biomass[from]) : 0.0;
         const double transfer = available * frac;
-        cohort.transferStageBiomass(static_cast<int>(from), static_cast<int>(i), transfer);
-    }
+        if (i == max_i) {
+            cohort.death_by_age(transfer);
+        }else{
+            cohort.transferStageBiomass(static_cast<int>(from), static_cast<int>(i), transfer);
+        }
+    }    
 }
 
+/**
+ * @brief Calculates the effective recruitment efficiency of a species.
+ *        e_i = max(0, min(1, 1 - (D_i - R_i))) with D_i, R_i from the vectors; missing entries in the shorter vector are treated as 0.
+ *        E_eff = product of e_i (1.0 if both empty).
+ *        E_eff = (\prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki})))))
+ * @param recruitment_strategies The recruitment strategies of the species.
+ * @param defense_strategies The defense strategies of the species.
+ * @return The effective recruitment efficiency of the species.
+ */
 double LivingBeing::calculate_effective_recruitment_efficiency(
     const std::vector<double>& recruitment_strategies,
     const std::vector<double>& defense_strategies) {
@@ -293,6 +314,18 @@ void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, in
 
 }
 
+/**
+ * @brief Processes the reproductive growth of a species.
+ * @param cohort The cohort of the species.
+ * @param stage_index The stage index of the species.
+ * @param stage_biomass_before_growth The biomass of the species before growth.
+ * @param biomass_increment_this_cycle The biomass increment of the species this cycle.
+ *        The reproductive growth is determined by the fertility of the species.
+ *        The equation for reproductive_biomass is:
+ *        reproductive_biomass = biomass_k * fertility_k * food_factor_k 
+ *         where biomass_k is the biomass of the stage k, f is the fertility of the satage k of the specie and food_factor_k is the food factor of the stage k 
+ *        of the specie which is determined by the ratio between the actual growth due to nutrition and the maximum growth due to nutrition.
+ */
 void LivingBeing::process_reproductive_growth(Cohort& cohort,
                                               int stage_index,
                                               double stage_biomass_before_growth,
@@ -336,6 +369,15 @@ void LivingBeing::process_reproductive_growth(Cohort& cohort,
     cohort.setBiomass(std::move(biomass));
 }
 
+/**
+ * @brief Calculates the vulnerability of a specie as the ratio between euclidean distance between the environment conditions and the best 
+ *        conditions for this stage of the specie and the maximum possible distance between the environment conditions and the best conditions (the worst case scenario).
+ *        The equation for vulnerability is:
+ *        vulnerability = \sqrt(\sum_{i=0}^{n}(current_conditions[i] - best_conditions[i])^2) / \sqrt(n)
+ * @param current_conditions The current conditions of the specie.
+ * @param best_conditions The best conditions of the species.
+ * @return The vulnerability of the species.
+ */
 double LivingBeing::calculateVulnerability(const std::vector<double>& current_conditions,
                                            const std::vector<double>& best_conditions) {
     const std::size_t n = std::max(current_conditions.size(), best_conditions.size());

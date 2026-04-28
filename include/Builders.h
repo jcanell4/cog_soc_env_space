@@ -24,6 +24,7 @@ class AutotrophBuilder {
 public:
     AutotrophBuilder& withName(std::string value);
     AutotrophBuilder& withEnergyContent(float value);
+    AutotrophBuilder& withDeathEnergyContent(float value);
     AutotrophBuilder& withBestEnvironmentalConditions(std::vector<std::vector<double>> value);
     AutotrophBuilder& fromJson(const nlohmann::json& j);
     Autotroph build() const;
@@ -36,10 +37,9 @@ class HeterotrophBuilder {
 public:
     HeterotrophBuilder& withName(std::string value);
     HeterotrophBuilder& withEnergyContent(float value);
-    HeterotrophBuilder& withSearchCaptureEfficiency(std::vector<double> value);
+    HeterotrophBuilder& withDeathEnergyContent(float value);
     HeterotrophBuilder& withProspectingAbilityRate(std::vector<double> value);
     HeterotrophBuilder& withAssimilationEfficiency(std::vector<double> value);
-    HeterotrophBuilder& withHandlingTimePenalty(std::vector<double> value);
     HeterotrophBuilder& withIngestionResidueFractionBySize(std::vector<std::vector<double>> value);
     HeterotrophBuilder& fromJson(const nlohmann::json& j);
     Heterotroph build() const;
@@ -52,9 +52,9 @@ class DecomposerBuilder {
 public:
     DecomposerBuilder& withName(std::string value);
     DecomposerBuilder& withEnergyContent(float value);
+    DecomposerBuilder& withDeathEnergyContent(float value);
     DecomposerBuilder& withProspectingAbilityRate(std::vector<double> value);
     DecomposerBuilder& withAssimilationEfficiency(std::vector<double> value);
-    DecomposerBuilder& withHandlingTimePenalty(std::vector<double> value);
     DecomposerBuilder& withIngestionResidueFractionBySize(std::vector<std::vector<double>> value);
     DecomposerBuilder& fromJson(const nlohmann::json& j);
     Decomposer build() const;

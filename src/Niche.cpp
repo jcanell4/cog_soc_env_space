@@ -110,6 +110,40 @@ double Niche::getLivingBiomass() const {
     return total;
 }
 
+double Niche::calculateEnergy() const {
+    double total_energy = std::max(0.0, getNutrients());
+    for (const Cohort& cohort : cohort_set_) {
+        total_energy += cohort.getEnergy();
+    }
+    return total_energy;
+}
+
+double Niche::getEnergy() const {
+    return calculateEnergy();
+}
+
+double Niche::getAutotrophBiomass() const {
+    double total = 0.0;
+    for (const Cohort& cohort : cohort_set_) {
+        const LivingBeing* sp = cohort.getSpecie();
+        if (sp != nullptr && sp->getClassType() == LivingBeingClassType::AUTOTROPH) {
+            total += cohort.getTotalBiomass();
+        }
+    }
+    return total;
+}
+
+double Niche::getHeterotrophBiomass() const {
+    double total = 0.0;
+    for (const Cohort& cohort : cohort_set_) {
+        const LivingBeing* sp = cohort.getSpecie();
+        if (sp != nullptr && sp->getClassType() == LivingBeingClassType::HETEROTROPH) {
+            total += cohort.getTotalBiomass();
+        }
+    }
+    return total;
+}
+
 double Niche::getDecomposerBiomass() const {
     double total = 0.0;
     for (const Cohort& cohort : cohort_set_) {
@@ -149,6 +183,14 @@ std::vector<double> Niche::getAutotrophBiomassPerStratum() const {
     return per_stratum;
 }
 
+/**
+ * @brief Calculates the light transmission fraction per stratum.
+ * @return The light transmission fraction per stratum.
+ *        Shadow density is (sum of biomass×opacity per stratum) / surface.
+ *        Top stratum (highest index) receives 1.0 incident light (percent_arrived[top] = 1.0).
+ *        For lower strata: percent_arrived[h] = exp(-density[h+1]) × percent_arrived[h+1], clamped to [0,1].
+ *        Every percent is reduced by 30% for each stratum: percent_in[h] = exp(-(0.3*density[h]+density[h+1])) × percent_arrived[h+1].
+ */
 std::vector<double> Niche::getLithPerStratum() const {
     std::vector<double> shadow_accumulated;
     for (const Cohort& cohort : cohort_set_) {

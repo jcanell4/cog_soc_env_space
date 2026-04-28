@@ -2,7 +2,7 @@
 
 /**
  * @file ConsumerLivingBeing.h
- * @brief Shared ingestion state for heterotrophs and decomposers (assimilation, handling, residue routing).
+ * @brief Shared ingestion state for heterotrophs and decomposers (assimilation, residue routing, prospecting).
  */
 
 #include "LivingBeing.h"
@@ -24,12 +24,10 @@ public:
     ConsumerLivingBeing() = default;
 
     const std::vector<double>& getProspectingAbilityRate() const;
-    const std::vector<double>& getHandlingTimePenalty() const;
     const std::vector<double>& getAssimilationEfficiency() const;
     const std::vector<std::vector<double>>& getIngestionResidueFractionBySize() const;
 
     ConsumerLivingBeing& setProspectingAbilityRate(std::vector<double> values);
-    ConsumerLivingBeing& setHandlingTimePenalty(std::vector<double> values);
     ConsumerLivingBeing& setAssimilationEfficiency(std::vector<double> values);
     ConsumerLivingBeing& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 
@@ -71,7 +69,6 @@ protected:
                                            const LivingBeing& specie);
 
     std::vector<double> prospecting_ability_rate_;
-    std::vector<double> handling_time_penalty_;
     std::vector<double> assimilation_efficiency_;
     std::vector<std::vector<double>> ingestion_residue_fraction_by_size_;
 

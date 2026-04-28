@@ -24,8 +24,8 @@ public:
      * The routine models prey finding, capture, and biomass transfers in three phases:
      * 1) Build theoretical captures across all prey cohorts/stages from encounter probability and
      *    recruitment-vs-defense compatibility, then enforce a global growth-limited ingestion cap.
-     * 2) Apply handling-time reduction, subtract consumed biomass from prey cohorts, and route
-     *    non-assimilated fractions to prey dead-biomass size bins.
+     * 2) Subtract consumed biomass from prey cohorts and route non-assimilated fractions to prey
+     *    dead-biomass size bins.
      * 3) Optionally complement missing ingestion via parental supply (if diet contains
      *    @c DietType::PARENTAL_SUPPLY_TYPE), taking biomass proportionally from fertile donor stages,
      *    with stochastic correction to avoid deterministic maximum attainment every step.
@@ -48,17 +48,13 @@ public:
     using ConsumerLivingBeing::isFoodTypeMyDiet;
     using ConsumerLivingBeing::getRangeForFoodType;
 
-    const std::vector<double>& getSearchCaptureEfficiency() const;
     using ConsumerLivingBeing::getProspectingAbilityRate;
-    using ConsumerLivingBeing::getHandlingTimePenalty;
     using ConsumerLivingBeing::getAssimilationEfficiency;
     using ConsumerLivingBeing::getIngestionResidueFractionBySize;
 
     Heterotroph& setName(std::string name);
     Heterotroph& setEnergyContent(float energy_content);
-    Heterotroph& setSearchCaptureEfficiency(std::vector<double> values);
     Heterotroph& setProspectingAbilityRate(std::vector<double> values);
-    Heterotroph& setHandlingTimePenalty(std::vector<double> values);
     Heterotroph& setAssimilationEfficiency(std::vector<double> values);
     Heterotroph& setIngestionResidueFractionBySize(std::vector<std::vector<double>> values);
 
@@ -68,6 +64,4 @@ public:
      */
     void rebuild_diet_by_cohort_index_from_food_type(const Niche& niche);
 
-private:
-    std::vector<double> search_capture_efficiency_;
 };

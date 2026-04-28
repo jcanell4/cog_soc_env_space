@@ -15,6 +15,7 @@ Heterotroph::Heterotroph() {
 
 void Heterotroph::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
+    rebuild_diet_by_cohort_index_from_food_type(niche);
 }
 
 void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const {
@@ -33,7 +34,6 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
     const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
     const auto& hetero = static_cast<const Heterotroph&>(*specie);
     const std::vector<double>& assimilation = hetero.getAssimilationEfficiency();
-    const std::vector<double>& handling_penalty = hetero.getHandlingTimePenalty();
     const std::vector<std::vector<double>>& residue_by_size = hetero.getIngestionResidueFractionBySize();
     const std::vector<double>& max_growth = specie->getMaxIndividualGrowth();
     const std::vector<double>& prospecting = hetero.getProspectingAbilityRate();
@@ -45,7 +45,6 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
 
     const double old_predator_biomass = std::max(0.0, predator_biomass[su]);
     const double assimilation_stage = su < assimilation.size() ? std::clamp(assimilation[su], 0.0, 1.0) : 0.0;
-    const double handling_stage = su < handling_penalty.size() ? std::clamp(handling_penalty[su], 0.0, 1.0) : 0.0;
     const double max_growth_stage = su < max_growth.size() ? std::clamp(max_growth[su], 0.0, 1.0) : 0.0;
     const double movement_rate_stage = su < prospecting.size() ? std::max(0.0, prospecting[su]) : 0.0;
 
@@ -84,7 +83,7 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
             continue;
         }
         const std::size_t prey_cohort_index = static_cast<std::size_t>(food_index);
-        if (prey_cohort_index >= cohorts.size()) {
+        if (0 > prey_cohort_index || prey_cohort_index >= cohorts.size()) {
             continue;
         }
         Cohort& prey_cohort = cohorts[prey_cohort_index];
@@ -113,6 +112,7 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
 
         const double colony_rate = std::clamp(prey_specie->getColonyAbilityRate(), 0.0, 1.0);
         const double gamma = std::max(kEps, COLONY_MIX_GAMMA);
+        //Effective weight of the colony in calculating the search probability
         const double w_colony = std::clamp(std::pow(colony_rate, gamma), 0.0, 1.0);
 
         // Whole-cohort colony footprint (all prey stages); diet range below limits predation only.
@@ -194,17 +194,13 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
         gross_intake += item.take;
     }
 
-    const double gross_intake_effective =
-        gross_intake > 0.0 ? (gross_intake / (1.0 + handling_stage * gross_intake)) : 0.0;
-    const double handling_scale = gross_intake > kEps ? std::clamp(gross_intake_effective / gross_intake, 0.0, 1.0) : 0.0;
-
     // Apply realized captures to prey cohorts and route non-assimilated intake to prey dead biomass.
     double total_removed_from_prey = 0.0;
     for (auto& [_, item] : capture_map) {
         if (item.take <= 0.0) {
             continue;
         }
-        item.take_effective = item.take * handling_scale;
+        item.take_effective = item.take;
         if (item.take_effective <= 0.0) {
             continue;
         }
@@ -259,8 +255,15 @@ void Heterotroph::setCyclesPerStages(std::vector<int> cycles_per_stages) {
 
 void Heterotroph::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche) {
     const std::size_t stage_count = getCyclesPerStages().size();
-    std::vector<std::vector<std::tuple<int, int, int>>> cohort_diet_by_stage(stage_count);
+    std::vector<std::vector<std::tuple<int, int, int>>> cohort_diet_by_stage = getDietByCohortIndex();
+    cohort_diet_by_stage.resize(stage_count);
     const Niche::CohortSet& cohorts = niche.getCohortSet();
+    const auto append_unique_rule =
+        [](std::vector<std::tuple<int, int, int>>& stage_diet, const std::tuple<int, int, int>& rule) {
+            if (std::find(stage_diet.begin(), stage_diet.end(), rule) == stage_diet.end()) {
+                stage_diet.push_back(rule);
+            }
+        };
     for (std::size_t stage = 0; stage < stage_count; ++stage) {
         std::vector<std::tuple<int, int, int>>& stage_diet = cohort_diet_by_stage[stage];
         for (std::size_t i = 0; i < cohorts.size(); ++i) {
@@ -275,14 +278,10 @@ void Heterotroph::rebuild_diet_by_cohort_index_from_food_type(const Niche& niche
             if (min_st < 0 || max_st < 0) {
                 continue;
             }
-            stage_diet.emplace_back(static_cast<int>(i), min_st, max_st);
+            append_unique_rule(stage_diet, std::make_tuple(static_cast<int>(i), min_st, max_st));
         }
     }
     setDietByCohortIndex(std::move(cohort_diet_by_stage));
-}
-
-const std::vector<double>& Heterotroph::getSearchCaptureEfficiency() const {
-    return search_capture_efficiency_;
 }
 
 Heterotroph& Heterotroph::setName(std::string name) {
@@ -295,18 +294,8 @@ Heterotroph& Heterotroph::setEnergyContent(float energy_content) {
     return *this;
 }
 
-Heterotroph& Heterotroph::setSearchCaptureEfficiency(std::vector<double> values) {
-    search_capture_efficiency_ = ConsumerLivingBeing::clampUnitInterval(std::move(values));
-    return *this;
-}
-
 Heterotroph& Heterotroph::setProspectingAbilityRate(std::vector<double> values) {
     ConsumerLivingBeing::setProspectingAbilityRate(std::move(values));
-    return *this;
-}
-
-Heterotroph& Heterotroph::setHandlingTimePenalty(std::vector<double> values) {
-    ConsumerLivingBeing::setHandlingTimePenalty(std::move(values));
     return *this;
 }
 

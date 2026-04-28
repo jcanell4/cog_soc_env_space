@@ -39,6 +39,7 @@ public:
     std::uint64_t getCohortElapsedCycles() const;
 
     void transferStageBiomass(int from_stage, int to_stage, double amount);
+    void death_by_age(double dead_biomass_by_age);
 
 private:
     std::uint64_t id_;

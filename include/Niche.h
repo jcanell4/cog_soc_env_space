@@ -34,6 +34,10 @@ public:
 
     double getDeathBiomass() const;
     double getLivingBiomass() const;
+    double calculateEnergy() const;
+    double getEnergy() const;
+    double getAutotrophBiomass() const;
+    double getHeterotrophBiomass() const;
     double getDecomposerBiomass() const;
 
     /**

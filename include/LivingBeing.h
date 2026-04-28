@@ -24,7 +24,7 @@ class Cohort;
 class LivingBeing {
 public:
     LivingBeing() = default;
-    explicit LivingBeing(std::string name, float biomass_to_energy_conversion_factor_ = 0.0f);
+    explicit LivingBeing(std::string name, float biomass_to_energy_conversion_factor_ = 50.0f);
     virtual ~LivingBeing();
 
     virtual void initialize(const Niche& niche);
@@ -45,6 +45,7 @@ public:
 
     const std::string& getName() const;
     float getBiomassToEnergyConversionFactor() const;
+    float getDeathBiomassToEnergyConversionFactor() const;
     const std::vector<double>& getMaintenanceCost() const;
     const std::vector<double>& getMaxFertility() const;
     const std::vector<double>& getResilience() const;
@@ -73,6 +74,7 @@ public:
 
     void setName(std::string name);
     void setBiomassToEnergyConversionFactor(float energy_content);
+    void setDeathBiomassToEnergyConversionFactor(float energy_content);
     void setMaintenanceCost(std::vector<double> maintenance_cost);
     void setMaxFertility(std::vector<double> max_fertility);
     void setResilience(std::vector<double> resilience);
@@ -145,7 +147,8 @@ public:
 protected:
     std::string name_;
     std::string food_type_{std::string{FoodType::LIVING_BEING}};
-    float biomass_to_energy_conversion_factor_{19.5f};
+    float biomass_to_energy_conversion_factor_{50.0f};
+    float death_biomass_to_energy_conversion_factor_{19.5f};
     std::vector<double> maintenance_cost_;
     std::vector<double> max_fertility_;
     std::vector<double> resilience_;

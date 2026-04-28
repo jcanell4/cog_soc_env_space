@@ -26,10 +26,25 @@ struct ChartMetric {
     double SimulationFrameData::*member;
 };
 
-constexpr std::array<ChartMetric, 3> kChartMetrics = {{
+constexpr std::array<ChartMetric, 7> kChartMetrics = {{
     {"Nutrients", SKYBLUE, &SimulationFrameData::nutrients},
-    {"Living biomass", GREEN, &SimulationFrameData::living_biomass},
+    {"Living biomass", BLUE, &SimulationFrameData::living_biomass},
     {"Death biomass", ORANGE, &SimulationFrameData::death_biomass},
+    {"Autotroph biomass", Color{80, 220, 120, 255}, &SimulationFrameData::autotroph_biomass},
+    {"Heterotroph biomass", Color{255, 99, 71, 255}, &SimulationFrameData::heterotroph_biomass},
+    {"Decomposer biomass", Color{183, 138, 255, 255}, &SimulationFrameData::decomposer_biomass},
+    {"Other biomass", Color{190, 190, 190, 255}, &SimulationFrameData::other_living_biomass},
+}};
+
+constexpr std::array<Color, 8> kStageColors = {{
+    Color{76, 201, 240, 255},
+    Color{72, 149, 239, 255},
+    Color{67, 97, 238, 255},
+    Color{63, 55, 201, 255},
+    Color{58, 12, 163, 255},
+    Color{114, 9, 183, 255},
+    Color{181, 23, 158, 255},
+    Color{247, 37, 133, 255},
 }};
 
 void drawHelpText() {
@@ -50,7 +65,9 @@ void drawHud(const SimulationFrameData& frame, std::size_t frame_index, std::siz
                   speed);
     DrawText(line, 20, 46, 20, WHITE);
 
-    std::snprintf(line, sizeof(line), "Nutrients: %.3f  |  Ecological health: %.3f", frame.nutrients, frame.ecological_health);
+    std::snprintf(
+        line, sizeof(line), "Nutrients: %.3f  |  Total energy: %.3f  |  Ecological health: %.3f",
+        frame.nutrients, frame.total_energy, frame.ecological_health);
     DrawText(line, 20, 74, 20, WHITE);
 
     std::snprintf(line, sizeof(line), "Living biomass: %.3f  |  Death biomass: %.3f  |  Decomposer biomass: %.3f",
@@ -93,8 +110,11 @@ void drawTimeSeries(const JsonFrameSource& source, std::size_t current_index, Re
             DrawLineEx(Vector2{x0, y0}, Vector2{x1, y1}, 2.0F, metric.color);
         }
 
-        const int legend_x = static_cast<int>(area.x + 14.0F + static_cast<float>(metric_index) * 190.0F);
-        const int legend_y = static_cast<int>(area.y + 12.0F);
+        const std::size_t legend_columns = 4U;
+        const std::size_t legend_column = metric_index % legend_columns;
+        const std::size_t legend_row = metric_index / legend_columns;
+        const int legend_x = static_cast<int>(area.x + 14.0F + static_cast<float>(legend_column) * 260.0F);
+        const int legend_y = static_cast<int>(area.y + 12.0F + static_cast<float>(legend_row) * 22.0F);
         DrawRectangle(legend_x, legend_y + 6, 18, 8, metric.color);
         DrawText(metric.label, legend_x + 28, legend_y, 16, LIGHTGRAY);
     }
@@ -103,7 +123,7 @@ void drawTimeSeries(const JsonFrameSource& source, std::size_t current_index, Re
     DrawLineV(Vector2{marker_x, area.y}, Vector2{marker_x, area.y + area.height}, YELLOW);
 }
 
-void drawTopCohorts(const SimulationFrameData& frame, Rectangle area) {
+void drawTopCohorts(const SimulationFrameData& frame, Rectangle area, double absolute_max_biomass) {
     DrawRectangleLinesEx(area, 1.0F, GRAY);
     DrawText("Top cohorts by biomass", static_cast<int>(area.x), static_cast<int>(area.y) - 24, 20, LIGHTGRAY);
 
@@ -120,20 +140,45 @@ void drawTopCohorts(const SimulationFrameData& frame, Rectangle area) {
         sorted.resize(static_cast<std::size_t>(kTopNCohorts));
     }
 
-    double max_biomass = 0.0;
-    for (const CohortFrameData& cohort : sorted) {
-        max_biomass = std::max(max_biomass, cohort.total_biomass);
-    }
-    max_biomass = std::max(max_biomass, 1e-9);
+    const double max_biomass = std::max(absolute_max_biomass, 1e-9);
 
     const float row_height = area.height / static_cast<float>(kTopNCohorts);
     for (std::size_t i = 0; i < sorted.size(); ++i) {
         const CohortFrameData& cohort = sorted[i];
         const float y = area.y + static_cast<float>(i) * row_height;
-        const float normalized = static_cast<float>(cohort.total_biomass / max_biomass);
+        const float normalized = static_cast<float>(std::abs(cohort.total_biomass) / max_biomass);
         const float bar_width = (area.width - 260.0F) * normalized;
+        const int bar_x = static_cast<int>(area.x + 240.0F);
+        const int bar_y = static_cast<int>(y + 6.0F);
+        const int bar_h = static_cast<int>(row_height - 10.0F);
 
-        DrawRectangle(static_cast<int>(area.x + 240.0F), static_cast<int>(y + 6.0F), static_cast<int>(bar_width), static_cast<int>(row_height - 10.0F), DARKGREEN);
+        if (cohort.stage_biomass.empty() || cohort.total_biomass <= 0.0) {
+            DrawRectangle(bar_x, bar_y, static_cast<int>(bar_width), bar_h, DARKGREEN);
+        } else {
+            int accumulated_width = 0;
+            for (std::size_t stage = 0; stage < cohort.stage_biomass.size(); ++stage) {
+                const double stage_mass = std::max(0.0, cohort.stage_biomass[stage]);
+                if (stage_mass <= 0.0) {
+                    continue;
+                }
+
+                int stage_width = static_cast<int>(
+                    bar_width * static_cast<float>(stage_mass / std::max(cohort.total_biomass, 1e-9)));
+                if (stage == cohort.stage_biomass.size() - 1U) {
+                    stage_width = static_cast<int>(bar_width) - accumulated_width;
+                }
+                if (stage_width <= 0) {
+                    continue;
+                }
+
+                DrawRectangle(bar_x + accumulated_width, bar_y, stage_width, bar_h, kStageColors[stage % kStageColors.size()]);
+                accumulated_width += stage_width;
+            }
+
+            if (accumulated_width < static_cast<int>(bar_width)) {
+                DrawRectangle(bar_x + accumulated_width, bar_y, static_cast<int>(bar_width) - accumulated_width, bar_h, DARKGREEN);
+            }
+        }
 
         char label[128];
         std::snprintf(label, sizeof(label), "#%d %s (%s)", cohort.id, cohort.specie_name.c_str(), cohort.class_name.c_str());
@@ -142,6 +187,17 @@ void drawTopCohorts(const SimulationFrameData& frame, Rectangle area) {
         std::snprintf(label, sizeof(label), "%.3f", cohort.total_biomass);
         DrawText(label, static_cast<int>(area.x + area.width - 90.0F), static_cast<int>(y + 8.0F), 16, WHITE);
     }
+}
+
+double computeAbsoluteMaxCohortBiomass(const JsonFrameSource& source) {
+    double max_abs = 0.0;
+    for (std::size_t i = 0; i < source.frameCount(); ++i) {
+        const SimulationFrameData& frame = source.frameAt(i);
+        for (const CohortFrameData& cohort : frame.cohorts) {
+            max_abs = std::max(max_abs, std::abs(cohort.total_biomass));
+        }
+    }
+    return max_abs;
 }
 
 }  // namespace
@@ -163,6 +219,7 @@ int main(int argc, char* argv[]) {
         std::fprintf(stderr, "Snapshot file has zero frames\n");
         return 1;
     }
+    const double absolute_max_cohort_biomass = computeAbsoluteMaxCohortBiomass(frame_source);
 
     InitWindow(kWindowWidth, kWindowHeight, "cog_soc_env_space viewer (raylib)");
     SetTargetFPS(static_cast<int>(kFramesPerSecond));
@@ -214,7 +271,7 @@ int main(int argc, char* argv[]) {
         drawHud(current_frame, current_index, frame_source.frameCount(), speed, playing);
 
         drawTimeSeries(frame_source, current_index, Rectangle{20.0F, 150.0F, 1400.0F, 320.0F});
-        drawTopCohorts(current_frame, Rectangle{20.0F, 530.0F, 1400.0F, 340.0F});
+        drawTopCohorts(current_frame, Rectangle{20.0F, 530.0F, 1400.0F, 340.0F}, absolute_max_cohort_biomass);
 
         EndDrawing();
     }

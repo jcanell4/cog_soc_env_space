@@ -90,7 +90,14 @@ double Cohort::getEnergy() const {
 }
 
 double Cohort::calculateEnergy() const {
-    return specie_ ? getTotalBiomass() * static_cast<double>(specie_->getBiomassToEnergyConversionFactor()) : 0.0;
+    if (specie_ == nullptr) {
+        return 0.0;
+    }
+    const double living_energy =
+        getTotalBiomass() * static_cast<double>(specie_->getBiomassToEnergyConversionFactor());
+    const double death_energy =
+        getTotalDeathBiomass() * static_cast<double>(specie_->getDeathBiomassToEnergyConversionFactor());
+    return living_energy + death_energy;
 }
 
 const std::vector<double>& Cohort::getBiomass() const {
@@ -136,6 +143,18 @@ Cohort& Cohort::setDeathBiomass(std::vector<double> value) {
     return *this;
 }
 
+/**
+ * @brief Updates the deaths of a cohort.
+ * @param stage The stage of the cohort.
+ *        The deaths are determined by the resilience of the specie (resistance to the adverse conditions).
+ *        The deaths are determined by the vulnerability of the specie as euclidean distance between the environment conditions and the best 
+ *        conditions for this stage of the specie.
+ *        The equation for death_factor is:
+ *        death_factor = vulnerability * (1-resilience)
+ *        The equation for dead_i is:
+ *        dead_i = biomass_[i] * death_factor
+ *        where biomass_[i] is the biomass of the stage i of the cohort.
+ */
 void Cohort::update_deaths(int stage) {
     if (specie_ == nullptr || biomass_.empty() || stage < 0) {
         return;
@@ -151,7 +170,7 @@ void Cohort::update_deaths(int stage) {
     const double noise_factor = std::max(0.0, 1.0 + noise);
 
     const double resilience_i = i < resilience.size() ? resilience[i] : 0.0;
-    const double death_factor = (vulnerability + (1.0 - resilience_i)) * noise_factor;
+    const double death_factor = vulnerability * (1.0 - resilience_i) * noise_factor;
     const double dead_i = biomass_[i] * death_factor;
     biomass_[i] = std::max(0.0, biomass_[i] - dead_i);
     const std::vector<std::vector<double>>& death_fraction_by_size = specie_->getDeathBiomassFractionBySize();
@@ -195,6 +214,41 @@ void Cohort::transferStageBiomass(int from_stage, int to_stage, double amount) {
     biomass_[to] += take;
 }
 
+void Cohort::death_by_age(double dead_biomass_by_age) {
+    if (dead_biomass_by_age <= 0.0 || biomass_.empty()) {
+        return;
+    }
+
+    const std::size_t stage = biomass_.size() - 1U;
+    const double available = std::max(0.0, biomass_[stage]);
+    const double dead_amount = std::min(dead_biomass_by_age, available);
+    if (dead_amount <= 0.0) {
+        return;
+    }
+    biomass_[stage] = std::max(0.0, biomass_[stage] - dead_amount);
+
+    const std::vector<std::vector<double>> empty_distribution;
+    const std::vector<std::vector<double>>& death_fraction_by_size =
+        specie_ != nullptr ? specie_->getDeathBiomassFractionBySize() : empty_distribution;
+    const std::vector<double> distribution =
+        stage < death_fraction_by_size.size() ? death_fraction_by_size[stage] : std::vector<double>{};
+
+    if (distribution.empty()) {
+        if (death_biomass_.empty()) {
+            death_biomass_.resize(DEATH_BIOMASS_FINEST_BIN + 1, 0.0);
+        }
+        death_biomass_[DEATH_BIOMASS_FINEST_BIN] += dead_amount;
+        return;
+    }
+
+    if (death_biomass_.size() < distribution.size()) {
+        death_biomass_.resize(distribution.size(), 0.0);
+    }
+    for (std::size_t s = 0; s < distribution.size(); ++s) {
+        death_biomass_[s] += dead_amount * distribution[s];
+    }
+}
+
 double Cohort::decrement_death_biomass(std::vector<double> amounts) {
     amounts = normalizeDeathBins(std::move(amounts));
     const double before = getTotalDeathBiomass();
@@ -211,7 +265,6 @@ void Cohort::update_step(Niche& niche) {
         return;
     }
     ++cohort_elapsed_cycles_;
-    specie_->updateStages(*this, static_cast<int>(cohort_elapsed_cycles_));
     for (std::size_t stage = 0; stage < biomass_.size(); ++stage) {
         const std::vector<double>& biomass_before_growth = getBiomass();
         const double stage_biomass_before_growth = stage < biomass_before_growth.size() ? biomass_before_growth[stage] : 0.0;
@@ -227,6 +280,7 @@ void Cohort::update_step(Niche& niche) {
             biomass_increment_this_cycle);
         update_deaths(static_cast<int>(stage));
     }
+    specie_->updateStages(*this, static_cast<int>(cohort_elapsed_cycles_));
 }
 
 void Cohort::initialize(const Niche& niche) {

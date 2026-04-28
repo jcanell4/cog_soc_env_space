@@ -6,6 +6,7 @@
 #include "ConsumerLivingBeing.h"
 #include "Decomposer.h"
 #include "Heterotroph.h"
+#include "JsonEnumNames.h"
 #include "LivingBeing.h"
 #include "Niche.h"
 
@@ -40,7 +41,7 @@ json toJsonDietByCohortIndex(const std::vector<std::vector<std::tuple<int, int, 
         json stage_json = json::array();
         for (const auto& entry : stage_rules) {
             stage_json.push_back({
-                {"cohort_index", std::get<0>(entry)},
+                {"cohort_index", json_enum_names::dietCohortIndexToJson(std::get<0>(entry))},
                 {"min_stage", std::get<1>(entry)},
                 {"max_stage", std::get<2>(entry)},
             });
@@ -67,11 +68,12 @@ json toJsonDietByFoodType(const std::vector<std::vector<std::tuple<std::string, 
 }
 
 void writeLivingBeingCommon(const LivingBeing& living_being, json& out) {
-    out["class_type"] = living_being.getClassType();
+    out["class_type"] = json_enum_names::classTypeToJson(living_being.getClassType());
     out["class_name"] = classTypeToName(living_being.getClassType());
     out["name"] = living_being.getName();
     out["food_type"] = living_being.getFoodType();
     out["biomass_to_energy_conversion_factor"] = living_being.getBiomassToEnergyConversionFactor();
+    out["death_biomass_to_energy_conversion_factor"] = living_being.getDeathBiomassToEnergyConversionFactor();
     out["maintenance_cost"] = living_being.getMaintenanceCost();
     out["max_fertility"] = living_being.getMaxFertility();
     out["resilience"] = living_being.getResilience();
@@ -91,7 +93,6 @@ void writeLivingBeingCommon(const LivingBeing& living_being, json& out) {
 
 void writeConsumerLivingBeingCommon(const ConsumerLivingBeing& consumer, json& out) {
     out["prospecting_ability_rate"] = consumer.getProspectingAbilityRate();
-    out["handling_time_penalty"] = consumer.getHandlingTimePenalty();
     out["assimilation_efficiency"] = consumer.getAssimilationEfficiency();
     out["ingestion_residue_fraction_by_size"] = consumer.getIngestionResidueFractionBySize();
     out["diet_by_food_type"] = toJsonDietByFoodType(consumer.getDietByFoodType());
@@ -156,6 +157,7 @@ void JsonEcosystem::updateJson(const Niche& niche, nlohmann::json& out) {
     out["surface"] = niche.getSurface();
     out["ecological_health"] = niche.getEcologicalHealth();
     out["nutrients"] = niche.getNutrients();
+    out["total_energy"] = niche.getEnergy();
     out["return_rate"] = niche.getReturnRate();
     out["conditions"] = niche.getConditions();
     out["limiting_factors"] = niche.getLimitingFactors();
@@ -166,12 +168,42 @@ void JsonEcosystem::updateJson(const Niche& niche, nlohmann::json& out) {
     out["light_per_stratum"] = niche.getLithPerStratum();
 
     out["cohorts"] = json::array();
+    double autotroph_biomass = 0.0;
+    double heterotroph_biomass = 0.0;
+    double decomposer_biomass = 0.0;
+    double other_living_biomass = 0.0;
     const Niche::CohortSet& cohorts = niche.getCohortSet();
     for (const Cohort& cohort : cohorts) {
+        const LivingBeing* specie = cohort.getSpecie();
+        const double cohort_biomass = std::max(0.0, cohort.getTotalBiomass());
+        if (specie == nullptr) {
+            other_living_biomass += cohort_biomass;
+        } else {
+            switch (specie->getClassType()) {
+            case LivingBeingClassType::AUTOTROPH:
+                autotroph_biomass += cohort_biomass;
+                break;
+            case LivingBeingClassType::HETEROTROPH:
+                heterotroph_biomass += cohort_biomass;
+                break;
+            case LivingBeingClassType::DECOMPOSER:
+                decomposer_biomass += cohort_biomass;
+                break;
+            default:
+                other_living_biomass += cohort_biomass;
+                break;
+            }
+        }
         json cohort_json = json::object();
         updateJson(cohort, cohort_json);
         out["cohorts"].push_back(std::move(cohort_json));
     }
+    out["biomass_by_class"] = {
+        {"autotroph", autotroph_biomass},
+        {"heterotroph", heterotroph_biomass},
+        {"decomposer", decomposer_biomass},
+        {"other", other_living_biomass},
+    };
 }
 
 void JsonEcosystem::updateJson(const Cohort& cohort, nlohmann::json& out) {
@@ -243,7 +275,6 @@ void JsonEcosystem::updateJson(const Heterotroph& heterotroph, nlohmann::json& o
         out = json::object();
     }
     writeConsumerLivingBeingCommon(heterotroph, out);
-    out["search_capture_efficiency"] = heterotroph.getSearchCaptureEfficiency();
 }
 
 void JsonEcosystem::updateJson(const Decomposer& decomposer, nlohmann::json& out) {

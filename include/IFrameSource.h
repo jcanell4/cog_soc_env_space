@@ -12,15 +12,20 @@ struct CohortFrameData {
     double energy = 0.0;
     double total_biomass = 0.0;
     double total_death_biomass = 0.0;
+    std::vector<double> stage_biomass;
 };
 
 struct SimulationFrameData {
     int elapsed_cycles = 0;
     double nutrients = 0.0;
+    double total_energy = 0.0;
     double ecological_health = 0.0;
     double living_biomass = 0.0;
     double death_biomass = 0.0;
     double decomposer_biomass = 0.0;
+    double autotroph_biomass = 0.0;
+    double heterotroph_biomass = 0.0;
+    double other_living_biomass = 0.0;
     std::vector<CohortFrameData> cohorts;
 };
 

@@ -13,10 +13,6 @@ const std::vector<double>& ConsumerLivingBeing::getProspectingAbilityRate() cons
     return prospecting_ability_rate_;
 }
 
-const std::vector<double>& ConsumerLivingBeing::getHandlingTimePenalty() const {
-    return handling_time_penalty_;
-}
-
 const std::vector<double>& ConsumerLivingBeing::getAssimilationEfficiency() const {
     return assimilation_efficiency_;
 }
@@ -82,11 +78,6 @@ std::vector<double> ConsumerLivingBeing::normalizeResidueRow(std::vector<double>
 
 ConsumerLivingBeing& ConsumerLivingBeing::setProspectingAbilityRate(std::vector<double> values) {
     prospecting_ability_rate_ = clampUnitInterval(std::move(values));
-    return *this;
-}
-
-ConsumerLivingBeing& ConsumerLivingBeing::setHandlingTimePenalty(std::vector<double> values) {
-    handling_time_penalty_ = clampUnitInterval(std::move(values));
     return *this;
 }
 
