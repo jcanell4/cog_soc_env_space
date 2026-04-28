@@ -1,0 +1,97 @@
+name: Update Homebrew Tap Formula
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Git tag to publish in Homebrew (e.g. v0.1.0)"
+        required: true
+        type: string
+
+jobs:
+  update-homebrew-tap:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      SOURCE_REPO: jcanell4/cog_soc_env_space
+      TAP_REPO: jcanell4/homebrew-cog-soc-env-space
+      FORMULA_PATH: Formula/cog-soc-env-space.rb
+
+    steps:
+      - name: Resolve release tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag }}"
+          else
+            TAG="${{ github.event.release.tag_name }}"
+          fi
+          if [ -z "$TAG" ]; then
+            echo "Tag is empty" >&2
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build source URL and SHA256
+        id: source
+        run: |
+          TAG="${{ steps.tag.outputs.tag }}"
+          URL="https://github.com/${SOURCE_REPO}/archive/refs/tags/${TAG}.tar.gz"
+          curl -fL "$URL" -o source.tar.gz
+          SHA="$(sha256sum source.tar.gz | awk '{print $1}')"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout tap repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.TAP_REPO }}
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: tap
+
+      - name: Update formula contents
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+
+          formula = pathlib.Path("tap") / "${{ env.FORMULA_PATH }}"
+          text = formula.read_text(encoding="utf-8")
+
+          replacements = [
+              (r'^\s*url\s+".*"$', f'  url "${{ steps.source.outputs.url }}"'),
+              (r'^\s*version\s+".*"$', f'  version "${{ steps.tag.outputs.version }}"'),
+              (r'^\s*sha256\s+".*"$', f'  sha256 "${{ steps.source.outputs.sha }}"'),
+          ]
+
+          updated = text
+          for pattern, repl in replacements:
+              updated, count = re.subn(pattern, repl, updated, count=1, flags=re.MULTILINE)
+              if count != 1:
+                  raise RuntimeError(f"Unable to update formula field matching: {pattern}")
+
+          formula.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Create pull request in tap
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: tap
+          commit-message: |
+            Update cog-soc-env-space formula for ${{ steps.tag.outputs.tag }}
+          branch: chore/update-cog-soc-env-space-${{ steps.tag.outputs.tag }}
+          title: Update formula to ${{ steps.tag.outputs.tag }}
+          body: |
+            Automated update from `${{ env.SOURCE_REPO }}` release `${{ steps.tag.outputs.tag }}`.
+
+            - URL: `${{ steps.source.outputs.url }}`
+            - SHA256: `${{ steps.source.outputs.sha }}`
+          labels: |
+            automation
+            homebrew
