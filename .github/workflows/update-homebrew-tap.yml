@@ -75,18 +75,33 @@ jobs:
               if count != 1:
                   raise RuntimeError(f"Unable to update formula field matching: {pattern}")
 
-          # Ensure Homebrew provides nlohmann/json dependency.
-          if not re.search(r'^\s*depends_on\s+"nlohmann-json"\s*$', updated, flags=re.MULTILINE):
-              cmake_dep = re.search(r'^\s*depends_on\s+"cmake"\s*=>\s*:build\s*$', updated, flags=re.MULTILINE)
-              if cmake_dep:
+          cmake_dep = re.search(r'^\s*depends_on\s+"cmake"\s*=>\s*:build\s*$', updated, flags=re.MULTILINE)
+          if not cmake_dep:
+              raise RuntimeError('Unable to find cmake build dependency in formula')
+
+          # Ensure Homebrew provides required package dependencies.
+          for dep in ("nlohmann-json", "raylib"):
+              if not re.search(rf'^\s*depends_on\s+"{re.escape(dep)}"\s*$', updated, flags=re.MULTILINE):
                   insertion_point = cmake_dep.end()
                   updated = (
                       updated[:insertion_point]
-                      + '\n  depends_on "nlohmann-json"'
+                      + f'\n  depends_on "{dep}"'
                       + updated[insertion_point:]
                   )
-              else:
-                  raise RuntimeError('Unable to find cmake build dependency in formula')
+                  cmake_dep = re.search(r'^\s*depends_on\s+"cmake"\s*=>\s*:build\s*$', updated, flags=re.MULTILINE)
+
+          # Ensure Homebrew build enables viewer target.
+          cmake_configure_pattern = r'^(\s*system\s+"cmake",\s*"-S",\s*"\.",\s*"-B",\s*"build",\s*\*std_cmake_args)(\s*)$'
+          cmake_configure_repl = r'\1, "-DENABLE_RAYLIB_VIEWER=ON"\2'
+          updated, configure_count = re.subn(
+              cmake_configure_pattern,
+              cmake_configure_repl,
+              updated,
+              count=1,
+              flags=re.MULTILINE,
+          )
+          if configure_count != 1 and not re.search(r'^\s*system\s+"cmake".*ENABLE_RAYLIB_VIEWER=ON', updated, flags=re.MULTILINE):
+              raise RuntimeError('Unable to ensure ENABLE_RAYLIB_VIEWER=ON in formula cmake configure step')
 
           formula.write_text(updated, encoding="utf-8")
           PY
