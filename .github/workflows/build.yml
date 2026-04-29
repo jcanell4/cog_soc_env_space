@@ -57,11 +57,17 @@ jobs:
           cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DENABLE_RAYLIB_VIEWER=ON
           cmake --build build --config Release
 
+      - name: Install macOS dependencies (Homebrew)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew update
+          brew install nlohmann-json raylib
+
       - name: Configure and build (macOS)
         if: matrix.os == 'macos-latest'
         run: |
           rm -rf build
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_RAYLIB_VIEWER=ON
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_RAYLIB_VIEWER=ON -DCMAKE_PREFIX_PATH="$(brew --prefix nlohmann-json);$(brew --prefix raylib)"
           cmake --build build
 
       - name: Run executable (Linux)
