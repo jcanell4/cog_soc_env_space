@@ -6,18 +6,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(ENABLE_RAYLIB_VIEWER "Build raylib-based snapshot viewer" OFF)
 
-# nlohmann/json (FetchContent)
-# CMP0168 OLD: use legacy FetchContent sub-build; avoids pkgRedirects / redirect issues on some CMake 4.x CI runners.
-if(POLICY CMP0168)
-    cmake_policy(SET CMP0168 OLD)
+# nlohmann/json
+# Homebrew disallows FetchContent during formula builds, so prefer package lookup there.
+if(APPLE AND DEFINED ENV{HOMEBREW_PREFIX})
+    find_package(nlohmann_json CONFIG REQUIRED)
+else()
+    # CMP0168 OLD: use legacy FetchContent sub-build; avoids pkgRedirects / redirect issues on some CMake 4.x CI runners.
+    if(POLICY CMP0168)
+        cmake_policy(SET CMP0168 OLD)
+    endif()
+    include(FetchContent)
+    set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
+    FetchContent_Declare(json
+        GIT_REPOSITORY https://github.com/nlohmann/json.git
+        GIT_TAG v3.11.3
+    )
+    FetchContent_MakeAvailable(json)
 endif()
-include(FetchContent)
-set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
-FetchContent_Declare(json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG v3.11.3
-)
-FetchContent_MakeAvailable(json)
 
 # Platform-specific settings
 if(WIN32)

@@ -75,6 +75,19 @@ jobs:
               if count != 1:
                   raise RuntimeError(f"Unable to update formula field matching: {pattern}")
 
+          # Ensure Homebrew provides nlohmann/json dependency.
+          if not re.search(r'^\s*depends_on\s+"nlohmann-json"\s*$', updated, flags=re.MULTILINE):
+              cmake_dep = re.search(r'^\s*depends_on\s+"cmake"\s*=>\s*:build\s*$', updated, flags=re.MULTILINE)
+              if cmake_dep:
+                  insertion_point = cmake_dep.end()
+                  updated = (
+                      updated[:insertion_point]
+                      + '\n  depends_on "nlohmann-json"'
+                      + updated[insertion_point:]
+                  )
+              else:
+                  raise RuntimeError('Unable to find cmake build dependency in formula')
+
           formula.write_text(updated, encoding="utf-8")
           PY
 
