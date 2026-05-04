@@ -42,8 +42,8 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (materia morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
- 	- Etapes de desnvolupament. 
+ 	- Etapes de desenvolupament de cada espècie. Cada etapa de desenvolupament 
  	 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1NjQ4NjI5M119
+eyJoaXN0b3J5IjpbLTIwODY5MDE4MTRdfQ==
 -->
