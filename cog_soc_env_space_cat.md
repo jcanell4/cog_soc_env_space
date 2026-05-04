@@ -44,3 +44,6 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
  	- Etapes de desnvolupament
  	 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTUzMDE4MzM1M119
+-->
