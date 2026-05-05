@@ -99,7 +99,7 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   
   La fase de _creixement individual_ és una predicicó del creixement de biomasa degut a la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'especie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, l'increment de biomassa serà:
   $$
-\Delta b_{j,k} = b_{j,k}(min(mig_{j,k}, g_k * lf_k) - mc_k)
+\Delta b_{j,k} = b_{j,k}(min(mg_{j,k}, g_{j,k} _k) - mc_k)
 $$
 * where mig_k is the maximum individual growth rate for stage k, gross_k is $\prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))$,
 
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MT
-kyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1
-MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MT
-I2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOTExNDQs
-Mjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTMsLTE5OTczND
-c3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04ODMwNDg4Mzhd
-fQ==
+eyJoaXN0b3J5IjpbLTE1MzczNDI0MDMsLTE3NzkzODEyOTQsNT
+IyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1
+MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMz
+A3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEz
+LC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4ND
+I5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0
+XX0=
 -->
