@@ -69,9 +69,9 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
 ### Evolució de l'ecosistema a cada cicle
-
+A cada cicle el simulador avalua l'evolució de les dades variables 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg3MDM2Mzc1LDY4MzAzNDg4NiwtMTg5ND
+eyJoaXN0b3J5IjpbMjQyODUyODA0LDY4MzAzNDg4NiwtMTg5ND
 UwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1
 Nyw1MjE3MzM3MCwtMTA4MjA0ODM1OCwtMTgwOTQ4NzU0OCwxOD
 g1ODQ4MDcsMTMzOTY3MTY0NV19
