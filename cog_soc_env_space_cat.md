@@ -84,18 +84,18 @@ L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba
 (1)$$
 \Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{E_{i,j}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
 $$
-on $\Delta N_i$ és lincrement de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts 
+on $\Delta N_i$ és lincrement de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$ i $E_{
 
 La fórmula (2) ens indica el decrement de materia orgànica que caldrà aplicar a cada contenidor (k)
 
 
 es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMzAxNTUxNiwtMTMyNzI5NTM2OSwxMD
-kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
-LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
-kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzLC0x
-OTk3MzQ3NzY2LDY4MzAzNDg4NiwtMTg5NDUwNTc5NCwtODgzMD
-Q4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MF19
-
+eyJoaXN0b3J5IjpbLTEwNTE0Mjc1MDIsLTEzMjcyOTUzNjksMT
+A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
+NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
+I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5Mywt
+MTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4Mz
+A0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzBd
+fQ==
 -->
