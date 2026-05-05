@@ -74,13 +74,14 @@ El simulador pot configurar-se des d'un json o bé directament a través de codi
 El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  ja que aquests accepten la càrrega inical a través d'un json. El sistema pot relaitzar la simulació a partir d'un entorn o d'un únic nínxol.
 
 ### Evolució de l'ecosistema
-Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà la evolució de cada cicle en un fitxer de resultats. La utilitat ./build/cog_soc_env_space_viewer
+Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà la evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
+#### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjU5MDkwMDgsMTc3OTI0NjQxLDM4Mz
-g0Mjk5MywtMTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3
-OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNT
-IxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMTg4NTg0
-ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4ND
+I5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0
+LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMT
+czMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LDE4ODU4NDgw
+NywxMzM5NjcxNjQ1XX0=
 -->
