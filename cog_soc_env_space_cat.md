@@ -79,11 +79,11 @@ Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema
 #### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada ninxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza el nutrients.
 
-Per actualitzar els nutrients d'un nínxol es recorren totes les cohorts i es consulta la materia morta acumulada encada cohor 
+Per actualitzar els nutrients d'un nínxol es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada encada cohort segons el rang de mi  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMTc5MjM2MywyNzk3MDQ5NDIsMTc3OT
-I0NjQxLDM4Mzg0Mjk5MywtMTk5NzM0Nzc2Niw2ODMwMzQ4ODYs
-LTE4OTQ1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MD
-k2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1
-NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbLTE3MDI0Mzg2ODIsMjc5NzA0OTQyLDE3Nz
+kyNDY0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2
+LC0xODk0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNT
+A5NjYyNDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3
+NTQ4LDE4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
 -->
