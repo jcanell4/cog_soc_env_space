@@ -55,10 +55,10 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les caracteristique fisico-químiques de la materia morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/caracteristiques) determinarà bona part de l'eficàcia alimentària.
    - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
     - Altres caracteristica importants per preveure l'evolució de l'ecosistema som: la superfície ocupada i la quantitat de bimassa per indivídu. Ambdues es faran servir per calcular la probabilitat de coincidencia entre presa/aliment i  depredador/recolector.
- 	 
+
+     Els especies
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzQyNDEyNTYsLTg4MzA0ODgzOCwxMz
-I1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgz
-NTgsLTE4MDk0ODc1NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ
-==
+eyJoaXN0b3J5IjpbMTIzMTczMjQ0MywtODgzMDQ4ODM4LDEzMj
+U1MzU3OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MCwtMTA4MjA0ODM1
+OCwtMTgwOTQ4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
 -->
