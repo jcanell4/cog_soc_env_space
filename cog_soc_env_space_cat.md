@@ -69,12 +69,12 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
 ### Carrega inicial
-El simulador disposa d'un conjunt de builders per crear 
+El simulador disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder)
 
 ### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDkwNTE5MDYsLTE5OTczNDc3NjYsNj
+eyJoaXN0b3J5IjpbLTE5NTk0MDM3MDQsLTE5OTczNDc3NjYsNj
 gzMDM0ODg2LC0xODk0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUz
 NTc5OCwxNTA5NjYyNDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC
 0xODA5NDg3NTQ4LDE4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
