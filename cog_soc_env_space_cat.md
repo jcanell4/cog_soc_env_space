@@ -54,10 +54,10 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
    - Vector d'estratègies de defensa. En cada etapa, les diferents espècies han desenvolupat, al llarg de l'evolució múltiples estratègies de defensa, que en aquest model se definirant mitjançant un vector de valors compresos entre 0 i 1. Cada posició identifica una estratègia determinada. No hi ha característiques predefinides sinó que a cada simulació es poden especificar les que es considerin més rellevants (punxes, verí, cuirassa, mida, fugida, etc.). Totes les espècies comparteixen el mateixos conceptes en la mateixa posició del vector. Si una espècie no ha desenvolupat una estratègia de defensa en la posició que la identifica tindrà el valor 0.0.
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les caracteristique fisico-químiques de la materia morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/caracteristiques) determinarà bona part de l'eficàcia alimentària.
 -   Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
-- Una altra caracteristica important 
+- Una altra caracteristica important pels càlculs és la que indica la superfície ocupada per ´ 
  	 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MD
-k2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1
-NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbLTQ3MDI4NjA4NiwtODgzMDQ4ODM4LDEzMj
+U1MzU3OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MCwtMTA4MjA0ODM1
+OCwtMTgwOTQ4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
 -->
