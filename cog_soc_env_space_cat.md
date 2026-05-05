@@ -95,9 +95,9 @@ $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i ninxol $i$. $\rho_{i,k}$ és la taxta de retorn del ninxol $i$ per a la mida $k$.
   
   ##### Actualització de les cohorts
-  L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, _
+  L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, _creixement repreductiu_, 	_mortalitat deguda a la vulnerabili 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MzgyODk2OSwtMTMyNzI5NTM2OSwxMD
+eyJoaXN0b3J5IjpbMTA5NjExODU4NSwtMTMyNzI5NTM2OSwxMD
 kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
 LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
 kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzLC0x
