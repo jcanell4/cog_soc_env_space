@@ -58,8 +58,13 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
 
      Les especies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de caracteristiques específiques:
      - Característiques dels autòtrofs:
+        - La llum mínima necessària per fer la fotosíntesi.
+        - El grau d'opacitat o d'ombra. Indica el percentatge de llum absorbida i que per tant, ja no arriba al següent estrat.
+-   L'estrat que occupen segons l'etapa a la que es trobin. Ens cal simular plantes de diferents mides i segons les etapes per las que vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més inderior, però a mida que vagin creixent i canvian d'etapa, algunes aribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat.
+-   La densitat màxima suportada
+-   La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NjgyMTA3Niw2ODMwMzQ4ODYsLTE4OT
+eyJoaXN0b3J5IjpbMTU1ODEyMDAxNiw2ODMwMzQ4ODYsLTE4OT
 Q1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0
 NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMT
 g4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
