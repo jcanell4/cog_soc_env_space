@@ -97,13 +97,26 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
   L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement repreductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les caracteristiques generals del nínxol, d) el _traspas entre etapes_ degut al creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la derrera etapa.
   
-  La fase de _creixement individual_ dependrà de si els tipus d'especie és autòtrof o  
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbOTEwMjA5Njk5LDk5MTkyMjk1MiwtODE2Mj
-g5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0
-OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNT
-M2MywxNzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3
-NzkyNDY0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0OD
-g2LC0xODk0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OF19
+  La fase de _creixement individual_ és una predicicó del creixement degut a la dependrà de si els tipus d'especie és autòtrof o consumidor. Per als autòtrofs
+delta_biomass = (min(mig_k, gross_k * lf_k) - mc_k) * biomass
 
+* where mig_k is the maximum individual growth rate for stage k, gross_k is \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki})))),
+
+* lf_k is the light transmission fraction per stratum (lf_k = (lightstratum{stratumfor_k} - min_light_k) / (1 - min_light_k)),
+
+* and mc_k is the maintenance cost for stage k.
+
+* lightstratum{stratumfor_k} is the light transmission fraction per stratum for stratum s and stage k.
+
+* min_light_k is the minimum light required at the stage k for photosynthesis.
+
+*/ 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIwNzc3NzkzMiw5OTE5MjI5NTIsLTgxNj
+I4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0NDE5
+NDksNjg3OTI3MzA3LDMwNzI0NjI3LDMxODEyNjEsLTIxMzk4MD
+UzNjMsMTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0Miwx
+Nzc5MjQ2NDEsMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4MzAzND
+g4NiwtMTg5NDUwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3OThd
+fQ==
 -->
