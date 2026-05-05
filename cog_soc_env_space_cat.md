@@ -84,18 +84,20 @@ L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba
 (1)$$
 \Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
 $$
-on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria organica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol 
+on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria organica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
-La fórmula (2) ens indica el decrement de materia orgànica que caldrà aplicar a cada contenidor (k)
+La fórmula (2) ens indica el decrement de materia orgànica que caldrà aplicar a cada contenidor de materia morta de totes les cohorts de cada nínxol.
+
+
 
 
 es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTAyMzE5NTcsLTEzMjcyOTUzNjksMT
-A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
-NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
-I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5Mywt
-MTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4Mz
-A0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzBd
-fQ==
+eyJoaXN0b3J5IjpbMjE5NTQyNjIxLC0xMzI3Mjk1MzY5LDEwOT
+E4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2Mjcs
+MzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOT
+ExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTMsLTE5
+OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04ODMwND
+g4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMTczMzcwXX0=
+
 -->
