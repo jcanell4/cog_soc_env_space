@@ -38,7 +38,7 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
    - Un vector de C valors, de rang entre 0 i 1 identificant les condicions generals del nínxol. Cada posició representarà la intensitat d'alguna característica significativa per a les especies de la simulació. No hi ha un conjunt de característiques predifinides, sinó un conjunt de valors , el significat dels quals pot variar en cada simulació. Aquest conjunt de condicions es faran servir per calcular el grau d'adversitat o afavoriment que el nínxol representa per a cada espècie.
    - Un vector de factors limitants pels autòtrofs que hi visquin. A diferència de les condicions generals, en aquest cas es tracta de factors amb la capacitat de limitar la captació d'energia i nutrients per part dels éssers autòtrofs que hi habiten. Com el vector de condicions generals, no representa factors predefinits, sinó que el significat de les seves posicions pot canviar entre simulacions. En realitat, representa la dificultat l'alimentar-se  amb independència que quin sigui el significat real de cada posició. Els valors del vector oscilen en un rang entre 0 i 1, de manera que 0 indica sense dificultat i 1 indica dificultat máxima. 
    - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació. 
-   - Cost de retorn. Representen l'energia gastada durant la transformació. Es tracta d'un únic valor característic ha de tenir la mateixa mida que el de taxes e retorn, és a dir, la quantitat de rangs requerits per classificar la matèria organca morta segons una mida significativa per la simulació.
+   - Cost de retorn. Representa l'energia gastada durant la transformació. Es tracta d'un únic valor característic de cada ninxol i associa
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (materia morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
@@ -87,11 +87,11 @@ $$
 
 es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk1MTg1MTUsNjg3OTI3MzA3LDMwNz
-I0NjI3LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywt
-MjYxMjkxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOT
-kzLC0xOTk3MzQ3NzY2LDY4MzAzNDg4NiwtMTg5NDUwNTc5NCwt
-ODgzMDQ4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1Nyw1MjE3Mz
-M3MCwtMTA4MjA0ODM1OCwtMTgwOTQ4NzU0OCwxODg1ODQ4MDdd
-fQ==
+eyJoaXN0b3J5IjpbLTQ2NzIxMjMyLDY4NzkyNzMwNywzMDcyND
+YyNywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2
+MTI5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5My
+wtMTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4
+MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNz
+AsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMTg4NTg0ODA3XX0=
+
 -->
