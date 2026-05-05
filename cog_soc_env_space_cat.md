@@ -42,8 +42,10 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (materia morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
- 	- Etapes de desenvolupament de cada espècie. Cada etapa de desenvolupament identifica les caracteristiques rellevants de les especies en funció d'aquestes etapes de creixement i desenvolupament.  
+ 	- El simulador és capaç de definir múltiples caracteristiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament ide cadantifiquen les caracteristiques rellevants de les espèecie. Cs per cada etapa de desenvolupament identifica les caracteristiques rellevants de les especies en funció d'aquestes etapes de creixement i desenvolupament. quan aquestes varien al llarg del temps. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves caracteristiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques:
+ 	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les seguents característiques es defiran per cada etapa en forma de vector o matriu. Cada caracteristica necessitarà tantes posicions com etapes tingui definides aquí.
+ 	- 
  	 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzOTY3MTY0NV19
+eyJoaXN0b3J5IjpbMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
 -->
