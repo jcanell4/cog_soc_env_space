@@ -82,15 +82,15 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en materia inorgànica i quanta es perd durant la transformació. La materia inrogànic generada s'ha d'afegir als nutrients del ninxol i la biomassa gastada s'ha de restar de la materia morta existent a cada cohort. 
 
 $$
-N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{E} 
+N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{E_{i,j}} b_{i 
 $$
 
 es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MzYzMjAzOCwzMTgxMjYxLC0yMTM5OD
-A1MzYzLDE3MDI5MTcxMTMsLTI2MTI5MTE0NCwyNzk3MDQ5NDIs
-MTc3OTI0NjQxLDM4Mzg0Mjk5MywtMTk5NzM0Nzc2Niw2ODMwMz
-Q4ODYsLTE4OTQ1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4
-LDE1MDk2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MD
-k0ODc1NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbODI1MDU2ODY1LDMxODEyNjEsLTIxMzk4MD
+UzNjMsMTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0Miwx
+Nzc5MjQ2NDEsMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4MzAzND
+g4NiwtMTg5NDUwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3OTgs
+MTUwOTY2MjQ1Nyw1MjE3MzM3MCwtMTA4MjA0ODM1OCwtMTgwOT
+Q4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
 -->
