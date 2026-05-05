@@ -70,15 +70,15 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
 ### Configuració i càrrega inicial
-El simulador pot configurar-se des d'un json 
+El simulador pot configurar-se des d'un json o bé directament a través de codi. Básicament necessita saber quants cicles cal simular i si es desitja  
 El simulador disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder). Aquest constructors accepten un json per aconseguir fer la càrrega inical d'un entorn o d'un nínxol. 
 
 ### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3OTI0NjQxLDM4Mzg0Mjk5MywtMTk5Nz
-M0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4MzA0ODgz
-OCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzAsLTEwOD
-IwNDgzNTgsLTE4MDk0ODc1NDgsMTg4NTg0ODA3LDEzMzk2NzE2
-NDVdfQ==
+eyJoaXN0b3J5IjpbMTk5ODAwMzc2MSwxNzc5MjQ2NDEsMzgzOD
+QyOTkzLC0xOTk3MzQ3NzY2LDY4MzAzNDg4NiwtMTg5NDUwNTc5
+NCwtODgzMDQ4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1Nyw1Mj
+E3MzM3MCwtMTA4MjA0ODM1OCwtMTgwOTQ4NzU0OCwxODg1ODQ4
+MDcsMTMzOTY3MTY0NV19
 -->
