@@ -79,6 +79,7 @@ Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema
 #### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada ninxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza el nutrients.
 
+##### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en materia inorgànica i quanta es perd durant la transformació. La materia inrogànica generada s'ha d'afegir als nutrients del ninxol i la biomassa gastada s'ha de restar de la materia morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
 (1)$$
@@ -91,12 +92,10 @@ La fórmula (2) ens indica el decrement de materia orgànica que caldrà aplicar
 (2)$$
 \Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k}
 $$
-on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i ninxol $i$. $\rho_{i,k}$ és la taxta de retorn del ninxol $i$ 
-
-
-es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
+on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i ninxol $i$. $\rho_{i,k}$ és la taxta de retorn del ninxol $i$ per a la mida $k$.
+  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNjgxNzYzMywtMTMyNzI5NTM2OSwxMD
+eyJoaXN0b3J5IjpbLTYyMTM1NjgwNiwtMTMyNzI5NTM2OSwxMD
 kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
 LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
 kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzLC0x
