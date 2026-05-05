@@ -61,11 +61,12 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - La llum mínima necessària per fer la fotosíntesi.
         - El grau d'opacitat o d'ombra. Indica el percentatge de llum absorbida i que per tant, ja no arriba al següent estrat.
         - L'estrat que occupen segons l'etapa a la que es trobin. El model permet simular plantes de diferents mides i segons les etapes per las que vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més inferior, però a mida que vagin creixent i canviant d'etapa, algunes aribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les caractaerístiques de la simulació.
--   La densitat màxima suportada.
--   La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
+        - La densitat màxima suportada.
+        - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
+    - Caracyer´ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTk4OTkwMTgsNjgzMDM0ODg2LC0xOD
-k0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYy
-NDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LD
-E4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
+eyJoaXN0b3J5IjpbLTUyNDkxMjcxNSw2ODMwMzQ4ODYsLTE4OT
+Q1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0
+NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMT
+g4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
 -->
