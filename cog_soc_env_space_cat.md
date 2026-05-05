@@ -57,10 +57,10 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
     - Altres caracteristica importants per preveure l'evolució de l'ecosistema som: la superfície ocupada i la quantitat de bimassa per indivídu. Ambdues es faran servir per calcular la probabilitat de coincidencia entre presa/aliment i  depredador/recolector.
 
      Les especies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de caracteristiques específiques:
-     - Característiques dels autòtrofs 
+     - Característiques dels autòtrofs:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04OD
-MwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMTczMzcw
-LC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LDE4ODU4NDgwNywxMz
-M5NjcxNjQ1XX0=
+eyJoaXN0b3J5IjpbLTc2NjgyMTA3Niw2ODMwMzQ4ODYsLTE4OT
+Q1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0
+NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMT
+g4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
 -->
