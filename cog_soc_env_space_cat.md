@@ -77,11 +77,11 @@ El simulador també disposa d'un conjunt de builders per crear qualsevol de les 
 Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà la evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
 #### Evolució de l'ecosistema a cada cicle
-A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada cohort 
+A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada ninxol de l'entorn, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2OTAxNjI2MSwyNzk3MDQ5NDIsMTc3OT
-I0NjQxLDM4Mzg0Mjk5MywtMTk5NzM0Nzc2Niw2ODMwMzQ4ODYs
-LTE4OTQ1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MD
-k2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1
-NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbLTE2ODU2MjkxNjQsMjc5NzA0OTQyLDE3Nz
+kyNDY0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2
+LC0xODk0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNT
+A5NjYyNDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3
+NTQ4LDE4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
 -->
