@@ -68,11 +68,14 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
+### Carrega inicial
+
+
 ### Evolució de l'ecosistema a cada cicle
-A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció en tre cohorts i el medi.  
+A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyNjMyNjkwMyw2ODMwMzQ4ODYsLTE4OT
-Q1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0
-NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMT
-g4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbLTE5OTczNDc3NjYsNjgzMDM0ODg2LC0xOD
+k0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYy
+NDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LD
+E4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
 -->
