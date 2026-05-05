@@ -71,14 +71,14 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
 
 ### Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Básicament necessita saber quants cicles cal simular i si es desitja alguna  incorporar soroll aleatori durant la simulació.
-El simulador disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder). Aquest constructors accepten un json per aconseguir fer la càrrega inical d'un entorn o d'un nínxol. 
+El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  ja que aquests accepten la càrrega inical a través d'un json.  d'un entorn o d'un nínxol. 
 
 ### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEyMTY3ODk5LDE3NzkyNDY0MSwzODM4ND
-I5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0
-LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMT
-czMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LDE4ODU4NDgw
-NywxMzM5NjcxNjQ1XX0=
+eyJoaXN0b3J5IjpbLTExMDg1MzQzMzcsMTc3OTI0NjQxLDM4Mz
+g0Mjk5MywtMTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3
+OTQsLTg4MzA0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNT
+IxNzMzNzAsLTEwODIwNDgzNTgsLTE4MDk0ODc1NDgsMTg4NTg0
+ODA3LDEzMzk2NzE2NDVdfQ==
 -->
