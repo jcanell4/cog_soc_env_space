@@ -97,9 +97,9 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
   L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement repreductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les caracteristiques generals del nínxol, d) el _traspas entre etapes_ degut al creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la derrera etapa.
   
-  La fase de _creixement individual_ és una predicicó del creixement de biomasa degut a la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'especie és autòtrof o consumidor, s'aplicaran regles diferents. Per als autòtrofs, l'incrment de biomassa serà:
+  La fase de _creixement individual_ és una predicicó del creixement de biomasa degut a la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'especie és autòtrof o consumidor, s'aplicaran regles diferents. Per als autòtrofs, l'increment de biomassa serà:
   $$
-\Delta b = (min(mig_k, gross_k * lf_k) - mc_k) * biomass
+\Delta b_{i,j} = (min(mig_k, gross_k * lf_k) - mc_k) * biomass
 $$
 * where mig_k is the maximum individual growth rate for stage k, gross_k is \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki})))),
 
@@ -113,7 +113,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMzY5ODY1MSw5OTE5MjI5NTIsLTgxNj
+eyJoaXN0b3J5IjpbMTE5NzczNDI2MCw5OTE5MjI5NTIsLTgxNj
 I4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0NDE5
 NDksNjg3OTI3MzA3LDMwNzI0NjI3LDMxODEyNjEsLTIxMzk4MD
 UzNjMsMTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0Miwx
