@@ -63,13 +63,16 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - L'estrat que occupen segons l'etapa a la que es trobin. El model permet simular plantes de diferents mides i segons les etapes per las que vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més inferior, però a mida que vagin creixent i canviant d'etapa, algunes aribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les caractaerístiques de la simulació.
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
-    - Caracerístiques dels Heteròtrofs i descomponedors:
+    - Característiques dels heteròtrofs i descomponedors:
         - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
+
+#### Evolució de l'e
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTc2MzIzNDUsNjgzMDM0ODg2LC0xOD
-k0NTA1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYy
-NDU3LDUyMTczMzcwLC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LD
-E4ODU4NDgwNywxMzM5NjcxNjQ1XX0=
+eyJoaXN0b3J5IjpbNjg0NDYzNjk4LDY4MzAzNDg4NiwtMTg5ND
+UwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1
+Nyw1MjE3MzM3MCwtMTA4MjA0ODM1OCwtMTgwOTQ4NzU0OCwxOD
+g1ODQ4MDcsMTMzOTY3MTY0NV19
 -->
