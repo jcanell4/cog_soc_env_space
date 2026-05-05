@@ -69,14 +69,15 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
-### Carrega inicial
+### Configuració i càrrega inicial
 El simulador disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder). Aquest constructors accepten un json per aconseguir fer la càrrega inical d'un entorn o d'un nínxol. 
 
 ### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4Mz
-AzNDg4NiwtMTg5NDUwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3
-OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MCwtMTA4MjA0ODM1OCwtMT
-gwOTQ4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
+eyJoaXN0b3J5IjpbLTYzNzk2MjIyNiwzODM4NDI5OTMsLTE5OT
+czNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04ODMwNDg4
+MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMTczMzcwLC0xMD
+gyMDQ4MzU4LC0xODA5NDg3NTQ4LDE4ODU4NDgwNywxMzM5Njcx
+NjQ1XX0=
 -->
