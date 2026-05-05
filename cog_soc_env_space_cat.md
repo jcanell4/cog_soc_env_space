@@ -88,16 +88,18 @@ on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ des
 
 La fórmula (2) ens indica el decrement de materia orgànica que caldrà aplicar a cada contenidor de materia morta de totes les cohorts de cada nínxol.
 
-
+(2)$$
+\Delta 
+$$
 
 
 es recorren totes les cohorts i es consulta la quantitat de materia morta acumulada en cada cohort, tenint en compte els rangs de mida establerts en el nínxol.   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE5NTQyNjIxLC0xMzI3Mjk1MzY5LDEwOT
-E4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2Mjcs
-MzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOT
-ExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTMsLTE5
-OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04ODMwND
-g4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMTczMzcwXX0=
-
+eyJoaXN0b3J5IjpbLTE1MDcxMDIwOTAsLTEzMjcyOTUzNjksMT
+A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
+NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
+I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5Mywt
+MTk5NzM0Nzc2Niw2ODMwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4Mz
+A0ODgzOCwxMzI1NTM1Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzBd
+fQ==
 -->
