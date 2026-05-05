@@ -47,7 +47,7 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
  	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferencia l'anomenarem, vulnerabilitat al medi.  
 - Resiliència. indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquestvalor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
 - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie. 
-- Per modelar els creixement de l'espècie, el simulador distingeix dos tipus de crei, un creixement individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i un creixement reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixement es necessitarà aliment que es materialitzarà en increment de la biomassa. L'aliment aconseguit estarà en funció de la capacitat que l'espècie tingui de recaptar l'aliment. Aquesta varia segons es tracti d'essers autòtrofs, heteròtrofs o descomponedors (veure següents apartats).  
+- Per modelar els creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa. L'aliment aconseguit estarà en funció de la capacitat que l'espècie tingui de recaptar l'aliment. Aquesta varia segons es tracti d'essers autòtrofs, heteròtrofs o descomponedors (veure següents apartats).  
     Per cada creixement es defineix:
 
 -   Creixement màxim individual. Els individus no creixen indefinidament i, per tant, cal limitar la capacitat de creixement en forma de percentatge per cicle.
@@ -58,6 +58,6 @@ El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
 -   Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de l'aliment dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura tant la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor se suposa una quantitat major d'individus i en conseqüència d'extensió.
  	 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3Mzc3OTE1NywtMTA4MjA0ODM1OCwtMT
-gwOTQ4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
+eyJoaXN0b3J5IjpbNTIxNzMzNzAsLTEwODIwNDgzNTgsLTE4MD
+k0ODc1NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
 -->
