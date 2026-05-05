@@ -95,13 +95,13 @@ $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i ninxol $i$. $\rho_{i,k}$ és la taxta de retorn del ninxol $i$ per a la mida $k$.
   
   ##### Actualització de les cohorts
-  L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement repreductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les caracteristiques generals del nínxol, d) el traspas entre etapes degut al creixement dels individus de l'espècie i e) finalment la mortalitat deguda a la vellesa dels individus de la derrera etapa.
+  L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement repreductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les caracteristiques generals del nínxol, d) el _traspas entre etapes_ degut al creixement dels individus de l'espècie i e) finalment la _mortalitat deguda a la vellesa dels individus de la derrera etapa.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMD
-kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
-LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
-kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzLC0x
-OTk3MzQ3NzY2LDY4MzAzNDg4NiwtMTg5NDUwNTc5NCwtODgzMD
-Q4ODM4LDEzMjU1MzU3OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MF19
-
+eyJoaXN0b3J5IjpbLTM0MzM5MzI3MywtODE2Mjg5NTk0LC0xMz
+I3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5Mjcz
+MDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOT
+E3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwz
+ODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2LC0xODk0NT
+A1Nzk0LC04ODMwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3
+XX0=
 -->
