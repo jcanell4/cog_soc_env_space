@@ -63,7 +63,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - L'estrat que occupen segons l'etapa a la que es trobin. El model permet simular plantes de diferents mides i segons les etapes per las que vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més inferior, però a mida que vagin creixent i canviant d'etapa, algunes aribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les caractaerístiques de la simulació.
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
-        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autotrofs acaba sent els nutrients i l'energia lúminica,  
+        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autotrofs acaba sent els nutrients i l'energia lúminica, el simulador accepta  
     - Característiques dels heteròtrofs i descomponedors:
         - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
@@ -75,8 +75,8 @@ El simulador disposa d'un conjunt de builders per crear qualsevol de les entitat
 ### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0ODQyNTM1NSwtMTk5NzM0Nzc2Niw2OD
-MwMzQ4ODYsLTE4OTQ1MDU3OTQsLTg4MzA0ODgzOCwxMzI1NTM1
-Nzk4LDE1MDk2NjI0NTcsNTIxNzMzNzAsLTEwODIwNDgzNTgsLT
-E4MDk0ODc1NDgsMTg4NTg0ODA3LDEzMzk2NzE2NDVdfQ==
+eyJoaXN0b3J5IjpbMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4Mz
+AzNDg4NiwtMTg5NDUwNTc5NCwtODgzMDQ4ODM4LDEzMjU1MzU3
+OTgsMTUwOTY2MjQ1Nyw1MjE3MzM3MCwtMTA4MjA0ODM1OCwtMT
+gwOTQ4NzU0OCwxODg1ODQ4MDcsMTMzOTY3MTY0NV19
 -->
