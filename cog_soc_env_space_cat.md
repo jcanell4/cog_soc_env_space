@@ -56,9 +56,10 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
    - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
     - Altres caracteristica importants per preveure l'evolució de l'ecosistema som: la superfície ocupada i la quantitat de bimassa per indivídu. Ambdues es faran servir per calcular la probabilitat de coincidencia entre presa/aliment i  depredador/recolector.
 
-     Les especies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de caracteristiques específiques: 
+     Les especies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de caracteristiques específiques:
+     - Característiques dels autòtrofs 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NTk1NTQxLC0xODk0NTA1Nzk0LC04OD
+eyJoaXN0b3J5IjpbNjgzMDM0ODg2LC0xODk0NTA1Nzk0LC04OD
 MwNDg4MzgsMTMyNTUzNTc5OCwxNTA5NjYyNDU3LDUyMTczMzcw
 LC0xMDgyMDQ4MzU4LC0xODA5NDg3NTQ4LDE4ODU4NDgwNywxMz
 M5NjcxNjQ1XX0=
