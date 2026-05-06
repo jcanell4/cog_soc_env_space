@@ -33,9 +33,9 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
  - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el qual els nodes són els nínxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'energia de l'entorn,
  - *Arestes o connexions entre nínxols* (classe Edge). Cada connexió identificarà dos nodes (origen i destí). A més la connexió es modelarà com una matriu bidimensional de VxC. En la primera dimensió (de V posicions) indicarà la via de connexió entre els nodes ( per exemple terra, aire, mar, riu, etc.) i la segona (de C posicions)  identificarà condicions de trasllat com ara corrents d'aire, d'aigua, camins, força i direcció d'aquestes, o altres condicions significatives per una migració. També es definirà la distància. Aquestes dades, juntament amb les definides per cada espècie permetrà calcular la probabilitat de migració d'una espècie usant una de les vies, així com la probabilitat de subsistència, en cas de produir-se la migració.
  - *Nínxol* (classe Niche). Les característiques d'aquesta entitat són:
-   - La superfície, expresada com un valor decimal.
-   - La quantitat absoluta de nutrients (minerals) continguts en el nínxol. En aquesta primera versió, se suposarà una distribució uniforme dels nutrients per tota la supercície.
-   - Un vector de C valors, de rang entre 0 i 1 identificant les condicions generals del nínxol. Cada posició representarà la intensitat d'alguna característica significativa per a les especies de la simulació. No hi ha un conjunt de característiques predifinides, sinó un conjunt de valors , el significat dels quals pot variar en cada simulació. Aquest conjunt de condicions es faran servir per calcular el grau d'adversitat o afavoriment que el nínxol representa per a cada espècie.
+   - La superfície, expressada com un valor decimal.
+   - La quantitat absoluta de nutrients (minerals) continguts en el nínxol. En aquesta primera versió, se suposarà una distribució uniforme dels nutrients per tota la superfície.
+   - Un vector de C valors, de rang entre 0 i 1 identificant les condicions generals del nínxol. Cada posició representarà la intensitat d'alguna característica significativa per a les espècies de la simulació. No hi ha un conjunt de característiques predefinides, sinó un conjunt de valors , el significat dels quals pot variar en cada simulació. Aquest conjunt de condicions es faran servir per calcular el grau d'adversitat o afavoriment que el nínxol representa per a cada espècie.
    - Un vector de factors limitants pels autòtrofs que hi visquin. A diferència de les condicions generals, en aquest cas es tracta de factors amb la capacitat de limitar la captació d'energia i nutrients per part dels éssers autòtrofs que hi habiten. Com el vector de condicions generals, no representa factors predefinits, sinó que el significat de les seves posicions pot canviar entre simulacions. En realitat, representa la dificultat l'alimentar-se  amb independència que quin sigui el significat real de cada posició. Els valors del vector oscilen en un rang entre 0 i 1, de manera que 0 indica sense dificultat i 1 indica dificultat máxima. 
    - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació. 
    - Cost de retorn. Representa l'energia gastada durant la transformació. Es tracta d'un únic valor característic de cada ninxol i associat a la composició i eficiència dels seus fixadors. 
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDA0ODg5NTcsNzA4MTQwNDc1LC0xNz
-c5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLTgxNjI4OTU5
-NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0NDE5NDksNj
-g3OTI3MzA3LDMwNzI0NjI3LDMxODEyNjEsLTIxMzk4MDUzNjMs
-MTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0MiwxNzc5Mj
-Q2NDEsMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4MzAzNDg4Nl19
+eyJoaXN0b3J5IjpbMTgyNzEzNzIyNiw3MDgxNDA0NzUsLTE3Nz
+kzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0
+LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2OD
+c5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNTM2Mywx
+NzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3NzkyND
+Y0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2XX0=
 
 -->
