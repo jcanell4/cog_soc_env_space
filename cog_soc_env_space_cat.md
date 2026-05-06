@@ -100,6 +100,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   (3)$$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
+  on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'es 
 
 l'increment de biomassa dependrà de la quantitat de llum rebuda
   (3)$$
@@ -117,7 +118,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNTMxNDM2LDM4NjEwNjU2NywtNzc3OD
+eyJoaXN0b3J5IjpbNDkzNDI0OTE3LDM4NjEwNjU2NywtNzc3OD
 U1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEsMTk5ODc5MTYz
 Miw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MT
 kyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1
