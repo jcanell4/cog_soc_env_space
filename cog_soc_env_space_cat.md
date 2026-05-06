@@ -42,8 +42,7 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (matèria morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
- 	- El simulador és capaç de definir múltiples característiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament cl
- 	- identifiquen les característiques rellevants de les espècies. Cs per cada etapa de desenvolupament identifica les caracteristiques rellevants de les especies en funció d'aquestes etapes de creixement i desenvolupament. quan aquestes varien al llarg del temps. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves caracteristiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques:
+ 	- El simulador és capaç de definir múltiples característiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament classifiquen els individus en rangs d'edat i permeten indentificar les característiques rellevants de l'etapa. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves caracteristiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques:
  	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les seguents característiques es defiran per cada etapa en forma de vector o matriu. Cada caracteristica necessitarà tantes posicions com etapes tingui definides aquí.
  	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferencia l'anomenarem, vulnerabilitat al medi.  
    - Resiliència. indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquestvalor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
@@ -114,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDg2MTk0NTksLTIwMjY4ODEzOTEsMT
-k5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAx
-NTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LD
-EwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2
-MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNj
-EyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTNd
-fQ==
+eyJoaXN0b3J5IjpbOTk0MzgwMjg1LC0yMDI2ODgxMzkxLDE5OT
+g3OTE2MzIsNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2
+Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMD
+kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
+LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
+kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzXX0=
+
 -->
