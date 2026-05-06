@@ -96,9 +96,9 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. 
+  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenam $\omega_{j,k}$ al cost de manteniment 
   (3)$$
-  \Delta b_{j,k} = - b_{j,k} \omega_{}
+  \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
 
 l'increment de biomassa dependrà de la quantitat de llum rebuda
@@ -117,11 +117,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMzk2OTQwMSwzODYxMDY1NjcsLTc3Nz
-g1NTI1OCwxMTgxMTI3NjA4LC0yMDI2ODgxMzkxLDE5OTg3OTE2
-MzIsNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2Miw5OT
-E5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYx
-NTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3LDMxOD
-EyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMjkxMTQ0
-XX0=
+eyJoaXN0b3J5IjpbNzEyMDU0NDQzLDM4NjEwNjU2NywtNzc3OD
+U1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEsMTk5ODc5MTYz
+Miw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MT
+kyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1
+MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MT
+I2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOTExNDRd
+fQ==
 -->
