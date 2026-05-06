@@ -138,7 +138,10 @@ Finalment, farem servir la mínima fracció de llum necessaria per a que l'espec
 (7)$$
 f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
-D'altra banda l'eficiencia de la captació de nutrients vindrà donada per 
+D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
+(8)$$
+rec\_eff = 
+$$ 
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}
@@ -155,11 +158,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTE1NTM3NzQsLTE2OTMxMTYwNTUsLT
-IwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2
-ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOT
-k4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAs
-LTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMD
-A0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4
-NDEwOSwzODYxMDY1NjddfQ==
+eyJoaXN0b3J5IjpbLTU5NDMzMDgzMiwtMTY5MzExNjA1NSwtMj
+A1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4
+Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OT
+g2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwt
+Mjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMD
+Q5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0
+MTA5LDM4NjEwNjU2N119
 -->
