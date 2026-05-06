@@ -96,7 +96,7 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa de guda al co
+  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador a 
 
 l'increment de biomassa dependrà de la quantitat de llum rebuda
   (3)$$
@@ -114,7 +114,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzA2MjMwNDUsLTc3Nzg1NTI1OCwxMT
+eyJoaXN0b3J5IjpbLTE1MjQ1MzA0MjQsLTc3Nzg1NTI1OCwxMT
 gxMTI3NjA4LC0yMDI2ODgxMzkxLDE5OTg3OTE2MzIsNzA4MTQw
 NDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLT
 gxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0
