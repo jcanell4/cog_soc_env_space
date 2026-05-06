@@ -127,7 +127,7 @@ I la fracció de llum que incideix en alguna planta de l'estrat $h$ es calcular�
 (6)$$
 \lambda_h = \left\{ 
 \begin{array}{lcc}
-\frac {1}{e^{0.3(sh_{h}}}  &,   h=max\_h \\
+\frac {1}{e^{0.3(sh_{h})}}  &,   h=max\_h \\
 \frac {1}{e^{sh_{h}}} · \gamma_{h+1}
 \end{array} 
 \right\}
@@ -152,11 +152,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjYyMzkzNDEsLTEwNjgzODk2NjAsMT
-Y1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1
-MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOS
-wtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2
-NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMDksMzg2MT
-A2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5
-MSwxOTk4NzkxNjMyXX0=
+eyJoaXN0b3J5IjpbMjAwNTc5OTcwNCwtMTA2ODM4OTY2MCwxNj
+U1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUw
+NTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC
+0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0
+MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOSwzODYxMD
+Y1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4LC0yMDI2ODgxMzkx
+LDE5OTg3OTE2MzJdfQ==
 -->
