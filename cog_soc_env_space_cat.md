@@ -102,7 +102,11 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
-El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. Direm que $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, que $s_{j,k}$ serà l'estrat ocupat i $b_{j,k}$ la seva biomassa.
+El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
+
+Sigui $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa.
+
+
 
 SIgui $max\_h$ l'estrat de més altitud del nínxol
 
@@ -134,11 +138,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMT
-k5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQxMjgw
-Mzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNjU2Ny
-wtNzc3ODU1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEsMTk5
-ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNT
-YyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEw
-OTE4NjE1MzRdfQ==
+eyJoaXN0b3J5IjpbLTE4MDQxMzg1NjksMTc0NDQ0MTIzMCwtMj
+c2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5
+MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MT
+A5LDM4NjEwNjU2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIw
+MjY4ODEzOTEsMTk5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzOD
+EyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0x
+MzI3Mjk1MzY5XX0=
 -->
