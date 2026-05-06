@@ -114,9 +114,9 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat ($l_{h \rightarrow h-1}$) amb l'equació (5).
+SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (5).
 (5)$$
-lt_h = \left\{ 
+l_{h \rightarrow h-1} = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
 \frac {1}{e^{sh_{h}}} · lt_{h+1}
@@ -154,11 +154,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAyNzQ0MzQwLDEzMzgzMTYxNzMsLTE1Mj
-I0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3
-MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3My
-wxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0
-MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0Nj
-gzOTcsLTE1MDcwODQxMDksMzg2MTA2NTY3LC03Nzc4NTUyNTgs
-MTE4MTEyNzYwOF19
+eyJoaXN0b3J5IjpbMTcwNjk5MDA4MywxMzM4MzE2MTczLC0xNT
+IyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQz
+NzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0Nz
+MsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEw
+NDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzND
+Y4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNjU2NywtNzc3ODU1MjU4
+LDExODExMjc2MDhdfQ==
 -->
