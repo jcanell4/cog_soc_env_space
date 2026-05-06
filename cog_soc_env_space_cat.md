@@ -114,7 +114,7 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat ($\gamma_h$) amb l'equació (5).
+SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat ($\lambda_h$) amb l'equació (5).
 (5)$$
 \lambda_h = \left\{ 
 \begin{array}{lcc}
@@ -132,7 +132,7 @@ Per tal de corregir el fet que els strats no són plans sinó que tenen alçada 
 \end{array} 
 \right\}
 $$ 
-
+Anomenarem $\lambda_
 
 Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament. 
 
@@ -152,11 +152,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE0NTc1MzQzLC0xNTIyNDc2ODYxLC0xMD
-Y4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5
-OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMC
-wtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIw
-MDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MD
-g0MTA5LDM4NjEwNjU2NywtNzc3ODU1MjU4LDExODExMjc2MDgs
-LTIwMjY4ODEzOTFdfQ==
+eyJoaXN0b3J5IjpbLTgwODk0MzA1OCwtMTUyMjQ3Njg2MSwtMT
+A2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYz
+OTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMz
+AsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEy
+MDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNz
+A4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4
+LC0yMDI2ODgxMzkxXX0=
 -->
