@@ -132,7 +132,7 @@ l_h = \left\{
 \end{array} 
 \right\}
 $$ 
-Anomenarem $_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absortes  pels estrats superior i l'ombra de les plantes del propi estrat.
+Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absortes  pels estrats superior i l'ombra de les plantes del propi estrat.
 
 Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta. 
 
@@ -154,11 +154,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTczMjY1NjksMTMzODMxNjE3MywtMT
-UyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0
-MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4ND
-czLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0x
-MDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2Mz
-Q2ODM5NywtMTUwNzA4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1
-OCwxMTgxMTI3NjA4XX0=
+eyJoaXN0b3J5IjpbLTEwMzY3MDQxMjUsLTIwNTczMjY1NjksMT
+MzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1
+MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNT
+cyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0x
+MzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0MT
+I4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOSwzODYxMDY1
+NjcsLTc3Nzg1NTI1OF19
 -->
