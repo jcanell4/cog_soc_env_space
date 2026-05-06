@@ -143,7 +143,9 @@ D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
 rec\_eff = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
 on $R_{jk}$ és el vector d'estrategies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espe`cie $j$ per superar el factor limitant $i$. 
-Direm que el factor 
+
+Direm que el factor nutrients ($f\_nut_{jk}$) és:
+
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}
@@ -160,7 +162,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MzQ2MDM5NSw3MTExNzc2NzYsLTE2OT
+eyJoaXN0b3J5IjpbMTE3MDAzOTM2MCw3MTExNzc2NzYsLTE2OT
 MxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3
 Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczOD
 ExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3
