@@ -123,7 +123,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de
 \end{array} 
 \right\}
 $$
-Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, I la fracció de llum que incideix en alguna planta de l'estrat $h$ es calcularà fent:
+Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció incident en les plantes d'un estrat per l'equació (6)I la fracció de llum que incideix en alguna planta de l'estrat $h$ es calcularà fent:
 (6)$$
 \lambda_h = \left\{ 
 \begin{array}{lcc}
@@ -152,7 +152,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NjA2NTgwNiwtMTUyMjQ3Njg2MSwtMT
+eyJoaXN0b3J5IjpbLTQ5Nzg1NzI1NSwtMTUyMjQ3Njg2MSwtMT
 A2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYz
 OTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMz
 AsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEy
