@@ -96,7 +96,7 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador a 
+  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment
 
 l'increment de biomassa dependrà de la quantitat de llum rebuda
   (3)$$
@@ -114,11 +114,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjQ1MzA0MjQsLTc3Nzg1NTI1OCwxMT
-gxMTI3NjA4LC0yMDI2ODgxMzkxLDE5OTg3OTE2MzIsNzA4MTQw
-NDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLT
-gxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0
-NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3LDMxODEyNjEsLTIxMz
-k4MDUzNjMsMTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0
-Ml19
+eyJoaXN0b3J5IjpbLTc4NDIwNTc1MSwtNzc3ODU1MjU4LDExOD
+ExMjc2MDgsLTIwMjY4ODEzOTEsMTk5ODc5MTYzMiw3MDgxNDA0
+NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtOD
+E2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0
+MTk0OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOT
+gwNTM2MywxNzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQy
+XX0=
 -->
