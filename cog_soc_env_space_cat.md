@@ -70,8 +70,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
 ### Configuració i càrrega inicial
-El simulador pot configurar-se des d'un json o bé directament a través de codi. Básicament necessita saber quants cicles cal simular i si es desitja alguna  incorporar soroll aleatori durant la simulació.
-El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  ja que aquests accepten la càrrega inical a través d'un json. El sistema pot relaitzar la simulació a partir d'un entorn o d'un únic nínxol.
+El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
 
 ### Evolució de l'ecosistema
 Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà la evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
@@ -113,7 +112,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTEzNjUyNzUsLTIwMjY4ODEzOTEsMT
+eyJoaXN0b3J5IjpbLTE3NDA3MzQyODcsLTIwMjY4ODEzOTEsMT
 k5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAx
 NTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LD
 EwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2
