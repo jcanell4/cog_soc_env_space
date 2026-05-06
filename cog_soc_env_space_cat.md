@@ -122,7 +122,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol.
 \gamma_h = \left\{ 
 \begin{array}{lcc}
 1, h=max\_h \\
-\frac {1}{e^{sh_{h+1}}}
+\frac {1}{e^{sh_{h+1}}} · \gamma_{h}
 \end{array} 
 \right\}
 $$
@@ -146,7 +146,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MTYxNDMyNywtMTk0NDM3MzgxMSwtNT
+eyJoaXN0b3J5IjpbLTIwMDIxOTkxMiwtMTk0NDM3MzgxMSwtNT
 Y2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQx
 MjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNC
 wxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1
