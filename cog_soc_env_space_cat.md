@@ -114,14 +114,12 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-
-
-SIgui $max\_h$ l'estrat de més altitud en un nínxol. 
+SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de 
 
 (5)$$
 \gamma_h = \left\{ 
 \begin{array}{lcc}
-1,   h=max\_h \\
+1 &,   h=max\_h \\
 \frac {1}{e^{sh_{h+1}}} · \gamma_{h+1}
 \end{array} 
 \right\}
@@ -146,11 +144,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTczMzc4ODEwLC0xMDY4Mzg5NjYwLDE2NT
-UzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1
-NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLT
-EzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQx
-MjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNj
-U2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEs
-MTk5ODc5MTYzMl19
+eyJoaXN0b3J5IjpbMTI0MzI5NTMwOCwtMTA2ODM4OTY2MCwxNj
+U1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUw
+NTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC
+0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0
+MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOSwzODYxMD
+Y1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4LC0yMDI2ODgxMzkx
+LDE5OTg3OTE2MzJdfQ==
 -->
