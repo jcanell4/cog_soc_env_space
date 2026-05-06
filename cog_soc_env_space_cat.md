@@ -125,10 +125,10 @@ l_{h \rightarrow h-1} = \left\{
 $$
 Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
 (6)$$
-\lambda I_h = \left\{ 
+l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{0.3(sh_{h})}}  &,   h=max\_h \\
-\frac {1}{e^{0.3(sh_{h})+sh_{h+1}}} · \lambda_{h+1}
+\frac {1}{e^{0.3(sh_{h})+sh_{h+1}}} · l_{h+1 \rightarrow h}
 \end{array} 
 \right\}
 $$ 
@@ -154,7 +154,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNjk5MDA4MywxMzM4MzE2MTczLC0xNT
+eyJoaXN0b3J5IjpbMTM5NzQ4MTI3NSwxMzM4MzE2MTczLC0xNT
 IyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQz
 NzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0Nz
 MsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEw
