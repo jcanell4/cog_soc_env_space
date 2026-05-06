@@ -108,7 +108,8 @@ Sigui $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es tr
 $$
 ops_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
-0, s_{j,k} 
+0, s_{j,k} \neq h \\
+\frac {}
 \end{array} 
 \right\} 
 $$
@@ -144,7 +145,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NTMzNDkwMCwxNzQ0NDQxMjMwLC0yNz
+eyJoaXN0b3J5IjpbLTIyMzE0NzY3MCwxNzQ0NDQxMjMwLC0yNz
 YyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkx
 MDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMD
 ksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAy
