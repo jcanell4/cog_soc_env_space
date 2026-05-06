@@ -96,7 +96,7 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
   ##### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenam $\omega_{j,k}$ al cost de manteniment 
+  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la catabòlica, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenam $\omega_{j,k}$ al cost de manteniment definit a l'especie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
   (3)$$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
@@ -117,7 +117,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEyMDU0NDQzLDM4NjEwNjU2NywtNzc3OD
+eyJoaXN0b3J5IjpbMTIxNTMxNDM2LDM4NjEwNjU2NywtNzc3OD
 U1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEsMTk5ODc5MTYz
 Miw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MT
 kyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1
