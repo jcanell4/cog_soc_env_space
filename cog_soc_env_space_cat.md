@@ -134,7 +134,7 @@ l_h = \left\{
 $$ 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absortes  pels estrats superior i l'ombra de les plantes del propi estrat.
 
-Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{(h=s_{k})}$ la fracció de llum incident 
+Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$. 
 (7)$$
 f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
@@ -155,7 +155,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDQ0OTc1ODksLTE2OTMxMTYwNTUsLT
+eyJoaXN0b3J5IjpbLTE2NTQyNzIxOTQsLTE2OTMxMTYwNTUsLT
 IwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2
 ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOT
 k4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAs
