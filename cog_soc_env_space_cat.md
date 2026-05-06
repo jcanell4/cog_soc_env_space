@@ -102,7 +102,9 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
-El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  
+El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'esp. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  
+
+
 
 Sigui $s_{j,k}$  l'estrat ocupat per l'espècie de la cohort $j$ quan es troba a l'etapa $k$.
 
@@ -136,11 +138,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMD
-QzMjU0NzI0LDEyMDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2
-ODM5NywtMTUwNzA4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1OC
-wxMTgxMTI3NjA4LC0yMDI2ODgxMzkxLDE5OTg3OTE2MzIsNzA4
-MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NT
-IsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEz
-MDM0NDE5NDldfQ==
+eyJoaXN0b3J5IjpbLTEwMzYyMTcwNTEsLTI3NjI2NjE5LC0xMz
+E5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0MTI4
+MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOSwzODYxMDY1Nj
+csLTc3Nzg1NTI1OCwxMTgxMTI3NjA4LC0yMDI2ODgxMzkxLDE5
+OTg3OTE2MzIsNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMT
+U2Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwx
+MDkxODYxNTM0XX0=
 -->
