@@ -73,13 +73,13 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
 
 ### Evolució de l'ecosistema
-Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà la evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
+Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà l'evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
 #### Evolució de l'ecosistema a cada cicle
-A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada ninxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza el nutrients.
+A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada nínxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza els nutrients.
 
 ##### Actualització de nutrients
-L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en materia inorgànica i quanta es perd durant la transformació. La materia inrogànica generada s'ha d'afegir als nutrients del ninxol i la biomassa gastada s'ha de restar de la materia morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
+L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
 (1)$$
 \Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
@@ -112,11 +112,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDA3MzQyODcsLTIwMjY4ODEzOTEsMT
-k5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAx
-NTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LD
-EwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2
-MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNj
-EyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTNd
-fQ==
+eyJoaXN0b3J5IjpbLTg3MTU4OTcyNSwtMjAyNjg4MTM5MSwxOT
+k4NzkxNjMyLDcwODE0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1
+NjIsOTkxOTIyOTUyLC04MTYyODk1OTQsLTEzMjcyOTUzNjksMT
+A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
+NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
+I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5M119
+
 -->
