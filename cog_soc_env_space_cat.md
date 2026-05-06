@@ -125,7 +125,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de
 $$
 Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
 (6)$$
-\lambda_h = \left\{ 
+\lambda\plus_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{0.3(sh_{h})}}  &,   h=max\_h \\
 \frac {1}{e^{0.3(sh_{h})+sh_{h+1}}} · \gamma_{h+1}
@@ -152,11 +152,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTYxODg4NTAsLTE1MjI0NzY4NjEsLT
-EwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2
-Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMj
-MwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwx
-MjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MD
-cwODQxMDksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYw
-OCwtMjAyNjg4MTM5MV19
+eyJoaXN0b3J5IjpbMTQwODA5OTA2MCwtMTUyMjQ3Njg2MSwtMT
+A2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYz
+OTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMz
+AsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEy
+MDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNz
+A4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4
+LC0yMDI2ODgxMzkxXX0=
 -->
