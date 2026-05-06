@@ -136,7 +136,7 @@ Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descom
 
 Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament. 
 (7)$$
-f\_llum_{j,k} = 
+f\_llum_{j,k} = l_{h=s_{k}}
 $$
 
 
@@ -155,11 +155,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxNjA4NjMxNywtMTY5MzExNjA1NSwtMj
-A1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4
-Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OT
-g2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwt
-Mjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMD
-Q5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0
-MTA5LDM4NjEwNjU2N119
+eyJoaXN0b3J5IjpbLTEwOTQ0MzcyNTgsLTE2OTMxMTYwNTUsLT
+IwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2
+ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOT
+k4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAs
+LTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMD
+A0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4
+NDEwOSwzODYxMDY1NjddfQ==
 -->
