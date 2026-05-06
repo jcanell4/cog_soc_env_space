@@ -102,10 +102,9 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
-El creixement de tipus fotosintètic, dependrà de la llum rebuda 
+El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la capta
 
-l'increment de biomassa dependrà de la quantitat de llum rebuda
-  (3)$$
+(3)$$
 \Delta b_{j,k} = b_{j,k}(min(mg_{j,k}, g_{j,k} \lambda_{j,k}) - \omega_{j,k})
 $$
 * where mig_k is the maximum individual growth rate for stage k, gross_k is $\prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))$,
@@ -120,11 +119,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM2MzA0NTcxLDM4NjEwNjU2NywtNzc3OD
-U1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEsMTk5ODc5MTYz
-Miw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MT
-kyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1
-MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MT
-I2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOTExNDRd
-fQ==
+eyJoaXN0b3J5IjpbLTE2NjExNjA0NTksMzg2MTA2NTY3LC03Nz
+c4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5MSwxOTk4Nzkx
+NjMyLDcwODE0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1NjIsOT
+kxOTIyOTUyLC04MTYyODk1OTQsLTEzMjcyOTUzNjksMTA5MTg2
+MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYyNywzMT
+gxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MTI5MTE0
+NF19
 -->
