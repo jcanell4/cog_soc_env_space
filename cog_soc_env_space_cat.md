@@ -42,7 +42,7 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (matèria morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
- 	- El simulador és capaç de definir múltiples característiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament identifiquen les característiques rellevants de les espèecie. Cs per cada etapa de desenvolupament identifica les caracteristiques rellevants de les especies en funció d'aquestes etapes de creixement i desenvolupament. quan aquestes varien al llarg del temps. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves caracteristiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques:
+ 	- El simulador és capaç de definir múltiples característiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament identifiquen les característiques rellevants de les espècies. Cs per cada etapa de desenvolupament identifica les caracteristiques rellevants de les especies en funció d'aquestes etapes de creixement i desenvolupament. quan aquestes varien al llarg del temps. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves caracteristiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques:
  	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les seguents característiques es defiran per cada etapa en forma de vector o matriu. Cada caracteristica necessitarà tantes posicions com etapes tingui definides aquí.
  	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferencia l'anomenarem, vulnerabilitat al medi.  
    - Resiliència. indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquestvalor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5OTYxMzQ4MywxOTk4NzkxNjMyLDcwOD
-E0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1NjIsOTkxOTIyOTUy
-LC04MTYyODk1OTQsLTEzMjcyOTUzNjksMTA5MTg2MTUzNCwxMz
-AzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYyNywzMTgxMjYxLC0y
-MTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MTI5MTE0NCwyNzk3MD
-Q5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5MywtMTk5NzM0Nzc2Nl19
-
+eyJoaXN0b3J5IjpbLTIwMjY4ODEzOTEsMTk5ODc5MTYzMiw3MD
+gxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1
+MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMT
+MwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwt
+MjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5Nz
+A0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTMsLTE5OTczNDc3NjZd
+fQ==
 -->
