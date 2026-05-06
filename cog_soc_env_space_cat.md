@@ -105,7 +105,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular. 
 
 $$
-lf_s = \{ \}
+lf_s = \{ 1 if s= \}
 $$
 
 
@@ -127,11 +127,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNj
-QxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MTA5LDM4NjEw
-NjU2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOT
-EsMTk5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIy
-MDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1Mz
-Y5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3
-MjQ2MjddfQ==
+eyJoaXN0b3J5IjpbLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMT
+IwMDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3
+MDg0MTA5LDM4NjEwNjU2NywtNzc3ODU1MjU4LDExODExMjc2MD
+gsLTIwMjY4ODEzOTEsMTk5ODc5MTYzMiw3MDgxNDA0NzUsLTE3
+NzkzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NT
+k0LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2
+ODc5MjczMDddfQ==
 -->
