@@ -142,6 +142,7 @@ D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
 (8)$$
 rec\_eff = \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))
 $$ 
+on $R_k$ és el vector d'estrategies de recaptació de llum i nutrients vers el vector de factors limitants 
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}
@@ -158,11 +159,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMD
-U3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgz
-ODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5OD
-Y1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0y
-NzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwND
-kxMDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQx
-MDksMzg2MTA2NTY3XX0=
+eyJoaXN0b3J5IjpbLTM1MDYyMzU2Miw3MTExNzc2NzYsLTE2OT
+MxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3
+Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczOD
+ExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3
+NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMj
+U0NzI0LDEyMDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5
+NywtMTUwNzA4NDEwOV19
 -->
