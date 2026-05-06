@@ -123,7 +123,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de
 \end{array} 
 \right\}
 $$
-
+I la fracció de llum que incideix en alguna planta de l'estrat $h$ 
 
 
 Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament. 
@@ -144,11 +144,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg2NjYyMTY0LC0xMDY4Mzg5NjYwLDE2NT
-UzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1
-NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLT
-EzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQx
-MjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNj
-U2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEs
-MTk5ODc5MTYzMl19
+eyJoaXN0b3J5IjpbLTE5MDQ3ODcyOTQsLTEwNjgzODk2NjAsMT
+Y1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1
+MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOS
+wtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2
+NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMDksMzg2MT
+A2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5
+MSwxOTk4NzkxNjMyXX0=
 -->
