@@ -104,7 +104,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
 
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  
 
-Sigui $S$ la matriu que indica per cada etapa de l'especie de cada cohort l'estrat que ocupen els seus individus. Així $s_{j,k}$ indicaria l'estrat ocupat per l'espècie de la cohort $j$ quan es troba a l'etapa $k$.
+Sigui $S$ la matriu que indica per cada etapa de l'especie de cada cohort l'estrat que ocupen els seus individus i $s_{j,k}$  l'estrat ocupat per l'espècie de la cohort $j$ quan es troba a l'etapa $k$.
 
 SIgui $max\_h$ l'estrat de més altitud del nínxol
 
@@ -136,7 +136,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0NTM5MDIxMywtMTMxOTkxMzUzOCwtMT
+eyJoaXN0b3J5IjpbMTkxNjIzNzIwNywtMTMxOTkxMzUzOCwtMT
 A0MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0
 NjgzOTcsLTE1MDcwODQxMDksMzg2MTA2NTY3LC03Nzc4NTUyNT
 gsMTE4MTEyNzYwOCwtMjAyNjg4MTM5MSwxOTk4NzkxNjMyLDcw
