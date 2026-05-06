@@ -134,6 +134,8 @@ Per tal de corregir el fet que els strats no són plans sinó que tenen alçada 
 $$ 
 Anomenarem $\lambda I_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absortes  pels estrats superior i l'ombra de les plantes del propi estrat.
 
+Finalment, farem servir la mínima fracllum
+
 Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament. 
 
 
@@ -152,11 +154,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMT
-A2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYz
-OTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMz
-AsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEy
-MDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNz
-A4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4
-LC0yMDI2ODgxMzkxXX0=
+eyJoaXN0b3J5IjpbLTYyNTI5MzYyNywxMzM4MzE2MTczLC0xNT
+IyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQz
+NzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0Nz
+MsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEw
+NDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzND
+Y4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNjU2NywtNzc3ODU1MjU4
+LDExODExMjc2MDhdfQ==
 -->
