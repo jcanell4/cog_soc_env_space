@@ -102,7 +102,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
-El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la capta
+El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients i 
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}(min(mg_{j,k}, g_{j,k} \lambda_{j,k}) - \omega_{j,k})
@@ -119,7 +119,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjExNjA0NTksMzg2MTA2NTY3LC03Nz
+eyJoaXN0b3J5IjpbLTE1MDcwODQxMDksMzg2MTA2NTY3LC03Nz
 c4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5MSwxOTk4Nzkx
 NjMyLDcwODE0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1NjIsOT
 kxOTIyOTUyLC04MTYyODk1OTQsLTEzMjcyOTUzNjksMTA5MTg2
