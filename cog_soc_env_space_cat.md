@@ -114,8 +114,7 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que incideix en un estart
-
+SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que incideix en un estrat ($\gamma_h$) amb l'equació (5).
 (5)$$
 \gamma_h = \left\{ 
 \begin{array}{lcc}
@@ -124,6 +123,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de
 \end{array} 
 \right\}
 $$
+
 
 
 Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament. 
@@ -144,11 +144,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxODM3MzY5NywtMTA2ODM4OTY2MCwxNj
-U1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUw
-NTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC
-0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwtMTY0
-MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOSwzODYxMD
-Y1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4LC0yMDI2ODgxMzkx
-LDE5OTg3OTE2MzJdfQ==
+eyJoaXN0b3J5IjpbLTE4NzIyODUwOTgsLTEwNjgzODk2NjAsMT
+Y1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1
+MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOS
+wtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2
+NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMDksMzg2MT
+A2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5
+MSwxOTk4NzkxNjMyXX0=
 -->
