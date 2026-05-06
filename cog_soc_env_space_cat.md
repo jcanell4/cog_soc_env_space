@@ -104,7 +104,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
 
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
-Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. La opacitat total en cada estart ($ops_h$) serà:
+Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. La opacitat total en un estrat exercida per totes les especies ubicades a l'estrat estart ($ops_h$) serà:
 (4)$$
 ops_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
@@ -146,11 +146,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA0NTk5MDIxLDE3NDQ0NDEyMzAsLTI3Nj
-I2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEw
-OSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5NywtMTUwNzA4NDEwOS
-wzODYxMDY1NjcsLTc3Nzg1NTI1OCwxMTgxMTI3NjA4LC0yMDI2
-ODgxMzkxLDE5OTg3OTE2MzIsNzA4MTQwNDc1LC0xNzc5MzgxMj
-k0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMy
-NzI5NTM2OV19
+eyJoaXN0b3J5IjpbLTIwMDcxMDE1MDksMTc0NDQ0MTIzMCwtMj
+c2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5
+MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MT
+A5LDM4NjEwNjU2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIw
+MjY4ODEzOTEsMTk5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzOD
+EyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0x
+MzI3Mjk1MzY5XX0=
 -->
