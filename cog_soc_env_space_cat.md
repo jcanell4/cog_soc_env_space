@@ -108,8 +108,8 @@ Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de 
 (4)$$
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
-\frac {b_{j,k} · op_{j,k}} {S} , \hspace{5mm} s_{j,k} = h \\
-0,  \hspace{5mm} s_{j,k} \neq h
+\frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
+0 &, s_{j,k} \neq h
 \end{array} 
 \right\} 
 $$
@@ -146,11 +146,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMT
-k0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2
-ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOC
-wtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIw
-NjM0NjgzOTcsLTE1MDcwODQxMDksMzg2MTA2NTY3LC03Nzc4NT
-UyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5MSwxOTk4NzkxNjMy
-LDcwODE0MDQ3NV19
+eyJoaXN0b3J5IjpbNTczMzc4ODEwLC0xMDY4Mzg5NjYwLDE2NT
+UzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1
+NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLT
+EzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0xNjQx
+MjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MTA5LDM4NjEwNj
+U2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIwMjY4ODEzOTEs
+MTk5ODc5MTYzMl19
 -->
