@@ -30,8 +30,8 @@ Les espècies, en canvi, definiran les característiques pròpies que identifiqu
 ### Disseny i modelització de l'ecosistema
 El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
 
- - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el que els nodes són els ninxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'enegia de l'entorn,
- - *Arestes o connexions entre ninxols* (classe Edge). Cada connexió identificarà dos nodes (orígen i destí). A més la connexió es modelarà com una matriu bidimensional de VxC. En la primera dimensió (de V pooisicions) indicarà la via de connexió entre els nodes ( per exemple terra, aire, mar, riu, etc.) i la segona (de C posicions)  identificarà condicions de trasllat com ara corrents d'aire, d'aigua, camins, força i direcció de les mateixes, o altres condicions significatives per una migració. També es definirà la distancia. Aquestes dades, juntament amb les definides per cada especie permetrà calcular la probabilitat de migració d'una espècie usant una de les vies, així com la probabilitat de subsistència, en cas de produir-se la migració.
+ - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el qual els nodes són els nínxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'energia de l'entorn,
+ - *Arestes o connexions entre nínxols* (classe Edge). Cada connexió identificarà dos nodes (origen i destí). A més la connexió es modelarà com una matriu bidimensional de VxC. En la primera dimensió (de V posicions) indicarà la via de connexió entre els nodes ( per exemple terra, aire, mar, riu, etc.) i la segona (de C posicions)  identificarà condicions de trasllat com ara corrents d'aire, d'aigua, camins, força i direcció d'aquestes, o altres condicions significatives per una migració. També es definirà la distància. Aquestes dades, juntament amb les definides per cada espècie permetrà calcular la probabilitat de migració d'una espècie usant una de les vies, així com la probabilitat de subsistència, en cas de produir-se la migració.
  - *Nínxol* (classe Niche). Les característiques d'aquesta entitat són:
    - La superfície, expresada com un valor decimal.
    - La quantitat absoluta de nutrients (minerals) continguts en el nínxol. En aquesta primera versió, se suposarà una distribució uniforme dels nutrients per tota la supercície.
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNDY2Nzk5MCw3MDgxNDA0NzUsLTE3Nz
-kzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0
-LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2OD
-c5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNTM2Mywx
-NzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3NzkyND
-Y0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2XX0=
+eyJoaXN0b3J5IjpbLTE4MDA0ODg5NTcsNzA4MTQwNDc1LC0xNz
+c5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLTgxNjI4OTU5
+NCwtMTMyNzI5NTM2OSwxMDkxODYxNTM0LDEzMDM0NDE5NDksNj
+g3OTI3MzA3LDMwNzI0NjI3LDMxODEyNjEsLTIxMzk4MDUzNjMs
+MTcwMjkxNzExMywtMjYxMjkxMTQ0LDI3OTcwNDk0MiwxNzc5Mj
+Q2NDEsMzgzODQyOTkzLC0xOTk3MzQ3NzY2LDY4MzAzNDg4Nl19
 
 -->
