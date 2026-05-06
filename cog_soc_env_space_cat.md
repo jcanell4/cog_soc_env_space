@@ -44,9 +44,10 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
  - *Espècie* (classes Autotroph, Heterotroph i Decomposer). En general, totes les espècies comparteixen els següents conceptes i característiques:
  	- El simulador és capaç de definir múltiples característiques d'un mateix tipus per tal d'adaptar-se als canvis que el creixement i desenvolupament suposen.  Cada espècie pot definir un nombre d'etapes variable en funció dels canvis a constatar.  Les etapes de desenvolupament classifiquen els individus en rangs d'edat i permeten identificar les característiques rellevants de l'etapa. Considerarem que els individus d'una mateixa etapa tenen els mateixos valors de les seves característiques. Per tant, a  cada etapa hi haurà almenys una característica diferent. En el model de simulació,  el temps es mesura en cicles. En general, totes les espècies comparteixen els següents conceptes i característiques: 	
  	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les següents característiques es definiran per cada etapa en forma de vector o matriu. Cada característica necessitarà tantes posicions com etapes tingui definides aquí.
- 	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferència l'anomenarem, vulnerabilitat al medi.     - Resiliència. Indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquest valor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
-   - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie. 
-   - Per modelar els creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa (via creixement individual o reproductiu). Pel creixement individual es defineix el creixment màxim individual. ja que els individus no creixen indefinidament i, per tant, cal limitar la seva capacitat de creixement en forma de percentatge per cada etapa.
+ 	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferència l'anomenarem, vulnerabilitat al medi.     
+ 	- Resiliència. Indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquest valor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
+   - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie.    
+   - Per modelar el creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa (via creixement individual o reproductiu). Pel creixement individual es defineix el creixement màxim individual. Ja que els individus no creixen indefinidament i, per tant, cal limitar la seva capacitat de creixement en forma de percentatge per cada etapa.
 Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentatge de reproducció per cicle. La capacitat reproductiva real es veurà afectada per la quantitat d'aliment aconseguit durant el cicle. Si la quantitat és màxima també ho serà la fertilitat, però si decau, la fertilitat es veurà afectada reduint-ne l'eficiència.
    - Carcteristiques fisico-químiques de la materia morta en cada una de les etapes. Le caracteristiques fisico-quimiques es definiran com un vector en el que cada posició representi una caracteristica específica i el seu valor la intensitat d'aquesta.
    - Grandaria de la materia morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar materia morta de mides diverses, tenint en compte que hi ha especies que poden desprendre una part (per exemple les fulles dels arbres) però antenir la resta viva.      
@@ -112,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNjk0OTYzNCwtMjAyNjg4MTM5MSwxOT
-k4NzkxNjMyLDcwODE0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1
-NjIsOTkxOTIyOTUyLC04MTYyODk1OTQsLTEzMjcyOTUzNjksMT
-A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
-NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
-I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5M119
-
+eyJoaXN0b3J5IjpbLTE3OTE2ODM3MjgsLTIwMjY4ODEzOTEsMT
+k5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAx
+NTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LD
+EwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2
+MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNj
+EyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTNd
+fQ==
 -->
