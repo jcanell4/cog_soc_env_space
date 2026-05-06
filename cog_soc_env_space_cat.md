@@ -109,7 +109,7 @@ $$
 ops_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} , s_{j,k} = h \\
-0, s_{j,k} \neq h \\
+0, s_{j,k} \neq h
 \end{array} 
 \right\} 
 $$
@@ -145,7 +145,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3NTM3NTI2MywxNzQ0NDQxMjMwLC0yNz
+eyJoaXN0b3J5IjpbMTM2NzgzMjI1MSwxNzQ0NDQxMjMwLC0yNz
 YyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkx
 MDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMD
 ksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAy
