@@ -123,7 +123,7 @@ SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de
 \end{array} 
 \right\}
 $$
-I la fracció de llum que incideix en alguna planta de l'estrat $h$ es calcularà fent:
+Per tal de corregir el fet que els strats no són plans sinó que tenen alçI la fracció de llum que incideix en alguna planta de l'estrat $h$ es calcularà fent:
 (6)$$
 \lambda_h = \left\{ 
 \begin{array}{lcc}
@@ -152,11 +152,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMT
-Y1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1
-MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOS
-wtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2
-NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMDksMzg2MT
-A2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAyNjg4MTM5
-MSwxOTk4NzkxNjMyXX0=
+eyJoaXN0b3J5IjpbLTIwMjEzNDg2NzIsLTE1MjI0NzY4NjEsLT
+EwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2
+Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMj
+MwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwx
+MjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MD
+cwODQxMDksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYw
+OCwtMjAyNjg4MTM5MV19
 -->
