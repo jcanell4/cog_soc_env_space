@@ -144,8 +144,13 @@ rec\_eff = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
 on $R_{jk}$ és el vector d'estrategies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espe`cie $j$ per superar el factor limitant $i$. 
 
-Direm que el factor nutrients ($f\_nut_{jk}$) és:
+Si N són els nutrients Direm que el factor nutrients ($f\_nut_{jk}$) és:
+(9)$$
+f\_nut_{jk} = 
+$$
+niche.getNutrients()/(niche.getNutrients()*(1-rec_eff) +  niche.getNutrients());
 
+double  effective  =  mig_s  *  f_nut  *  lf  *  pcpacity  +  gross_noise;
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}
@@ -162,11 +167,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MDAzOTM2MCw3MTExNzc2NzYsLTE2OT
-MxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3
-Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczOD
-ExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3
-NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMj
-U0NzI0LDEyMDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5
-NywtMTUwNzA4NDEwOV19
+eyJoaXN0b3J5IjpbLTE3MzQyMzc5ODgsNzExMTc3Njc2LC0xNj
+kzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0
+NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mz
+gxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3Mywx
+NzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0Mz
+I1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0Njgz
+OTcsLTE1MDcwODQxMDldfQ==
 -->
