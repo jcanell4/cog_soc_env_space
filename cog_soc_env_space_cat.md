@@ -114,7 +114,7 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat ($l_{h->h-1}$) amb l'equació (5).
+SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat ($l_{h \rightarrow h-1}$) amb l'equació (5).
 (5)$$
 lt_h = \left\{ 
 \begin{array}{lcc}
@@ -154,7 +154,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0NzI2ODI2LDEzMzgzMTYxNzMsLTE1Mj
+eyJoaXN0b3J5IjpbNzAyNzQ0MzQwLDEzMzgzMTYxNzMsLTE1Mj
 I0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3
 MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3My
 wxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0
