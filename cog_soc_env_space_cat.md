@@ -104,9 +104,9 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
 
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
-Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $ops_h$ a l'opacitat exercida per totes les especies ubicades en ell i es calcularà:
+Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a la sombra exercida per totes les especies ubicades a l'estrat $h$ i es calcula fent:
 (4)$$
-ops_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
+sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} , s_{j,k} = h \\
 0, s_{j,k} \neq h
@@ -146,11 +146,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNz
-YyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkx
-MDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMD
-ksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAy
-Njg4MTM5MSwxOTk4NzkxNjMyLDcwODE0MDQ3NSwtMTc3OTM4MT
-I5NCw1MjIwMDE1NjIsOTkxOTIyOTUyLC04MTYyODk1OTQsLTEz
-MjcyOTUzNjldfQ==
+eyJoaXN0b3J5IjpbLTkyNDEyMTAzOCwxNTg5NzY4NDczLDE3ND
+Q0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0
+NzI0LDEyMDA0OTEwOSwtMTY0MTI4MDM5NiwtMjA2MzQ2ODM5Ny
+wtMTUwNzA4NDEwOSwzODYxMDY1NjcsLTc3Nzg1NTI1OCwxMTgx
+MTI3NjA4LC0yMDI2ODgxMzkxLDE5OTg3OTE2MzIsNzA4MTQwND
+c1LC0xNzc5MzgxMjk0LDUyMjAwMTU2Miw5OTE5MjI5NTIsLTgx
+NjI4OTU5NF19
 -->
