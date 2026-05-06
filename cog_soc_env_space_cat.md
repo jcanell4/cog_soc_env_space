@@ -28,7 +28,7 @@ Les cohorts també disposaran d'un registre per reconèixer la matèria morta ge
 Les espècies, en canvi, definiran les característiques pròpies que identifiquen l'espècie. Entre d'altres, les condicions de l'entorn que li poden ser més favorables (temperatura humitat, llum, salinitat, acidesa, etc.), les estratègies de defensa adoptades contra els depredadors, les estratègies de recaptació d'aliment per obtenir de la manera més eficient possible l'aliment que necessita, la resistència a les condicions adverses, la capacitat de viure en colònies o variables adreçades calcular la capacitat de reproducció i creixement, la mida dels individus o la superfície que ocupen en el nínxol. Són, doncs, indicadors per calcular la variació en el temps de biomassa viva i morta dins una cohort determinada, en funció de la resta d'espècies existents en un nínxol i de les condicions d'aquest.
 
 ### Disseny i modelització de l'ecosistema
-El simulador es modelarà amb conjunt d'entitats que definrem a continuació:
+El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
 
  - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el que els nodes són els ninxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'enegia de l'entorn,
  - *Arestes o connexions entre ninxols* (classe Edge). Cada connexió identificarà dos nodes (orígen i destí). A més la connexió es modelarà com una matriu bidimensional de VxC. En la primera dimensió (de V pooisicions) indicarà la via de connexió entre els nodes ( per exemple terra, aire, mar, riu, etc.) i la segona (de C posicions)  identificarà condicions de trasllat com ara corrents d'aire, d'aigua, camins, força i direcció de les mateixes, o altres condicions significatives per una migració. També es definirà la distancia. Aquestes dades, juntament amb les definides per cada especie permetrà calcular la probabilitat de migració d'una espècie usant una de les vies, així com la probabilitat de subsistència, en cas de produir-se la migració.
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMj
-AwMTU2Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2
-OSwxMDkxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNz
-I0NjI3LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywt
-MjYxMjkxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOT
-kzLC0xOTk3MzQ3NzY2LDY4MzAzNDg4NiwtMTg5NDUwNTc5NF19
+eyJoaXN0b3J5IjpbMjAyNDY2Nzk5MCw3MDgxNDA0NzUsLTE3Nz
+kzODEyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0
+LC0xMzI3Mjk1MzY5LDEwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2OD
+c5MjczMDcsMzA3MjQ2MjcsMzE4MTI2MSwtMjEzOTgwNTM2Mywx
+NzAyOTE3MTEzLC0yNjEyOTExNDQsMjc5NzA0OTQyLDE3NzkyND
+Y0MSwzODM4NDI5OTMsLTE5OTczNDc3NjYsNjgzMDM0ODg2XX0=
 
 -->
