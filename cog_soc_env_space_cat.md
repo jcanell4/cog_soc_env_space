@@ -53,7 +53,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
   - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.      
    - Vector d'estratègies de defensa. En cada etapa, les diferents espècies han desenvolupat, al llarg de l'evolució múltiples estratègies de defensa, que en aquest model es definiran mitjançant un vector de valors compresos entre 0 i 1. Cada posició identifica una estratègia determinada. No hi ha característiques predefinides sinó que a cada simulació es poden especificar les que es considerin més rellevants (punxes, verí, cuirassa, mida, fugida, etc.). Totes les espècies comparteixen els mateixos conceptes en la mateixa posició del vector. Si una espècie no ha desenvolupat una estratègia de defensa en la posició que la identifica tindrà el valor 0.0.
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les característiques fisicoquímiques de la matèria morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/característiques) determinarà bona part de l'eficàcia alimentària.
-   - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
+   - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nuclis de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mesura que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
     - Altres caracteristica importants per preveure l'evolució de l'ecosistema som: la superfície ocupada i la quantitat de bimassa per indivídu. Ambdues es faran servir per calcular la probabilitat de coincidencia entre presa/aliment i  depredador/recolector.
 
      Les especies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de caracteristiques específiques:
@@ -113,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIzNjk0ODMyLC0yMDI2ODgxMzkxLDE5OT
-g3OTE2MzIsNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2
-Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMD
-kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
-LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
-kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzXX0=
-
+eyJoaXN0b3J5IjpbLTEzMTMxOTE2ODQsLTIwMjY4ODEzOTEsMT
+k5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzODEyOTQsNTIyMDAx
+NTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0xMzI3Mjk1MzY5LD
+EwOTE4NjE1MzQsMTMwMzQ0MTk0OSw2ODc5MjczMDcsMzA3MjQ2
+MjcsMzE4MTI2MSwtMjEzOTgwNTM2MywxNzAyOTE3MTEzLC0yNj
+EyOTExNDQsMjc5NzA0OTQyLDE3NzkyNDY0MSwzODM4NDI5OTNd
+fQ==
 -->
