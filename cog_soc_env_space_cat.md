@@ -106,8 +106,9 @@ El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficienc
 
 $$
 lf_s = \left\{ 
-\begin{array}
-1, s=
+\begin{array}{lcc}
+1, s=0 \\
+
 \end{array} 
 \right\}
 $$
@@ -131,7 +132,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MjQ1ODMyNiwtMTMxOTkxMzUzOCwtMT
+eyJoaXN0b3J5IjpbLTQ4MjQ1MTA0MiwtMTMxOTkxMzUzOCwtMT
 A0MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0
 NjgzOTcsLTE1MDcwODQxMDksMzg2MTA2NTY3LC03Nzc4NTUyNT
 gsMTE4MTEyNzYwOCwtMjAyNjg4MTM5MSwxOTk4NzkxNjMyLDcw
