@@ -140,7 +140,7 @@ f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
 D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
 (8)$$
-rec\_eff = 
+rec\_eff = \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))
 $$ 
 
 (3)$$
@@ -158,11 +158,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NDMzMDgzMiwtMTY5MzExNjA1NSwtMj
-A1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4
-Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OT
-g2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwt
-Mjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMD
-Q5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0
-MTA5LDM4NjEwNjU2N119
+eyJoaXN0b3J5IjpbNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMD
+U3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgz
+ODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5OD
+Y1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0y
+NzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwND
+kxMDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQx
+MDksMzg2MTA2NTY3XX0=
 -->
