@@ -140,9 +140,9 @@ f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
 D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
 (8)$$
-rec\_eff = \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))
+rec\_eff = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))
 $$ 
-on $R_k$ és el vector d'estrategies de recaptació de llum i nutrients vers el vector de factors limitants $L$ específic del nínxol. $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{k,i}$ és l'estratègia usada per superar el factor limitant $i$. 
+on $R_{jk}$ és el vector d'estrategies de recaptació de llum i nutrients vers el vector de factors limitants $L$ específic del nínxol. $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{k,i}$ és l'estratègia usada pels individus de l'etapa $k$ per superar el factor limitant $i$. 
 
 (3)$$
 \Delta b_{j,k} = b_{j,k}
@@ -159,7 +159,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzOTAzMTcxOCw3MTExNzc2NzYsLTE2OT
+eyJoaXN0b3J5IjpbMTUyODk0NTIxNSw3MTExNzc2NzYsLTE2OT
 MxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3
 Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczOD
 ExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3
