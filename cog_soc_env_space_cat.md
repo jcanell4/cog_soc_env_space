@@ -49,7 +49,8 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
    - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie.    
    - Per modelar el creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa (via creixement individual o reproductiu). Pel creixement individual es defineix el creixement màxim individual. Ja que els individus no creixen indefinidament i, per tant, cal limitar la seva capacitat de creixement en forma de percentatge per cada etapa.
 Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentatge de reproducció per cicle. La capacitat reproductiva real es veurà afectada per la quantitat d'aliment aconseguit durant el cicle. Si la quantitat és màxima també ho serà la fertilitat, però si decau, la fertilitat es veurà afectada reduint-ne l'eficiència.   
-  - Característiques fisicoquímiques de la matèria morta en cada una de les etapes. Les característiques fisicoquímiques es definiran com un vector en el qual cada posició representi una característica específica i el seu valor la intensitat d'aquesta.      - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.      
+  - Característiques fisicoquímiques de la matèria morta en cada una de les etapes. Les característiques fisicoquímiques es definiran com un vector en el qual cada posició representi una característica específica i el seu valor la intensitat d'aquesta.    
+  - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.      
    - Vector d'estratègies de defensa. En cada etapa, les diferents espècies han desenvolupat, al llarg de l'evolució múltiples estratègies de defensa, que en aquest model se definirant mitjançant un vector de valors compresos entre 0 i 1. Cada posició identifica una estratègia determinada. No hi ha característiques predefinides sinó que a cada simulació es poden especificar les que es considerin més rellevants (punxes, verí, cuirassa, mida, fugida, etc.). Totes les espècies comparteixen el mateixos conceptes en la mateixa posició del vector. Si una espècie no ha desenvolupat una estratègia de defensa en la posició que la identifica tindrà el valor 0.0.
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les caracteristique fisico-químiques de la materia morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/caracteristiques) determinarà bona part de l'eficàcia alimentària.
    - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nucils de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta de ben segur avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mida que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
@@ -112,11 +113,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ5NzUxNTM2LC0yMDI2ODgxMzkxLDE5OT
-g3OTE2MzIsNzA4MTQwNDc1LC0xNzc5MzgxMjk0LDUyMjAwMTU2
-Miw5OTE5MjI5NTIsLTgxNjI4OTU5NCwtMTMyNzI5NTM2OSwxMD
-kxODYxNTM0LDEzMDM0NDE5NDksNjg3OTI3MzA3LDMwNzI0NjI3
-LDMxODEyNjEsLTIxMzk4MDUzNjMsMTcwMjkxNzExMywtMjYxMj
-kxMTQ0LDI3OTcwNDk0MiwxNzc5MjQ2NDEsMzgzODQyOTkzXX0=
+eyJoaXN0b3J5IjpbLTIxNjYzMzkxOCwtMjAyNjg4MTM5MSwxOT
+k4NzkxNjMyLDcwODE0MDQ3NSwtMTc3OTM4MTI5NCw1MjIwMDE1
+NjIsOTkxOTIyOTUyLC04MTYyODk1OTQsLTEzMjcyOTUzNjksMT
+A5MTg2MTUzNCwxMzAzNDQxOTQ5LDY4NzkyNzMwNywzMDcyNDYy
+NywzMTgxMjYxLC0yMTM5ODA1MzYzLDE3MDI5MTcxMTMsLTI2MT
+I5MTE0NCwyNzk3MDQ5NDIsMTc3OTI0NjQxLDM4Mzg0Mjk5M119
 
 -->
