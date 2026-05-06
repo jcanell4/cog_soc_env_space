@@ -107,6 +107,9 @@ El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficienc
 Sigui $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa.
 $$
 ops_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
+\begin{array}{lcc}
+0, s_{j,k} 
+\end{array} 
 \right\} 
 $$
 
@@ -141,11 +144,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTk2ODMxMDksMTc0NDQ0MTIzMCwtMj
-c2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5
-MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3LC0xNTA3MDg0MT
-A5LDM4NjEwNjU2NywtNzc3ODU1MjU4LDExODExMjc2MDgsLTIw
-MjY4ODEzOTEsMTk5ODc5MTYzMiw3MDgxNDA0NzUsLTE3NzkzOD
-EyOTQsNTIyMDAxNTYyLDk5MTkyMjk1MiwtODE2Mjg5NTk0LC0x
-MzI3Mjk1MzY5XX0=
+eyJoaXN0b3J5IjpbMTU1NTMzNDkwMCwxNzQ0NDQxMjMwLC0yNz
+YyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkx
+MDksLTE2NDEyODAzOTYsLTIwNjM0NjgzOTcsLTE1MDcwODQxMD
+ksMzg2MTA2NTY3LC03Nzc4NTUyNTgsMTE4MTEyNzYwOCwtMjAy
+Njg4MTM5MSwxOTk4NzkxNjMyLDcwODE0MDQ3NSwtMTc3OTM4MT
+I5NCw1MjIwMDE1NjIsOTkxOTIyOTUyLC04MTYyODk1OTQsLTEz
+MjcyOTUzNjldfQ==
 -->
