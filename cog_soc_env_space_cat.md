@@ -148,7 +148,7 @@ Si N són els nutrients disponibles al nínxol, direm que el factor nutrients ($
 (9)$$
 f\_nut_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
 $$
-niche.getNutrients()/(niche.getNutrients()*(1-rec_eff) +  niche.getNutrients());
+
 
 double  effective  =  mig_s  *  f_nut  *  lf  *  pcpacity  +  gross_noise;
 
@@ -167,11 +167,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzgxODMwMzAsNzExMTc3Njc2LC0xNj
-kzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0
-NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mz
-gxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3Mywx
-NzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0Mz
-I1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYsLTIwNjM0Njgz
-OTcsLTE1MDcwODQxMDldfQ==
+eyJoaXN0b3J5IjpbODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5Mz
+ExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2
+ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MT
+EsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0
+NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNT
+Q3MjQsMTIwMDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3
+LC0xNTA3MDg0MTA5XX0=
 -->
