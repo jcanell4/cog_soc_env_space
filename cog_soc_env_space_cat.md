@@ -14,7 +14,7 @@ La simulació hauria de permetre comprovar si s'acompleix la hipòtesi que les e
 
 Per a emmarcar la simulació en un ecosistema, necessitarem primer crear la simulació d'un sistema ecològic el qual disposi d'espècies convivint en equilibri i al qual es pugui afegir nous agents corresponents altres espècies amb capacitat de modelar  el comportament tal com s'ha definit més amunt. Per tal d'evitar complexitat sense reduir riquesa de l'ecosistema, en la simulació hi podrà haver  més espècies que les estudiades. Seran espècies neutres que contribuiran a l'equilibri del sistema, poden formar part de la dieta dels agents estudiats o simplement formar part del sistema en equilibri de manera que aquest sigui prou ric per suportar una simulació realista. 
 
-## ecosistema base
+## Ecosistema base
 L'ecosistema disposarà d'un entorn format per diversos nínxols ecològics amb connexions entre ells per  possibilitar les migracions i traspassos de biomassa entre ells. El model identificarà cada un dels nínxols que formin part, quins es troben connectats, de quina manera i amb quines condicions. Així podrem definir connexions via terra, aire o aigua amb condicions específiques d'accés (corrents d'aire o aigua, accidents geogràfics, etc.).
 
 Cada nínxol disposarà de condicions ecològiques pròpies, temperatura, humitat, salinitat, composició química, substrat, nutrients, etc. Les condicions de cada nínxol es classificaran en dos tipus de mesures, les que afecten la supervivència de les espècies, però no d'una manera decisiva, es tracta de condicions no vinculades directament amb l'alimentació, sinó amb més aviat amb les condicions més favorables per a les que l'espècie hagi evolucionat i, per tant, els faci menys vulnerables (condicions climàtiques, malalties específiques, quantitat d'aigua, distribució d'aquesta, etc.). El segon tipus fa referència a les condicions relacionades específicament amb els nutrients i l'energia i, en conseqüència, relacionades de manera directa amb els éssers autòtrofs; ens referim per exemple a la profunditat a la qual es troben els nutrients, la duresa del substrat, el grau de dissolució o la quantitat de llum rebuda. Els anomenarem factors limitants perquè de fet,  limitaran dràsticament l'existència d'unes espècies i no d'altres. Cada nínxol disposarà també de diferents capacitats per transformar la matèria orgànica morta en nutrients. La matèria orgànica morta la podrem classificar segons la mida de manera que cada nínxol disposi de diferents taxes de retorn en funció de la mida de la matèria morta.  Les taxes de retorn especificaran la riquesa de fixadors (elements químics) i descomponedors biòtics no inclosos com a espècies (bacteris, fongs...) i en conseqüència la proporció de matèria finalment fixada com a nutrients minerals segons la mida de la primera. 
@@ -27,7 +27,7 @@ Les cohorts també disposaran d'un registre per reconèixer la matèria morta ge
 
 Les espècies, en canvi, definiran les característiques pròpies que identifiquen l'espècie. Entre d'altres, les condicions de l'entorn que li poden ser més favorables (temperatura humitat, llum, salinitat, acidesa, etc.), les estratègies de defensa adoptades contra els depredadors, les estratègies de recaptació d'aliment per obtenir de la manera més eficient possible l'aliment que necessita, la resistència a les condicions adverses, la capacitat de viure en colònies o variables adreçades calcular la capacitat de reproducció i creixement, la mida dels individus o la superfície que ocupen en el nínxol. Són, doncs, indicadors per calcular la variació en el temps de biomassa viva i morta dins una cohort determinada, en funció de la resta d'espècies existents en un nínxol i de les condicions d'aquest.
 
-### Disseny i modelització de l'ecosistema
+### Disseny i modelització de l'ecosistema base
 El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
 
  - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el qual els nodes són els nínxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'energia de l'entorn,
@@ -112,7 +112,9 @@ Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i l
 
 (4)$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
-$$on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+$$
+
+on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 
 
@@ -182,7 +184,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0MzgwNzAzLDE5MjExMzEwMTQsODgwNT
+eyJoaXN0b3J5IjpbODcxNjUxOTYyLDE5MjExMzEwMTQsODgwNT
 QwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2
 OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLD
 E2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMy
