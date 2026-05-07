@@ -119,6 +119,16 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ###### Càlcul del factor nutricional
+L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitan:
+(8)$$
+rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
+$$ 
+on $R_{jk}$ és el vector d'estrategies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espe`cie $j$ per superar el factor limitant $i$. 
+
+Si N són els nutrients disponibles al nínxol, direm que el factor nutrients ($f\_nut_{jk}$) és:
+(9)$$
+f\_nut_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
+$$
 
 
 , es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
@@ -186,11 +196,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjU4MTk4NzEsLTEzMzI3OTk0NDMsMT
-kyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2
-MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4Nj
-EsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwt
-NTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0ND
-QxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcy
-NCwxMjAwNDkxMDldfQ==
+eyJoaXN0b3J5IjpbMTg4MzU5NTI4MSwtMTMzMjc5OTQ0MywxOT
+IxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYw
+NTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MS
+wtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01
+NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0ND
+EyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0
+LDEyMDA0OTEwOV19
 -->
