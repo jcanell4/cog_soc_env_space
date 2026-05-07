@@ -221,20 +221,21 @@ Així doncs, la mortalitat en un cicle serà:
 (15)$$
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
--v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ - v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k} &, k = |E_j| -1
+-v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
+-(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
 on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
 #### Fase de actualització per desenvolupament
-
+En aquesta fase 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5MDY0MDM1LDE3NTQyMTU5NDUsMjEzNz
-g3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2
-NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLT
-QwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0
-MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1Nj
-ksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwx
-NjU1MzIyODM0XX0=
+eyJoaXN0b3J5IjpbMTQwNDQ5NTEwMCwxNzU0MjE1OTQ1LDIxMz
+c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
+NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
+00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
+NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NT
+Y5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAs
+MTY1NTMyMjgzNF19
 -->
