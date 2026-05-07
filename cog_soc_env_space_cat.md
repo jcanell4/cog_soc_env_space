@@ -191,10 +191,14 @@ El creixement reproductiu, no és pròpiament creixement de biomassa sinó més 
 (12)$$
 \tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
 $$ 
-Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements nous  
+Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements nous i la despesa que això suposa per els reproductors.
+
+ (12)$$
+\tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
+$$ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3NTM2Mjk4Miw0MTUzOTgzNTUsLTQ5Mj
+eyJoaXN0b3J5IjpbLTUyNzA0MTg0OCw0MTUzOTgzNTUsLTQ5Mj
 E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
 NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
 wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
