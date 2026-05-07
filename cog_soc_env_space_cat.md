@@ -187,13 +187,15 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
-El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima però en cicles amb manca d'aliment la fertilitat es reduirà. 
+El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima però en cicles amb manca d'aliment la fertilitat es redueixi. 
+
+f_e
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNj
-g4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4
-NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OS
-w3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMz
-ODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1Mz
-IyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcy
-NiwxNTg5NzY4NDczXX0=
+eyJoaXN0b3J5IjpbMTMzMzc1NTgyNiwtNDkyMTk3NDYyLC0xND
+YwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAw
+ODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMT
+QsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1
+NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mz
+g5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2
+NSwtNjMyNTA1NzI2XX0=
 -->
