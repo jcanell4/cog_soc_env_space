@@ -130,7 +130,7 @@ Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol.
 (9)$$
 f\_nut_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
 $$
-
+on $N$ és la quantitat (o la densitat) de nutrients existent en el  
 
 , es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
@@ -197,11 +197,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMTA2MTIxOSwtNDA5Nzg1NTU3LC0xMz
-MyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3
-NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC
-0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5
-NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Nj
-g0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1Mzgs
-LTEwNDMyNTQ3MjRdfQ==
+eyJoaXN0b3J5IjpbNDcxMjE0NDcwLC00MDk3ODU1NTcsLTEzMz
+I3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2
+LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLT
+E1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0
+NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2OD
+Q3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwt
+MTA0MzI1NDcyNF19
 -->
