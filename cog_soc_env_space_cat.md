@@ -119,7 +119,7 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ###### Càlcul del factor nutricional
-L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitan:
+L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitants i per les estratègies de captació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant d:
 (8)$$
 rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
@@ -196,7 +196,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MzU5NTI4MSwtMTMzMjc5OTQ0MywxOT
+eyJoaXN0b3J5IjpbMTMxNzYxODQzNiwtMTMzMjc5OTQ0MywxOT
 IxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYw
 NTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MS
 wtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01
