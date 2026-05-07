@@ -119,7 +119,7 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ###### Càlcul del factor nutricional
-L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitants i per les estratègies de captació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se :
+L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitants i per les estratègies de captació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, :
 (8)$$
 rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
@@ -196,11 +196,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NDQ4NTE4OCwtMTMzMjc5OTQ0MywxOT
-IxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYw
-NTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MS
-wtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODExLC01
-NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0ND
-EyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0
-LDEyMDA0OTEwOV19
+eyJoaXN0b3J5IjpbMTcyMzYwNDIwLC0xMzMyNzk5NDQzLDE5Mj
+ExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1
+NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC
+0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2
+NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MT
+IzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQs
+MTIwMDQ5MTA5XX0=
 -->
