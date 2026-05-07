@@ -96,7 +96,7 @@ on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de
 ### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-##### Fase de creixement indididual  per autòtrofs
+#### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
   (3)$$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
@@ -117,7 +117,7 @@ $$
 
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
-###### Càlcul del factor nutricional per autòtrofs
+##### Càlcul del factor nutricional per autòtrofs
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
 (5)$$
@@ -131,7 +131,7 @@ fn_{jk} = \frac{N}{N·(1-eff_{jk})+N}
 $$
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
 
-###### Càlcul del factor llum
+##### Càlcul del factor llum
 Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum (respecte al total de llum arribada al nínxol)  aconsegueix impactar a l'estrat on viu l'autòtrof en l'estadi que es desitja calcular.  
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
@@ -184,11 +184,11 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 
 ##### Fase de creixement indididual  per heteròtrofs
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyMTI1OTY4LDE2ODgwNTI4MCwtMTE5Mj
-c5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5
-NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMT
-Y5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIy
-NDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNz
-M4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMs
-MTc0NDQ0MTIzMF19
+eyJoaXN0b3J5IjpbLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMT
+kyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3
+OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC
+0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1
+MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0ND
+M3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3
+MywxNzQ0NDQxMjMwXX0=
 -->
