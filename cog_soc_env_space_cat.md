@@ -209,9 +209,9 @@ $$
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
 #### Fase d'actualització per mortalitat
-La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entorn. La primera només afecta a la població de la darrera etapa de desenvolupament. La previó suposa que els indivídus de les etapes es troben repartits uniformement. És a dir, si una etapa té una durada de 3 cicles, es presuposa que 1/3 es troven en el primer cicle de la darrera etapa, 1/3 en el segon cicle i la resta en el tercer. Aixì implica que els morts per vellesa seran $\frac{1}{durada\ de\ l'etapa\ en\ cicles}$ de la població de la darrera etapa.
+La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entorn. La primera només afecta a la població de la darrera etapa de desenvolupament. La previsió suposa que els individus de les etapes es troben repartits uniformement. És a dir, si una etapa té una durada de 3 cicles, es pressuposa que 1/3 es troben en el primer cicle de la darrera etapa, 1/3 en el segon cicle i la resta en el tercer. Així implica que els morts per vellesa seran $\frac{1}{durada\ de\ l'etapa\ en\ cicles}$ de la població de la darrera etapa.
 
- La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabiliotat i la taxa de resiliencia de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliencia redueix la primera. La vulnerabiltat  s'obté a calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les que l'especie es troba optimitzada.  
+ La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabilitat i la taxa de resiliència de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliència redueix la primera. La vulnerabilitat  s'obté calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les quals l'espècie es troba optimitzada.  
 
 (14)$$
 v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
@@ -226,16 +226,17 @@ Així doncs, la mortalitat en un cicle serà:
 \end{array} 
 \right\}
 $$
-on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
+
+on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
 #### Fase de actualització per desenvolupament
 En aquesta fase, es presuposa també
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NzQ1OTM5OSwxNzU0MjE1OTQ1LDIxMz
-c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
-NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
-00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
-NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NT
-Y5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAs
-MTY1NTMyMjgzNF19
+eyJoaXN0b3J5IjpbLTE4Nzc0NTYxNjksMTc1NDIxNTk0NSwyMT
+M3ODc5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEz
+MDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5Mi
+wtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgw
+NTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNj
+U2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYw
+LDE2NTUzMjI4MzRdfQ==
 -->
