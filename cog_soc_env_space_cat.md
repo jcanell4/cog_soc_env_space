@@ -209,10 +209,10 @@ $$
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
 #### Fase de actualització per mortalitat
-La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  
+La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  La taxa de mortalitat deguda a les condicions adverses es 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3MjE5NDk0OSw0MTUzOTgzNTUsLTQ5Mj
+eyJoaXN0b3J5IjpbMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5Mj
 E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
 NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
 wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
