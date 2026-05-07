@@ -216,7 +216,7 @@ La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a
 (14)$$
 v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
 $$
-Així doncs, mortalitat en un cicle serà:
+Així doncs, la mortalitat en un cicle serà:
 
 (15)$$
 \Delta b_{jk} = \left\{ 
@@ -226,10 +226,10 @@ v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k} &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
-on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la du
+on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNDg5MTQ0MCwxNzU0MjE1OTQ1LDIxMz
+eyJoaXN0b3J5IjpbMTIwOTgzNjA4MSwxNzU0MjE1OTQ1LDIxMz
 c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
 NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
 00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
