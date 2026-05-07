@@ -119,7 +119,7 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ###### Càlcul del factor nutricional
-L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitants i per les estratègies de captació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, la planta podrà nodrirse, però només en proporció a la diferencia entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa presió sobfe el resultat final. Això ens permetrà calcular amb quina eficiència, la planta pot  :
+L'eficiencia de la captació d'energia i  nutrients vindrà donada pel vector de factors limitants i per les estratègies de captació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, la planta podrà nodrirse, però només en proporció a la diferencia entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa presió sobfe el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 (5)$$
 rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
@@ -196,11 +196,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTYyMzk0NTgsLTEzMzI3OTk0NDMsMT
-kyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2
-MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4Nj
-EsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwt
-NTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0ND
-QxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcy
-NCwxMjAwNDkxMDldfQ==
+eyJoaXN0b3J5IjpbOTk5NDkzNzU0LC0xMzMyNzk5NDQzLDE5Mj
+ExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1
+NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC
+0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2
+NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MT
+IzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQs
+MTIwMDQ5MTA5XX0=
 -->
