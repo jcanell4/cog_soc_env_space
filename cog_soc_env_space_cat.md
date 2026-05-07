@@ -111,8 +111,9 @@ Finalment, la densitat vegetal existent (és a dir competència) modificarà tam
 Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
 (4)$$
-  \Delta b_{j,k} = b_{j,k} · gt · fn · fl · fc · (1- \omega_{j,k})
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
+on 
 
 
 
@@ -181,11 +182,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMT
-c3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYx
-NzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNC
-wtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4
-OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMz
-UzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYs
-LTIwNjM0NjgzOTddfQ==
+eyJoaXN0b3J5IjpbLTg1OTkzNjU0OCwxOTIxMTMxMDE0LDg4MD
+U0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1
+NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MC
+wxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYz
+MjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2Nj
+E5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwt
+MTY0MTI4MDM5Nl19
 -->
