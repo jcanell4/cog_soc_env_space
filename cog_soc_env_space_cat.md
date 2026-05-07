@@ -202,8 +202,10 @@ Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements no
 \right\}
 $$ 
 
+En la versió actual es desestima el  cost reproductiu, però en futures versions es ppot afegir.
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1OTczNzM2NSw0MTUzOTgzNTUsLTQ5Mj
+eyJoaXN0b3J5IjpbMTExMDEzNDA4NCw0MTUzOTgzNTUsLTQ5Mj
 E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
 NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
 wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
