@@ -117,7 +117,7 @@ $$
 
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
-##### Càlcul del factor nutricional per autòtrofs
+##### Càlcul del factor nutricional
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
 (5)$$
@@ -175,7 +175,7 @@ Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l
 fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
 $$
 
-###### Càlcul del factor de capacitat màxima
+##### Càlcul del factor de capacitat màxima
 El factor de càrrega máxima el calcularem usant el valor de densitat màxima suportada per cada espècie en les seves etapes.  
 (11)$$
 fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}}
@@ -184,11 +184,11 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 
 ##### Fase de creixement indididual  per heteròtrofs
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMT
-kyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3
-OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC
-0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1
-MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0ND
-M3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3
-MywxNzQ0NDQxMjMwXX0=
+eyJoaXN0b3J5IjpbLTE2MjE5NjYyMTMsLTE0NjAzMTMwNjUsMT
+Y4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3
+ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3ND
+ksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEz
+MzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NT
+MyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3
+MjYsMTU4OTc2ODQ3M119
 -->
