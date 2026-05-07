@@ -187,7 +187,10 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
-El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima però en cicles amb manca d'aliment la fertilitat es redueixi. Sigui $\tau_{jk}$) la taxa de fertilitat máxima d'una espècie, i $\alpha_{jkt}$ la taxa de creixement efectiva aconseguida per l'etapa $k$ de l'espècie $j$ en el temps o cicle $t$. La taxa de fertilitat efectiva o taxa de fertilitat en el cicle $t$ serà:
+El creixement reproductiu no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (naixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima, però en cicles amb manca d'aliment la fertilitat es redueixi. 
+
+Sigui $\tau_{jk}$) la taxa de fertilitat màxima d'una espècie, i $\alpha_{jkt}$ la taxa de creixement efectiva aconseguida per l'etapa $k$ de l'espècie $j$ en el temps o cicle $t$. La taxa de fertilitat efectiva o taxa de fertilitat en el cicle $t$ serà:
+
 (12)$$
 \tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
 $$ 
@@ -205,10 +208,10 @@ $$
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de neixements.  
 
 #### Fase de actualització per mortalitat
-La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat de guda a les cond 
+La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk0NTk2OTE3LDQxNTM5ODM1NSwtNDkyMT
+eyJoaXN0b3J5IjpbMTM1NjczMTU3LDQxNTM5ODM1NSwtNDkyMT
 k3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0
 MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLD
 E5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzEx
