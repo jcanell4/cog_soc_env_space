@@ -179,14 +179,14 @@ $$
 ###### Càlcul del factor de capacitat màxima
 El factor de càrrega máxima el calcularem usant el valor de densitat màxima suportada per cada espècie en les seves etapes.  
 (11)$$
-fc_{jk} = 1-\frac{\sum_{j=0}^{|C|}\sum}{}
+fc_{jk} = 1-\frac {\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMzA5NTU4MCwxNjg4MDUyODAsLTExOT
-I3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5
-OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLT
-E2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUy
-MjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0Mz
-czODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDcz
-LDE3NDQ0NDEyMzBdfQ==
+eyJoaXN0b3J5IjpbMzcxMTQ0MTU3LDE2ODgwNTI4MCwtMTE5Mj
+c5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5
+NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMT
+Y5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIy
+NDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNz
+M4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMs
+MTc0NDQ0MTIzMF19
 -->
