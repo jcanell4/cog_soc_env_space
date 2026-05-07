@@ -194,7 +194,8 @@ Sigui $\tau_{jk}$) la taxa de fertilitat màxima d'una espècie, i $\alpha_{jkt}
 (12)$$
 \tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
 $$ 
-Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements nous i la despesa que això suposa per els reproductors.
+
+Usarem la taxa de fertilitat efectiva per calcular la quantitat de naixements nous i la despesa que això suposa pels reproductors.
 
  (13)$$
 \Delta b_{jkt}=\left\{ 
@@ -205,17 +206,17 @@ Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements no
 \right\}
 $$ 
 
-En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de neixements.  
+En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
 #### Fase de actualització per mortalitat
 La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NjczMTU3LDQxNTM5ODM1NSwtNDkyMT
-k3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0
-MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLD
-E5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzEx
-NjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2OD
-YxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEs
-LTU2NjM5OTg2NV19
+eyJoaXN0b3J5IjpbLTIwMzk5Nzk3MzYsNDE1Mzk4MzU1LC00OT
+IxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3
+NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0ND
+MsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkz
+MTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0Nz
+Y4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mzgx
+MSwtNTY2Mzk5ODY1XX0=
 -->
