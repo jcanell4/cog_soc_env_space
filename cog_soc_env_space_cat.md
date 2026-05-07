@@ -231,7 +231,7 @@ on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la 
 
 #### Fase d'actualització per desenvolupament
 
-En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. El traspas d'individus es fa sempre des de qualsevol etapa a la immediatament posterior a excepció de la darrera etapa. 
+En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. El traspàs d'individus es fa sempre des de qualsevol etapa a la immediatament posterior a excepció de la darrera etapa. 
 
 (16)$$
 \Delta b_{jk} = \left\{ 
@@ -243,11 +243,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NT
-QyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2
-MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLT
-E4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIx
-MTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNT
-UsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwt
-MTA2ODM4OTY2MF19
+eyJoaXN0b3J5IjpbMTk0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3Mz
+A0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLDQxNTM5ODM1
+NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMT
+E5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMy
+Nzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3Ni
+wtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0x
+NTIyNDc2ODYxXX0=
 -->
