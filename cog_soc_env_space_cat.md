@@ -236,20 +236,13 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 (16)$$
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
--15)$$
-\Delta b_{jk} = \left\{ 
-\begin{array}{lcc}
--v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
--(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
-\end{array} 
-\right\}
-$$ &, k \neq |E_j| -1 \\ 
+-\frac{1}{c_k} &, k = 0 \\ 
 -(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMjQwMjA1MSwxNzMwNDc2OTk0LDE3NT
+eyJoaXN0b3J5IjpbMjA4NjM1Mzc4NiwxNzMwNDc2OTk0LDE3NT
 QyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2
 MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLT
 E4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIx
