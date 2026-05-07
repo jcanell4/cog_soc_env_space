@@ -208,7 +208,7 @@ $$
 
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
-#### Fase de actualització per mortalitat
+#### Fase d'actualització per mortalitat
 La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entorn. La primera només afecta a la població de la darrera etapa de desenvolupament. La previó suposa que els indivídus de les etapes es troben repartits uniformement. És a dir, si una etapa té una durada de 3 cicles, es presuposa que 1/3 es troven en el primer cicle de la darrera etapa, 1/3 en el segon cicle i la resta en el tercer. Aixì implica que els morts per vellesa seran $\frac{1}{durada\ de\ l'etapa\ en\ cicles}$ de la població de la darrera etapa.
 
  La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabiliotat i la taxa de resiliencia de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliencia redueix la primera. La vulnerabiltat  s'obté a calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les que l'especie es troba optimitzada.  
@@ -229,9 +229,9 @@ $$
 on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
 #### Fase de actualització per desenvolupament
-En aquesta fase 
+En aquesta fase, es presuposa també
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwNDQ5NTEwMCwxNzU0MjE1OTQ1LDIxMz
+eyJoaXN0b3J5IjpbMjA1NzQ1OTM5OSwxNzU0MjE1OTQ1LDIxMz
 c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
 NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
 00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
