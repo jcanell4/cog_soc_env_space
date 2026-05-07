@@ -222,17 +222,18 @@ Així doncs, mortalitat en un cicle serà:
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
 fv_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\
-fv_{jk}·(1-\zeta_{jk}) + \frac{1}{durada\ de\ l'etapa\ en\ cicles} &, k \neq |E_j| -1
+fv_{jk}·(1-\zeta_{jk}) + \frac{1}{c} &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
+on $\zeta_{jk}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NTU5NDYyOSwxNzU0MjE1OTQ1LDIxMz
-c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
-NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
-00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
-NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NT
-Y5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAs
-MTY1NTMyMjgzNF19
+eyJoaXN0b3J5IjpbMjkxMDYxMjAsMTc1NDIxNTk0NSwyMTM3OD
+c5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1
+LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtND
+A5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQw
+NzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OS
+wxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2
+NTUzMjI4MzRdfQ==
 -->
