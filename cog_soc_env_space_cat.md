@@ -157,9 +157,9 @@ l_{h \rightarrow (h-1)} = \left\{
 \right\}
 $$
 
-La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior uasnt una constant que pot modificar-se en cada simulació. 
+La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior usant una constant () que pot modificar-se en cada simulació. 
 
-(6)$$
+(9)$$
 l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{0.3(sh_{h})}}  &,   h=max\_h \\
@@ -202,7 +202,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MDI3OTE4NywtNDA5Nzg1NTU3LC0xMz
+eyJoaXN0b3J5IjpbMTQzMzQ3NDYxMSwtNDA5Nzg1NTU3LC0xMz
 MyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3
 NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC
 0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5
