@@ -127,7 +127,7 @@ $$
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
 Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol. Així, direm que el factor nutrients ($fn_{jk}$) és:
-(9)$$
+(6)$$
 fn_{jk} = \frac{N}{N·(1-eff_{jk})+N}
 $$
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
@@ -137,7 +137,7 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
-(4)$$
+(7)$$
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
@@ -146,8 +146,9 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (5).
-(5)$$
+Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
+
+(8)$$
 l_{h \rightarrow (h-1)} = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
@@ -156,8 +157,8 @@ l_{h \rightarrow (h-1)} = \left\{
 \right\}
 $$
 
-La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior uasnt una constant que pot modificar-se 
-Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
+La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior uasnt una constant que pot modificar-se en cada simulació. 
+
 (6)$$
 l_h = \left\{ 
 \begin{array}{lcc}
@@ -201,11 +202,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTQwOTQyNjIsLTQwOTc4NTU1NywtMT
-MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
-NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
-wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
-OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
-Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
-LC0xMDQzMjU0NzI0XX0=
+eyJoaXN0b3J5IjpbMTY3MDI3OTE4NywtNDA5Nzg1NTU3LC0xMz
+MyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3
+NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC
+0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5
+NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Nj
+g0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1Mzgs
+LTEwNDMyNTQ3MjRdfQ==
 -->
