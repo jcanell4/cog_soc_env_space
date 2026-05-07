@@ -229,10 +229,11 @@ $$
 
 on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
-#### Fase de actualització per desenvolupament
-En aquesta fase, es presuposa també
+#### Fase d'actualització per desenvolupament
+
+En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Nzc0NTYxNjksMTc1NDIxNTk0NSwyMT
+eyJoaXN0b3J5IjpbLTEyMDI0NDI5MTksMTc1NDIxNTk0NSwyMT
 M3ODc5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEz
 MDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5Mi
 wtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgw
