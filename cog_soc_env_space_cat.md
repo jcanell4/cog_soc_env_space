@@ -176,7 +176,7 @@ fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
 $$
 
 ##### Càlcul del factor de capacitat màxima
-El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie en les seves etapes.  
+El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
 (11)$$
 fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}}
 $$
@@ -187,13 +187,13 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
-El creixement reproductiu, no és pròpiament 
+El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat tras
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NjEwNzc4NSwtMTQ2MDMxMzA2NSwxNj
-g4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4
-NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OS
-w3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMz
-ODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1Mz
-IyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcy
-NiwxNTg5NzY4NDczXX0=
+eyJoaXN0b3J5IjpbOTc1MzY5NDc0LC0xNDYwMzEzMDY1LDE2OD
+gwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1
+NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LD
+cxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4
+MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMj
+I4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2
+LDE1ODk3Njg0NzNdfQ==
 -->
