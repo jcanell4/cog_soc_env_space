@@ -113,7 +113,7 @@ Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i l
 (4)$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
-on $j$ identifica una de les cohorts i k, una de les etapes de dsenvolupament de la coho en el conjunt de cohorts i k 
+on $j$ identifica una de les cohorts i $k$, una de les etapes de dsenvolupament de la cohort.  Així $b_{jk}$ representa la quantitat de biomasa de l'espècie j a  
 
 
 
@@ -182,11 +182,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY0OTcyOTU5LDE5MjExMzEwMTQsODgwNT
-QwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2
-OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLD
-E2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMy
-NTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MT
-ksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0x
-NjQxMjgwMzk2XX0=
+eyJoaXN0b3J5IjpbMTQ0ODM5Mzg3OCwxOTIxMTMxMDE0LDg4MD
+U0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1
+NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MC
+wxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYz
+MjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2Nj
+E5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwt
+MTY0MTI4MDM5Nl19
 -->
