@@ -209,14 +209,14 @@ $$
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
 #### Fase de actualització per mortalitat
-La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  La taxa de mortalitat deguda a les condicions adverses s'obté a partir del vector de condicions generals del nínxol i el ve
+La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  La taxa de mortalitat deguda a les condicions adverses s'obté a calculant la distencia entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les que l'especie es troba optimitzada.  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTY3NzAwNzEsMjEzNzg3OTA2MSw0MT
-UzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUy
-ODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1Ny
-wtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTEx
-Nzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNj
-E3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0
-LC0xOTQ0MzczODExXX0=
+eyJoaXN0b3J5IjpbLTI0MjIyNTQ2LDIxMzc4NzkwNjEsNDE1Mz
+k4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1Mjgw
+LC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLT
+EzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3
+Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNz
+MsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwt
+MTk0NDM3MzgxMV19
 -->
