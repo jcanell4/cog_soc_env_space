@@ -177,13 +177,13 @@ fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
 $$
 
 ###### Càlcul del factor de capacitat màxima
-
+El factor de càrrega máxima el calcularem usant el valor de densitat màxima suportada  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xOD
-E3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEz
-MTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC
-0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEw
-NjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mz
-k5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMw
-LC0yNzYyNjYxOV19
+eyJoaXN0b3J5IjpbLTE1ODkyMzA2NzgsMTY4ODA1MjgwLC0xMT
+kyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3
+OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC
+0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1
+MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0ND
+M3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3
+MywxNzQ0NDQxMjMwXX0=
 -->
