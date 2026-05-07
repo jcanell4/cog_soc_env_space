@@ -212,14 +212,14 @@ En la versió actual es desestima el  cost reproductiu, però en futures version
 La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  La taxa de mortalitat deguda a les condicions adverses s'obté a calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les que l'especie es troba optimitzada.  
 
 (14)$$
-dist\_vul_{jk] = \sqrt 
+dist\_vul_{jk] = \sqrt[2]{d}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwMjA3Nzk0LDIxMzc4NzkwNjEsNDE1Mz
-k4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1Mjgw
-LC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLT
-EzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3
-Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNz
-MsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwt
-MTk0NDM3MzgxMV19
+eyJoaXN0b3J5IjpbMjEyNjY4NTMyOCwyMTM3ODc5MDYxLDQxNT
+M5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4
+MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC
+0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3
+NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MT
+czLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQs
+LTE5NDQzNzM4MTFdfQ==
 -->
