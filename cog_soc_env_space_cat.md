@@ -209,14 +209,14 @@ $$
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
 
 #### Fase de actualització per mortalitat
-La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions  
+La mortalitat en el simulador esdevindrà per dues raons, la mostalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entron.  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzk5Nzk3MzYsNDE1Mzk4MzU1LC00OT
-IxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3
-NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0ND
-MsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkz
-MTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0Nz
-Y4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mzgx
-MSwtNTY2Mzk5ODY1XX0=
+eyJoaXN0b3J5IjpbLTI3MjE5NDk0OSw0MTUzOTgzNTUsLTQ5Mj
+E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
+NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
+wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
+MTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Nj
+g2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODEx
+LC01NjYzOTk4NjVdfQ==
 -->
