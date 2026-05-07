@@ -155,7 +155,8 @@ l_{h \rightarrow (h-1)} = \left\{
 \end{array} 
 \right\}
 $$
-Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
+
+La fracció calculada Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
 (6)$$
 l_h = \left\{ 
 \begin{array}{lcc}
@@ -199,11 +200,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5MTAyODY2NCwtNDA5Nzg1NTU3LC0xMz
-MyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3
-NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC
-0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5
-NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Nj
-g0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1Mzgs
-LTEwNDMyNTQ3MjRdfQ==
+eyJoaXN0b3J5IjpbLTEyOTUwOTI5ODgsLTQwOTc4NTU1NywtMT
+MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
+NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
+wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
+OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
+Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
+LC0xMDQzMjU0NzI0XX0=
 -->
