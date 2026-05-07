@@ -76,10 +76,9 @@ El simulador pot configurar-se des d'un json o bé directament a través de codi
 ## Evolució de l'ecosistema
 Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà l'evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
-### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada nínxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza els nutrients.
 
-#### Actualització de nutrients
+### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
 (1)$$
@@ -94,7 +93,7 @@ La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplica
 $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
-#### Actualització de les cohorts
+### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
 ##### Fase de creixement indididual  per autòtrofs
@@ -183,13 +182,13 @@ fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{j
 $$
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
-
+##### Fase de creixement indididual  per heteròtrofs
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODMwMzM1NzksMTY4ODA1MjgwLC0xMT
-kyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3
-OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC
-0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1
-MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0ND
-M3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3
-MywxNzQ0NDQxMjMwXX0=
+eyJoaXN0b3J5IjpbNDAyMTI1OTY4LDE2ODgwNTI4MCwtMTE5Mj
+c5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5
+NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMT
+Y5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIy
+NDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNz
+M4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMs
+MTc0NDQ0MTIzMF19
 -->
