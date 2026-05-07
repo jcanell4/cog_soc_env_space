@@ -216,12 +216,18 @@ La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a
 (14)$$
 fv_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
 $$
+Així doncs, el nombre de morts en un cicle serà:
+
+(15)$$
+
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4MTQzNTgxMywxNzU0MjE1OTQ1LDIxMz
-c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
-NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
-00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
-NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NT
-Y5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAs
-MTY1NTMyMjgzNF19
+eyJoaXN0b3J5IjpbLTEzOTM1NzQ4MzgsMTc1NDIxNTk0NSwyMT
+M3ODc5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEz
+MDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5Mi
+wtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgw
+NTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNj
+U2OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYw
+LDE2NTUzMjI4MzRdfQ==
 -->
