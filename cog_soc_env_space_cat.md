@@ -196,17 +196,17 @@ Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements no
  (13)$$
 \Delta b_{jkt}=\left\{ 
 \begin{array}{lcc}
-\sum_{k=0}^{|E_j|} b
+\sum_{k=0}^{|E_j|} b_{jk}·\tau_{jkt} &, k
 \end{array} 
 \right\}
 $$ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTU3NDU1MDMsNDE1Mzk4MzU1LC00OT
-IxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3
-NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0ND
-MsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkz
-MTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0Nz
-Y4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mzgx
-MSwtNTY2Mzk5ODY1XX0=
+eyJoaXN0b3J5IjpbNzc2MDA0MDM5LDQxNTM5ODM1NSwtNDkyMT
+k3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0
+MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMyNzk5NDQzLD
+E5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5MzEx
+NjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2OD
+YxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MTEs
+LTU2NjM5OTg2NV19
 -->
