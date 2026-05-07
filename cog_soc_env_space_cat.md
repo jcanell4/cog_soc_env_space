@@ -170,9 +170,7 @@ $$
 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
 
-Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínina de llum que l'especie, en cada etapa, necessitarà per aconseguir fer la fotosintesi. Aquet darrer valor és 
-
- per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
+Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínina de llum que l'especie, en cada etapa, necessitarà per aconseguir fer la fotosintesi. Aquet darrer valor forma part de les característiques de l'espècie i ens permetra fer el cálcul.  Sigui $s_jk$ l'estrat on es troba l'autotrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
 (7)$$
 f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
@@ -205,11 +203,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU4MDE2NDM3LC0xODE3MDA4NzkyLC00MD
-k3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3
-NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LD
-EzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1
-NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MD
-U3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwt
-MTMxOTkxMzUzOF19
+eyJoaXN0b3J5IjpbLTE4MTIxNTgwMTEsLTE4MTcwMDg3OTIsLT
+QwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0
+MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1Nj
+ksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwx
+NjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMj
+UwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5
+LC0xMzE5OTEzNTM4XX0=
 -->
