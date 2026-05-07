@@ -15,7 +15,7 @@ La simulació hauria de permetre comprovar si s'acompleix la hipòtesi que les e
 
 Per a emmarcar la simulació en un ecosistema, necessitarem primer crear la simulació d'un sistema ecològic el qual disposi d'espècies convivint en equilibri i al qual es pugui afegir nous agents corresponents altres espècies amb capacitat de modelar  el comportament tal com s'ha definit més amunt. Per tal d'evitar complexitat sense reduir riquesa de l'ecosistema, en la simulació hi podrà haver  més espècies que les estudiades. Seran espècies neutres que contribuiran a l'equilibri del sistema, poden formar part de la dieta dels agents estudiats o simplement formar part del sistema en equilibri de manera que aquest sigui prou ric per suportar una simulació realista. 
 
-## Ecosistema base
+# Ecosistema base
 L'ecosistema disposarà d'un entorn format per diversos nínxols ecològics amb connexions entre ells per  possibilitar les migracions i traspassos de biomassa entre ells. El model identificarà cada un dels nínxols que formin part, quins es troben connectats, de quina manera i amb quines condicions. Així podrem definir connexions via terra, aire o aigua amb condicions específiques d'accés (corrents d'aire o aigua, accidents geogràfics, etc.).
 
 Cada nínxol disposarà de condicions ecològiques pròpies, temperatura, humitat, salinitat, composició química, substrat, nutrients, etc. Les condicions de cada nínxol es classificaran en dos tipus de mesures, les que afecten la supervivència de les espècies, però no d'una manera decisiva, es tracta de condicions no vinculades directament amb l'alimentació, sinó amb més aviat amb les condicions més favorables per a les que l'espècie hagi evolucionat i, per tant, els faci menys vulnerables (condicions climàtiques, malalties específiques, quantitat d'aigua, distribució d'aquesta, etc.). El segon tipus fa referència a les condicions relacionades específicament amb els nutrients i l'energia i, en conseqüència, relacionades de manera directa amb els éssers autòtrofs; ens referim per exemple a la profunditat a la qual es troben els nutrients, la duresa del substrat, el grau de dissolució o la quantitat de llum rebuda. Els anomenarem factors limitants perquè de fet,  limitaran dràsticament l'existència d'unes espècies i no d'altres. Cada nínxol disposarà també de diferents capacitats per transformar la matèria orgànica morta en nutrients. La matèria orgànica morta la podrem classificar segons la mida de manera que cada nínxol disposi de diferents taxes de retorn en funció de la mida de la matèria morta.  Les taxes de retorn especificaran la riquesa de fixadors (elements químics) i descomponedors biòtics no inclosos com a espècies (bacteris, fongs...) i en conseqüència la proporció de matèria finalment fixada com a nutrients minerals segons la mida de la primera. 
@@ -28,7 +28,7 @@ Les cohorts també disposaran d'un registre per reconèixer la matèria morta ge
 
 Les espècies, en canvi, definiran les característiques pròpies que identifiquen l'espècie. Entre d'altres, les condicions de l'entorn que li poden ser més favorables (temperatura humitat, llum, salinitat, acidesa, etc.), les estratègies de defensa adoptades contra els depredadors, les estratègies de recaptació d'aliment per obtenir de la manera més eficient possible l'aliment que necessita, la resistència a les condicions adverses, la capacitat de viure en colònies o variables adreçades calcular la capacitat de reproducció i creixement, la mida dels individus o la superfície que ocupen en el nínxol. Són, doncs, indicadors per calcular la variació en el temps de biomassa viva i morta dins una cohort determinada, en funció de la resta d'espècies existents en un nínxol i de les condicions d'aquest.
 
-### Disseny i modelització de l'ecosistema base
+## Disseny i modelització de l'ecosistema base
 El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
 
  - *Entorn* (classe Environment). S'ha dissenyat com un graf dirigit en el qual els nodes són els nínxols i les arestes les connexions entre ells. Pot obtenir informació general de l'entorn a partir de la informació obtinguda de cada node. Per exemple la quantitat total o mitjana d'energia de l'entorn,
@@ -70,16 +70,16 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
-### Configuració i càrrega inicial
+## Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
 
-### Evolució de l'ecosistema
+## Evolució de l'ecosistema
 Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà l'evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
-#### Evolució de l'ecosistema a cada cicle
+### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada nínxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza els nutrients.
 
-##### Actualització de nutrients
+#### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
 (1)$$
@@ -94,10 +94,11 @@ La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplica
 $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
-  ##### Actualització de les cohorts
+#### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
+##### Fase de   
+La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
   (3)$$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
@@ -185,11 +186,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4OD
-A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
-NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
-AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
-MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNj
-YxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDks
-LTE2NDEyODAzOTZdfQ==
+eyJoaXN0b3J5IjpbLTE1Mjk4NjY1NzksLTEzMzI3OTk0NDMsMT
+kyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2
+MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4Nj
+EsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwt
+NTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0ND
+QxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcy
+NCwxMjAwNDkxMDldfQ==
 -->
