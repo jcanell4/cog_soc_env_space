@@ -179,14 +179,15 @@ $$
 ###### Càlcul del factor de capacitat màxima
 El factor de càrrega máxima el calcularem usant el valor de densitat màxima suportada per cada espècie en les seves etapes.  
 (11)$$
-fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{}
+fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}}
 $$
+on $S$ és la superfície del nínxol i $max\_d_
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTUyNjA2MTAsMTY4ODA1MjgwLC0xMT
-kyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3
-OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC
-0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1
-MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0ND
-M3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3
-MywxNzQ0NDQxMjMwXX0=
+eyJoaXN0b3J5IjpbLTYyMTk4MDQ3NywxNjg4MDUyODAsLTExOT
+I3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5
+OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLT
+E2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUy
+MjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0Mz
+czODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4NDcz
+LDE3NDQ0NDEyMzBdfQ==
 -->
