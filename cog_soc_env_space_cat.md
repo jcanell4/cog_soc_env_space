@@ -193,16 +193,19 @@ El creixement reproductiu, no és pròpiament creixement de biomassa sinó més 
 $$ 
 Usarem la taxa de fertilitat efectiva per calcular la cuantitat de neixements nous i la despesa que això suposa per els reproductors.
 
- (12)$$
-\tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
+ (13)$$
+\Delta b_{jk}=\left\{ 
+\begin{array}{lcc}
+\end{array} 
+\right\}
 $$ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNzA0MTg0OCw0MTUzOTgzNTUsLTQ5Mj
-E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
-NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
-wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
-MTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Nj
-g2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODEx
-LC01NjYzOTk4NjVdfQ==
+eyJoaXN0b3J5IjpbLTg5NDQ4NTEsNDE1Mzk4MzU1LC00OTIxOT
+c0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQy
+LC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMT
+kyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2
+MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4Nj
+EsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwt
+NTY2Mzk5ODY1XX0=
 -->
