@@ -122,15 +122,15 @@ on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
 (5)$$
-rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
+eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
-Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol. Així, direm que el factor nutrients ($f\_nut_{jk}$) és:
+Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol. Així, direm que el factor nutrients ($fn_{jk}$) és:
 (9)$$
-f\_nut_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
+fn_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
 $$
-on $N$ és la quantitat (o la densitat) de nutrients existent en el  
+on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
 
 , es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
@@ -197,11 +197,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDcxMjE0NDcwLC00MDk3ODU1NTcsLTEzMz
-I3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2
-LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLT
-E1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0
-NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2OD
-Q3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwt
-MTA0MzI1NDcyNF19
+eyJoaXN0b3J5IjpbMTc0NjQ5ODUsLTQwOTc4NTU1NywtMTMzMj
+c5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYs
+LTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMT
+UyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0
+MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5NzY4ND
+czLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4LC0x
+MDQzMjU0NzI0XX0=
 -->
