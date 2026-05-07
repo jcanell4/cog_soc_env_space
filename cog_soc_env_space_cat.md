@@ -176,36 +176,10 @@ Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l
 fl_{j,k} = \frac { l_{s_{k}} - min\_l_{j,k}}{1-min\_l_{j,k}}
 $$
 
-D'altra banda l'eficiencia de la captació de nutrients vindrà donada per:
-(8)$$
-rec\_eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
-$$ 
-on $R_{jk}$ és el vector d'estrategies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espe`cie $j$ per superar el factor limitant $i$. 
+###### Càlcul del factor de capacitat màxima
 
-Si N són els nutrients disponibles al nínxol, direm que el factor nutrients ($f\_nut_{jk}$) és:
-(9)$$
-f\_nut_{jk} = \frac{N}{N·(1-rec\_eff_{jk})+N}
-$$
-
-
-double  effective  =  mig_s  *  f_nut  *  lf  *  pcpacity  +  gross_noise;
-
-(3)$$
-\Delta b_{j,k} = b_{j,k}
-$$
-* where mig_k is the maximum individual growth rate for stage k, gross_k is $\prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki}))))$,
-
-* lf_k is the light transmission fraction per stratum (lf_k = (lightstratum{stratumfor_k} - min_light_k) / (1 - min_light_k)),
-
-* and mc_k is the maintenance cost for stage k.
-
-* lightstratum{stratumfor_k} is the light transmission fraction per stratum for stratum s and stage k.
-
-* min_light_k is the minimum light required at the stage k for photosynthesis.
-
-*/ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDg1NzczNjksLTE4MTcwMDg3OTIsLT
+eyJoaXN0b3J5IjpbLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLT
 QwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0
 MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1Nj
 ksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwx
