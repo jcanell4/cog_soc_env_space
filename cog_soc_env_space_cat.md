@@ -113,7 +113,7 @@ Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i l
 (4)$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
-on 
+on $j$ representa  
 
 
 
@@ -182,11 +182,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1OTkzNjU0OCwxOTIxMTMxMDE0LDg4MD
-U0MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1
-NjksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MC
-wxNjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYz
-MjUwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2Nj
-E5LC0xMzE5OTEzNTM4LC0xMDQzMjU0NzI0LDEyMDA0OTEwOSwt
-MTY0MTI4MDM5Nl19
+eyJoaXN0b3J5IjpbLTE1NTAyNzI0NDcsMTkyMTEzMTAxNCw4OD
+A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
+NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
+AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
+MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNj
+YxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDks
+LTE2NDEyODAzOTZdfQ==
 -->
