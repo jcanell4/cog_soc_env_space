@@ -187,8 +187,9 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3ODA1OTQ0LC0xNDYwMzEzMDY1LDE2OD
+eyJoaXN0b3J5IjpbMjc2NTE3NTU4LC0xNDYwMzEzMDY1LDE2OD
 gwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1
 NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LD
 cxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4
