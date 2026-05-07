@@ -170,8 +170,9 @@ $$
 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
 
-Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínina de llum que l'especie, en cada etapa, necessitarà per aconseguir fer la fotosintesi. Aquet darrer valor forma part de les característiques de l'espècie i ens permetra fer el cálcul.  Sigui $s_jk$ l'estrat on es troba l'autotrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum la relació entre la fracció esperada i la fracció real amd la limitació de la quantitat mínima de llum necessaria per a fer la fotosíntesi:
-(7)$$
+Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_jk$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{j,k}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
+
+(10)$$
 fl_{j,k} = \frac { l_{s_{k}} - min\_l_{j,k}}{1-min\_l_{j,k}}
 $$
 
@@ -204,11 +205,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NDMzNjU5OSwtMTgxNzAwODc5MiwtND
-A5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQw
-NzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OS
-wxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2
-NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNT
-A1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTks
-LTEzMTk5MTM1MzhdfQ==
+eyJoaXN0b3J5IjpbLTE4NDg1NzczNjksLTE4MTcwMDg3OTIsLT
+QwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0
+MDc0OSw3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1Nj
+ksMTMzODMxNjE3MywtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwx
+NjU1MzIyODM0LC0xOTQ0MzczODExLC01NjYzOTk4NjUsLTYzMj
+UwNTcyNiwxNTg5NzY4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5
+LC0xMzE5OTEzNTM4XX0=
 -->
