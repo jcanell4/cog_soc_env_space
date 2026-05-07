@@ -1,4 +1,4 @@
-<h1> 
+<h1> Espai d'estudi de l'entorn cognitivo-social</h1>
 
 # Introducció
 Aquest projecte pretén explorar les estratègies més exitoses usades per la subsistència i colonització d’un sistema limitat de recursos. En aquest sistema els individus competeixen pels recursos elaborant diverses estratègies que els permeten sobreviure i reproduir-se. Les estratègies poden referir-se tant a l’eficiència de la cerca i recol·lecció de recursos, com a la seva producció i transformació en benefici de la subsistència i colonització del sistema. Distingirem entre dos tipus d’estratègies, les individuals i les col·lectives. Les individuals són les utilitzades per un únic individu a fi d’assegurar la seva supervivència i reproducció. Les col·lectives fan referència a l’agrupació d'individus que, compartint una estratègia col·laborativa comuna, afavoreixin la supervivència i colonització del grup. En parlar de la supervivència i colonització, en el fons, estem parlant de la supervivència i l’èxit de reproducció dels seus individus. Si els individus d’un grup sobreviuen, el grup sobreviurà i si es reprodueixen amb èxit, el grup augmentarà el nombre de membres aconseguint expandir-se pel sistema.
@@ -185,7 +185,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzYyNzQ4MTYsMTkyMTEzMTAxNCw4OD
+eyJoaXN0b3J5IjpbLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4OD
 A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
 NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
 AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
