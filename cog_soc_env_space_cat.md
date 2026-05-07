@@ -108,12 +108,12 @@ La segona dependència de la llum rebuda per una planta, depèn del creixement (
 
 Finalment, la densitat vegetal existent (és a dir competència) modificarà també la taxa de creixement. A partir de la màxima densitat suportada per una planta, calcularem el factor de capacitat ($fc$), relacionat amb la capacitat de càrrega màxima suportada.
 
-Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
+Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
 (4)$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
-$$
-on $j$ identifica una de les cohorts i $k$, una de les etapes de dsenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomasa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa máxima e creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modifcadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+$$on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+
 
 
 
@@ -182,11 +182,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzA4MTc3NjYsMTkyMTEzMTAxNCw4OD
-A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
-NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
-AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
-MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNj
-YxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDks
-LTE2NDEyODAzOTZdfQ==
+eyJoaXN0b3J5IjpbNTA0MzgwNzAzLDE5MjExMzEwMTQsODgwNT
+QwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2
+OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLD
+E2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMy
+NTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MT
+ksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0x
+NjQxMjgwMzk2XX0=
 -->
