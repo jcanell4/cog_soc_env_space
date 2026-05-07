@@ -228,8 +228,10 @@ v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k} &, k = |E_j| -1
 $$
 on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
 
+#### Fase de actualització per desenvolupament
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwOTgzNjA4MSwxNzU0MjE1OTQ1LDIxMz
+eyJoaXN0b3J5IjpbMTcxODU2MDkzMSwxNzU0MjE1OTQ1LDIxMz
 c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
 NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
 00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
