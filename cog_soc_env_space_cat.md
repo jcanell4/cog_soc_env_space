@@ -157,12 +157,12 @@ l_{h \rightarrow (h-1)} = \left\{
 \right\}
 $$
 
-La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior usant una constant ($\eta$) que pot modificar-se en cada simulació. Per defecte el valor de la constants   
+La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior usant una constant ($\eta$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
 (9)$$
 l_h = \left\{ 
 \begin{array}{lcc}
-\frac {1}{e^{0.3(sh_{h})}}  &,   h=max\_h \\
+\frac {1}{e^{\eta·sh_{h})}}  &,   h=max\_h \\
 \frac {1}{e^{0.3(sh_{h})+sh_{h+1}}} · l_{(h+1) \rightarrow h}
 \end{array} 
 \right\}
@@ -202,11 +202,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjkyMzU4MjYsLTQwOTc4NTU1NywtMT
-MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
-NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
-wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
-OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
-Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
-LC0xMDQzMjU0NzI0XX0=
+eyJoaXN0b3J5IjpbMTUzNjkyODgwNCwtNDA5Nzg1NTU3LC0xMz
+MyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3
+NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC
+0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5
+NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Nj
+g0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1Mzgs
+LTEwNDMyNTQ3MjRdfQ==
 -->
