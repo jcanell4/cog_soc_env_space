@@ -238,12 +238,12 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \begin{array}{lcc}
 -\frac{1}{c_k} &, k = 0 \\ 
 \frac{1}{c_{k-1}} -\frac{1}{c_k}  &, 0<k<  |E_j| -1\\
--(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
+\frac{1}{c_{k-1}} &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2ODkyODk1NiwxNzMwNDc2OTk0LDE3NT
+eyJoaXN0b3J5IjpbMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NT
 QyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2
 MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLT
 E4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIx
