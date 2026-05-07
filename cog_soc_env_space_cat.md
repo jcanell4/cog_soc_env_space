@@ -113,7 +113,7 @@ Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i l
 (4)$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
-on $j$ representa  
+on $j$ identifica una de les cohorts i k, una de les etapes de dsenvolupament de la coho en el conjunt de cohorts i k 
 
 
 
@@ -182,11 +182,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTAyNzI0NDcsMTkyMTEzMTAxNCw4OD
-A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
-NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
-AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
-MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNj
-YxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDks
-LTE2NDEyODAzOTZdfQ==
+eyJoaXN0b3J5IjpbOTY0OTcyOTU5LDE5MjExMzEwMTQsODgwNT
+QwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2
+OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLD
+E2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMy
+NTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MT
+ksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0x
+NjQxMjgwMzk2XX0=
 -->
