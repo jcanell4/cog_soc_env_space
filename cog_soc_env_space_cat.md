@@ -187,9 +187,9 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
-El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica 
+El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. Les especies amb una alta capacitat reproductiva tindran molts fills i 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMDUzMDE2OSwtMTQ2MDMxMzA2NSwxNj
+eyJoaXN0b3J5IjpbMTkwNDI5MTEyOCwtMTQ2MDMxMzA2NSwxNj
 g4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4
 NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OS
 w3MTExNzc2NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMz
