@@ -91,18 +91,32 @@ La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplica
 (2)$$
 \Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k}
 $$
-on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del ninxol $i$ per a la mida $k$.
+on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
   ##### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-  La fase de _creixement individual_ és una predicció del variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per la *catabòlica*, no hi ha ingesta de nutrients, sinó només consum de la pròpia biomassa per aconseguir trasnformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenam $\omega_{j,k}$ al cost de manteniment definit a l'especie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
+  La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
   (3)$$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
-El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficiencia en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
+El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficieència en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda que acabarà incidint sobre la planta que es vol actualitzar, no depèn només de les condicions del nínxol (temps i intensitat de llum rebuda) sinó també de l'ombra les mateixes plantes provoquen. La primera depèn del nínxol i es manté constant al llarg de la simulació. No l'especifiquem de manera explícita sinó que suposem que es troba inclosa en el vector de factors limitants del nínxol pels casos que la llum (en excés o defecte) tingui efectes nocius per les espècies del nínxol. Si no s'inclogués en els factors limitants implicaria que la llum és sempre la idònia per la vegetació de l'ecosistema. El vector de factors limitants (llum, substrat, dispersió/profunditat de nutrients, condicions fisicoquímiques, etc.) servirà per calcular el factor nutricional  ($fn$) que actuarà com un modificador, reduint  la taxa màxima de creixement en casos adversos. 
+
+La segona dependència de la llum rebuda per una planta, depèn del creixement (en alçada i densitat) de les espècies vegetals existents i, per tant, és totalment dinàmica. L'anomenarem factor llum ($fl$) i actuarà de modificador de la taxa màxima de creixement de l'espècie. 
+
+Finalment, la densitat vegetal existent (és a dir competència) modificarà també la taxa de creixement. A partir de la màxima densitat suportada per una planta, calcularem el factor de capacitat ($fc$), relacionat amb la capacitat de càrrega màxima suportada.
+
+Aquests 3 factors, juntament amb la taxa de creixement máxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
+
+(4)$$
+  \Delta b_{j,k} = b_{j,k} · gt · fn · fl · fc · (1- \omega_{j,k})
+$$
+
+
+
+, es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
 Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a la sombra exercida per totes les especies ubicades a l'estrat $h$ i es calcula fent:
 (4)$$
@@ -167,11 +181,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODgwNTQwNzQ5LDcxMTE3NzY3NiwtMTY5Mz
-ExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0xNTIyNDc2
-ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMjI4MzQsLTE5NDQzNzM4MT
-EsLTU2NjM5OTg2NSwtNjMyNTA1NzI2LDE1ODk3Njg0NzMsMTc0
-NDQ0MTIzMCwtMjc2MjY2MTksLTEzMTk5MTM1MzgsLTEwNDMyNT
-Q3MjQsMTIwMDQ5MTA5LC0xNjQxMjgwMzk2LC0yMDYzNDY4Mzk3
-LC0xNTA3MDg0MTA5XX0=
+eyJoaXN0b3J5IjpbMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMT
+c3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYx
+NzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNC
+wtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4
+OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMz
+UzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDksLTE2NDEyODAzOTYs
+LTIwNjM0NjgzOTddfQ==
 -->
