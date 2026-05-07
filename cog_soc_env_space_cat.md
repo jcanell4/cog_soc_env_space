@@ -1,5 +1,6 @@
+<h1> 
 
-## Introducció
+# Introducció
 Aquest projecte pretén explorar les estratègies més exitoses usades per la subsistència i colonització d’un sistema limitat de recursos. En aquest sistema els individus competeixen pels recursos elaborant diverses estratègies que els permeten sobreviure i reproduir-se. Les estratègies poden referir-se tant a l’eficiència de la cerca i recol·lecció de recursos, com a la seva producció i transformació en benefici de la subsistència i colonització del sistema. Distingirem entre dos tipus d’estratègies, les individuals i les col·lectives. Les individuals són les utilitzades per un únic individu a fi d’assegurar la seva supervivència i reproducció. Les col·lectives fan referència a l’agrupació d'individus que, compartint una estratègia col·laborativa comuna, afavoreixin la supervivència i colonització del grup. En parlar de la supervivència i colonització, en el fons, estem parlant de la supervivència i l’èxit de reproducció dels seus individus. Si els individus d’un grup sobreviuen, el grup sobreviurà i si es reprodueixen amb èxit, el grup augmentarà el nombre de membres aconseguint expandir-se pel sistema.
 
 Les estratègies tindran com a base el comportament dels individus i es podran transmetre de forma natural a tots els descendents ("via genètica") o bé de forma cultural, en el sentit que les estratègies es transferiran entre individus no necessàriament emparentats, via algun sistema de comunicació ("via cultural").
@@ -184,11 +185,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcxNjUxOTYyLDE5MjExMzEwMTQsODgwNT
-QwNzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2
-OSwxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLD
-E2NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMy
-NTA1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MT
-ksLTEzMTk5MTM1MzgsLTEwNDMyNTQ3MjQsMTIwMDQ5MTA5LC0x
-NjQxMjgwMzk2XX0=
+eyJoaXN0b3J5IjpbLTE4NzYyNzQ4MTYsMTkyMTEzMTAxNCw4OD
+A1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2
+NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2Nj
+AsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02
+MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMwLC0yNzYyNj
+YxOSwtMTMxOTkxMzUzOCwtMTA0MzI1NDcyNCwxMjAwNDkxMDks
+LTE2NDEyODAzOTZdfQ==
 -->
