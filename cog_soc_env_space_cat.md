@@ -163,11 +163,11 @@ La fracció calculada no té en compte l'ombre que les propies plantes d'un estr
 l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{(sh_{h})+sh_{h+1}}} · l_{(h+1) \rightarrow h}
+\frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h}
 \end{array} 
 \right\}
 $$ 
-Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absortes  pels estrats superior i l'ombra de les plantes del propi estrat.
+Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absorbides  pels estrats superior i l'ombra de les plantes del propi estrat.
 
 Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
 (7)$$
@@ -202,7 +202,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUwNzEyMzYwLC00MDk3ODU1NTcsLTEzMz
+eyJoaXN0b3J5IjpbNzY2MDM2NDA1LC00MDk3ODU1NTcsLTEzMz
 I3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2
 LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLT
 E1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0
