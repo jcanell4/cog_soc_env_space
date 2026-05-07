@@ -247,6 +247,11 @@ std::vector<double> Niche::getLithPerStratum() const {
     return light_fraction_per_stratum;
 }
 
+/**
+ * @brief Updates the nutrients in the niche.
+ * @details The nutrients are updated based on the return rate and the death biomass.
+ * nutients = \sum_{i=0}^{n-1} death_biomass[i] * return_rate[i] * multiplicative
+ */
 void Niche::update_nutrients() {
     const double noise_stddev = SimulationConfig::global().noise_stddev;
     const double effective_return_cost = std::clamp(return_cost_, 0.0, 1.0);
@@ -282,8 +287,8 @@ void Niche::update_niche() {
 }
 
 void Niche::step() {
-    update_nutrients();
     update_cohorts();
+    update_nutrients();
     update_niche();
 }
 

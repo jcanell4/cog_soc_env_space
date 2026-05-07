@@ -53,10 +53,6 @@ void Autotroph::initialize(const Niche& niche) {
  *        The autotroph growth is determined by the light transmission fraction per stratum.
  *        The autotroph growth is determined by the nutrient availability.
  *        The autotroph growth is determined by the maintenance cost.
- *        The autotroph growth is determined by the reproductive cost.
- *        The autotroph growth is determined by the death cost.
- *        The autotroph growth is determined by the competition.
- *        The autotroph growth is determined by the predation.
  *        The equation for delta_biomass is:
  *        delta_biomass = (min(mig_k, gross_k * lf_k) - mc_k) * biomass
  *        where mig_k is the maximum individual growth rate for stage k, gross_k is \prod_{i=0}^{max(|R_k|,|L|)}(max(0,min(1,1-(l_i-r_{ki})))), 
@@ -74,6 +70,7 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
     if (stage_index < 0) {
         return;
     }
+    const auto& autotroph = static_cast<const Autotroph&>(*specie);
     const std::size_t su = static_cast<std::size_t>(stage_index);
     const auto& diet_by_stage = specie->getDietByCohortIndex();
     if (su >= diet_by_stage.size()) {
@@ -83,6 +80,11 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
 
     const std::vector<double>& maintenance = specie->getMaintenanceCost();
     const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
+    const double total_density = niche.getAutotrophBiomass()/niche.getSurface();
+    const std::vector<double>& max_density_vec = autotroph.getMaxDensity();
+    const double max_density = su < max_density_vec.size() ? max_density_vec[su] : 0.0;
+    const double pcpacity = std::max(0.0, 1.0-(total_density/max_density));
+
 
     for (const auto& rule : stage_diet) {
         const int food_index = std::get<0>(rule);
@@ -90,6 +92,8 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
         const double cost_noise = utilities::randomNormal(0.0, SimulationConfig::global().noise_stdv);
         if (food_index == DietType::NUTRIENTS_TYPE) {
             // Nutrient-limited autotroph growth (not expressed via cohort-index diet tuples).
+            const std::vector<double>& mig = cohort.getSpecie()->getMaxIndividualGrowth();
+            const double mig_s = su < mig.size() ? mig[su] : 0.0;
             const auto& rec_matrix = specie->getRecruitmentStrategies();
             std::vector<double> rec_row;
             if (su < rec_matrix.size()) {
@@ -103,13 +107,12 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
             const double lf = light_denominator == 0.0
                                   ? lith_s
                                   : std::clamp((lith_s - min_l) / light_denominator, 0.0, 1.0);
-            const double gross = LivingBeing::calculate_effective_recruitment_efficiency(
+            const double rec_eff = LivingBeing::calculate_effective_recruitment_efficiency(
                 rec_row, niche.getLimitingFactors());
-            double effective = gross * lf + gross_noise;
+            const double f_nut = niche.getNutrients()/(niche.getNutrients()*(1-rec_eff) + niche.getNutrients());
+            double effective = mig_s * f_nut * lf * pcpacity + gross_noise;
             std::vector<double> biomass = cohort.getBiomass();
             if (su < biomass.size()) {
-                const std::vector<double>& mig = cohort.getSpecie()->getMaxIndividualGrowth();
-                effective = std::min(effective, mig[su]);
                 const double new_biomass = std::max(0.0, biomass[su] * (1.0 + effective));
                 niche.setNutrients(niche.getNutrients() - (new_biomass - biomass[su]));
                 biomass[su] = new_biomass - biomass[su] * std::max(0.0, m_stage + cost_noise);
