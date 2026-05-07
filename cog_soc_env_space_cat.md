@@ -133,7 +133,7 @@ $$
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
 
 ###### Càlcul del factor llum
-Per calcular el f
+Per calcular el factor llum ($fl$) necessitarem coèrixer 
 , es calcula com una fracció i fa referencia a la fracció de llum (del total rebut) que aconsegeix impactar a l'estrat on viu l'autotrof en l'estadi que es desitja calcular.  Les espècies d'autòtrofs disposen del grau d'opacitat en relació a la biomassa. 
 
 Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a la sombra exercida per totes les especies ubicades a l'estrat $h$ i es calcula fent:
@@ -199,7 +199,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDUzNjk4MjgsLTQwOTc4NTU1NywtMT
+eyJoaXN0b3J5IjpbLTE3NjYwNjc2OTEsLTQwOTc4NTU1NywtMT
 MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
 NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
 wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
