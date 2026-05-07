@@ -214,26 +214,26 @@ La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a
  La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabiliotat i la taxa de resiliencia de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliencia redueix la primera. La vulnerabiltat  s'obté a calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les que l'especie es troba optimitzada.  
 
 (14)$$
-fv_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
+v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
 $$
 Així doncs, mortalitat en un cicle serà:
 
 (15)$$
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
-fv_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\
-fv_{jk}·(1-\zeta_{jk}) + \frac{1}{c} &, k = |E_j| -1
+v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\
+v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k} &, k = |E_j| -1
 \end{array} 
 \right\}
 $$
-on $\zeta_{jk}
+on $\zeta_{jk}$ és la resiliencia de l'etapa $k$ de l'espècie $j$,  i $c$ la du
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkxMDYxMjAsMTc1NDIxNTk0NSwyMTM3OD
-c5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1
-LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtND
-A5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQw
-NzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OS
-wxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2
-NTUzMjI4MzRdfQ==
+eyJoaXN0b3J5IjpbMjEzNDg5MTQ0MCwxNzU0MjE1OTQ1LDIxMz
+c4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMw
+NjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC
+00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1
+NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NT
+Y5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAs
+MTY1NTMyMjgzNF19
 -->
