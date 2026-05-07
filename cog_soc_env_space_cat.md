@@ -170,7 +170,8 @@ $$
 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
 
-Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
+Finalment,
+ farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
 (7)$$
 f\_llum_{j,k} = \frac { l_{(h=s_{k})} - min\_llum_{j,k}}{1-min\_llum_{j,k}}
 $$
@@ -203,11 +204,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMT
-MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
-NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
-wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
-OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
-Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
-LC0xMDQzMjU0NzI0XX0=
+eyJoaXN0b3J5IjpbLTE2MTg1OTcxOCwtMTgxNzAwODc5MiwtND
+A5Nzg1NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQw
+NzQ5LDcxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OS
+wxMzM4MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2
+NTUzMjI4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNT
+A1NzI2LDE1ODk3Njg0NzMsMTc0NDQ0MTIzMCwtMjc2MjY2MTks
+LTEzMTk5MTM1MzhdfQ==
 -->
