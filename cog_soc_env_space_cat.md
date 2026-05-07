@@ -157,7 +157,7 @@ l_{h \rightarrow (h-1)} = \left\{
 \right\}
 $$
 
-La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correció a la fórmula anterior usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
+La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
 (9)$$
 l_h = \left\{ 
@@ -167,7 +167,8 @@ l_h = \left\{
 \end{array} 
 \right\}
 $$ 
-Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h despres de descomptar les fraccions absorbides  pels estrats superior i l'ombra de les plantes del propi estrat.
+
+Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
 
 Finalment, farem servir la mínima fracció de llum necessaria per a que l'especie autotrofa específica faci la fotosintesi per calcular la incidencia de la llum en l'alimentació efectiva de la palnta.  Sigui $s_k$ l'estrat on es troba l'autotrof durant l'estadi $k$ de desenvolupament, $l_{s_{k}}$ la fracció de llum incident a l'estrat on es troba l'espècie de la cohort $j$ i l'etapa $k$ i $min\_llum_{j,k}$ la fracció minima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosintesi.   Direm que el factor llum és:
 (7)$$
@@ -202,7 +203,7 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzYxNzM2NzUsLTQwOTc4NTU1NywtMT
+eyJoaXN0b3J5IjpbLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMT
 MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
 NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
 wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
