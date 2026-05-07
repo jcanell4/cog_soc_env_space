@@ -146,7 +146,7 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \right\} 
 $$
 
-Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. SIgui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
+Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
 (8)$$
 l_{h \rightarrow (h-1)} = \left\{ 
@@ -202,11 +202,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY2MDM2NDA1LC00MDk3ODU1NTcsLTEzMz
-I3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2
-LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLT
-E1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0
-NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2OD
-Q3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwt
-MTA0MzI1NDcyNF19
+eyJoaXN0b3J5IjpbLTE5MzYxNzM2NzUsLTQwOTc4NTU1NywtMT
+MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
+NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
+wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
+OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
+Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
+LC0xMDQzMjU0NzI0XX0=
 -->
