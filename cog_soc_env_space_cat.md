@@ -156,7 +156,8 @@ l_{h \rightarrow (h-1)} = \left\{
 \right\}
 $$
 
-La fracció calculada Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
+La fracció calculada no té en compte l'ombre que les propies plantes d'un estrat pojecten sobre elles mateixes. En general es tracta de quantitats poc significatives, però per aconsegir un 
+Per tal de corregir el fet que els strats no són plans sinó que tenen alçada i que les plantes de l'estrat es fan obra elles mateixes, es modifica la fracció de llum incident a les plantes d'un estrat afegint una petita part d'ombre pròpia.
 (6)$$
 l_h = \left\{ 
 \begin{array}{lcc}
@@ -200,11 +201,11 @@ $$
 
 */ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTUwOTI5ODgsLTQwOTc4NTU1NywtMT
-MzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2
-NzYsLTE2OTMxMTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3My
-wtMTUyMjQ3Njg2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0x
-OTQ0MzczODExLC01NjYzOTk4NjUsLTYzMjUwNTcyNiwxNTg5Nz
-Y4NDczLDE3NDQ0NDEyMzAsLTI3NjI2NjE5LC0xMzE5OTEzNTM4
-LC0xMDQzMjU0NzI0XX0=
+eyJoaXN0b3J5IjpbNzYxNzQ2MDMzLC00MDk3ODU1NTcsLTEzMz
+I3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2
+LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLT
+E1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0
+NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3MjYsMTU4OTc2OD
+Q3MywxNzQ0NDQxMjMwLC0yNzYyNjYxOSwtMTMxOTkxMzUzOCwt
+MTA0MzI1NDcyNF19
 -->
