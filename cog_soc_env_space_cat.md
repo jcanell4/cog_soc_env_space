@@ -189,16 +189,16 @@ klkl
 #### Fase de creixement reproductiu
 El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima però en cicles amb manca d'aliment la fertilitat es redueixi. Sigui $\tau_{jk}$) la taxa de fertilitat máxima d'una espècie, i $\alpha\_eff_{jkt}$ la taxa de creixement efectiva aconseguida per l'etapa $k$ de l'espècie $j$ en el temps o cicle $t$. La taxa de fertilitat efectiva o taxa de fertilitat en el cicle $t$ serà:
 (12)$$
-\tau_
+\tau_{jkt}=\tau_{jk}
 $$ 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzU1MTYxMTMsNDE1Mzk4MzU1LC00OT
-IxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3
-NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0ND
-MsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkz
-MTE2MDU1LC0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0Nz
-Y4NjEsLTEwNjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3Mzgx
-MSwtNTY2Mzk5ODY1XX0=
+eyJoaXN0b3J5IjpbLTE1MzA4NzY4MSw0MTUzOTgzNTUsLTQ5Mj
+E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
+NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMzMjc5OTQ0My
+wxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTExNzc2NzYsLTE2OTMx
+MTYwNTUsLTIwNTczMjY1NjksMTMzODMxNjE3MywtMTUyMjQ3Nj
+g2MSwtMTA2ODM4OTY2MCwxNjU1MzIyODM0LC0xOTQ0MzczODEx
+LC01NjYzOTk4NjVdfQ==
 -->
