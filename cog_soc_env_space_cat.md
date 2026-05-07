@@ -187,13 +187,13 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 klkl
 
 #### Fase de creixement reproductiu
-El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat tras
+El creixement reproductiu, no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (neixement). 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc1MzY5NDc0LC0xNDYwMzEzMDY1LDE2OD
-gwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1
-NTU3LC0xMzMyNzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LD
-cxMTE3NzY3NiwtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4
-MzE2MTczLC0xNTIyNDc2ODYxLC0xMDY4Mzg5NjYwLDE2NTUzMj
-I4MzQsLTE5NDQzNzM4MTEsLTU2NjM5OTg2NSwtNjMyNTA1NzI2
-LDE1ODk3Njg0NzNdfQ==
+eyJoaXN0b3J5IjpbLTE3NTAyMTY4MDEsLTE0NjAzMTMwNjUsMT
+Y4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3
+ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3ND
+ksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEz
+MzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEwNjgzODk2NjAsMTY1NT
+MyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mzk5ODY1LC02MzI1MDU3
+MjYsMTU4OTc2ODQ3M119
 -->
