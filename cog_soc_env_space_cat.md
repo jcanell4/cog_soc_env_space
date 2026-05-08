@@ -128,11 +128,9 @@ on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
 
 (6)$$
-fn_{jk} = 1 - \frac{1}{e^{- (\frac{N}{Nsat_{jk}}\cdot eff_{jk} )}} \\ 
-\\
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
-on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a part de la taxa màxima de creixement $b_{jk}·(\alpha_{jk}+\omega_{jk})$
+on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a partir de la taxa màxima de creixement i el cost de manteniment $b_{jk}·(\alpha_{jk}+\omega_{jk})$
 
 ##### Càlcul del factor llum
 Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum (respecte al total de llum arribada al nínxol)  aconsegueix impactar a l'estrat on viu l'autòtrof en l'estadi que es desitja calcular.  
@@ -246,7 +244,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTQxOTcwNiwtMzk0Mzk3MTM4LDExNz
+eyJoaXN0b3J5IjpbMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNz
 kwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3
 NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MT
 UzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUy
