@@ -125,7 +125,7 @@ eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
-Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol. Així, direm que el factor nutrients ($fn_{jk}$) és:
+Per calcular el factor nutricional, usarem la densitat de nutrients disponibles al nínxol. Així, direm que el factor nutrients ($fn_{jk}$) és:
 (6)$$
 fn_{jk} = \frac{N}{N·(1-eff_{jk})+N}
 $$
@@ -243,11 +243,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3Mz
-A0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLDQxNTM5ODM1
-NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMT
-E5Mjc5Nzc0MiwtMTgxNzAwODc5MiwtNDA5Nzg1NTU3LC0xMzMy
-Nzk5NDQzLDE5MjExMzEwMTQsODgwNTQwNzQ5LDcxMTE3NzY3Ni
-wtMTY5MzExNjA1NSwtMjA1NzMyNjU2OSwxMzM4MzE2MTczLC0x
-NTIyNDc2ODYxXX0=
+eyJoaXN0b3J5IjpbLTc4NTE3MzA1NiwxOTQzNzYyNTE4LDEwND
+A2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4Nzkw
+NjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMT
+Y4ODA1MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3
+ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3ND
+ksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC0yMDU3MzI2NTY5LDEz
+MzgzMTYxNzNdfQ==
 -->
