@@ -132,7 +132,7 @@ fn_{jk} = 1 - \frac{1}{e^{- (\frac{N}{Nsat_{jk}}\cdot eff_{jk} )}} \\
 \\
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
-on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
+on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a part de la taxa màxima de creixement $b_{jk}·(\alpha_{jk}+\omega_{jk})$
 
 ##### Càlcul del factor llum
 Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum (respecte al total de llum arribada al nínxol)  aconsegueix impactar a l'estrat on viu l'autòtrof en l'estadi que es desitja calcular.  
@@ -246,11 +246,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTY1MTU3NzksLTM5NDM5NzEzOCwxMT
-c5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYz
-NzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsND
-E1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1
-MjgwLC0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NT
-csLTEzMzI3OTk0NDMsMTkyMTEzMTAxNCw4ODA1NDA3NDksNzEx
-MTc3Njc2XX0=
+eyJoaXN0b3J5IjpbMTk5MTQxOTcwNiwtMzk0Mzk3MTM4LDExNz
+kwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3
+NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MT
+UzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUy
+ODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1Ny
+wtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4MDU0MDc0OSw3MTEx
+Nzc2NzZdfQ==
 -->
