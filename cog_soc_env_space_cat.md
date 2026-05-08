@@ -127,7 +127,7 @@ on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de 
 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació a la quantitat máxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidor de valors de rang 0-1. Així, direm que el factor nutrients ($fn_{jk}$) és:
 (6)$$
-fn_{jk} = 1 - \frac{1}{e^{- (\frac{N}{D_{sat}}\cdot rec\_eff )}} \\
+fn_{jk} = 1 - \frac{1}{e^{- (\frac{N}{N\_sat{jk}}\cdot eff_{jk} )}} \\
 1 - \exp \left( - \frac{D}{D_{sat}} \cdot rec\_eff \right)\\
 fn_{jk} = \frac{N}{N·(1-eff_{jk})+N}
 $$
@@ -245,7 +245,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgyNjk3OTE4LDExNzkwOTAyMTAsMjU3Mz
+eyJoaXN0b3J5IjpbNDE3ODMzNDI2LDExNzkwOTAyMTAsMjU3Mz
 Y5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0
 LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5Mj
 E5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3
