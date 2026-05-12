@@ -241,7 +241,7 @@ $$\\
 \gamma_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
 $$
 
-∏ i = 0 m a x ( | R j k | , | L | ) ( m a x ( 0 , m i n ( 1 , 1 − ( l i − r j k i ) ) ) )
+
 
 on $\zeta_$ 
 
@@ -310,7 +310,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzOTgxMTQ4LDQyMDU3NTYxOCwtMTc5OT
+eyJoaXN0b3J5IjpbMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OT
 QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
 NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
 Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
