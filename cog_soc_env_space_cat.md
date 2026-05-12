@@ -214,16 +214,17 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ##### Càlcul del factor de captura.
-El factor de captura combina deversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el trabnscurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'area efectiva d'encontre). La densitat d'aliment o preses presenta al nínxol tenint en compte la superfíce ocupada i les seves costums d'agrupació, ja que l'agrupament d'individus en colònies disminuex el potencial d'encontre efectiu. 
+El factor de captura combina diversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el transcurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'àrea efectiva d'encontre). La densitat d'aliment o preses presenta al nínxol tenint en compte la superfície ocupada i els seus costums d'agrupació, ja que l'agrupament d'individus en colònies disminueix el potencial d'encontre efectiu. 
 
-Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació del níxol i la calcularem fent:
+Anomenarem taxa de cobertura ($\phi$) d'una espècie al grau d'ocupació del nínxol i la calcularem fent:
 
 (13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
 \phi_{jk} = \left( \frac {b_{jk}·\sigma_{jk}}{S} \right)^{(2\kappa_j + 1)}
 $$
 
-on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'especie per unitat de biomassa, $S$ la superfíce del nínxol i $\kappa$ el coeficient de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un indivídu en relació a la seva quantitat de massa.
+on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa$ el coeficient de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
+
 
 
 
@@ -291,11 +292,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzNDkwMTcxNiwtNjM5NDgzOTk1LC0xNT
-gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
-MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
-Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
-MjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMi
-w4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0
-Mzk3MTM4XX0=
+eyJoaXN0b3J5IjpbLTE4Mjc4MzYwMzMsLTYzOTQ4Mzk5NSwtMT
+U4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgw
+NDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Ni
+w0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgx
+MzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MT
+IsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5
+NDM5NzEzOF19
 -->
