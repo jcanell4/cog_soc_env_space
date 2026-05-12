@@ -220,12 +220,17 @@ Anomenarem taxa de cobertura ($\phi$) d'una espècie al grau d'ocupació del ní
 
 (13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_{jk} = \left( \frac {b_{jk}·\sigma_{jk}}{S} \right)^{(2\kappa_j + 1)}
+\phi_{jk} = \left( \frac {b_{jk}·\sigma_{jk}}{S} \right)^{(2\kappa_j + 1)} \\
 $$
 
 on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa$ el coeficient de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
 
-EL valor de $\phi$ efectiu el trobem en aplicar el coefi de la nitidesa del nínxol i 
+EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínxol i la de l'habilitat de localització de l'animal:
+
+14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\phi\_eff_{jk} = \left( \frac {b_{jk}·\sigma_{jk}}{S} \right)^{(2\kappa_j + 1)}
+$$
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -292,11 +297,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM0ODg1Mzg2LC02Mzk0ODM5OTUsLTE1OD
-MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
-OTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsND
-c3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMy
-NTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLD
-gwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQz
-OTcxMzhdfQ==
+eyJoaXN0b3J5IjpbLTgwNTE5OTczMCwtNjM5NDgzOTk1LC0xNT
+gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
+MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
+Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
+MjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMi
+w4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0
+Mzk3MTM4XX0=
 -->
