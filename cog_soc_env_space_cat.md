@@ -147,26 +147,26 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
-(7)
-$$
-sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
-\begin{array}{lcc}
+(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{ \\
+\begin{array}{lcc} \\
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
-0 &, s_{j,k} \neq h
-\end{array} 
-\right\} 
+0 &, s_{j,k} \neq h \\
+\end{array} \\
+\right\} \\
 $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
-(8)
-$$
-l_{h \rightarrow (h-1)} = \left\{ 
-\begin{array}{lcc}
+(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+l_{h \rightarrow (h-1)} = \left\{ \\
+\begin{array}{lcc} \\
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h}
-\end{array} 
-\right\}
+\frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
+\end{array} \\
+\right\} \\
 $$
 
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
@@ -272,7 +272,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NzQ2NzMyMiw0NzcwMTc5OTgsMjAyOD
+eyJoaXN0b3J5IjpbMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyOD
 M0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2
 LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMD
 g1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkw
