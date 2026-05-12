@@ -214,7 +214,7 @@ $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ##### Càlcul del factor de captura.
-El factor de captura combina deversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el trabnscurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localñització de manera que permeten incrementar l'area efectiva de co, 
+El factor de captura combina deversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el trabnscurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'area efectiva d'encontre). La densitat d'aliment o preses present al n´ 
 
 
 
@@ -282,7 +282,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MzQ5NTg3MCw2NDQ4NTIzOTgsMTg0OD
+eyJoaXN0b3J5IjpbLTc5MDI5MjAyMyw2NDQ4NTIzOTgsMTg0OD
 gxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4
 LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwND
 Q4NzY0MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2
