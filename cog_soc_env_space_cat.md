@@ -238,7 +238,7 @@ Anomenarem potencial de captura ($\gamma_{jk,gh}$) el coeficient que mesura la f
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\gamma_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
+\la{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
 $$
 
 
@@ -310,11 +310,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OT
-QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
-NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
-Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
-MTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMT
-I3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1
-MDY1MzNdfQ==
+eyJoaXN0b3J5IjpbLTEwNTg0MDYyOTcsMzcwOTY1MzQ4LDQyMD
+U3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcw
+Nzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMD
+MsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAx
+Nzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEzMjUyNS
+w2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMx
+NDE3MzVdfQ==
 -->
