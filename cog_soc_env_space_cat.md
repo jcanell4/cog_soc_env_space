@@ -120,7 +120,7 @@ Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i l
 
 (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk}) \\
 $$
 
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
@@ -128,16 +128,16 @@ on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament
 ##### Càlcul del factor nutricional
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
-(5)
-$$
-eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
+(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki})))) \\
 $$ 
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
 
-(6)
-$$
+(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a partir de la taxa màxima de creixement i el cost de manteniment $b_{jk}·(\alpha_{jk}+\omega_{jk})$
@@ -272,7 +272,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NDE2NDcyMCw0NzcwMTc5OTgsMjAyOD
+eyJoaXN0b3J5IjpbMTQ4NzQ2NzMyMiw0NzcwMTc5OTgsMjAyOD
 M0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2
 LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMD
 g1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkw
