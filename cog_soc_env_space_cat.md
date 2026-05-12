@@ -220,10 +220,10 @@ Anomenarem taxa de cobertura ($\phi$) d'una espècie al grau d'ocupació del ní
 
 (13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_gh} = \left( \frac {b_{gh}·\sigma_{gh}}{S} \right)^{(2\kappa_g + 1)} \\
+\phi_{gh} = \left( \frac {b_{gh}·\sigma_{gh}}{S} \right)^{(2\kappa_g + 1)} \\
 $$
 
-on $b_{gh}$ és la quantitat de biomassa de l'etapa $h$ i l'espècie $g$, $\sigma_{gh}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa_g$ el coeficient de configurcolònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
+on $b_{gh}$ és la quantitat de biomassa de l'etapa $h$ i l'espècie $g$, $\sigma_{gh}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa_g$ el coeficient de configuració de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
 
 EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínxol i la de l'habilitat de localització de l'animal:
 
@@ -238,10 +238,10 @@ Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la 
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} ·  \phi_{eff_{jk}} \\
+\lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} ·  \phi_{eff_{gh}} \\
 $$
 
-on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura 
+on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -308,11 +308,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTAxOTQxOTIsMzY5OTc1NDc4LDM3MD
-k2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5
-NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC
-0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgx
-NjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LD
-ExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4
-NzY0MTJdfQ==
+eyJoaXN0b3J5IjpbLTk3MTcyNjU4NiwzNjk5NzU0NzgsMzcwOT
+Y1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1
+LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLT
+EzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2
+NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMT
+EyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3
+NjQxMl19
 -->
