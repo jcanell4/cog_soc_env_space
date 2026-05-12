@@ -235,6 +235,7 @@ $$
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
 
+
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
 klkl
@@ -299,11 +300,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUxOTQxOTYyLDQyMDU3NTYxOCwtMTc5OT
-QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
-NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
-Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
-MTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMT
-I3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1
-MDY1MzNdfQ==
+eyJoaXN0b3J5IjpbMjA2MDc0NTIwOCw0MjA1NzU2MTgsLTE3OT
+k0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIy
+OTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OS
+w2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0
+MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2LD
+EyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMDg1
+NTA2NTMzXX0=
 -->
