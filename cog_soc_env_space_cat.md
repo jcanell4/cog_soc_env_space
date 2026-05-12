@@ -241,7 +241,7 @@ $$\\
 \lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} \\
 $$
 
-on $R_{jk}$  
+on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -308,11 +308,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjEzNzQzODksMzY5OTc1NDc4LDM3MD
-k2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5
-NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC
-0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgx
-NjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LD
-ExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4
-NzY0MTJdfQ==
+eyJoaXN0b3J5IjpbMTE2OTcwOTE1MSwzNjk5NzU0NzgsMzcwOT
+Y1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1
+LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLT
+EzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2
+NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMT
+EyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3
+NjQxMl19
 -->
