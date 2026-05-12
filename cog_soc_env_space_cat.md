@@ -238,12 +238,13 @@ Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la 
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\lambda_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
+\lambda_{jk,gh} = \theta_{jk,gh} · \rho_{jk} \\
+eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|D|)}(max(0,min(1,1-(l_i-r_{jki})))) \\
 $$
 
 
 
-on $\zeta_{jk,gh} $ 
+on $\theta_{jk,gh}$ 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -310,11 +311,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1Nz
-U2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5
-NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLD
-U1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5
-OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNj
-M2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQx
-NzM1XX0=
+eyJoaXN0b3J5IjpbMTk5MTA4MTk1NCwzNjk5NzU0NzgsMzcwOT
+Y1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1
+LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLT
+EzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2
+NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMT
+EyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3
+NjQxMl19
 -->
