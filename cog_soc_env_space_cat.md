@@ -165,22 +165,22 @@ Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estr
 
 (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-l_{h \rightarrow (h-1)} = \left\{ \\
-\begin{array}{lcc} \\
+l_{h \rightarrow (h-1)} = \left\{ 
+\begin{array}{lcc} 
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
 \frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
-\end{array} \\
-\right\} \\
+\end{array} 
+\right\} 
 $$
 
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
-(9)
+(9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$
 l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h}
+\frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h} \\
 \end{array} 
 \right\}
 $$ 
@@ -189,17 +189,18 @@ Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de desco
 
 Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_jk$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
 
-(10)
-$$
-fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
+(10) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$ \\
+fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}} \\
 $$
 
 ##### Càlcul del factor de capacitat màxima
 El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
-(11)
+(11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
 $$
-fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}}
-$$
+
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
 #### Fase de creixement individual  per heteròtrofs
@@ -276,11 +277,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MD
-E3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1
-LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMz
-E0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcx
-MzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMD
-QwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5
-MDYxXX0=
+eyJoaXN0b3J5IjpbLTg3MzA5NjMwNiw2NDQ4NTIzOTgsMTg0OD
+gxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4
+LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwND
+Q4NzY0MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2
+NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0NiwxOT
+QzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1
+OTQ1XX0=
 -->
