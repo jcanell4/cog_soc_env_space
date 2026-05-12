@@ -234,12 +234,14 @@ $$
 
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
-Anomenarem potencial de captura ($\gamma_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment i el calcularem amb (15):
+Anomenarem potencial de captura ($\gamma_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment de la cohort $g$ i etapa $h$. El calcularem amb (15):
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
 \gamma_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
 $$
+
+∏ i = 0 m a x ( | R j k | , | L | ) ( m a x ( 0 , m i n ( 1 , 1 − ( l i − r j k i ) ) ) )
 
 on $\zeta_$ 
 
@@ -308,11 +310,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODM5ODA1MjEsNDIwNTc1NjE4LC0xNz
-k5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEy
-Mjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OT
-ksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgz
-NDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2Ni
-wxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMjA4
-NTUwNjUzM119
+eyJoaXN0b3J5IjpbMTUzOTgxMTQ4LDQyMDU3NTYxOCwtMTc5OT
+QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
+NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
+Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
+MTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMT
+I3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1
+MDY1MzNdfQ==
 -->
