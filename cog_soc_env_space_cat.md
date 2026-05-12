@@ -65,11 +65,12 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - L'estrat que ocupen segons l'etapa a la qual es trobin. El model permet simular plantes de diferents mides i segons les etapes per les quals vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més baix, però a mesura que vagin creixent i canviant d'etapa, algunes arribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les característiques de la simulació.
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
-        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors .  
+        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors.  
      - Característiques dels heteròtrofs i descomponedors:
          - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
+        - Agudesa o 
 
 ## Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
@@ -245,7 +246,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3OTg1NzczMiwxMjc5OTMxNDQyLC0xMD
+eyJoaXN0b3J5IjpbLTkyMjAwNzE0MCwxMjc5OTMxNDQyLC0xMD
 Q0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4
 Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMT
 k0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIx
