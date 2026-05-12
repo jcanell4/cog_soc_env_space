@@ -71,8 +71,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
         - Agudesa o habilitat de localitzar una presa o aliment en la distància. Durant la cerca, incrementa la superfície de cobertura de l'aliment o la presa gràcies a l'agudesa dels sentits usats per la seva localització (olor, vista, soroll, etc.). 
-        - Dieta segons l'etapa i l'espècie. Per els heteròtrofs, la dieta es pot expressar de dies maneres diferents: indicant la llista d'espècies de les cohorts del ninxol on viuen mitjançant l'index de les espècies  
-        -  una llista de taxonomies, això permet definir espècies generalistes sense have 
+        - Dieta segons l'etapa i l'espècie. Per els heteròtrofs, la dieta es pot expressar de dues maneres diferents: 1) indicant la llista d'espècies de les cohorts del ninxol on viuen mitjançant l'index (posició en el vector de chorts) de les espècies que formaran part de la dieta.  2) mitjançant una llista de taxonomies, això permet definir espècies generalistes sense haver de detallar tote
         - Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors.  
 
 ## Configuració i càrrega inicial
@@ -252,7 +251,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNjU2MjIwNyw2MzY5MDM1NjYsMTI3OT
+eyJoaXN0b3J5IjpbLTI5MjQyNTY2Myw2MzY5MDM1NjYsMTI3OT
 kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
 MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMj
 U3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2
