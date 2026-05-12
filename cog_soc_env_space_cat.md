@@ -243,6 +243,8 @@ $$
 
 on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\rho_{jk}$ es la capacitat de prospecció del nínxol que té el recaptador, mesurada en uniotats de superfície del nínxol. 
 
+El potencial de captura total d'una espècie serà la suma de potencials 
+
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -308,7 +310,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3NzM2MzQxNiwzNjk5NzU0NzgsMzcwOT
+eyJoaXN0b3J5IjpbMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOT
 Y1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1
 LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLT
 EzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2
