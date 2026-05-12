@@ -53,6 +53,7 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
 Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentatge de reproducció per cicle. La capacitat reproductiva real es veurà afectada per la quantitat d'aliment aconseguit durant el cicle. Si la quantitat és màxima també ho serà la fertilitat, però si decau, la fertilitat es veurà afectada reduint-ne l'eficiència.   
   - Característiques fisicoquímiques de la matèria morta en cada una de les etapes. Les característiques fisicoquímiques es definiran com un vector en el qual cada posició representi una característica específica i el seu valor la intensitat d'aquesta.    
   - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.      
+  - Mida de lesfraccions de materia morta expressada en quantitat de meteria que la forma.
    - Vector d'estratègies de defensa. En cada etapa, les diferents espècies han desenvolupat, al llarg de l'evolució múltiples estratègies de defensa, que en aquest model es definiran mitjançant un vector de valors compresos entre 0 i 1. Cada posició identifica una estratègia determinada. No hi ha característiques predefinides sinó que a cada simulació es poden especificar les que es considerin més rellevants (punxes, verí, cuirassa, mida, fugida, etc.). Totes les espècies comparteixen els mateixos conceptes en la mateixa posició del vector. Si una espècie no ha desenvolupat una estratègia de defensa en la posició que la identifica tindrà el valor 0.0.
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les característiques fisicoquímiques de la matèria morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/característiques) determinarà bona part de l'eficàcia alimentària.
    - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nuclis de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mesura que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
@@ -245,11 +246,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1OD
-U1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0
-NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNz
-U0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0
-NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC
-0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTky
-MTEzMTAxNF19
+eyJoaXN0b3J5IjpbMTg1NzE5Njc3OCw4MDMxNDE3MzUsLTIwOD
+U1MDY1MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAy
+MTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNz
+MwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgz
+NTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLT
+ExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQwOTc4NTU1NywtMTMz
+Mjc5OTQ0M119
 -->
