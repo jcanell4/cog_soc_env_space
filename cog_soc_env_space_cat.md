@@ -229,8 +229,9 @@ EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínx
 
 14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) * \nu
+\phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) · \nu
 $$
+on $\delta_{jk}$ és l'habilitat de localotz
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -297,7 +298,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NzM1NzUxOCwtNjM5NDgzOTk1LC0xNT
+eyJoaXN0b3J5IjpbLTk4NjAzMTc0MCwtNjM5NDgzOTk1LC0xNT
 gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
 MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
 Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
