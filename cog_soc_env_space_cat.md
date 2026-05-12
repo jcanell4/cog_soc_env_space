@@ -84,7 +84,7 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 ### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-$\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i})$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)
+$$\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i})  & $$ 
 
 on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria orgànica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
@@ -269,11 +269,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMj
-gxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0
-MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLT
-M5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYy
-NTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LD
-IxMzc4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAz
-MTMwNjVdfQ==
+eyJoaXN0b3J5IjpbMTcyNTIyMzYzMCwyMDI4MzQxMTUyLC04OT
+AzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0
+MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMT
+U4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5
+NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LD
+E3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5
+NzQ2Ml19
 -->
