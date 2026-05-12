@@ -195,7 +195,7 @@ SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels 
 klkl
 
 
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
+
 
 #### Fase de creixement reproductiu
 El creixement reproductiu no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (naixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima, però en cicles amb manca d'aliment la fertilitat es redueixi. 
@@ -254,11 +254,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OT
-kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
-MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMj
-U3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2
-OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLT
-Q5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3
-OTc3NDJdfQ==
+eyJoaXN0b3J5IjpbMzQyNzIyNzgwLDExMjgxMzI1MjUsNjM2OT
+AzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1
+LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMT
+c5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYz
+NzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsND
+E1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1
+MjgwXX0=
 -->
