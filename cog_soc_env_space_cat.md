@@ -225,7 +225,7 @@ $$
 
 on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa$ el coeficient de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
 
-
+EL valor de $\phi$ efectiu el trobem en aplicar el coefi de la nitidesa del nínxol i 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -292,11 +292,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Mjc4MzYwMzMsLTYzOTQ4Mzk5NSwtMT
-U4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgw
-NDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Ni
-w0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgx
-MzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MT
-IsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5
-NDM5NzEzOF19
+eyJoaXN0b3J5IjpbNjM0ODg1Mzg2LC02Mzk0ODM5OTUsLTE1OD
+MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
+OTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsND
+c3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMy
+NTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLD
+gwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQz
+OTcxMzhdfQ==
 -->
