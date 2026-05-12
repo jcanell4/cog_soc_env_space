@@ -38,8 +38,8 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
    - La quantitat absoluta de nutrients (minerals) continguts en el nínxol. En aquesta primera versió, se suposarà una distribució uniforme dels nutrients per tota la superfície.
    - Un vector de C valors, de rang entre 0 i 1 identificant les condicions generals del nínxol. Cada posició representarà la intensitat d'alguna característica significativa per a les espècies de la simulació. No hi ha un conjunt de característiques predefinides, sinó un conjunt de valors, el significat dels quals pot variar en cada simulació. Aquest conjunt de condicions es faran servir per calcular el grau d'adversitat o afavoriment que el nínxol representa per a cada espècie.
    - Un vector de factors limitants pels autòtrofs que hi visquin. A diferència de les condicions generals, en aquest cas es tracta de factors amb la capacitat de limitar la captació d'energia i nutrients per part dels éssers autòtrofs que hi habiten. Com el vector de condicions generals, no representa factors predefinits, sinó que el significat de les seves posicions pot canviar entre simulacions. En realitat, representa la dificultat alimentar-se  amb independència que quin sigui el significat real de cada posició. Els valors del vector oscil·len en un rang entre 0 i 1, de manera que 0 indica sense dificultat i 1 indica dificultat màxima. 
-   - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc.) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació. 
-   - Cost de retorn. Representa l'energia gastada dUn valor per mesurantr la transformació. Es tracta d'un únic valor característic associat a la composició i eficiència dels seus fixadors.
+   - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc.) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació.
+   - Cost de retorn. Representa l'energia gastada durant la transformació. Es tracta d'un únic valor característic de cada nínxol i associat a la composició i eficiència dels seus fixadors. 
    - Nitidesa del nínxol ien relació a les capacitats de cerca de les espècies que ho necessiten. Valors propers a 1 significa que el nínxol permet una cerca adequada a les habilitats del cercador. A mesura que el valor s'acosta a 0, implica que el nínxol resenta una major dificultat pels cercadors (geografia irregular, boira, olors fortes, etc).  
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (matèria morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
@@ -247,11 +247,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMD
-g1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkw
-MjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMT
-czMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4
-MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC
-0xMTkyNzk3NzQyLC0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEz
-MzI3OTk0NDNdfQ==
+eyJoaXN0b3J5IjpbMjEzMDY2OTk4MiwtMTA0NDg3NjQxMiw4MD
+MxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0Mzk3
+MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMT
+A0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3
+OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NS
+wxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQw
+OTc4NTU1N119
 -->
