@@ -263,7 +263,7 @@ El factor de càrrega màxima el calcularem usant el valor de densitat màxima s
 
 (11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-fc_{jk} = 1-\frac {\frac{\sum^{j \in C,  }_{j} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
+fc_{jk} = 1-\frac {\frac{\sum^{j \in C_{jk} | \exists }_{j} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
 $$
 
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
@@ -334,7 +334,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTQ3MTczNDMsMTM0ODUwODA3NywzNj
+eyJoaXN0b3J5IjpbLTEwODE0MTgzODcsMTM0ODUwODA3NywzNj
 k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
 NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
 E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
