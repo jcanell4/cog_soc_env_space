@@ -250,7 +250,9 @@ $$\\
 \lambda_{jk} = \sum_{g}^{g \in C_{jk}} \sum_{h}^{h \in E_{jk}} \lambda_{jk,gh} \\
 $$
 
-on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts de la dieta de l'hetròtrof $j$ en l'etapa $k$  les etapes  
+on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts i etapes de la dieta de l'hetròtrof $j$ en l'etapa $k$.
+
+
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -316,7 +318,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0Nzg2MTA3OCwxMzQ4NTA4MDc3LDM2OT
+eyJoaXN0b3J5IjpbLTQxODY1ODk1MywxMzQ4NTA4MDc3LDM2OT
 k3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2
 LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
 YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
