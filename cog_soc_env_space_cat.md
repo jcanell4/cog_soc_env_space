@@ -212,6 +212,9 @@ $$\\
 $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
+##### Càlcul del factor de captura.
+
+
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
 klkl
@@ -276,11 +279,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDk1NTk0NzQsNjQ0ODUyMzk4LDE4ND
-g4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3
-OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMD
-Q0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4
-Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMT
-k0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIx
-NTk0NV19
+eyJoaXN0b3J5IjpbLTMyNTM3NzcxNSw2NDQ4NTIzOTgsMTg0OD
+gxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4
+LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwND
+Q4NzY0MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2
+NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0NiwxOT
+QzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1
+OTQ1XX0=
 -->
