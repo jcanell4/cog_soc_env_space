@@ -243,8 +243,12 @@ $$
 
 on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\rho_{jk}$ es la capacitat de prospecció del nínxol que té el recaptador, mesurada en uniotats de superfície del nínxol. 
 
-El potencial de captura total d'un heteròtrof serà la suma de potencials parcials corresponents a cada ítyem de la llista de la seva dieta 
+El potencial de captura total d'un heteròtrof serà la suma de potencials parcials corresponents a cada ítem de la llista de la seva dieta:
 
+(16)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\lambda_{jk} = \sum_{g}^{} \\
+$$
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -310,11 +314,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA2ODk2MTMsMTM0ODUwODA3NywzNjk5Nz
-U0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwt
-NjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2Mz
-YyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5
-OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OT
-AzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0
-Ml19
+eyJoaXN0b3J5IjpbMTc3NzUyMTcxNywxMzQ4NTA4MDc3LDM2OT
+k3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2
+LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
+YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
+Mzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLT
+g5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMx
+NDQyXX0=
 -->
