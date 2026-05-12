@@ -275,8 +275,12 @@ $$\\
 cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
 $$
 
-la qual es repartirà proporcionalment al potencial de captura de cada especie de la seva dieta. 
+la qual es repartirà proporcionalment al potencial de captura de cada especie de la seva dieta. Així
 
+(20) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\Delta b_{gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
+$$
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -342,11 +346,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3NzQ2NjIxNyw0NjMyMTYwODIsMTM1OT
-YyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgs
-NDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1OD
-MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
-OTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsND
-c3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMy
-NTI1XX0=
+eyJoaXN0b3J5IjpbLTEzNTQ1OTkyMTEsNDYzMjE2MDgyLDEzNT
+k2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4
+LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNT
+gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
+MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
+Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
+MjUyNV19
 -->
