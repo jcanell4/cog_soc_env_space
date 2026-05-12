@@ -190,7 +190,7 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 En aquesta fase, s'avalua la quantitat de materia ingestada per l'heteròtrof a partir de
 
 (12)$$
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fc_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
 
 
@@ -259,11 +259,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Njc5MTIxNDYsMTEyODEzMjUyNSw2Mz
-Y5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3
-MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LD
-ExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3
-NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MS
-w0MTUzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4
-MDUyODBdfQ==
+eyJoaXN0b3J5IjpbLTgxNjg2ODIwNCwxMTI4MTMyNTI1LDYzNj
+kwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTcz
+NSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcxMzgsMT
+E3OTA5MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMDQwNjc2
+Mzc1LDE3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLD
+QxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgw
+NTI4MF19
 -->
