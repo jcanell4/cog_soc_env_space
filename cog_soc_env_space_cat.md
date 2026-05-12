@@ -220,9 +220,10 @@ Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació del níx
 
 (13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_{jk} = \frac {b_{jk·\sigma}}{S}
+\phi_{jk} = \frac {b_{jk}·\sigma_{jk}}{S}
 $$
 
+on $b_{}jk}$ 
 
 
 
@@ -290,7 +291,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MTY2NzEwNSwtMTYzNjI5MTgwNiwtMT
+eyJoaXN0b3J5IjpbLTI4Mzc0Mzg3OSwtMTYzNjI5MTgwNiwtMT
 M4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0
 ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMT
 I4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2
