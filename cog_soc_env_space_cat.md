@@ -70,9 +70,9 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
          - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
-        - Agudesa o habilitat de localitzar una presa o aliment en la distància. Durant la cerca, incrementa la superfície de cobertura de l'aliment o la presa gràcies a l'agudesa dels sentits usats per la seva localització (olor, vista, soroll, etc.).  
-        - 
-        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors.  
+        - Agudesa o habilitat de localitzar una presa o aliment en la distància. Durant la cerca, incrementa la superfície de cobertura de l'aliment o la presa gràcies a l'agudesa dels sentits usats per la seva localització (olor, vista, soroll, etc.). 
+        - Dieta segons l'etapa i l'espècie. Per els heteròtrofs, la dieta es pot expressar de dies maneres diferents, indicant   
+        - Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors.  
 
 ## Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
@@ -251,7 +251,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NDE1MzUyMyw2MzY5MDM1NjYsMTI3OT
+eyJoaXN0b3J5IjpbLTc4MzQyMjU3NSw2MzY5MDM1NjYsMTI3OT
 kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
 MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMj
 U3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2
