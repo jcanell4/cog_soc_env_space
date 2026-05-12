@@ -70,7 +70,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
          - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
-        - Agudesa o 
+        - Agudesa o habilitat de localitzar un presa o aliment en la distància. 
 
 ## Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
@@ -246,11 +246,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMjAwNzE0MCwxMjc5OTMxNDQyLC0xMD
-Q0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4
-Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMT
-k0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIx
-NTk0NSwyMTM3ODc5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC
-0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgx
-NzAwODc5Ml19
+eyJoaXN0b3J5IjpbLTEyNzE5ODAzMjAsMTI3OTkzMTQ0MiwtMT
+A0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1
+ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LD
+E5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQy
+MTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2Mi
+wtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4
+MTcwMDg3OTJdfQ==
 -->
