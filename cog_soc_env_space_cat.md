@@ -266,7 +266,9 @@ $$\\
 fc_{jk} = 1-\frac {\frac{\sum^{g \in C_{gh} \land \exists j (j=g) | j \in C_{jk})}_{g} \sum_{h}^{(h \in E_{gh} \land \exists k (k=h) | k \in E{jk})} b_{gh}}{S}}{max\_d_{jk}} \\
 $$
 
-on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència de jk.  
+on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
+
+
 
 
 
@@ -334,11 +336,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNzYyNTUwMiwxMzU5NjIxMDEyLDEzND
-g1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgs
-LTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMT
-gwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAx
-ODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMj
-AyODM0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAz
-NTY2XX0=
+eyJoaXN0b3J5IjpbNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0OD
+UwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwt
+MTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExOD
+AxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4
+ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMD
+I4MzQxMTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1
+NjZdfQ==
 -->
