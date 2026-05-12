@@ -187,7 +187,7 @@ $$
 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
 
-Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_jk$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
+Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_{jk}$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
 
 (10) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$ \\
@@ -298,11 +298,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMT
-U4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgw
-NDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Ni
-w0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgx
-MzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MT
-IsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5
-NDM5NzEzOF19
+eyJoaXN0b3J5IjpbNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
+k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
+MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LD
+E4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4
+Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC
+0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1
+NTU4Njc1XX0=
 -->
