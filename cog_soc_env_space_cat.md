@@ -275,7 +275,7 @@ $$\\
 cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
 $$
 
-la qual es repartirà proporcionalment 
+la qual es repartirà proporcionalment al potencial de captura de cada especie de la seva dieta. 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -342,7 +342,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4ODkxNjIxMCw0NjMyMTYwODIsMTM1OT
+eyJoaXN0b3J5IjpbMTI3NzQ2NjIxNyw0NjMyMTYwODIsMTM1OT
 YyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgs
 NDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1OD
 MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
