@@ -234,16 +234,16 @@ $$
 
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
-Anomenarem potencial de captura ($\gamma_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment de la cohort $g$ i etapa $h$. El calcularem amb (15):
+Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment de la cohort $g$ i etapa $h$. El calcularem amb (15):
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\la{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
+\lambda_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
 $$
 
 
 
-on $\zeta_$ 
+on $\zeta_{jk,gh} $ 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -310,11 +310,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTg0MDYyOTcsMzcwOTY1MzQ4LDQyMD
-U3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcw
-Nzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMD
-MsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAx
-Nzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEzMjUyNS
-w2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMx
-NDE3MzVdfQ==
+eyJoaXN0b3J5IjpbMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1Nz
+U2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5
+NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLD
+U1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5
+OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNj
+M2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQx
+NzM1XX0=
 -->
