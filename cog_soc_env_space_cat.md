@@ -227,10 +227,11 @@ on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigm
 
 EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínxol i la de l'habilitat de localització de l'animal:
 
-14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) · \nu
+\phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) · \nu \\
 $$
+
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
 
@@ -298,11 +299,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
-k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
-MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LD
-E4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4
-Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC
-0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1
-NTU4Njc1XX0=
+eyJoaXN0b3J5IjpbNTUxOTQxOTYyLDQyMDU3NTYxOCwtMTc5OT
+QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
+NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
+Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
+MTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMT
+I3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1
+MDY1MzNdfQ==
 -->
