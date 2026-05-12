@@ -252,6 +252,12 @@ $$
 
 on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts i etapes de la dieta de l'hetròtrof $j$ en l'etapa $k$.
 
+El factor de captura que representarà la probabilitat es calcula:
+
+(17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+eff_{jk} = 1 - \fra\\
+$$
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -318,11 +324,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxODY1ODk1MywxMzQ4NTA4MDc3LDM2OT
-k3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2
-LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
-YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
-Mzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLT
-g5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMx
-NDQyXX0=
+eyJoaXN0b3J5IjpbLTE5MjgxMzU4ODEsMTM0ODUwODA3NywzNj
+k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
+NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
+E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
+MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC
+04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkz
+MTQ0Ml19
 -->
