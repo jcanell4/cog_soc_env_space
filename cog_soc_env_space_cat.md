@@ -93,9 +93,9 @@ on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ des
 
 La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplicar a cada contenidor de matèria morta de totes les cohorts de cada nínxol.
 
-(2)
-$$
-\Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k}
+(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k} \\
 $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
@@ -104,9 +104,9 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   
 #### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
-  (3)
-  $$
-  \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
+  (3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $$\\
+  \Delta b_{j,k} = - b_{j,k} \omega_{j,k} \\
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
@@ -118,8 +118,8 @@ Finalment, la densitat vegetal existent (és a dir competència) modificarà tam
 
 Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
-(4)
-$$
+(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
 
@@ -272,11 +272,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjAwMDExNjYsNDc3MDE3OTk4LDIwMj
-gzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2
-NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMj
-A4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcxMzgsMTE3OTA5
-MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMDQwNjc2Mzc1LD
-E3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLDQxNTM5
-ODM1NV19
+eyJoaXN0b3J5IjpbMTI1NDE2NDcyMCw0NzcwMTc5OTgsMjAyOD
+M0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2
+LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMD
+g1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkw
+MjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMT
+czMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4
+MzU1XX0=
 -->
