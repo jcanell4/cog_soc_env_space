@@ -216,7 +216,12 @@ on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament
 ##### Càlcul del factor de captura.
 El factor de captura combina deversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el trabnscurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'area efectiva d'encontre). La densitat d'aliment o preses presenta al nínxol tenint en compte la superfíce ocupada i les seves costums d'agrupació, ja que l'agrupament d'individus en colònies disminuex el potencial d'encontre efectiu. 
 
-Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació d'una especie
+Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació del níxol i la calcularem fent:
+
+(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\phi_{jk} = 
+$$
 
 
 
@@ -285,7 +290,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzM5NTUxMDIsNTU5MDE4ODk5LDY0ND
+eyJoaXN0b3J5IjpbLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0ND
 g1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUy
 LC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OT
 kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
