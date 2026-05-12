@@ -208,9 +208,9 @@ En aquesta fase, s'avalua la quantitat de materia ingestada per l'heteròtrof a 
 
 (12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fc_{jk} · fc_{jk} · (1- \omega_{jk}) \\
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · (1- \omega_{jk}) \\
 $$
-on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -276,11 +276,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNDQyNzI1LDY0NDg1MjM5OCwxODQ4OD
-E2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5Nzgs
-MTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0ND
-g3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3
-NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5ND
-M3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5
-NDVdfQ==
+eyJoaXN0b3J5IjpbLTEzMDk1NTk0NzQsNjQ0ODUyMzk4LDE4ND
+g4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3
+OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMD
+Q0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4
+Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMT
+k0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIx
+NTk0NV19
 -->
