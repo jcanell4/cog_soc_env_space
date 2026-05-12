@@ -268,7 +268,7 @@ $$
 
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
 
-La biomassa de l'heteròtrof s'incrmen
+La captura que l'heteròtrof s'incrementarà 
 
 
 
@@ -337,11 +337,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NjUzNjc5MSw0NjMyMTYwODIsMTM1OT
-YyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgs
-NDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1OD
-MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
-OTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsND
-c3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMy
-NTI1XX0=
+eyJoaXN0b3J5IjpbLTIwOTQyNjg5MTAsNDYzMjE2MDgyLDEzNT
+k2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4
+LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNT
+gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
+MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
+Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
+MjUyNV19
 -->
