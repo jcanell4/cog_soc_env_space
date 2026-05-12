@@ -38,8 +38,9 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
    - La quantitat absoluta de nutrients (minerals) continguts en el nínxol. En aquesta primera versió, se suposarà una distribució uniforme dels nutrients per tota la superfície.
    - Un vector de C valors, de rang entre 0 i 1 identificant les condicions generals del nínxol. Cada posició representarà la intensitat d'alguna característica significativa per a les espècies de la simulació. No hi ha un conjunt de característiques predefinides, sinó un conjunt de valors, el significat dels quals pot variar en cada simulació. Aquest conjunt de condicions es faran servir per calcular el grau d'adversitat o afavoriment que el nínxol representa per a cada espècie.
    - Un vector de factors limitants pels autòtrofs que hi visquin. A diferència de les condicions generals, en aquest cas es tracta de factors amb la capacitat de limitar la captació d'energia i nutrients per part dels éssers autòtrofs que hi habiten. Com el vector de condicions generals, no representa factors predefinits, sinó que el significat de les seves posicions pot canviar entre simulacions. En realitat, representa la dificultat alimentar-se  amb independència que quin sigui el significat real de cada posició. Els valors del vector oscil·len en un rang entre 0 i 1, de manera que 0 indica sense dificultat i 1 indica dificultat màxima. 
-   - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc.) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació. 
-   - Cost de retorn. Representa l'energia gastada durant la transformació. Es tracta d'un únic valor característic de cada nínxol i associat a la composició i eficiència dels seus fixadors. 
+   - Un conjunt de taxes de retorn per determinar la quantitat de matèria orgànica que es mineralitza. La taxa de retorn identifica la riquesa del nínxol en fixadors (bacteris, fongs, compostos químics, etc.) que transformen la matèria orgànica en inorgànica. Representen la proporció de matèria que són capaços de mineralitzar. És a dir, el percentatge de matèria orgànica transformada. Cada nínxol disposa de diverses taxes per tal de modelitzar els diferents graus de dificultat que representa la transformació de matèria en funció de la seva mida. No hi ha mides predefinides, cada simulació pot configurar el nombre de rangs que requereixi segons l'objectiu de la simulació.
+   - Cost de retorn. Representa l'energia gastada durant la transformació. Es tracta d'un únic valor característic de cada nínxol i associat a la composició i eficiència dels seus fixadors.
+   - Nitidesa del nínxol ien relació a les capacitats de cerca de les espècies que ho necessiten. Valors propers a 1 significa que el nínxol permet una cerca adequada a les habilitats del cercador. A mesura que el valor s'acosta a 0, implica que el nínxol presenta una dificultat més gran pels cercadors (geografia irregular, boira, olors fortes, etc.).  
    - Conjunt de cohorts convivint en un mateix nínxol.
  - *Cohort* (classe Cohort). Entenem per cohort, les dades referents a la població d'una espècie en un nínxol determinat. Bàsicament, controla la quantitat de biomassa viva i morta. A més permet mantenir-la classificada en funció de les etapes de desenvolupament de cada espècie (matèria viva) i els rangs requerits per la simulació (matèria morta). Usant la configuració de l'espècie pot calcular també altres aspectes d'interès com per exemple la quantitat d'energia derivada de la seva població. 
  - *Espècie* (classes Autotroph i Heterotroph; el Heterotroph pot incloure dieta de matèria morta `MatterType::DEAD`). En general, totes les espècies comparteixen els següents conceptes i característiques:
@@ -47,15 +48,15 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
  	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les següents característiques es definiran per cada etapa en forma de vector o matriu. Cada característica necessitarà tantes posicions com etapes tingui definides aquí.
  	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferència l'anomenarem, vulnerabilitat al medi.     
  	- Resiliència. Indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquest valor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
-   - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie.    
+   - Cost de manteniment o percentatge de components minerals i energia gastada a fi de mantenir vius els individus de l'espècie.    
    - Per modelar el creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa (via creixement individual o reproductiu). Pel creixement individual es defineix el creixement màxim individual. Ja que els individus no creixen indefinidament i, per tant, cal limitar la seva capacitat de creixement en forma de percentatge per cada etapa.
 Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentatge de reproducció per cicle. La capacitat reproductiva real es veurà afectada per la quantitat d'aliment aconseguit durant el cicle. Si la quantitat és màxima també ho serà la fertilitat, però si decau, la fertilitat es veurà afectada reduint-ne l'eficiència.   
   - Característiques fisicoquímiques de la matèria morta en cada una de les etapes. Les característiques fisicoquímiques es definiran com un vector en el qual cada posició representi una característica específica i el seu valor la intensitat d'aquesta.    
-  - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.      
+  - Grandària de la matèria morta expressada com una proporció per cada rang definit en el nínxol. Les espècies poden generar matèria morta de mides diverses, tenint en compte que hi ha espècies que poden desprendre una part (per exemple les fulles dels arbres) però mantenir la resta viva.
    - Vector d'estratègies de defensa. En cada etapa, les diferents espècies han desenvolupat, al llarg de l'evolució múltiples estratègies de defensa, que en aquest model es definiran mitjançant un vector de valors compresos entre 0 i 1. Cada posició identifica una estratègia determinada. No hi ha característiques predefinides sinó que a cada simulació es poden especificar les que es considerin més rellevants (punxes, verí, cuirassa, mida, fugida, etc.). Totes les espècies comparteixen els mateixos conceptes en la mateixa posició del vector. Si una espècie no ha desenvolupat una estratègia de defensa en la posició que la identifica tindrà el valor 0.0.
    - Vector d'estratègies de recaptació d'aliment. Cada espècie, al llarg de l'evolució ha desenvolupat estratègies de recaptació amb l'objectiu de superar les estratègies de defensa (en cas dels éssers heteròtrofs), de superar els factors limitants del nínxol (en cas dels autòtrofs) o les característiques fisicoquímiques de la matèria morta (en cas dels descomponedors).  La comparació entre els dos vectors (recaptació i defensa/limitació/característiques) determinarà bona part de l'eficàcia alimentària.
-   - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nuclis de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta avantatges, però també pot facilitar la seva localització, en el sentit que un cop trobat un individu es troba la resta de la colònia. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mesura que puja el valor suposa in increment de la quantitat d'individus de la colònia i en conseqüència d'extensió ocupada.
-   - Altres característiques importants per preveure l'evolució de l'ecosistema som: la superfície ocupada i la quantitat de biomassa per individu. Ambdues es faran servir per calcular la probabilitat de coincidència entre presa/aliment i  depredador/recol·lector.
+   - Habilitat de crear colònies. Algunes espècies prefereixen viure de forma individual o en nuclis de població molt reduïts. En canvi d'altres, necessiten viure en grups, formant colònies. Viure en colònies presenta avantatges, ja que redueix les probabilitats de localització doncs es generen més espais buits que sense viure-hi. En aquest model, pels animals heteròtrofs es calcula la probabilitat de trobar aliment en funció de l'ocupació de les preses dins del nínxol, i es fa certa correcció per aquells aliments que visquin en colònies. Aquesta característica mesura la mida de la colònia. Valor 0 implica convivència nul·la o esporàdica, a mesura que puja el valor suposa un increment de la quantitat d'individus de la colònia.
+   - Altres característiques importants per preveure l'evolució de l'ecosistema són: la superfície ocupada i la quantitat de biomassa per individu. Ambdues es faran servir per calcular la probabilitat de coincidència entre presa/aliment i  depredador/recol·lector. També s'especifica  la mida de les diferents fraccions de matèria morta expressada en quantitat de matèria que la formen i la superfície que ocupen les diferents fraccions d'aquesta. Són dades que també es necessiten per calcular la probabilitat de coincidència per aquells heteròtrofs amb funció de descomponedors, carronyaires....
      
      Les espècies, a més, segons siguin autòtrofs (generadors) o heteròtrofs (consumidors) disposaran de característiques específiques:
      - Característiques dels autòtrofs:
@@ -64,11 +65,13 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - L'estrat que ocupen segons l'etapa a la qual es trobin. El model permet simular plantes de diferents mides i segons les etapes per les quals vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més baix, però a mesura que vagin creixent i canviant d'etapa, algunes arribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les característiques de la simulació.
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
-        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta.  
-    - Característiques dels heteròtrofs i descomponedors:
-        - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
+        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors.  
+     - Característiques dels heteròtrofs i descomponedors:
+         - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
+        - Agudesa o habilitat de localitzar una presa o aliment en la distància. Durant la cerca, incrementa la superfície de cobertura de l'aliment o la presa gràcies a l'agudesa dels sentits usats per la seva localització (olor, vista, soroll, etc.). 
+       - Dieta segons l'etapa i l'espècie. Per els heteròtrofs, la dieta es pot expressar de dues maneres diferents: 1) indicant la llista d'espècies de les cohorts del ninxol on viuen mitjançant l'index (posició en el vector de chorts) de les espècies que formaran part de la dieta.  2) mitjançant una llista de taxonomies, això permet definir espècies generalistes sense haver de detallar totes les espècies del vector de cohorts. Les especies es poden identificar taxonòmicament i això permet una selecció de la dieta més flexible. En el cas dels heteròtrofs també s'accepten dietes alternatives com la catabòlica (ous) o també la nutrició completa o suplementària dels progenitors.
 
 ## Configuració i càrrega inicial
 El simulador pot configurar-se des d'un json o bé directament a través de codi. Bàsicament, necessita saber quants cicles cal simular i si es desitja incorporar soroll aleatori durant la simulació. El simulador també disposa d'un conjunt de builders per crear qualsevol de les entitats anteriors, però principalment són rellevants el constructor d'entorns (EnvironmentBuilder) i el de Nínxols (NicheBuilder).  Ja que aquests accepten la càrrega inicial a través d'un json. El sistema pot realitzar la simulació a partir d'un entorn o d'un únic nínxol.
@@ -76,32 +79,37 @@ El simulador pot configurar-se des d'un json o bé directament a través de codi
 ## Evolució de l'ecosistema
 Un cop carregat l'entorn o el nínxol, el sistema farà evolucionar l'ecosistema el nombre de cicles indicats a la configuració i emmagatzemarà l'evolució de cada cicle en un fitxer de resultats. La utilitat *cog_soc_env_space_viewer* visualitzarà els resultats de forma gràfica.
 
-### Evolució de l'ecosistema a cada cicle
 A cada cicle el simulador avalua l'evolució de les dades variables a conseqüència de la interacció entre cohorts i el medi.  Per cada nínxol de l'entorn, a cada cicle, el sistema actualitza primer cada una de les cohorts que conté i seguidament actualitza els nutrients.
 
-#### Actualització de nutrients
+### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-(1)$$
-\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
+(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) \\
 $$
+
 on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria orgànica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
 La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplicar a cada contenidor de matèria morta de totes les cohorts de cada nínxol.
 
-(2)$$
-\Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k}
-$$
+(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k} \\
+$$ 
+
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
-#### Actualització de les cohorts
+### Actualització de les cohorts
 L'actualització de les cohorts presenta diverses fases: a) _creixement individual_, b) _creixement reproductiu_, 	c) _mortalitat_ provocada per la vulnerabilitat deguda a les característiques generals del nínxol, d) el _traspàs entre etapes_ a causa del creixement dels individus de l'espècie i e) finalment la _mortalitat_ deguda a la vellesa dels individus de la darrera etapa.
   
-##### Fase de cxreixement indididual  
+#### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
-  (3)$$
-  \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
+  (3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $$\\
+  \Delta b_{j,k} = - b_{j,k} \omega_{j,k} \\
   $$
+  
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficieència en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda que acabarà incidint sobre la planta que es vol actualitzar, no depèn només de les condicions del nínxol (temps i intensitat de llum rebuda) sinó també de l'ombra les mateixes plantes provoquen. La primera depèn del nínxol i es manté constant al llarg de la simulació. No l'especifiquem de manera explícita sinó que suposem que es troba inclosa en el vector de factors limitants del nínxol pels casos que la llum (en excés o defecte) tingui efectes nocius per les espècies del nínxol. Si no s'inclogués en els factors limitants implicaria que la llum és sempre la idònia per la vegetació de l'ecosistema. El vector de factors limitants (llum, substrat, dispersió/profunditat de nutrients, condicions fisicoquímiques, etc.) servirà per calcular el factor nutricional  ($fn$) que actuarà com un modificador, reduint  la taxa màxima de creixement en casos adversos. 
@@ -112,58 +120,67 @@ Finalment, la densitat vegetal existent (és a dir competència) modificarà tam
 
 Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
-(4)$$
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
+(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk}) \\
 $$
 
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fn_{jk}$, $fl_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
-###### Càlcul del factor nutricional
+##### Càlcul del factor nutricional
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
-(5)$$
-eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
+(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki})))) \\
 $$ 
+
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
-Per calcular el factor nutricional, usarem els nutrients disponibles al nínxol. Així, direm que el factor nutrients ($fn_{jk}$) és:
-(6)$$
-fn_{jk} = \frac{N}{N·(1-eff_{jk})+N}
-$$
-on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol. 
+Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
 
-###### Càlcul del factor llum
+(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
+$$
+
+on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a partir de la taxa màxima de creixement i el cost de manteniment $b_{jk}·(\alpha_{jk}+\omega_{jk})$
+
+##### Càlcul del factor llum
 Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum (respecte al total de llum arribada al nínxol)  aconsegueix impactar a l'estrat on viu l'autòtrof en l'estadi que es desitja calcular.  
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
-(7)$$
+(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
-0 &, s_{j,k} \neq h
-\end{array} 
-\right\} 
+0 &, s_{j,k} \neq h \\
+\end{array}
+\right\}
 $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
-(8)$$
+(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
 l_{h \rightarrow (h-1)} = \left\{ 
-\begin{array}{lcc}
+\begin{array}{lcc} 
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h}
+\frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
 \end{array} 
-\right\}
+\right\} 
 $$
 
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
-(9)$$
+(9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$
 l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h}
+\frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h} \\
 \end{array} 
 \right\}
 $$ 
@@ -172,18 +189,112 @@ Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de desco
 
 Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_jk$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
 
-(10)$$
-fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
+(10) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$ \\
+fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}} \\
 $$
 
-###### Càlcul del factor de capacitat màxima
+##### Càlcul del factor de capacitat màxima
+El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
+(11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
+$$
 
+on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
+
+#### Fase de creixement individual  per heteròtrofs
+
+En aquesta fase, s'avalua la quantitat de matèria consumida per l'heteròtrof a partir del potencial i de l'efectivitat de captura de l'aliment inclòs en la seva dieta tenint en compte la quantitat d'aliment existent i les defenses desenvolupades o la dificultat de captura. A més, igual que els autòtrofs es té en compte el cost de manteniment.  Usarem la fórmula (12).
+
+(12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · (1- \omega_{jk}) \\
+$$
+on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+
+##### Càlcul del factor de captura.
+El factor de captura combina deversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el trabnscurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'area efectiva d'encontre). La densitat d'aliment o preses presenta al nínxol tenint en compte la superfíce ocupada i les seves costums d'agrupació, ja que l'agrupament d'individus en colònies disminuex el potencial d'encontre efectiu. 
+
+Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació del níxol i la calcularem fent:
+
+(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\phi_{jk} = 
+$$
+
+
+
+
+SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
+
+klkl
+
+
+
+
+#### Fase de creixement reproductiu
+El creixement reproductiu no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (naixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima, però en cicles amb manca d'aliment la fertilitat es redueixi. 
+
+Sigui $\tau_{jk}$) la taxa de fertilitat màxima d'una espècie, i $\alpha_{jkt}$ la taxa de creixement efectiva aconseguida per l'etapa $k$ de l'espècie $j$ en el temps o cicle $t$. La taxa de fertilitat efectiva o taxa de fertilitat en el cicle $t$ serà:
+
+(12)$$
+\tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
+$$ 
+
+Usarem la taxa de fertilitat efectiva per calcular la quantitat de naixements nous i la despesa que això suposa pels reproductors.
+
+ (13)$$
+\Delta b_{jkt}=\left\{ 
+\begin{array}{lcc}
+\sum_{k=0}^{|E_j|} b_{jk}·\tau_{jkt} &, k=0 \\
+-b_{jk}·\tau_{jkt} &, k\neq0 
+\end{array} 
+\right\}
+$$ 
+
+En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
+
+#### Fase d'actualització per mortalitat
+La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a la vellesa i la mortalitat deguda a les condicions adverses de l'entorn. La primera només afecta a la població de la darrera etapa de desenvolupament. La previsió suposa que els individus de les etapes es troben repartits uniformement. És a dir, si una etapa té una durada de 3 cicles, es pressuposa que 1/3 es troben en el primer cicle de la darrera etapa, 1/3 en el segon cicle i la resta en el tercer. Així implica que els morts per vellesa seran $\frac{1}{durada\ de\ l'etapa\ en\ cicles}$ de la població de la darrera etapa.
+
+ La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabilitat i la taxa de resiliència de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliència redueix la primera. La vulnerabilitat  s'obté calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les quals l'espècie es troba optimitzada.  
+
+(14)$$
+v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
+$$
+Així doncs, la mortalitat en un cicle serà:
+
+(15)$$
+\Delta b_{jk} = \left\{ 
+\begin{array}{lcc}
+-v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
+-(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
+\end{array} 
+\right\}
+$$
+
+on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
+
+#### Fase d'actualització per desenvolupament
+
+En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. El traspàs d'individus es fa sempre des de qualsevol etapa a la immediatament posterior a excepció de la darrera etapa. 
+
+(16)$$
+\Delta b_{jk} = \left\{ 
+\begin{array}{lcc}
+-\frac{1}{c_k} &, k = 0 \\ 
+\frac{1}{c_{k-1}} -\frac{1}{c_k}  &, 0<k<  |E_j| -1\\
+\frac{1}{c_{k-1}} &, k = |E_j| -1
+\end{array} 
+\right\}
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC0xOD
-E3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTkyMTEz
-MTAxNCw4ODA1NDA3NDksNzExMTc3Njc2LC0xNjkzMTE2MDU1LC
-0yMDU3MzI2NTY5LDEzMzgzMTYxNzMsLTE1MjI0NzY4NjEsLTEw
-NjgzODk2NjAsMTY1NTMyMjgzNCwtMTk0NDM3MzgxMSwtNTY2Mz
-k5ODY1LC02MzI1MDU3MjYsMTU4OTc2ODQ3MywxNzQ0NDQxMjMw
-LC0yNzYyNjYxOV19
+eyJoaXN0b3J5IjpbLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0ND
+g1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUy
+LC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OT
+kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
+MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMj
+U3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2
+OTk0XX0=
 -->
