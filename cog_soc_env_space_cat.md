@@ -256,8 +256,10 @@ El factor de captura que representarà la probabilitat es calcula:
 
 (17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-eff_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} \\
+fcap_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} \\
 $$
+
+
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -324,11 +326,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU3ODY1MjIxLDEzNDg1MDgwNzcsMzY5OT
-c1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYs
-LTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNj
-M2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIz
-OTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtOD
-kwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0
-NDJdfQ==
+eyJoaXN0b3J5IjpbMjA5ODE5OTA1MiwxMzQ4NTA4MDc3LDM2OT
+k3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2
+LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
+YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
+Mzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLT
+g5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMx
+NDQyXX0=
 -->
