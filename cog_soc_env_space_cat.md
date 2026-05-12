@@ -48,7 +48,7 @@ El simulador es modelarà amb conjunt d'entitats que definirem a continuació:
  	- Vector per definir la durada de cada etapa de desenvolupament (mesurada en cicles).   Les següents característiques es definiran per cada etapa en forma de vector o matriu. Cada característica necessitarà tantes posicions com etapes tingui definides aquí.
  	- Matriu de vectors en la que cada vector conté les millors condicions favorables pel seu desenvolupament. Es tracta d'un vector de la mateixa longitud que el de les condicions generals del nínxol. Se suposa que identifiquen les mateixes característiques segons la posició ocupada dins el vector i permet mesurar la diferència entre les condicions ideals (més favorables) i les condicions reals (les del nínxol). El valor d'aquesta diferència l'anomenarem, vulnerabilitat al medi.     
  	- Resiliència. Indica la capacitat de resistència que cada etapa tindrà en condicions adverses. Aquest valor junt amb el de la vulnerabilitat definiran una part de la taxa de mortalitat de l'espècie. L'altra part vindrà determinada per l'envelliment i l'esperança de vida de la darrera etapa.
-   - Cost de manteniment o percentatge d'energia gastada a fi de mantenir vius els individus de l'espècie.    
+   - Cost de manteniment o percentatge de components minerals i energia gastada a fi de mantenir vius els individus de l'espècie.    
    - Per modelar el creixement de l'espècie, el simulador distingeix dos tipus de creixement, l'individual, referit a l'increment de massa corporal que experimenten els individus en alimentar-se i el reproductiu, referit als nous individus que neixen en el si d'una població. Per ambdós creixements es necessitarà aliment que acabarà materialitzant-se en increment de la biomassa (via creixement individual o reproductiu). Pel creixement individual es defineix el creixement màxim individual. Ja que els individus no creixen indefinidament i, per tant, cal limitar la seva capacitat de creixement en forma de percentatge per cada etapa.
 Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentatge de reproducció per cicle. La capacitat reproductiva real es veurà afectada per la quantitat d'aliment aconseguit durant el cicle. Si la quantitat és màxima també ho serà la fertilitat, però si decau, la fertilitat es veurà afectada reduint-ne l'eficiència.   
   - Característiques fisicoquímiques de la matèria morta en cada una de les etapes. Les característiques fisicoquímiques es definiran com un vector en el qual cada posició representi una característica específica i el seu valor la intensitat d'aquesta.    
@@ -245,11 +245,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMz
-k0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1
-MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMj
-EzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMx
-MzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OT
-IsLTQwOTc4NTU1NywtMTMzMjc5OTQ0MywxOTIxMTMxMDE0LDg4
-MDU0MDc0OV19
+eyJoaXN0b3J5IjpbODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1OD
+U1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0
+NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNz
+U0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0
+NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTkyNzk3NzQyLC
+0xODE3MDA4NzkyLC00MDk3ODU1NTcsLTEzMzI3OTk0NDMsMTky
+MTEzMTAxNF19
 -->
