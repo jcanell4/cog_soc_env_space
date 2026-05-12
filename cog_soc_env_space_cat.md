@@ -65,7 +65,7 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - L'estrat que ocupen segons l'etapa a la qual es trobin. El model permet simular plantes de diferents mides i segons les etapes per les quals vagi passant. Inicialment, les llavors es trobaran segurament en l'estrat més baix, però a mesura que vagin creixent i canviant d'etapa, algunes arribaran a estrats superiors, però d'altres per més que passin els cicles, es mantindran en el mateix estrat. El nombre d'estrats pot ser variable en funció de les característiques de la simulació.
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
-        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com la .  
+        - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta altres alternatives com l'alimentació catabòlica per a les llavors .  
      - Característiques dels heteròtrofs i descomponedors:
          - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
@@ -245,11 +245,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTUyNTAyNjEsMTI3OTkzMTQ0MiwtMT
-A0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1
-ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LD
-E5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQy
-MTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2Mi
-wtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4
-MTcwMDg3OTJdfQ==
+eyJoaXN0b3J5IjpbMTk3OTg1NzczMiwxMjc5OTMxNDQyLC0xMD
+Q0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4
+Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMT
+k0Mzc2MjUxOCwxMDQwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIx
+NTk0NSwyMTM3ODc5MDYxLDQxNTM5ODM1NSwtNDkyMTk3NDYyLC
+0xNDYwMzEzMDY1LDE2ODgwNTI4MCwtMTE5Mjc5Nzc0MiwtMTgx
+NzAwODc5Ml19
 -->
