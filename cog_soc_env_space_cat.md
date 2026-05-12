@@ -234,7 +234,12 @@ $$
 
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
-Anomenarem potencial de captura ($\gamma$) 
+Anomenarem potencial de captura ($\gamma$) el coeficient que mesura la facilitat que té l'animal de capturar l'aliment i el calcularem amb (15):
+
+(15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) · \nu \\
+$$
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -300,7 +305,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4MjAzMDk2MSw0MjA1NzU2MTgsLTE3OT
+eyJoaXN0b3J5IjpbMTIyMTc4MjMxMiw0MjA1NzU2MTgsLTE3OT
 k0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIy
 OTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OS
 w2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0
