@@ -258,7 +258,14 @@ El factor de captura que representarà la probabilitat es calcula:
 $$\\
 fcap_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} \\
 $$
+##### Càlcul del factor de capacitat màxima
+El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada d'espècies que siguin competència del seu aliment   per cada espècie  en les seves etapes.  
+(11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
+$$
 
+on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
 
 
@@ -326,11 +333,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5ODE5OTA1MiwxMzQ4NTA4MDc3LDM2OT
-k3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2
-LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
-YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
-Mzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLT
-g5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMx
-NDQyXX0=
+eyJoaXN0b3J5IjpbLTE0Mzk4MDA4MjcsMTM0ODUwODA3NywzNj
+k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
+NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
+E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
+MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC
+04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkz
+MTQ0Ml19
 -->
