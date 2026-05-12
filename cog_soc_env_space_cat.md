@@ -84,14 +84,16 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 ### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-(1)$$
+(1)
+$$
 \Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
 $$
 on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria orgànica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
 La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplicar a cada contenidor de matèria morta de totes les cohorts de cada nínxol.
 
-(2)$$
+(2)
+$$
 \Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k}
 $$
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
@@ -101,7 +103,8 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   
 #### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
-  (3)$$
+  (3)
+  $$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k}
   $$
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
@@ -114,7 +117,8 @@ Finalment, la densitat vegetal existent (és a dir competència) modificarà tam
 
 Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
-(4)$$
+(4)
+$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
 
@@ -123,14 +127,16 @@ on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament
 ##### Càlcul del factor nutricional
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
-(5)$$
+(5)
+$$
 eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki}))))
 $$ 
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
 
-(6)$$
+(6)
+$$
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a partir de la taxa màxima de creixement i el cost de manteniment $b_{jk}·(\alpha_{jk}+\omega_{jk})$
@@ -140,7 +146,8 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
-(7)$$
+(7)
+$$
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
 \begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
@@ -151,7 +158,8 @@ $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
-(8)$$
+(8)
+$$
 l_{h \rightarrow (h-1)} = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
@@ -162,7 +170,8 @@ $$
 
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
-(9)$$
+(9)
+$$
 l_h = \left\{ 
 \begin{array}{lcc}
 \frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
@@ -175,13 +184,15 @@ Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de desco
 
 Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_jk$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i $min\_l_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
 
-(10)$$
+(10)
+$$
 fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}}
 $$
 
 ##### Càlcul del factor de capacitat màxima
 El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
-(11)$$
+(11)
+$$
 fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}}
 $$
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
@@ -189,7 +200,8 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 #### Fase de creixement individual  per heteròtrofs
 En aquesta fase, s'avalua la quantitat de materia ingestada per l'heteròtrof a partir de
 
-(12)$$
+(12)
+$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fc_{jk} · fc_{jk} · (1- \omega_{jk})
 $$
 
@@ -259,11 +271,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjg2ODIwNCwxMTI4MTMyNTI1LDYzNj
-kwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTcz
-NSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcxMzgsMT
-E3OTA5MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMDQwNjc2
-Mzc1LDE3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLD
-QxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgw
-NTI4MF19
+eyJoaXN0b3J5IjpbMTg2MTA1NDI4LDExMjgxMzI1MjUsNjM2OT
+AzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1
+LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMT
+c5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYz
+NzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsND
+E1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1
+MjgwXX0=
 -->
