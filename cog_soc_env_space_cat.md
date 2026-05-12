@@ -256,7 +256,7 @@ El factor de captura que representarà la probabilitat es calcula:
 
 (17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-eff_{jk} = 1 - \fra\\
+eff_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} \\
 $$
 
 
@@ -324,11 +324,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjgxMzU4ODEsMTM0ODUwODA3NywzNj
-k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
-NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
-E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
-MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC
-04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkz
-MTQ0Ml19
+eyJoaXN0b3J5IjpbMzU3ODY1MjIxLDEzNDg1MDgwNzcsMzY5OT
+c1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYs
+LTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNj
+M2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIz
+OTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtOD
+kwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0
+NDJdfQ==
 -->
