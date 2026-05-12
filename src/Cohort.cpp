@@ -104,6 +104,10 @@ const std::vector<double>& Cohort::getBiomass() const {
     return biomass_;
 }
 
+double Cohort::getBiomass(std::size_t index, double out_of_range_default) const {
+    return index < biomass_.size() ? biomass_[index] : out_of_range_default;
+}
+
 double Cohort::getTotalBiomass() const {
     double total = 0.0;
     for (double value : biomass_) {
@@ -114,6 +118,10 @@ double Cohort::getTotalBiomass() const {
 
 const std::vector<double>& Cohort::getDeathBiomass() const {
     return death_biomass_;
+}
+
+double Cohort::getDeathBiomass(std::size_t index, double out_of_range_default) const {
+    return index < death_biomass_.size() ? death_biomass_[index] : out_of_range_default;
 }
 
 double Cohort::getTotalDeathBiomass() const {

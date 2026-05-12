@@ -26,13 +26,12 @@ struct ChartMetric {
     double SimulationFrameData::*member;
 };
 
-constexpr std::array<ChartMetric, 7> kChartMetrics = {{
+constexpr std::array<ChartMetric, 6> kChartMetrics = {{
     {"Nutrients", SKYBLUE, &SimulationFrameData::nutrients},
     {"Living biomass", BLUE, &SimulationFrameData::living_biomass},
     {"Death biomass", ORANGE, &SimulationFrameData::death_biomass},
     {"Autotroph biomass", Color{80, 220, 120, 255}, &SimulationFrameData::autotroph_biomass},
     {"Heterotroph biomass", Color{255, 99, 71, 255}, &SimulationFrameData::heterotroph_biomass},
-    {"Decomposer biomass", Color{183, 138, 255, 255}, &SimulationFrameData::decomposer_biomass},
     {"Other biomass", Color{190, 190, 190, 255}, &SimulationFrameData::other_living_biomass},
 }};
 
@@ -70,10 +69,10 @@ void drawHud(const SimulationFrameData& frame, std::size_t frame_index, std::siz
         frame.nutrients, frame.total_energy, frame.ecological_health);
     DrawText(line, 20, 74, 20, WHITE);
 
-    std::snprintf(line, sizeof(line), "Living biomass: %.3f  |  Death biomass: %.3f  |  Decomposer biomass: %.3f",
+    std::snprintf(line, sizeof(line), "Living biomass: %.3f  |  Death biomass: %.3f  |  Heterotroph biomass: %.3f",
                   frame.living_biomass,
                   frame.death_biomass,
-                  frame.decomposer_biomass);
+                  frame.heterotroph_biomass);
     DrawText(line, 20, 102, 20, WHITE);
 }
 
@@ -86,16 +85,20 @@ void drawTimeSeries(const JsonFrameSource& source, std::size_t current_index, Re
         return;
     }
 
+    double global_min_value = source.frameAt(0).*(kChartMetrics[0].member);
+    double global_max_value = global_min_value;
     for (std::size_t metric_index = 0; metric_index < kChartMetrics.size(); ++metric_index) {
         const ChartMetric& metric = kChartMetrics[metric_index];
-        double min_value = source.frameAt(0).*metric.member;
-        double max_value = min_value;
-        for (std::size_t i = 1U; i < source.frameCount(); ++i) {
+        for (std::size_t i = 0U; i < source.frameCount(); ++i) {
             const double value = source.frameAt(i).*metric.member;
-            min_value = std::min(min_value, value);
-            max_value = std::max(max_value, value);
+            global_min_value = std::min(global_min_value, value);
+            global_max_value = std::max(global_max_value, value);
         }
-        const double range = std::max(1e-9, max_value - min_value);
+    }
+    const double global_range = std::max(1e-9, global_max_value - global_min_value);
+
+    for (std::size_t metric_index = 0; metric_index < kChartMetrics.size(); ++metric_index) {
+        const ChartMetric& metric = kChartMetrics[metric_index];
 
         for (std::size_t i = 1U; i < source.frameCount(); ++i) {
             const float x0 = area.x + (area.width * static_cast<float>(i - 1U)) / static_cast<float>(source.frameCount() - 1U);
@@ -104,8 +107,10 @@ void drawTimeSeries(const JsonFrameSource& source, std::size_t current_index, Re
             const double v0 = source.frameAt(i - 1U).*metric.member;
             const double v1 = source.frameAt(i).*metric.member;
 
-            const float y0 = area.y + area.height - static_cast<float>((v0 - min_value) / range) * area.height;
-            const float y1 = area.y + area.height - static_cast<float>((v1 - min_value) / range) * area.height;
+            const float y0 = area.y + area.height -
+                             static_cast<float>((v0 - global_min_value) / global_range) * area.height;
+            const float y1 = area.y + area.height -
+                             static_cast<float>((v1 - global_min_value) / global_range) * area.height;
 
             DrawLineEx(Vector2{x0, y0}, Vector2{x1, y1}, 2.0F, metric.color);
         }

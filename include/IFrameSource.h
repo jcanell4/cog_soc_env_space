@@ -22,7 +22,6 @@ struct SimulationFrameData {
     double ecological_health = 0.0;
     double living_biomass = 0.0;
     double death_biomass = 0.0;
-    double decomposer_biomass = 0.0;
     double autotroph_biomass = 0.0;
     double heterotroph_biomass = 0.0;
     double other_living_biomass = 0.0;

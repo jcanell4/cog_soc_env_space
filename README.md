@@ -126,9 +126,7 @@ doxygen Doxyfile
 | Type | Header | Role |
 |------|--------|------|
 | **LivingBeing** | `LivingBeing.h` | Abstract species: name, energy per biomass, death & growth demand contracts. |
-| **ConsumerLivingBeing** | `ConsumerLivingBeing.h` | Intermediate base for heterotrophs and decomposers: assimilation efficiency, prospecting, per-stage residue fractions; helpers for waste routing to death bins and optional parental supply. |
-| **Heterotroph** | `Heterotroph.h` | Predator: search/capture efficiency, taxonomic diet; `process_individual_growth` uses the shared two-pass ingestion pipeline (see below). |
-| **Decomposer** | `Decomposer.h` | Detritivore: uptake from other cohorts’ dead biomass pools; same two-pass pipeline as `Heterotroph` but theory built from donor death bins and trait compatibility (fixed decomposition intensity in implementation). |
+| **Heterotroph** | `Heterotroph.h` | Consumer: living prey (`MatterType::LIVING`) and/or detritus (`MatterType::DEAD`) via `diet_by_cohort_index`; assimilation, residue routing, prospecting, `diet_by_food_type`, and optional parental supply. |
 | **Autotroph** | `Autotroph.h` | Producer: tolerances, stress death ratio, environment coupling, nutrient-limited growth/death; JSON via `AutotrophBuilder`. |
 | **Cohort** | `Cohort.h` | Population of one species: living/dead biomass, `update_biomass`, `calculate_growth_demand`. |
 | **Niche** | `Niche.h` | Contains cohorts, nutrients, conditions; `step()` runs nutrient recycling and cohort updates. |
@@ -140,16 +138,15 @@ doxygen Doxyfile
 `LivingBeing::calculate_growth_biomass` / `Cohort::calculate_growth_demand` return `std::vector<std::tuple<int,double>>`:
 
 - **`NUTRIENTS_POS`** (`Constants.h`) — first int: demand competes for niche **nutrients** (autotroph path in `Niche::update_cohorts`).
-- **Negative `code`** — decomposer: donor cohort index = `-(code + 1)`.
-- **Non-negative `code`** (and not `NUTRIENTS_POS`) — heterotroph: prey cohort index = `code`; a predator may emit several tuples (split intake across preys).
+- **Non-negative `code`** (and not `NUTRIENTS_POS`) — consumer: source cohort index = `code` (living prey or donor dead pool per `matter_type`); a consumer may emit several tuples (split intake across sources).
 
 `LivingBeing::diet_by_cohort_index` is stage-indexed and stores per-consumer-stage diet rules:
 
-- C++ type: `std::vector<std::vector<std::tuple<int,int,int>>>`
+- C++ type: `std::vector<std::vector<std::tuple<int,int,int,int>>>`
 - Outer index: consumer stage
-- Inner tuple: `(source_cohort_index, min_stage, max_stage)` with **inclusive** bounds
+- Inner tuple: `(source_cohort_index, min_stage, max_stage, matter_type)` with **inclusive** bounds
 
-For **heterotrophs**, `min_stage`…`max_stage` are prey life-history stages; for **decomposers**, they are donor **dead-biomass bin** indices.
+For **`MatterType::LIVING`**, `min_stage`…`max_stage` are prey life-history stages; for **`MatterType::DEAD`**, they are donor **dead-biomass bin** indices.
 
 `cohort_index` accepts both formats in input JSON:
 - integer code (legacy/current)
@@ -172,11 +169,11 @@ Rule formats accepted inside each stage list:
 - object: `{ "cohort_index": X, "min_stage": Y, "max_stage": Z }`
 - numeric triplet: `[X, Y, Z]`
 
-`ConsumerLivingBeing::diet_by_food_type` also uses stage-indexed structure:
+`Heterotroph::diet_by_food_type` also uses stage-indexed structure:
 
-- C++ type: `std::vector<std::vector<std::tuple<std::string,int,int>>>`
+- C++ type: `std::vector<std::vector<std::tuple<std::string,int,int,int>>>`
 - Outer index: consumer stage
-- Inner tuple: `(food_type_prefix, min_stage, max_stage)` with inclusive bounds
+- Inner tuple: `(food_type_prefix, min_stage, max_stage, matter_type)` with inclusive bounds
 
 JSON shape:
 
@@ -198,9 +195,9 @@ JSON shape:
 
 ### Heterotroph encounter and ingestion model
 
-`Heterotroph` and `Decomposer` both inherit **`ConsumerLivingBeing`**. Ingestion—global gross cap, assimilation vs. residue return to donor death bins, and optional parental supply—follows the **same staged sequence**. Predators differ only in how **theoretical** intake per source is computed (live prey encounter/capture vs. dead-pool scanning on donor bins).
+`Heterotroph::process_individual_growth` first applies the **living-prey** pipeline (rules with `matter_type == LIVING`). When the stage diet includes **`MatterType::DEAD`**, a second phase ingests from donor `death_biomass` bins (same gross cap, assimilation, residue return to donor bins, parental supply, and maintenance recycling to nutrients as the living path).
 
-`Heterotroph::process_individual_growth` applies a staged predation model aligned with the ecological restart design:
+**Living matter** — staged predation model aligned with the ecological restart design:
 
 1. **Encounter probability**
    - Per prey stage, occupied area is estimated from:
@@ -210,8 +207,8 @@ JSON shape:
    - Colony behavior modifies detectability with:
      - `COLONY_SURFACE_GAIN_ETA`,
      - `COLONY_MIX_GAMMA`.
-   - Predator movement/prospecting rate is converted into scanned niche fraction with:
-     - `PROSPECTING_SCAN_SHARPNESS`.
+  - Predator prospecting ability (absolute searched surface units per cycle) is converted into scanned niche fraction with niche parameter:
+     - `prospecting_scan_sharpness`.
    - Final per-stage find probability mixes individual-stage and whole-colony channels.
 
 2. **Capture and growth cap**
@@ -236,19 +233,9 @@ JSON shape:
   - Donor contribution is proportional to fertility weights, with stochastic correction (`SimulationConfig::noise_stdv`) to avoid deterministic full-cap attainment each step.
    - Non-assimilated parental intake is routed to the cohort dead-biomass size bins.
 
-### Decomposer detritus ingestion model
+**Dead matter** — After the living pass, for each `DEAD` diet rule and donor cohort, for each death-bin index `s` with positive mass, a theoretical gross take uses prospecting (scan), a fixed decomposition-intensity factor, donor availability, and `calculate_effective_recruitment_efficiency` against the donor’s death-trait row for `s`. A global `α` caps total gross ingestion; realized take debits donor dead pools; non-assimilated mass returns to the donor’s death bins; optional parental supply uses the same helper as the living path.
 
-`Decomposer::process_individual_growth` mirrors the heterotroph pipeline:
-
-1. **Theory pass** — For each diet rule and donor cohort (not self), for each death-bin index `s` with positive mass, a theoretical gross take is built from prospecting (scan), a fixed decomposition-intensity factor, donor availability in that bin, and `calculate_effective_recruitment_efficiency` using the donor’s death-trait row for `s`. Entries are keyed by `(donor_cohort_index, bin_index)` like heterotroph’s `(prey_cohort, prey_stage)`.
-
-2. **Global cap** — `α = min(1, max_gross_ingestion / theory_total)` uses the same growth-limited cap as predators (stage biomass, `max_individual_growth`, assimilation efficiency).
-
-3. **Assimilation, residues** — Realized take is debited from the donor’s dead biomass, then assimilated fraction updates decomposer biomass; non-assimilated mass is returned to the **donor’s** death bins via `ingestion_residue_fraction_by_size`.
-
-4. **Parental supply** — Same optional `DietType::PARENTAL_SUPPLY_TYPE` branch as `Heterotroph`, implemented in `ConsumerLivingBeing::applyParentalSupplyGross`.
-
-Restart scaffolding builders: `HeterotrophBuilder` and **`DecomposerBuilder`** expose the shared consumer parameters (prospecting, assimilation, residue grids); `HeterotrophBuilder` also supports search/capture efficiency.
+Restart scaffolding: **`HeterotrophBuilder`** exposes consumer parameters (assimilation, residue grids, diet rules) and `prospecting_ability` (absolute searched surface units per cycle).
 
 ### Dead biomass size bins (dynamic length)
 
@@ -290,7 +277,7 @@ Example: [`config/simulation.example.json`](config/simulation.example.json).
 - `saveJsonToFile(const json&, const std::string&, int indent = 2)` writes JSON to disk
 
 Enum-like fields support mixed input and named output:
-- `specie.class_type` input accepts integer or strict constant name: `AUTOTROPH`, `HETEROTROPH`, `DECOMPOSER`
+- `specie.class_type` input accepts integer or strict constant name: `AUTOTROPH`, `HETEROTROPH`
 - `specie.diet_by_cohort_index[].cohort_index` input accepts integer or strict constant name: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 - Output prefers constant names when a mapping exists; otherwise writes the numeric literal in the same field
 

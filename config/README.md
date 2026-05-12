@@ -75,7 +75,7 @@ Use `loadEnvironmentFromJson` / `loadEnvironmentFromJsonFile` from `EnvironmentC
 
 When loading niche snapshots that embed full `cohorts[].specie` objects, the following fields accept either numeric codes or strict constant names:
 
-- `specie.class_type`: `AUTOTROPH`, `HETEROTROPH`, `DECOMPOSER`
+- `specie.class_type`: `AUTOTROPH`, `HETEROTROPH`
 - `specie.diet_by_cohort_index[].cohort_index`: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 
 String matching is strict (exact constant names).

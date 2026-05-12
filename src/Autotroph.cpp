@@ -6,6 +6,7 @@
 #include "Utilities.h"
 
 #include <algorithm>
+#include <cmath>
 #include <utility>
 
 Autotroph::Autotroph()
@@ -23,13 +24,13 @@ void Autotroph::setCyclesPerStages(std::vector<int> cycles_per_stages) {
 
 void Autotroph::initialize(const Niche& niche) {
     LivingBeing::initialize(niche);
-    std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index = getDietByCohortIndex();
+    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index = getDietByCohortIndex();
     const std::size_t stage_count = getCyclesPerStages().size();
     if (diet_by_cohort_index.size() < stage_count) {
         diet_by_cohort_index.resize(stage_count);
     }
     for (std::size_t stage = 0; stage < stage_count; ++stage) {
-        std::vector<std::tuple<int, int, int>>& stage_rules = diet_by_cohort_index[stage];
+        std::vector<std::tuple<int, int, int, int>>& stage_rules = diet_by_cohort_index[stage];
         bool has_nutrients_rule = false;
         for (const auto& rule : stage_rules) {
             if (std::get<0>(rule) == DietType::NUTRIENTS_TYPE) {
@@ -38,7 +39,8 @@ void Autotroph::initialize(const Niche& niche) {
             }
         }
         if (!has_nutrients_rule) {
-            stage_rules.insert(stage_rules.begin(), std::make_tuple(DietType::NUTRIENTS_TYPE, 0, 0));
+            stage_rules.insert(
+                stage_rules.begin(), std::make_tuple(DietType::NUTRIENTS_TYPE, 0, 0, MatterType::LIVING));
         }
     }
     setDietByCohortIndex(std::move(diet_by_cohort_index));
@@ -70,20 +72,19 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
     if (stage_index < 0) {
         return;
     }
-    const auto& autotroph = static_cast<const Autotroph&>(*specie);
     const std::size_t su = static_cast<std::size_t>(stage_index);
     const auto& diet_by_stage = specie->getDietByCohortIndex();
     if (su >= diet_by_stage.size()) {
         return;
     }
-    const std::vector<std::tuple<int, int, int>>& stage_diet = diet_by_stage[su];
+    const std::vector<std::tuple<int, int, int, int>>& stage_diet = diet_by_stage[su];
 
     const std::vector<double>& maintenance = specie->getMaintenanceCost();
     const double m_stage = su < maintenance.size() ? std::clamp(maintenance[su], 0.0, 1.0) : 0.0;
     const double total_density = niche.getAutotrophBiomass()/niche.getSurface();
-    const std::vector<double>& max_density_vec = autotroph.getMaxDensity();
+    const std::vector<double>& max_density_vec = specie->getMaxDensity();
     const double max_density = su < max_density_vec.size() ? max_density_vec[su] : 0.0;
-    const double pcpacity = std::max(0.0, 1.0-(total_density/max_density));
+    const double pcpacity = std::clamp(1.0-(total_density/max_density), 0.0, 1.0);
 
 
     for (const auto& rule : stage_diet) {
@@ -109,13 +110,38 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
                                   : std::clamp((lith_s - min_l) / light_denominator, 0.0, 1.0);
             const double rec_eff = LivingBeing::calculate_effective_recruitment_efficiency(
                 rec_row, niche.getLimitingFactors());
-            const double f_nut = niche.getNutrients()/(niche.getNutrients()*(1-rec_eff) + niche.getNutrients());
-            double effective = mig_s * f_nut * lf * pcpacity + gross_noise;
             std::vector<double> biomass = cohort.getBiomass();
             if (su < biomass.size()) {
+                const double surface = niche.getSurface();
+                const double stage_biomass = std::max(0.0, biomass[su]);
+                const double D = surface > 0.0 ? niche.getNutrients() / surface : 0.0;
+                const double Nsat = stage_biomass * std::max(0.0, mig_s + m_stage);
+                const std::vector<double>& biomass_per_individual = specie->getBiomassPerIndividualAmount();
+                const std::vector<double>& occupied_surface = specie->getIndividualOccupiedSurface();
+                const double biomass_per_individual_stage =
+                    su < biomass_per_individual.size() ? std::max(0.0, biomass_per_individual[su]) : 0.0;
+                const double occupied_surface_stage =
+                    su < occupied_surface.size() ? std::max(0.0, occupied_surface[su]) : 0.0;
+                const double occupied_area_for_nsat =
+                    biomass_per_individual_stage > 0.0
+                        ? (Nsat / biomass_per_individual_stage) * occupied_surface_stage
+                        : 0.0;
+                const double Dsat = occupied_area_for_nsat > 0.0 ? Nsat / occupied_area_for_nsat : 0.0;
+                const double f_nut = (D > 0.0 && Dsat > 0.0)
+                                          ? 1.0 - std::exp(-std::max(0.0, rec_eff) * D / Dsat)
+                                          : 0.0;
+                const double f_nut_2 = (niche.getNutrients() > 0.0 && Nsat > 0.0)
+                                          ? 1.0 - std::exp(-std::max(0.0, rec_eff) * niche.getNutrients()/ Nsat)
+                                          : 0.0;
+                const double f_nut_3 = (niche.getNutrients() > 0.0 && Nsat > 0.0)
+                                          ? 1.0 - std::exp(-std::max(0.0, rec_eff) * D*occupied_area_for_nsat/ Nsat)
+                                          : 0.0;
+                double effective = mig_s * f_nut_2 * lf * pcpacity + gross_noise;
                 const double new_biomass = std::max(0.0, biomass[su] * (1.0 + effective));
                 niche.setNutrients(niche.getNutrients() - (new_biomass - biomass[su]));
-                biomass[su] = new_biomass - biomass[su] * std::max(0.0, m_stage + cost_noise);
+                const double maintenance_cost =  biomass[su] * std::max(0.0, m_stage + cost_noise);
+                biomass[su] = new_biomass - maintenance_cost;
+                niche.setNutrients(niche.getNutrients() + maintenance_cost);
                 cohort.setBiomass(std::move(biomass));
             }
             continue;
@@ -126,7 +152,9 @@ void Autotroph::process_individual_growth(Niche& niche, Cohort& cohort, int stag
             if (su >= biomass.size()) {
                 continue;
             }
-            biomass[su] = std::max(0.0, biomass[su] * (1.0 - m_stage - cost_noise));
+            const double maintenance_cost =  biomass[su] * std::max(0.0, m_stage + cost_noise);
+            biomass[su] = std::max(0.0, biomass[su] - maintenance_cost);
+            niche.setNutrients(niche.getNutrients() + maintenance_cost);
             cohort.setBiomass(std::move(biomass));
             continue;
         }
@@ -145,6 +173,10 @@ const std::vector<double>& Autotroph::getOpacity() const {
     return opacity_;
 }
 
+double Autotroph::getOpacity(std::size_t index, double out_of_range_default) const {
+    return index < opacity_.size() ? opacity_[index] : out_of_range_default;
+}
+
 void Autotroph::setOpacity(std::vector<double> value) {
     for (double& v : value) {
         v = std::clamp(v, 0.0, 1.0);
@@ -156,20 +188,20 @@ const std::vector<int>& Autotroph::getStratum() const {
     return stratum_;
 }
 
+int Autotroph::getStratum(std::size_t index, int out_of_range_default) const {
+    return index < stratum_.size() ? stratum_[index] : out_of_range_default;
+}
+
 void Autotroph::setStratum(std::vector<int> value) {
     stratum_ = std::move(value);
 }
 
-const std::vector<double>& Autotroph::getMaxDensity() const {
-    return max_density_;
-}
-
-void Autotroph::setMaxDensity(std::vector<double> value) {
-    max_density_ = std::move(value);
-}
-
 const std::vector<double>& Autotroph::getMinLight() const {
     return min_light_;
+}
+
+double Autotroph::getMinLight(std::size_t index, double out_of_range_default) const {
+    return index < min_light_.size() ? min_light_[index] : out_of_range_default;
 }
 
 void Autotroph::setMinLight(std::vector<double> value) {

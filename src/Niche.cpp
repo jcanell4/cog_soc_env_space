@@ -25,6 +25,10 @@ std::vector<double> normalizeNonNegative(std::vector<double> value) {
     return value;
 }
 
+bool contains(const std::vector<std::tuple<int, int, int, int>>& v, std::tuple<int, int, int, int> x) {
+    return std::find(v.begin(), v.end(), x) != v.end();
+}
+
 } // namespace
 
 double Niche::getSurface() const {
@@ -51,12 +55,28 @@ const std::vector<double>& Niche::getReturnRate() const {
     return return_rate_;
 }
 
+double Niche::getReturnRate(std::size_t index, double out_of_range_default) const {
+    return index < return_rate_.size() ? return_rate_[index] : out_of_range_default;
+}
+
 const std::vector<double>& Niche::getConditions() const {
     return conditions_;
 }
 
+double Niche::getConditions(std::size_t index, double out_of_range_default) const {
+    return index < conditions_.size() ? conditions_[index] : out_of_range_default;
+}
+
 const std::vector<double>& Niche::getLimitingFactors() const {
     return limiting_factors_;
+}
+
+double Niche::getLimitingFactors(std::size_t index, double out_of_range_default) const {
+    return index < limiting_factors_.size() ? limiting_factors_[index] : out_of_range_default;
+}
+
+double Niche::getProspectingScanSharpness() const {
+    return prospecting_scan_sharpness_;
 }
 
 Niche& Niche::setSurface(double value) {
@@ -91,6 +111,11 @@ Niche& Niche::setConditions(std::vector<double> value) {
 
 Niche& Niche::setLimitingFactors(std::vector<double> value) {
     limiting_factors_ = std::move(value);
+    return *this;
+}
+
+Niche& Niche::setProspectingScanSharpness(double value) {
+    prospecting_scan_sharpness_ = std::max(0.0, value);
     return *this;
 }
 
@@ -144,12 +169,24 @@ double Niche::getHeterotrophBiomass() const {
     return total;
 }
 
-double Niche::getDecomposerBiomass() const {
+double Niche::getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_cohort_index) const {
     double total = 0.0;
     for (const Cohort& cohort : cohort_set_) {
         const LivingBeing* sp = cohort.getSpecie();
-        if (sp != nullptr && sp->getClassType() == LivingBeingClassType::DECOMPOSER) {
-            total += cohort.getTotalBiomass();
+        if (sp == nullptr) {
+            continue;
+        }
+        const auto& diet = sp->getDietByCohortIndex();
+        if (diet.empty()) {
+            continue;
+        }
+        for (const auto& all_diet_entry : diet) {
+            for(std::size_t i = 0; i < all_diet_entry.size(); ++i) {
+                const auto& diet_entry = all_diet_entry[i];
+                if (contains(diet_by_cohort_index, diet_entry)) {
+                    total += cohort.getBiomass(i, 0.0);
+                }
+            }
         }
     }
     return total;

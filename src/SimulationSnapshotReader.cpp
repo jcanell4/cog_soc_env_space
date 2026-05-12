@@ -79,12 +79,10 @@ SimulationFrameData parseFrameData(const json& data_object, int elapsed_cycles) 
     frame.ecological_health = readNumberOrDefault(data_object, "ecological_health");
     frame.living_biomass = readNumberOrDefault(data_object, "living_biomass");
     frame.death_biomass = readNumberOrDefault(data_object, "death_biomass");
-    frame.decomposer_biomass = readNumberOrDefault(data_object, "decomposer_biomass");
     if (data_object.contains("biomass_by_class") && data_object["biomass_by_class"].is_object()) {
         const json& by_class = data_object["biomass_by_class"];
         frame.autotroph_biomass = readNumberOrDefault(by_class, "autotroph");
         frame.heterotroph_biomass = readNumberOrDefault(by_class, "heterotroph");
-        frame.decomposer_biomass = readNumberOrDefault(by_class, "decomposer", frame.decomposer_biomass);
         frame.other_living_biomass = readNumberOrDefault(by_class, "other");
     }
 
@@ -196,7 +194,6 @@ SimulationFrameData SimulationSnapshotReader::interpolate(double frame_position)
     out.ecological_health = lerp(left.ecological_health, right.ecological_health, t);
     out.living_biomass = lerp(left.living_biomass, right.living_biomass, t);
     out.death_biomass = lerp(left.death_biomass, right.death_biomass, t);
-    out.decomposer_biomass = lerp(left.decomposer_biomass, right.decomposer_biomass, t);
     out.autotroph_biomass = lerp(left.autotroph_biomass, right.autotroph_biomass, t);
     out.heterotroph_biomass = lerp(left.heterotroph_biomass, right.heterotroph_biomass, t);
     out.other_living_biomass = lerp(left.other_living_biomass, right.other_living_biomass, t);

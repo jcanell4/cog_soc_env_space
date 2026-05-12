@@ -7,7 +7,6 @@
 
 #include "Autotroph.h"
 #include "Cohort.h"
-#include "Decomposer.h"
 #include "Environment.h"
 #include "Heterotroph.h"
 #include "Niche.h"
@@ -26,6 +25,8 @@ public:
     AutotrophBuilder& withEnergyContent(float value);
     AutotrophBuilder& withDeathEnergyContent(float value);
     AutotrophBuilder& withBestEnvironmentalConditions(std::vector<std::vector<double>> value);
+    AutotrophBuilder& withDeathBiomassFractionSurface(std::vector<double> value);
+    AutotrophBuilder& withDeathBiomassPerFractionAmount(std::vector<double> value);
     AutotrophBuilder& fromJson(const nlohmann::json& j);
     Autotroph build() const;
 
@@ -38,29 +39,19 @@ public:
     HeterotrophBuilder& withName(std::string value);
     HeterotrophBuilder& withEnergyContent(float value);
     HeterotrophBuilder& withDeathEnergyContent(float value);
+    HeterotrophBuilder& withProspectingAbility(std::vector<double> value);
+    // Legacy alias; prefer withProspectingAbility.
     HeterotrophBuilder& withProspectingAbilityRate(std::vector<double> value);
     HeterotrophBuilder& withAssimilationEfficiency(std::vector<double> value);
     HeterotrophBuilder& withIngestionResidueFractionBySize(std::vector<std::vector<double>> value);
+    HeterotrophBuilder& withPreyLocation(std::vector<double> value);
+    HeterotrophBuilder& withDeathBiomassFractionSurface(std::vector<double> value);
+    HeterotrophBuilder& withDeathBiomassPerFractionAmount(std::vector<double> value);
     HeterotrophBuilder& fromJson(const nlohmann::json& j);
     Heterotroph build() const;
 
 private:
     Heterotroph object_;
-};
-
-class DecomposerBuilder {
-public:
-    DecomposerBuilder& withName(std::string value);
-    DecomposerBuilder& withEnergyContent(float value);
-    DecomposerBuilder& withDeathEnergyContent(float value);
-    DecomposerBuilder& withProspectingAbilityRate(std::vector<double> value);
-    DecomposerBuilder& withAssimilationEfficiency(std::vector<double> value);
-    DecomposerBuilder& withIngestionResidueFractionBySize(std::vector<std::vector<double>> value);
-    DecomposerBuilder& fromJson(const nlohmann::json& j);
-    Decomposer build() const;
-
-private:
-    Decomposer object_;
 };
 
 class CohortBuilder {
@@ -84,6 +75,7 @@ public:
     NicheBuilder& withCohortSet(Niche::CohortSet value);
     NicheBuilder& withReturnRate(std::vector<double> value);
     NicheBuilder& withConditions(std::vector<double> value);
+    NicheBuilder& withProspectingScanSharpness(double value);
     NicheBuilder& loadEnvironment(const std::string& path);
     NicheBuilder& fromJson(const nlohmann::json& j);
     NicheBuilder& fromJson(const nlohmann::json& j, const SpeciesRegistry& registry);

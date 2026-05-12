@@ -35,18 +35,21 @@ std::vector<std::vector<double>> readDoubleMatrix(const json& j, const char* key
     return j.at(key).get<std::vector<std::vector<double>>>();
 }
 
-bool readDietRule(const json& rule_json, std::tuple<int, int, int>& out_rule) {
+bool readDietRule(const json& rule_json, std::tuple<int, int, int, int>& out_rule) {
     if (rule_json.is_array()) {
-        if (rule_json.size() != 3U) {
+        if (rule_json.size() != 3U && rule_json.size() != 4U) {
             return false;
         }
         if (!rule_json[1].is_number_integer() || !rule_json[2].is_number_integer()) {
             return false;
         }
+        const int matter_type =
+            rule_json.size() >= 4U && rule_json[3].is_number_integer() ? rule_json[3].get<int>() : MatterType::LIVING;
         out_rule = std::make_tuple(
             json_enum_names::parseDietCohortIndexValue(rule_json[0], "diet_by_cohort_index[][0]"),
             rule_json[1].get<int>(),
-            rule_json[2].get<int>());
+            rule_json[2].get<int>(),
+            matter_type);
         return true;
     }
     if (rule_json.is_object()) {
@@ -63,17 +66,19 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int>& out_rule) {
         if (!rule_json[min_key].is_number_integer() || !rule_json[max_key].is_number_integer()) {
             return false;
         }
+        const int matter_type = rule_json.value("matter_type", MatterType::LIVING);
         out_rule = std::make_tuple(
             json_enum_names::parseDietCohortIndexValue(rule_json["cohort_index"], "diet_by_cohort_index[].cohort_index"),
             rule_json[min_key].get<int>(),
-            rule_json[max_key].get<int>());
+            rule_json[max_key].get<int>(),
+            matter_type);
         return true;
     }
     return false;
 }
 
-std::vector<std::vector<std::tuple<int, int, int>>> readDietByCohortIndex(const json& j) {
-    std::vector<std::vector<std::tuple<int, int, int>>> out;
+std::vector<std::vector<std::tuple<int, int, int, int>>> readDietByCohortIndex(const json& j) {
+    std::vector<std::vector<std::tuple<int, int, int, int>>> out;
     if (!j.is_array()) {
         return out;
     }
@@ -81,9 +86,9 @@ std::vector<std::vector<std::tuple<int, int, int>>> readDietByCohortIndex(const 
         if (!stage_rules_json.is_array()) {
             continue;
         }
-        std::vector<std::tuple<int, int, int>> stage_rules;
+        std::vector<std::tuple<int, int, int, int>> stage_rules;
         for (const json& rule_json : stage_rules_json) {
-            std::tuple<int, int, int> parsed_rule{};
+            std::tuple<int, int, int, int> parsed_rule{};
             if (readDietRule(rule_json, parsed_rule)) {
                 stage_rules.push_back(parsed_rule);
             }
@@ -93,8 +98,8 @@ std::vector<std::vector<std::tuple<int, int, int>>> readDietByCohortIndex(const 
     return out;
 }
 
-std::vector<std::vector<std::tuple<std::string, int, int>>> readDietByFoodType(const json& j) {
-    std::vector<std::vector<std::tuple<std::string, int, int>>> out;
+std::vector<std::vector<std::tuple<std::string, int, int, int>>> readDietByFoodType(const json& j) {
+    std::vector<std::vector<std::tuple<std::string, int, int, int>>> out;
     if (!j.is_array()) {
         return out;
     }
@@ -102,7 +107,7 @@ std::vector<std::vector<std::tuple<std::string, int, int>>> readDietByFoodType(c
         if (!stage_rules_json.is_array()) {
             continue;
         }
-        std::vector<std::tuple<std::string, int, int>> stage_rules;
+        std::vector<std::tuple<std::string, int, int, int>> stage_rules;
         for (const json& row : stage_rules_json) {
             if (!row.is_object()) {
                 continue;
@@ -114,10 +119,12 @@ std::vector<std::vector<std::tuple<std::string, int, int>>> readDietByFoodType(c
             }
             const char* min_key = has_stage_names ? "min_stage" : "min_index";
             const char* max_key = has_stage_names ? "max_stage" : "max_index";
+            const int matter_type = row.value("matter_type", MatterType::LIVING);
             stage_rules.emplace_back(
                 row.value("food_type_prefix", std::string{}),
                 row.value(min_key, 0),
-                row.value(max_key, 0));
+                row.value(max_key, 0),
+                matter_type);
         }
         out.push_back(std::move(stage_rules));
     }
@@ -160,6 +167,12 @@ void applyLivingBeingCommonFields(LivingBeing& target, const json& specie_j) {
     if (specie_j.contains("death_biomass_fraction_by_size")) {
         target.setDeathBiomassFractionBySize(readDoubleMatrix(specie_j, "death_biomass_fraction_by_size"));
     }
+    if (specie_j.contains("death_biomass_fraction_surface")) {
+        target.setDeathBiomassFractionSurface(readDoubleVector(specie_j, "death_biomass_fraction_surface"));
+    }
+    if (specie_j.contains("death_biomass_per_fraction_amount")) {
+        target.setDeathBiomassPerFractionAmount(readDoubleVector(specie_j, "death_biomass_per_fraction_amount"));
+    }
     if (specie_j.contains("best_environmental_conditions")) {
         target.setBestEnvironmentalConditions(readDoubleMatrix(specie_j, "best_environmental_conditions"));
     }
@@ -175,6 +188,9 @@ void applyLivingBeingCommonFields(LivingBeing& target, const json& specie_j) {
     if (specie_j.contains("max_individual_growth")) {
         target.setMaxIndividualGrowth(readDoubleVector(specie_j, "max_individual_growth"));
     }
+    if (specie_j.contains("max_density")) {
+        target.setMaxDensity(readDoubleVector(specie_j, "max_density"));
+    }
     if (specie_j.contains("colony_ability_rate")) {
         target.setColonyAbilityRate(specie_j["colony_ability_rate"].get<double>());
     }
@@ -183,9 +199,11 @@ void applyLivingBeingCommonFields(LivingBeing& target, const json& specie_j) {
     }
 }
 
-void applyConsumerCommonFields(ConsumerLivingBeing& target, const json& specie_j) {
-    if (specie_j.contains("prospecting_ability_rate")) {
-        target.setProspectingAbilityRate(readDoubleVector(specie_j, "prospecting_ability_rate"));
+void applyHeterotrophConsumerFields(Heterotroph& target, const json& specie_j) {
+    if (specie_j.contains("prospecting_ability")) {
+        target.setProspectingAbility(readDoubleVector(specie_j, "prospecting_ability"));
+    } else if (specie_j.contains("prospecting_ability_rate")) {
+        target.setProspectingAbility(readDoubleVector(specie_j, "prospecting_ability_rate"));
     }
     if (specie_j.contains("assimilation_efficiency")) {
         target.setAssimilationEfficiency(readDoubleVector(specie_j, "assimilation_efficiency"));
@@ -218,9 +236,6 @@ const LivingBeing* buildSpecieFromSnapshotJson(const json& cohort_j) {
         if (specie_j.contains("stratum")) {
             specie->setStratum(readIntVector(specie_j, "stratum"));
         }
-        if (specie_j.contains("max_density")) {
-            specie->setMaxDensity(readDoubleVector(specie_j, "max_density"));
-        }
         if (specie_j.contains("min_light")) {
             specie->setMinLight(readDoubleVector(specie_j, "min_light"));
         }
@@ -235,16 +250,15 @@ const LivingBeing* buildSpecieFromSnapshotJson(const json& cohort_j) {
     if (class_type == LivingBeingClassType::HETEROTROPH) {
         auto specie = std::make_unique<Heterotroph>();
         applyLivingBeingCommonFields(*specie, specie_j);
-        applyConsumerCommonFields(*specie, specie_j);
-        const LivingBeing* ptr = specie.get();
-        owned_species.push_back(std::move(specie));
-        return ptr;
-    }
-
-    if (class_type == LivingBeingClassType::DECOMPOSER) {
-        auto specie = std::make_unique<Decomposer>();
-        applyLivingBeingCommonFields(*specie, specie_j);
-        applyConsumerCommonFields(*specie, specie_j);
+        applyHeterotrophConsumerFields(*specie, specie_j);
+        if (specie_j.contains("prospecting_ability")) {
+            specie->setProspectingAbility(readDoubleVector(specie_j, "prospecting_ability"));
+        } else if (specie_j.contains("prospecting_ability_rate")) {
+            specie->setProspectingAbility(readDoubleVector(specie_j, "prospecting_ability_rate"));
+        }
+        if (specie_j.contains("prey_location")) {
+            specie->setPreyLocation(readDoubleVector(specie_j, "prey_location"));
+        }
         const LivingBeing* ptr = specie.get();
         owned_species.push_back(std::move(specie));
         return ptr;
@@ -297,6 +311,16 @@ AutotrophBuilder& AutotrophBuilder::withBestEnvironmentalConditions(std::vector<
     return *this;
 }
 
+AutotrophBuilder& AutotrophBuilder::withDeathBiomassFractionSurface(std::vector<double> value) {
+    object_.setDeathBiomassFractionSurface(std::move(value));
+    return *this;
+}
+
+AutotrophBuilder& AutotrophBuilder::withDeathBiomassPerFractionAmount(std::vector<double> value) {
+    object_.setDeathBiomassPerFractionAmount(std::move(value));
+    return *this;
+}
+
 AutotrophBuilder& AutotrophBuilder::fromJson(const nlohmann::json&) {
     return *this;
 }
@@ -320,9 +344,13 @@ HeterotrophBuilder& HeterotrophBuilder::withDeathEnergyContent(float value) {
     return *this;
 }
 
-HeterotrophBuilder& HeterotrophBuilder::withProspectingAbilityRate(std::vector<double> value) {
-    object_.setProspectingAbilityRate(std::move(value));
+HeterotrophBuilder& HeterotrophBuilder::withProspectingAbility(std::vector<double> value) {
+    object_.setProspectingAbility(std::move(value));
     return *this;
+}
+
+HeterotrophBuilder& HeterotrophBuilder::withProspectingAbilityRate(std::vector<double> value) {
+    return withProspectingAbility(std::move(value));
 }
 
 HeterotrophBuilder& HeterotrophBuilder::withAssimilationEfficiency(std::vector<double> value) {
@@ -335,49 +363,34 @@ HeterotrophBuilder& HeterotrophBuilder::withIngestionResidueFractionBySize(std::
     return *this;
 }
 
-HeterotrophBuilder& HeterotrophBuilder::fromJson(const nlohmann::json&) {
+HeterotrophBuilder& HeterotrophBuilder::withPreyLocation(std::vector<double> value) {
+    object_.setPreyLocation(std::move(value));
+    return *this;
+}
+
+HeterotrophBuilder& HeterotrophBuilder::withDeathBiomassFractionSurface(std::vector<double> value) {
+    object_.setDeathBiomassFractionSurface(std::move(value));
+    return *this;
+}
+
+HeterotrophBuilder& HeterotrophBuilder::withDeathBiomassPerFractionAmount(std::vector<double> value) {
+    object_.setDeathBiomassPerFractionAmount(std::move(value));
+    return *this;
+}
+
+HeterotrophBuilder& HeterotrophBuilder::fromJson(const nlohmann::json& j) {
+    if (j.contains("prospecting_ability")) {
+        object_.setProspectingAbility(readDoubleVector(j, "prospecting_ability"));
+    } else if (j.contains("prospecting_ability_rate")) {
+        object_.setProspectingAbility(readDoubleVector(j, "prospecting_ability_rate"));
+    }
+    if (j.contains("prey_location")) {
+        object_.setPreyLocation(readDoubleVector(j, "prey_location"));
+    }
     return *this;
 }
 
 Heterotroph HeterotrophBuilder::build() const {
-    return object_;
-}
-
-DecomposerBuilder& DecomposerBuilder::withName(std::string value) {
-    object_.setName(std::move(value));
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withEnergyContent(float value) {
-    object_.setBiomassToEnergyConversionFactor(value);
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withDeathEnergyContent(float value) {
-    object_.setDeathBiomassToEnergyConversionFactor(value);
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withProspectingAbilityRate(std::vector<double> value) {
-    object_.setProspectingAbilityRate(std::move(value));
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withAssimilationEfficiency(std::vector<double> value) {
-    object_.setAssimilationEfficiency(std::move(value));
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::withIngestionResidueFractionBySize(std::vector<std::vector<double>> value) {
-    object_.setIngestionResidueFractionBySize(std::move(value));
-    return *this;
-}
-
-DecomposerBuilder& DecomposerBuilder::fromJson(const nlohmann::json&) {
-    return *this;
-}
-
-Decomposer DecomposerBuilder::build() const {
     return object_;
 }
 
@@ -440,6 +453,11 @@ NicheBuilder& NicheBuilder::withConditions(std::vector<double> value) {
     return *this;
 }
 
+NicheBuilder& NicheBuilder::withProspectingScanSharpness(double value) {
+    object_.setProspectingScanSharpness(value);
+    return *this;
+}
+
 NicheBuilder& NicheBuilder::loadEnvironment(const std::string& path) {
     std::ifstream in(path);
     if (!in) {
@@ -480,6 +498,9 @@ NicheBuilder& NicheBuilder::fromJson(const nlohmann::json& j) {
     }
     if (snapshot->contains("limiting_factors")) {
         object_.setLimitingFactors(readDoubleVector(*snapshot, "limiting_factors"));
+    }
+    if (snapshot->contains("prospecting_scan_sharpness")) {
+        object_.setProspectingScanSharpness((*snapshot)["prospecting_scan_sharpness"].get<double>());
     }
 
     Niche::CohortSet cohorts;

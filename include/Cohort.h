@@ -2,6 +2,7 @@
 
 #include "LivingBeing.h"
 
+#include <cstddef>
 #include <cstdint>
 #include <vector>
 
@@ -21,8 +22,10 @@ public:
     double getEnergy() const;
     double calculateEnergy() const;
     const std::vector<double>& getBiomass() const;
+    double getBiomass(std::size_t index, double out_of_range_default = 0.0) const;
     double getTotalBiomass() const;
     const std::vector<double>& getDeathBiomass() const;
+    double getDeathBiomass(std::size_t index, double out_of_range_default = 0.0) const;
     double getTotalDeathBiomass() const;
 
     const LivingBeing* getSpecie() const;

@@ -19,10 +19,9 @@ struct NamedCode {
     int code;
 };
 
-constexpr std::array<NamedCode, 3> kClassTypeNames{{
+constexpr std::array<NamedCode, 2> kClassTypeNames{{
     {"AUTOTROPH", LivingBeingClassType::AUTOTROPH},
     {"HETEROTROPH", LivingBeingClassType::HETEROTROPH},
-    {"DECOMPOSER", LivingBeingClassType::DECOMPOSER},
 }};
 
 constexpr std::array<NamedCode, 4> kDietCohortIndexNames{{

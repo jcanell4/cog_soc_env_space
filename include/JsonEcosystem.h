@@ -14,7 +14,6 @@ class Cohort;
 class LivingBeing;
 class Autotroph;
 class Heterotroph;
-class Decomposer;
 
 class JsonEcosystem {
 public:
@@ -40,5 +39,4 @@ private:
     static void updateJson(const LivingBeing& living_being, nlohmann::json& out);
     static void updateJson(const Autotroph& autotroph, nlohmann::json& out);
     static void updateJson(const Heterotroph& heterotroph, nlohmann::json& out);
-    static void updateJson(const Decomposer& decomposer, nlohmann::json& out);
 };

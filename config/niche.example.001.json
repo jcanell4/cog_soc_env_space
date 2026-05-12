@@ -2,54 +2,56 @@
   "initial_data": {
     "type": "Niche",
     "data": {
-      "surface": 1000.0,
-      "nutrients": 1000.0,
-      "return_rate": [0.8, 0.7, 0.05],
+      "surface": 10000.0,
+      "nutrients": 100000.0,
+      "return_rate": [1.0, 0.8, 0.05],
       "conditions": [0.6, 0.7, 0.5],
+      "prospecting_scan_sharpness": 1.0,
       "limiting_factors": [0.5,0.3, 0.05],
       "cohorts": [
         {
           "id": 1,
-          "biomass": [0, 3000, 200],
-          "death_biomass": [200.0, 200.0, 0.0],
+          "biomass": [0, 3000, 2000],
+          "death_biomass": [1200.0, 200.0, 0.0],
           "specie": {
             "class_type": 0,
             "class_name": "Autotroph",
             "name": "AutotrophExampleA",
             "food_type": "0.0.0",
-            "biomass_to_energy_conversion_factor": 19.5,
+            "biomass_to_energy_conversion_factor": 190.5,
             "death_biomass_to_energy_conversion_factor": 19.5,
-            "maintenance_cost": [0.03, 0.02, 0.3],
-            "max_fertility": [0, 0.5, 0.15],
-            "resilience": [0.4, 0.8, 0.3],
-            "biomass_per_individual_amount": [0.01, 0.04, 0.1],
-            "individual_occupied_surface": [0.001, 0.02, 0.1],
+            "maintenance_cost": [0.04, 0.0566, 0.0568],
+            "max_fertility": [0, 0.75, 0.7],
+            "resilience": [0.2, 0.6, 0.4],
+            "biomass_per_individual_amount": [0.01, 0.04, 0.05],
+            "individual_occupied_surface": [0.001, 0.02, 0.03],
             "characteristics_death_biomass": [
               [0.1, 0.1, 0.1],
               [0.1, 0.3, 0.3],
               [0.1, 0.2, 0.4]
             ],
             "death_biomass_fraction_surface": [0.001, 0.01, 0.1],
+            "death_biomass_per_fraction_amount": [0.01, 0.04, 0.05],
             "death_biomass_fraction_by_size": [
-              [0.8, 0.1, 0.1],
-              [0.2, 0.6, 0.2],
-              [0.2, 0.7, 0.1]
+              [0.9, 0.1, 0.0],
+              [0.6, 0.4, 0.0],
+              [0.5, 0.5, 0.0]
             ],
             "best_environmental_conditions": [
-              [0.5, 0.6, 0.4],
-              [0.6, 0.7, 0.5],
-              [0.6, 0.6, 0.5]
+              [0.9, 0.4, 0.4],
+              [0.6, 0.5, 0.2],
+              [0.6, 0.4, 0.1]
             ],
-            "cycles_per_stages": [2, 5, 3],
+            "cycles_per_stages": [2, 3, 2],
             "defense_strategies": [
               [0.2, 0.2, 0.2],
               [0.2, 0.3, 0.3],
               [0.2, 0.4, 0.2]
             ],
             "recruitment_strategies": [
-              [0.2, 0.2, 0.2],
-              [0.3, 0.4, 0.3],
-              [0.3, 0.4, 0.5]
+              [0.3, 0.3, 0.2],
+              [0.4, 0.3, 0.3],
+              [0.3, 0.1, 0.5]
             ],
             "diet_by_cohort_index": [
               [
@@ -62,12 +64,83 @@
                 { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ]
             ],
-            "max_individual_growth": [0.7, 0.6, 0.1],
+            "max_individual_growth": [0.9, 0.8, 0.7],
             "colony_ability_rate": 0.0,
             "opacity": [0.001, 0.02, 0.05],
             "stratum": [0, 1, 1],
-            "max_density": [500, 30, 10],
+            "max_density": [2000, 600, 405],
             "min_light": [0.2, 0.2, 0.4],
+            "seed_dispersal_rate": 0.15
+          }
+        },
+        {
+          "id": 2,
+          "biomass": [0, 1000, 500],
+          "death_biomass": [200.0, 100.0, 0.0],
+          "specie": {
+            "class_type": 0,
+            "class_name": "Autotroph",
+            "name": "AutotrophExampleA",
+            "food_type": "0.0.0",
+            "biomass_to_energy_conversion_factor": 250.5,
+            "death_biomass_to_energy_conversion_factor": 30.5,
+            "maintenance_cost": [0.007, 0.0698, 0.09, 0.09],
+            "max_fertility": [0, 0.26, 0.6, 0.2455],
+            "resilience": [0.45, 0.8, 0.9, 0.7],
+            "biomass_per_individual_amount": [0.01, 0.05, 0.08, 0.1],
+            "individual_occupied_surface": [0.001, 0.03, 0.1, 0.2],
+            "characteristics_death_biomass": [
+              [0.1, 0.1, 0.1],
+              [0.1, 0.3, 0.3],
+              [0.1, 0.2, 0.4],
+              [0.1, 0.2, 0.4]
+            ],
+            "death_biomass_fraction_surface": [0.001, 0.01, 0.5],
+            "death_biomass_fraction_by_size": [
+              [0.9, 0.1, 0.0],
+              [0.7, 0.3, 0.0],
+              [0.5, 0.5, 0.0],
+              [0.5, 0.5, 0.0]
+            ],
+            "best_environmental_conditions": [
+              [0.8, 0.4, 0.4],
+              [0.65, 0.65, 0.5],
+              [0.65, 0.6, 0.5],
+              [0.7, 0.7, 0.5]
+            ],
+            "cycles_per_stages": [2, 3, 8, 5],
+            "defense_strategies": [
+              [0.2, 0.2, 0.2],
+              [0.2, 0.3, 0.3],
+              [0.2, 0.4, 0.2],
+              [0.2, 0.4, 0.2]
+            ],
+            "recruitment_strategies": [
+              [0.3, 0.2, 0.1],
+              [0.4, 0.3, 0.5],
+              [0.5, 0.3, 0.1],
+              [0.5, 0.3, 0.1]
+            ],
+            "diet_by_cohort_index": [
+              [
+                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+              ],
+              [
+                ["NUTRIENTS_TYPE", 0, 0]
+              ],
+              [
+                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+              ],
+              [
+                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+              ]
+            ],
+            "max_individual_growth": [0.75, 0.5123, 0.61, 0.22],
+            "colony_ability_rate": 0.0,
+            "opacity": [0.001, 0.04, 0.06, 0.08],
+            "stratum": [0, 1, 2, 2],
+            "max_density": [500, 99, 67, 56],
+            "min_light": [0.2, 0.4, 0.6, 0.6],
             "seed_dispersal_rate": 0.15
           }
         }

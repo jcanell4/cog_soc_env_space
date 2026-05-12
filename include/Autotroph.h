@@ -7,6 +7,7 @@
 
 #include "LivingBeing.h"
 
+#include <cstddef>
 #include <vector>
 
 /**
@@ -30,16 +31,16 @@ public:
                                      double biomass_increment_this_cycle) const override;
 
     const std::vector<double>& getOpacity() const;
+    double getOpacity(std::size_t index, double out_of_range_default = 0.0) const;
     void setOpacity(std::vector<double> value);
 
     const std::vector<int>& getStratum() const;
+    int getStratum(std::size_t index, int out_of_range_default = 0) const;
     void setStratum(std::vector<int> value);
-
-    const std::vector<double>& getMaxDensity() const;
-    void setMaxDensity(std::vector<double> value);
 
     /** Minimum light required at each life-history stage for photosynthesis (same indexing as cohort biomass). */
     const std::vector<double>& getMinLight() const;
+    double getMinLight(std::size_t index, double out_of_range_default = 0.0) const;
     void setMinLight(std::vector<double> value);
     /** @brief Seed dispersal capacity through the niche; clamped to [0,1]. */
     double getSeedDispersalRate() const;
@@ -48,7 +49,6 @@ public:
 private:
     std::vector<double> opacity_;
     std::vector<int> stratum_;
-    std::vector<double> max_density_;
     std::vector<double> min_light_;
     double seed_dispersal_rate_{0.0};
 };

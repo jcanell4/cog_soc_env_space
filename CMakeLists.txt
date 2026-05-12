@@ -39,8 +39,6 @@ set(COG_SOC_ENV_SPACE_LIB_SOURCES
     src/JsonEcosystem.cpp
     src/JsonFrameSource.cpp
     src/Heterotroph.cpp
-    src/Decomposer.cpp
-    src/ConsumerLivingBeing.cpp
     src/LivingBeing.cpp
     src/Autotroph.cpp
     src/Cohort.cpp

@@ -7,6 +7,7 @@
 
 #include "Cohort.h"
 
+#include <cstddef>
 #include <vector>
 
 class Niche {
@@ -21,8 +22,12 @@ public:
     const CohortSet& getCohortSet() const;
     CohortSet& getCohortSet();
     const std::vector<double>& getReturnRate() const;
+    double getReturnRate(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getConditions() const;
+    double getConditions(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getLimitingFactors() const;
+    double getLimitingFactors(std::size_t index, double out_of_range_default = 0.0) const;
+    double getProspectingScanSharpness() const;
 
     Niche& setSurface(double value);
     Niche& setEcologicalHealth(double value);
@@ -31,6 +36,7 @@ public:
     Niche& setReturnRate(std::vector<double> value);
     Niche& setConditions(std::vector<double> value);
     Niche& setLimitingFactors(std::vector<double> value);
+    Niche& setProspectingScanSharpness(double value);
 
     double getDeathBiomass() const;
     double getLivingBiomass() const;
@@ -38,7 +44,7 @@ public:
     double getEnergy() const;
     double getAutotrophBiomass() const;
     double getHeterotrophBiomass() const;
-    double getDecomposerBiomass() const;
+    double getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_cohort_index) const;
 
     /**
      * @brief Per-height-stratum sum of living autotroph biomass.
@@ -72,4 +78,5 @@ private:
     double return_cost_{0.0};
     std::vector<double> conditions_;
     std::vector<double> limiting_factors_;
+    double prospecting_scan_sharpness_{1.0};
 };

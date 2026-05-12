@@ -7,6 +7,7 @@
 
 #include "Constants.h"
 
+#include <cstddef>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -36,39 +37,65 @@ public:
 
     /**
      * @brief Cohort diet links grouped by consumer stage.
-     *        Outer index is consumer stage; each inner tuple is (source_cohort_index, min_stage, max_stage inclusive).
-     *        For heterotrophs, @a min_stage/@a max_stage are prey life-history stages; for decomposers, donor dead-biomass
-     *        size-bin indices. Empty per-stage vector means no cohort-indexed source for that stage.
+     *        Outer index is consumer stage; each inner tuple is
+     *        (source_cohort_index, min_stage, max_stage inclusive, matter_type).
+     *        For @c MatterType::LIVING, @a min_stage/@a max_stage are prey life-history stages; for @c MatterType::DEAD,
+     *        donor dead-biomass size-bin indices. Empty per-stage vector means no cohort-indexed source for that stage.
      */
-    const std::vector<std::vector<std::tuple<int, int, int>>>& getDietByCohortIndex() const;
-    void setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index);
+    const std::vector<std::vector<std::tuple<int, int, int, int>>>& getDietByCohortIndex() const;
+    void setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index);
 
     const std::string& getName() const;
     float getBiomassToEnergyConversionFactor() const;
     float getDeathBiomassToEnergyConversionFactor() const;
     const std::vector<double>& getMaintenanceCost() const;
+    double getMaintenanceCost(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getMaxFertility() const;
+    double getMaxFertility(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getResilience() const;
+    double getResilience(std::size_t index, double out_of_range_default = 0.0) const;
     double getVulnerability() const;
     const std::vector<double>& getBiomassPerIndividualAmount() const;
+    double getBiomassPerIndividualAmount(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getIndividualOccupiedSurface() const;
+    double getIndividualOccupiedSurface(std::size_t index, double out_of_range_default = 0.0) const;
     /**
      * @brief Per-species descriptors of dead matter by size class.
      *        Outer index is dead-biomass bin (same order as Cohort::death_biomass_);
      *        each row stores chemical/physical/structural traits for that bin.
      */
     const std::vector<std::vector<double>>& getCharacteristicsDeathBiomass() const;
+    const std::vector<double>& getCharacteristicsDeathBiomass(std::size_t row_index) const;
     /**
      * @brief Per-stage dead-matter size distribution.
      *        Row i corresponds to life stage i and contains bin proportions that sum to 1.
      */
     const std::vector<std::vector<double>>& getDeathBiomassFractionBySize() const;
+    const std::vector<double>& getDeathBiomassFractionBySize(std::size_t row_index) const;
+    /**
+     * @brief Per dead-biomass bin: surface-related weighting (same bin order as @ref getCharacteristicsDeathBiomass).
+     */
+    const std::vector<double>& getDeathBiomassFractionSurface() const;
+    double getDeathBiomassFractionSurface(std::size_t index, double out_of_range_default = 0.0) const;
+    /**
+     * @brief Per dead-biomass bin: biomass amount scale per fraction (same bin order as @ref getCharacteristicsDeathBiomass).
+     */
+    const std::vector<double>& getDeathBiomassPerFractionAmount() const;
+    double getDeathBiomassPerFractionAmount(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<std::vector<double>>& getBestEnvironmentalConditions() const;
+    const std::vector<double>& getBestEnvironmentalConditions(std::size_t row_index) const;
     const std::vector<int>& getCyclesPerStages() const;
+    int getCyclesPerStages(std::size_t index, int out_of_range_default = 0) const;
     const std::vector<std::vector<double>>& getDefenseStrategies() const;
+    const std::vector<double>& getDefenseStrategies(std::size_t row_index) const;
     const std::vector<std::vector<double>>& getRecruitmentStrategies() const;
+    const std::vector<double>& getRecruitmentStrategies(std::size_t row_index) const;
     /** @brief Per-stage cap on individual growth; each component in [0,1]. */
     const std::vector<double>& getMaxIndividualGrowth() const;
+    double getMaxIndividualGrowth(std::size_t index, double out_of_range_default = 0.0) const;
+    /** @brief Per-stage maximum biomass density (e.g. niche carrying capacity per surface unit). */
+    const std::vector<double>& getMaxDensity() const;
+    double getMaxDensity(std::size_t index, double out_of_range_default = 0.0) const;
     /** @brief Capacity to form colonies and colony size tendency; clamped to [0,1]. */
     double getColonyAbilityRate() const;
 
@@ -82,11 +109,14 @@ public:
     void setIndividualOccupiedSurface(std::vector<double> individual_occupied_surface);
     void setCharacteristicsDeathBiomass(std::vector<std::vector<double>> characteristics_death_biomass);
     void setDeathBiomassFractionBySize(std::vector<std::vector<double>> death_biomass_fraction_by_size);
+    void setDeathBiomassFractionSurface(std::vector<double> death_biomass_fraction_surface);
+    void setDeathBiomassPerFractionAmount(std::vector<double> death_biomass_per_fraction_amount);
     void setBestEnvironmentalConditions(std::vector<std::vector<double>> best_environmental_conditions);
     virtual void setCyclesPerStages(std::vector<int> cycles_per_stages);
     void setDefenseStrategies(std::vector<std::vector<double>> defense_strategies);
     void setRecruitmentStrategies(std::vector<std::vector<double>> recruitment_strategies);
     void setMaxIndividualGrowth(std::vector<double> max_individual_growth);
+    void setMaxDensity(std::vector<double> max_density);
     void setColonyAbilityRate(double colony_ability_rate);
 
     /**
@@ -156,14 +186,17 @@ protected:
     std::vector<double> individual_occupied_surface_;
     std::vector<std::vector<double>> characteristics_death_biomass_;
     std::vector<std::vector<double>> death_biomass_fraction_by_size_;
+    std::vector<double> death_biomass_per_fraction_amount_;
+    std::vector<double> death_biomass_fraction_surface_;
     std::vector<std::vector<double>> best_environmental_conditions_;
     /** Relative number of cycles spent in each stage; e.g. {3,10,15} => stage 0 on [0,3), 1 on [3,13), 2 on [13,28). */
     std::vector<int> cycles_per_stages_;
     std::vector<std::vector<double>> defense_strategies_;
     std::vector<std::vector<double>> recruitment_strategies_;
     std::vector<double> max_individual_growth_;
+    std::vector<double> max_density_;
     double colony_ability_rate_{0.0};
-    std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index_{};
+    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index_{};
     double vulnerability_{0.0};
     bool initialized_{false};
 };

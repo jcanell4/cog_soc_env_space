@@ -13,6 +13,8 @@
 
 namespace {
 
+const std::vector<double> kEmptyDoubleRow{};
+
 void clampMatrixToZeroOne(std::vector<std::vector<double>>& matrix) {
     for (auto& row : matrix) {
         for (double& value : row) {
@@ -50,11 +52,12 @@ void LivingBeing::initialize(const Niche& niche) {
     initialized_ = true;
 }
 
-const std::vector<std::vector<std::tuple<int, int, int>>>& LivingBeing::getDietByCohortIndex() const {
+const std::vector<std::vector<std::tuple<int, int, int, int>>>& LivingBeing::getDietByCohortIndex() const {
     return diet_by_cohort_index_;
 }
 
-void LivingBeing::setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int>>> diet_by_cohort_index) {
+void LivingBeing::setDietByCohortIndex(
+    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index) {
     diet_by_cohort_index_ = std::move(diet_by_cohort_index);
 }
 
@@ -82,12 +85,24 @@ const std::vector<double>& LivingBeing::getMaintenanceCost() const {
     return maintenance_cost_;
 }
 
+double LivingBeing::getMaintenanceCost(std::size_t index, double out_of_range_default) const {
+    return index < maintenance_cost_.size() ? maintenance_cost_[index] : out_of_range_default;
+}
+
 const std::vector<double>& LivingBeing::getMaxFertility() const {
     return max_fertility_;
 }
 
+double LivingBeing::getMaxFertility(std::size_t index, double out_of_range_default) const {
+    return index < max_fertility_.size() ? max_fertility_[index] : out_of_range_default;
+}
+
 const std::vector<double>& LivingBeing::getResilience() const {
     return resilience_;
+}
+
+double LivingBeing::getResilience(std::size_t index, double out_of_range_default) const {
+    return index < resilience_.size() ? resilience_[index] : out_of_range_default;
 }
 
 double LivingBeing::getVulnerability() const {
@@ -98,36 +113,102 @@ const std::vector<double>& LivingBeing::getBiomassPerIndividualAmount() const {
     return biomass_per_individual_amount_;
 }
 
+double LivingBeing::getBiomassPerIndividualAmount(std::size_t index, double out_of_range_default) const {
+    return index < biomass_per_individual_amount_.size() ? biomass_per_individual_amount_[index]
+                                                         : out_of_range_default;
+}
+
 const std::vector<double>& LivingBeing::getIndividualOccupiedSurface() const {
     return individual_occupied_surface_;
+}
+
+double LivingBeing::getIndividualOccupiedSurface(std::size_t index, double out_of_range_default) const {
+    return index < individual_occupied_surface_.size() ? individual_occupied_surface_[index] : out_of_range_default;
 }
 
 const std::vector<std::vector<double>>& LivingBeing::getCharacteristicsDeathBiomass() const {
     return characteristics_death_biomass_;
 }
 
+const std::vector<double>& LivingBeing::getCharacteristicsDeathBiomass(std::size_t row_index) const {
+    return row_index < characteristics_death_biomass_.size() ? characteristics_death_biomass_[row_index]
+                                                             : kEmptyDoubleRow;
+}
+
 const std::vector<std::vector<double>>& LivingBeing::getDeathBiomassFractionBySize() const {
     return death_biomass_fraction_by_size_;
+}
+
+const std::vector<double>& LivingBeing::getDeathBiomassFractionBySize(std::size_t row_index) const {
+    return row_index < death_biomass_fraction_by_size_.size() ? death_biomass_fraction_by_size_[row_index]
+                                                              : kEmptyDoubleRow;
+}
+
+const std::vector<double>& LivingBeing::getDeathBiomassFractionSurface() const {
+    return death_biomass_fraction_surface_;
+}
+
+double LivingBeing::getDeathBiomassFractionSurface(std::size_t index, double out_of_range_default) const {
+    return index < death_biomass_fraction_surface_.size() ? death_biomass_fraction_surface_[index]
+                                                          : out_of_range_default;
+}
+
+const std::vector<double>& LivingBeing::getDeathBiomassPerFractionAmount() const {
+    return death_biomass_per_fraction_amount_;
+}
+
+double LivingBeing::getDeathBiomassPerFractionAmount(std::size_t index, double out_of_range_default) const {
+    return index < death_biomass_per_fraction_amount_.size() ? death_biomass_per_fraction_amount_[index]
+                                                             : out_of_range_default;
 }
 
 const std::vector<std::vector<double>>& LivingBeing::getBestEnvironmentalConditions() const {
     return best_environmental_conditions_;
 }
 
+const std::vector<double>& LivingBeing::getBestEnvironmentalConditions(std::size_t row_index) const {
+    return row_index < best_environmental_conditions_.size() ? best_environmental_conditions_[row_index]
+                                                             : kEmptyDoubleRow;
+}
+
 const std::vector<int>& LivingBeing::getCyclesPerStages() const {
     return cycles_per_stages_;
+}
+
+int LivingBeing::getCyclesPerStages(std::size_t index, int out_of_range_default) const {
+    return index < cycles_per_stages_.size() ? cycles_per_stages_[index] : out_of_range_default;
 }
 
 const std::vector<std::vector<double>>& LivingBeing::getDefenseStrategies() const {
     return defense_strategies_;
 }
 
+const std::vector<double>& LivingBeing::getDefenseStrategies(std::size_t row_index) const {
+    return row_index < defense_strategies_.size() ? defense_strategies_[row_index] : kEmptyDoubleRow;
+}
+
 const std::vector<std::vector<double>>& LivingBeing::getRecruitmentStrategies() const {
     return recruitment_strategies_;
 }
 
+const std::vector<double>& LivingBeing::getRecruitmentStrategies(std::size_t row_index) const {
+    return row_index < recruitment_strategies_.size() ? recruitment_strategies_[row_index] : kEmptyDoubleRow;
+}
+
 const std::vector<double>& LivingBeing::getMaxIndividualGrowth() const {
     return max_individual_growth_;
+}
+
+double LivingBeing::getMaxIndividualGrowth(std::size_t index, double out_of_range_default) const {
+    return index < max_individual_growth_.size() ? max_individual_growth_[index] : out_of_range_default;
+}
+
+const std::vector<double>& LivingBeing::getMaxDensity() const {
+    return max_density_;
+}
+
+double LivingBeing::getMaxDensity(std::size_t index, double out_of_range_default) const {
+    return index < max_density_.size() ? max_density_[index] : out_of_range_default;
 }
 
 double LivingBeing::getColonyAbilityRate() const {
@@ -196,6 +277,20 @@ void LivingBeing::setDeathBiomassFractionBySize(
     death_biomass_fraction_by_size_ = std::move(death_biomass_fraction_by_size);
 }
 
+void LivingBeing::setDeathBiomassFractionSurface(std::vector<double> death_biomass_fraction_surface) {
+    for (double& value : death_biomass_fraction_surface) {
+        value = std::max(0.0, value);
+    }
+    death_biomass_fraction_surface_ = std::move(death_biomass_fraction_surface);
+}
+
+void LivingBeing::setDeathBiomassPerFractionAmount(std::vector<double> death_biomass_per_fraction_amount) {
+    for (double& value : death_biomass_per_fraction_amount) {
+        value = std::max(0.0, value);
+    }
+    death_biomass_per_fraction_amount_ = std::move(death_biomass_per_fraction_amount);
+}
+
 void LivingBeing::setBestEnvironmentalConditions(std::vector<std::vector<double>> best_environmental_conditions) {
     clampMatrixToZeroOne(best_environmental_conditions);
     best_environmental_conditions_ = std::move(best_environmental_conditions);
@@ -220,6 +315,10 @@ void LivingBeing::setMaxIndividualGrowth(std::vector<double> max_individual_grow
         value = std::clamp(value, 0.0, 1.0);
     }
     max_individual_growth_ = std::move(max_individual_growth);
+}
+
+void LivingBeing::setMaxDensity(std::vector<double> max_density) {
+    max_density_ = std::move(max_density);
 }
 
 void LivingBeing::setColonyAbilityRate(double colony_ability_rate) {
