@@ -153,12 +153,12 @@ En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb rel
 
 (7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{ \\
-\begin{array}{lcc} \\
+sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
+\begin{array}{lcc}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
 0 &, s_{j,k} \neq h \\
-\end{array} \\
-\right\} \\
+\end{array}
+\right\}
 $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
@@ -276,7 +276,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMzMzA4OTYwLDE4NDg4MTY0ODYsNDc3MD
+eyJoaXN0b3J5IjpbNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MD
 E3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1
 LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMz
 E0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcx
