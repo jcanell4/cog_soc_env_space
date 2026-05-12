@@ -270,10 +270,12 @@ on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima supo
 
 La captura que l'heteròtrof aconseguirà realitzar serà: 
 
-(19)
+(19) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-b\_cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} 
+cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
 $$
+
+la qual es repartirà proporcionalment 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -340,7 +342,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNDA0NzIxNCw0NjMyMTYwODIsMTM1OT
+eyJoaXN0b3J5IjpbMTI4ODkxNjIxMCw0NjMyMTYwODIsMTM1OT
 YyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgs
 NDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1OD
 MwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQx
