@@ -231,7 +231,7 @@ EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínx
 $$\\
 \phi_{eff_{jk}} = \phi_{jk} · (1 + \delta_{jk}) · \nu
 $$
-on $\delta_{jk}$ és l'habilitat de localotz
+on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -298,11 +298,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NjAzMTc0MCwtNjM5NDgzOTk1LC0xNT
-gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
-MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
-Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
-MjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMi
-w4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0
-Mzk3MTM4XX0=
+eyJoaXN0b3J5IjpbLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMT
+U4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgw
+NDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Ni
+w0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgx
+MzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MT
+IsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5
+NDM5NzEzOF19
 -->
