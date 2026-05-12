@@ -238,8 +238,11 @@ Anomenarem potencial de captura ($\gamma$) el coeficient que mesura la facilitat
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\gamma_{jk} = \zeta_ \rho_{jk}
+\gamma_{jk} = \zeta_{jk} · \rho_{jk}
 $$
+
+on $\zeta_$ 
+
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -305,11 +308,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Mjc3NjM5MjcsNDIwNTc1NjE4LC0xNz
-k5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEy
-Mjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OT
-ksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgz
-NDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2Ni
-wxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMjA4
-NTUwNjUzM119
+eyJoaXN0b3J5IjpbNjA4MTY2MDQ5LDQyMDU3NTYxOCwtMTc5OT
+QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
+NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
+Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
+MTUyLC04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMT
+I3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1
+MDY1MzNdfQ==
 -->
