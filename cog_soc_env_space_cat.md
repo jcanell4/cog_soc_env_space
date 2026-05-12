@@ -238,8 +238,8 @@ Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la 
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\lambda_{jk,gh} = \theta_{jk,gh} · \rho_{jk} \\
-eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \\
+\lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} \\
+\theta_{jk} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) \\
 $$
 
 
@@ -311,7 +311,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NTgyNjQ2OSwzNjk5NzU0NzgsMzcwOT
+eyJoaXN0b3J5IjpbLTIzMzgxNjY1MCwzNjk5NzU0NzgsMzcwOT
 Y1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1
 LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLT
 EzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2
