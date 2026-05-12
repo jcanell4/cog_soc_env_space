@@ -96,7 +96,8 @@ La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplica
 (2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
 \Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k} \\
-$$
+$$ 
+
 on $\Delta b_{i,j,k}$ és el decrement calculat a partir de la biomassa morta de mida $k$ de la cohort $j$ i nínxol $i$. $\rho_{i,k}$ és la taxa de retorn del niínxol $i$ per a la mida $k$.
   
 ### Actualització de les cohorts
@@ -108,6 +109,7 @@ La fase de _creixement individual_ és una predicció del la variació de biomas
   $$\\
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k} \\
   $$
+  
   on $b_{j,k}$ és la quantitat de biomassa viva de l'etapa $k$ de l'espècie de la cohort $j$. 
 
 El creixement de tipus fotosintètic, dependrà de la llum rebuda, de l'eficieència en la captació de llum i nutrients, la quantitat de nutrients existent i la densitat màxima suportada per l'espècie. La llum rebuda que acabarà incidint sobre la planta que es vol actualitzar, no depèn només de les condicions del nínxol (temps i intensitat de llum rebuda) sinó també de l'ombra les mateixes plantes provoquen. La primera depèn del nínxol i es manté constant al llarg de la simulació. No l'especifiquem de manera explícita sinó que suposem que es troba inclosa en el vector de factors limitants del nínxol pels casos que la llum (en excés o defecte) tingui efectes nocius per les espècies del nínxol. Si no s'inclogués en els factors limitants implicaria que la llum és sempre la idònia per la vegetació de l'ecosistema. El vector de factors limitants (llum, substrat, dispersió/profunditat de nutrients, condicions fisicoquímiques, etc.) servirà per calcular el factor nutricional  ($fn$) que actuarà com un modificador, reduint  la taxa màxima de creixement en casos adversos. 
@@ -132,6 +134,7 @@ L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant e
 $$\\
 eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki})))) \\
 $$ 
+
 on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de l'espècie $j$ i etapa $k$) vers el vector de factors limitants $L$ específic del nínxol. Per tant, $l_i$ és el valor del factor limitant de la característica $i$, mentre que $r_{jk,i}$ és l'estratègia usada pels individus de l'etapa $k$ i espècie $j$ per superar el factor limitant $i$. 
 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
@@ -140,6 +143,7 @@ Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles
 $$\\
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
+
 on $N$ és la quantitat (o la densitat) de nutrients existent en el nínxol i $Nsat$ es calcula a partir de la taxa màxima de creixement i el cost de manteniment $b_{jk}·(\alpha_{jk}+\omega_{jk})$
 
 ##### Càlcul del factor llum
@@ -272,11 +276,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyOD
-M0MTE1MiwtODkwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2
-LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMD
-g1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkw
-MjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMT
-czMDQ3Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4
-MzU1XX0=
+eyJoaXN0b3J5IjpbODMzMzA4OTYwLDE4NDg4MTY0ODYsNDc3MD
+E3OTk4LDIwMjgzNDExNTIsLTg5MDM4Mjk3OCwxMTI4MTMyNTI1
+LDYzNjkwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMz
+E0MTczNSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcx
+MzgsMTE3OTA5MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMD
+QwNjc2Mzc1LDE3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5
+MDYxXX0=
 -->
