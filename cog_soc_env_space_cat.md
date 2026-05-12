@@ -66,8 +66,8 @@ Pel que fa al reproductiu, es defineix la taxa màxima de fertilitat o percentat
         - La densitat màxima suportada.
         - La capacitat de dispersar les llavors per tot el nínxol. Els valors propers a 1 indiquen un alt grau de dispersió i els propers a 0 un grau molt baix.
         - Dieta segons l'etapa i l'espècie. Malgrat que la "dieta" de tots els autòtrofs acaba sent els nutrients i l'energia lumínica, el simulador accepta.  
-    - Característiques dels heteròtrofs i descomponedors:
-        - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
+     - Característiques dels heteròtrofs i descomponedors:
+         - Capacitat de prospecció. Permet valorar el grau de moviment i la capacitat de cerca que presenta cada espècie a fi d'estimar la probabilitat de trobar aliment en funció de la dispersió d'aquest i de la superfície ocupada.
         - Eficiència en l'assimilació de l'aliment ingerit. En els animals heteròtrofs no tot l'aliment es pot assimilar, bona part es gasta en la cerca, caça i manipulació.
         - A més, molta quantitat de la biomassa capturada acaba en forma de residus de diferents mides (femta, deixalles, etc.). Un vector de percentatges indica la proporció de residus i la mida d'aquest, que representa cada captura o recol·lecció.
 
@@ -245,11 +245,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMiw4MD
-MxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0Mzk3
-MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5NDM3NjI1MTgsMT
-A0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5NDUsMjEzNzg3
-OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2MiwtMTQ2MDMxMzA2NS
-wxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4MTcwMDg3OTIsLTQw
-OTc4NTU1N119
+eyJoaXN0b3J5IjpbLTE3NDEwMzQzODQsMTI3OTkzMTQ0MiwtMT
+A0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1
+ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LD
+E5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQy
+MTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLTQ5MjE5NzQ2Mi
+wtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3OTc3NDIsLTE4
+MTcwMDg3OTJdfQ==
 -->
