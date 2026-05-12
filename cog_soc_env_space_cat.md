@@ -279,8 +279,11 @@ la qual es repartirà proporcionalment al potencial de captura de cada especie d
 
 (20) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\Delta b_{gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}}  \\
+\Delta b_{gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} \\
 $$
+
+on $b_{gh} és la biomasa de les espècies de la dieta del heteròtrof.
+
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -346,7 +349,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDAyMzAwODUsNDYzMjE2MDgyLDEzNT
+eyJoaXN0b3J5IjpbLTE0NDUyMjIyMjUsNDYzMjE2MDgyLDEzNT
 k2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4
 LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNT
 gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
