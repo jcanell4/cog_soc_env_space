@@ -220,7 +220,7 @@ Anomenarem taxa de cobertura ($\phi$) d'una especie al grau d'ocupació del níx
 
 (13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\phi_{jk} = \begin{array}\frac {b_{jk}·\sigma_{jk}}{S})^{(2\kappa + 1)}\end{array}}
+\phi_{jk} = \left( \frac {b_{jk}·\sigma_{jk}}{S} \rigth)^{(2\kappa + 1)}
 $$
 
 on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'especie per unitat de biomassa i $S$ la superfíce del nínxol. Es calcula $\sigma$ usant la superfície ocupada per un indivídu en relació a la seva quantitat de massa.
@@ -291,11 +291,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODIyNjc5NTcsLTYzOTQ4Mzk5NSwtMT
-U4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgw
-NDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Ni
-w0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMjgx
-MzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MT
-IsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5
-NDM5NzEzOF19
+eyJoaXN0b3J5IjpbLTk5OTM1MzEzMSwtNjM5NDgzOTk1LC0xNT
+gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
+MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
+Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
+MjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0NDg3NjQxMi
+w4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3NSwtMzk0
+Mzk3MTM4XX0=
 -->
