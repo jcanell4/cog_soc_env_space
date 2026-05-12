@@ -84,10 +84,8 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 ### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-(1)
-$$
-\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) 
-$$
+  $\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i})$
+
 on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria orgànica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
 La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplicar a cada contenidor de matèria morta de totes les cohorts de cada nínxol.
@@ -271,7 +269,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MTA1NDI4LDExMjgxMzI1MjUsNjM2OT
+eyJoaXN0b3J5IjpbLTM0MzYyMTUyLDExMjgxMzI1MjUsNjM2OT
 AzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1
 LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMT
 c5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYz
