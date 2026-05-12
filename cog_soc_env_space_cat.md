@@ -223,7 +223,7 @@ $$\\
 \phi_{jk} = \frac {b_{jk}·\sigma_{jk}}{S}
 $$
 
-on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'especie per unitat de biomassa i $S$ la superfíce del nínxol. Es calcula $\sigma$ 
+on $b_{jk}$ és la quantitat de biomassa de l'etapa $k$ i l'espècie $j$, $\sigma_{jk}$ és la cobertura o superfície de detecció de l'especie per unitat de biomassa i $S$ la superfíce del nínxol. Es calcula $\sigma$ usant la superfície ocupada per un indivídu en relació a la seva quantitat de massa
 
 
 
@@ -291,11 +291,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgyMzY2OTgzLDExODAxMjI5NTYsLTE2Mz
-YyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5
-OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OT
-AzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0
-MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMT
-U4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5
-NjQ2XX0=
+eyJoaXN0b3J5IjpbLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMT
+YzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUy
+Mzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLT
+g5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNjkwMzU2NiwxMjc5OTMx
+NDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTczNSwtMjA4NTUwNjUzMy
+wxNTg1NTU4Njc1LC0zOTQzOTcxMzgsMTE3OTA5MDIxMCwyNTcz
+Njk2NDZdfQ==
 -->
