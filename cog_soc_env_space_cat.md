@@ -187,7 +187,10 @@ $$
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
 #### Fase de creixement individual  per heteròtrofs
-SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, 
+
+
+
+SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
 klkl
 
@@ -251,11 +254,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjUyMTgyNDgsNjM2OTAzNTY2LDEyNz
-k5MzE0NDIsLTEwNDQ4NzY0MTIsODAzMTQxNzM1LC0yMDg1NTA2
-NTMzLDE1ODU1NTg2NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLD
-I1NzM2OTY0NiwxOTQzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3
-Njk5NCwxNzU0MjE1OTQ1LDIxMzc4NzkwNjEsNDE1Mzk4MzU1LC
-00OTIxOTc0NjIsLTE0NjAzMTMwNjUsMTY4ODA1MjgwLC0xMTky
-Nzk3NzQyXX0=
+eyJoaXN0b3J5IjpbMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OT
+kzMTQ0MiwtMTA0NDg3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1
+MzMsMTU4NTU1ODY3NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMj
+U3MzY5NjQ2LDE5NDM3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2
+OTk0LDE3NTQyMTU5NDUsMjEzNzg3OTA2MSw0MTUzOTgzNTUsLT
+Q5MjE5NzQ2MiwtMTQ2MDMxMzA2NSwxNjg4MDUyODAsLTExOTI3
+OTc3NDJdfQ==
 -->
