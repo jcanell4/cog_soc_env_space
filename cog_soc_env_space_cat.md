@@ -204,7 +204,8 @@ $$
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
 #### Fase de creixement individual  per heteròtrofs
-En aquesta fase, s'avalua la quantitat de materia ingestada per l'heteròtrof a partir del potencial i de l'efectivitat de captura de l'aliment inclós en la seva dieta tenint en compte la quantitat d'aliment existent i les defenses desenvolupades o la dificultat de captura. A més igual que els autòtrofs es té en compte el cost de manteniment.  Usarem la fórmula (12)
+
+En aquesta fase, s'avalua la quantitat de matèria consumida per l'heteròtrof a partir del potencial i de l'efectivitat de captura de l'aliment inclòs en la seva dieta tenint en compte la quantitat d'aliment existent i les defenses desenvolupades o la dificultat de captura. A més, igual que els autòtrofs es té en compte el cost de manteniment.  Usarem la fórmula (12).
 
 (12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
@@ -281,11 +282,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNzQyNTM2OCw2NDQ4NTIzOTgsMTg0OD
-gxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgyOTc4
-LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwND
-Q4NzY0MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2
-NzUsLTM5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0NiwxOT
-QzNzYyNTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1
-OTQ1XX0=
+eyJoaXN0b3J5IjpbNzI5NzA5NzY5LDY0NDg1MjM5OCwxODQ4OD
+E2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5Nzgs
+MTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkzMTQ0MiwtMTA0ND
+g3NjQxMiw4MDMxNDE3MzUsLTIwODU1MDY1MzMsMTU4NTU1ODY3
+NSwtMzk0Mzk3MTM4LDExNzkwOTAyMTAsMjU3MzY5NjQ2LDE5ND
+M3NjI1MTgsMTA0MDY3NjM3NSwxNzMwNDc2OTk0LDE3NTQyMTU5
+NDVdfQ==
 -->
