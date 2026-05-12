@@ -84,7 +84,7 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 ### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-$$\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i})$$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)
+$\Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i})$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)
 
 on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ després de l'actualització. $C_i$ és el nombre de cohorts que hi ha en el nínxol $i$, $M_{i}$ el nombre de contenidors definits al nínxol $i$, en els que es classifica, per mida, la biomassa morta. $b_{i,j,k}$ és la biomassa morta de mida $k$, provinent de matèria orgànica de la cohort $j$ i del nínxol $i$. La taxa de retorn del nínxol $i$ corresponent a la mida $k$ està representada per $\rho_{i,k}$ i $\kappa_i$ és el cost de retorn associat al nínxol $i$.
 
@@ -269,11 +269,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MDM4Mjk3OCwxMTI4MTMyNTI1LDYzNj
-kwMzU2NiwxMjc5OTMxNDQyLC0xMDQ0ODc2NDEyLDgwMzE0MTcz
-NSwtMjA4NTUwNjUzMywxNTg1NTU4Njc1LC0zOTQzOTcxMzgsMT
-E3OTA5MDIxMCwyNTczNjk2NDYsMTk0Mzc2MjUxOCwxMDQwNjc2
-Mzc1LDE3MzA0NzY5OTQsMTc1NDIxNTk0NSwyMTM3ODc5MDYxLD
-QxNTM5ODM1NSwtNDkyMTk3NDYyLC0xNDYwMzEzMDY1LDE2ODgw
-NTI4MF19
+eyJoaXN0b3J5IjpbMjAyODM0MTE1MiwtODkwMzgyOTc4LDExMj
+gxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0NDIsLTEwNDQ4NzY0
+MTIsODAzMTQxNzM1LC0yMDg1NTA2NTMzLDE1ODU1NTg2NzUsLT
+M5NDM5NzEzOCwxMTc5MDkwMjEwLDI1NzM2OTY0NiwxOTQzNzYy
+NTE4LDEwNDA2NzYzNzUsMTczMDQ3Njk5NCwxNzU0MjE1OTQ1LD
+IxMzc4NzkwNjEsNDE1Mzk4MzU1LC00OTIxOTc0NjIsLTE0NjAz
+MTMwNjVdfQ==
 -->
