@@ -247,7 +247,7 @@ El potencial de captura total d'un heteròtrof serà la suma de potencials parci
 
 (16)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\lambda_{jk} = \sum_{g}^{g \in E_{jk}} \sum_{h} \\
+\lambda_{jk} = \sum_{g}^{g \in C_{jk}} \sum_{h}^{h \in E_{jk}} \lambda_{gh} \\
 $$
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
@@ -314,11 +314,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc3ODc0MTkyLDEzNDg1MDgwNzcsMzY5OT
-c1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYs
-LTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNj
-M2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIz
-OTgsMTg0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtOD
-kwMzgyOTc4LDExMjgxMzI1MjUsNjM2OTAzNTY2LDEyNzk5MzE0
-NDJdfQ==
+eyJoaXN0b3J5IjpbLTE3OTcyNjY2MjEsMTM0ODUwODA3NywzNj
+k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
+NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
+E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
+MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC
+04OTAzODI5NzgsMTEyODEzMjUyNSw2MzY5MDM1NjYsMTI3OTkz
+MTQ0Ml19
 -->
