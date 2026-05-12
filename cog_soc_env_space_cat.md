@@ -234,11 +234,11 @@ $$
 
 on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
 
-Anomenarem potencial de captura ($\gamma$) el coeficient que mesura la facilitat que té l'animal de capturar l'aliment i el calcularem amb (15):
+Anomenarem potencial de captura ($\gamma_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment i el calcularem amb (15):
 
 (15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\gamma_{jk, } = \zeta_{jk} · \rho_{jk}
+\gamma_{jk,gh} = \zeta_{jk,gh} · \rho_{jk}
 $$
 
 on $\zeta_$ 
@@ -308,7 +308,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTY4NjEzNTUsNDIwNTc1NjE4LC0xNz
+eyJoaXN0b3J5IjpbLTE1ODM5ODA1MjEsNDIwNTc1NjE4LC0xNz
 k5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEy
 Mjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OT
 ksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgz
