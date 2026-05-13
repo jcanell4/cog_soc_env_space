@@ -209,7 +209,7 @@ En aquesta fase, s'avalua la quantitat de matèria consumida per l'heteròtrof a
 
 (12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · (1- \omega_{jk}) \\
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \eta{jk} · (1- \omega_{jk}) \\
 $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
@@ -288,7 +288,7 @@ No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat
 
 (21) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · \eta_{jki} \\
+\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jki}) \\
 $$
  on $\Delta db_{jk,ghi}$ és l'increment de materia morta del bin $i$, procedent de la captura d'aliment de l'especie $gh$ per part de l'heteròtrof $jk$. 
 
@@ -356,11 +356,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyNTEwODMxOCwtMjA2OTgzMzUzOSw0Nj
-MyMTYwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3
-OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
-k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
-MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LD
-E4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4
-Mjk3OF19
+eyJoaXN0b3J5IjpbLTEzMzA0MTIyNTEsLTIwNjk4MzM1MzksND
+YzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0
+NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNj
+M5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYy
+OTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OC
+wxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAz
+ODI5NzhdfQ==
 -->
