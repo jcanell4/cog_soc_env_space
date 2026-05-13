@@ -294,7 +294,7 @@ $$
 
 on $\Delta db_{jk,ghi}$ és l'increment de matèria morta del "bin" $i$, procedent de la captura d'aliment de l'espècie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de matèria destinada al "bin" $i$. És necessari que $\sum_{i=0}^{|B|} \upsilon_{jki} = 1$.
 
-SI l'heteròtrof és un descomponedor, es fan servir les mateixes fórmules amb la diferencia que en lloc de fer servir etapes de desenvolupament es faran servir "bins" i en 
+SI l'heteròtrof és un descomponedor, es fan servir les mateixes fórmules amb la diferencia que en lloc de fer servir etapes de desenvolupament es faran servir "bins" i en lloc de fer servir el vector de defenses es calcularà l'eficàcia de captura amb el vector de caràcterístiques fisicoquímiques dels detritus de la cohort determinada. 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -360,11 +360,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyMzgzOTQ1MSwzMDgwOTIxMDMsMTI1ND
-A3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAx
-MiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNT
-c1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3
-OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMy
-w1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3
-OTk4XX0=
+eyJoaXN0b3J5IjpbNTI0OTgxMzk4LDMwODA5MjEwMywxMjU0MD
+c1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMDEy
+LDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1Nz
+U2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5
+NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLD
+U1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgxNjQ4Niw0NzcwMTc5
+OThdfQ==
 -->
