@@ -294,7 +294,7 @@ $$
 
 on $\Delta db_{jk,ghi}$ és l'increment de matèria morta del "bin" $i$, procedent de la captura d'aliment de l'espècie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de matèria destinada al "bin" $i$. És necessari que $\sum_{i=0}^{|B|} \upsilon_{jki} = 1$.
 
-SI l'heteròtrof 
+SI l'heteròtrof és un descomponedor, es fan servir les mateixes fórmules amb la diferencia que en lloc de fer servir etapes de desenvolupament es faran servir "bins" i en 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -360,7 +360,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NzQyNTk3OSwzMDgwOTIxMDMsMTI1ND
+eyJoaXN0b3J5IjpbLTgyMzgzOTQ1MSwzMDgwOTIxMDMsMTI1ND
 A3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAx
 MiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNT
 c1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3
