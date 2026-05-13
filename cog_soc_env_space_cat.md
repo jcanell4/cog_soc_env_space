@@ -287,25 +287,28 @@ on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima su
 ##### Quantitat de biomassa capturada
 La captura que l'heteròtrof aconseguirà realitzar serà: 
 
-(19) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
+(19)
+
+$$
+cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  
 $$
 
 la qual es repartirà proporcionalment al potencial de captura de cada espècie de la seva dieta. Així
 
-(20) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\Delta b_{jk,gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} \\
+(20) 
+
+$$
+\Delta b_{jk,gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} 
 $$
 
 on $b_{jk,gh} és la biomassa de les espècies (gh) de la dieta de l'heteròtrof (jk).
 
 No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció de matèria assimilada ($\eta$) és una característica de l'espècie. La matèria no assimilada va a parar a l'entorn com a biomassa morta de diferents mides. La simulació estableix per cada espècie la porció de matèria que va a parar als diferents "bins" de detritus.
 
-(21) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jk}) · \upsilon_{jki} \\
+(21)
+
+$$
+\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jk}) · \upsilon_{jki} 
 $$ 
 
 on $\Delta db_{jk,ghi}$ és l'increment de matèria morta del "bin" $i$, procedent de la captura d'aliment de l'espècie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de matèria destinada al "bin" $i$. És necessari que $\sum_{i=0}^{|B|} \upsilon_{jki} = 1$.
@@ -319,13 +322,16 @@ El creixement reproductiu no és pròpiament creixement de biomassa sinó més a
 
 Sigui $\tau_{jk}$) la taxa de fertilitat màxima d'una espècie, i $\alpha_{jkt}$ la taxa de creixement efectiva aconseguida per l'etapa $k$ de l'espècie $j$ en el temps o cicle $t$. La taxa de fertilitat efectiva o taxa de fertilitat en el cicle $t$ serà:
 
-(12)$$
+(22)
+
+$$
 \tau_{jkt}=\tau_{jk} · \frac{\alpha_{jkt}}{\alpha_{jk}}
 $$ 
 
 Usarem la taxa de fertilitat efectiva per calcular la quantitat de naixements nous i la despesa que això suposa pels reproductors.
 
- (13)$$
+ (23)
+$$
 \Delta b_{jkt}=\left\{ 
 \begin{array}{lcc}
 \sum_{k=0}^{|E_j|} b_{jk}·\tau_{jkt} &, k=0 \\
@@ -341,12 +347,12 @@ La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a
 
  La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabilitat i la taxa de resiliència de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliència redueix la primera. La vulnerabilitat  s'obté calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les quals l'espècie es troba optimitzada.  
 
-(14)$$
+(24)$$
 v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
 $$
 Així doncs, la mortalitat en un cicle serà:
 
-(15)$$
+(25)$$
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
 -v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
@@ -361,7 +367,7 @@ on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la 
 
 En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. El traspàs d'individus es fa sempre des de qualsevol etapa a la immediatament posterior a excepció de la darrera etapa. 
 
-(16)$$
+(26)$$
 \Delta b_{jk} = \left\{ 
 \begin{array}{lcc}
 -\frac{1}{c_k} &, k = 0 \\ 
@@ -371,11 +377,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ3MjkyMDIsLTIxMzQ3NjU5MDQsLTQ1OD
-E5MzY4MSwtMTU4MjIzMjM5NSwtMjAzODY5MDM0MCwtMTcyOTQ2
-MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcxMTA0MT
-gsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywxMjU0
-MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMD
-EyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1
-NzU2MThdfQ==
+eyJoaXN0b3J5IjpbODI3MDMxNzk3LC0yMTM0NzY1OTA0LC00NT
+gxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLTE3Mjk0
+NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3MTEwND
+E4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMDMsMTI1
+NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMT
+AxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIw
+NTc1NjE4XX0=
 -->
