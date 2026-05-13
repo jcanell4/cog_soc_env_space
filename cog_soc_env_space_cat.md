@@ -296,12 +296,7 @@ on $\Delta db_{jk,ghi}$ és l'increment de matèria morta del "bin" $i$, procede
 
 SI l'heteròtrof és un descomponedor, es fan servir les mateixes fórmules amb la diferencia que en lloc de fer servir etapes de desenvolupament es faran servir "bins" i en lloc de fer servir el vector de defenses es calcularà l'eficàcia de captura amb el vector de caràcterístiques fisicoquímiques dels detritus de la cohort determinada. 
 
-SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula extraient biomassa de les etapes progenitores en proporció 
-
-klkl
-
-
-
+SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, el creixement es calcula extraient la biomassa de les etapes progenitores en proporció del percentatge de fertilitat que tinguin. 
 
 #### Fase de creixement reproductiu
 El creixement reproductiu no és pròpiament creixement de biomassa sinó més aviat traspàs de biomassa des de les etapes amb capacitat de reproducció a l'etapa 0 (naixement). Cada espècie presenta una capacitat reproductiva o taxa de fertilitat específica. La taxa de fertilitat es veurà afectada per la quantitat d'aliment acumulat pels individus reproductors, de manera que en cicles bons, de molta quantitat d'aliment, la fertilitat pugui ser màxima, però en cicles amb manca d'aliment la fertilitat es redueixi. 
@@ -360,11 +355,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxODAwMzg5MywzMDgwOTIxMDMsMTI1ND
-A3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAx
-MiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNT
-c1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3
-OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMy
-w1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3
-OTk4XX0=
+eyJoaXN0b3J5IjpbLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNT
+QwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEw
+MTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMD
+U3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcw
+Nzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMD
+MsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAx
+Nzk5OF19
 -->
