@@ -288,7 +288,7 @@ No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat
 
 (21) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jki}) \\
+\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jk}) · \upsilon_{jki} \\
 $$
  on $\Delta db_{jk,ghi}$ és l'increment de materia morta del bin $i$, procedent de la captura d'aliment de l'especie $gh$ per part de l'heteròtrof $jk$. 
 
@@ -356,7 +356,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzA0MTIyNTEsLTIwNjk4MzM1MzksND
+eyJoaXN0b3J5IjpbLTE2NDQ1MDg1MDAsLTIwNjk4MzM1MzksND
 YzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0
 NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNj
 M5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYy
