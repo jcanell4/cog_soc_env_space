@@ -284,7 +284,13 @@ $$
 
 on $b_{gh} és la biomasa de les espècies de la dieta del heteròtrof.
 
-No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció se matèria assimilada ($\eta$) és una característica de l'epècie. La metèria no assimilada va a parar a l'entorn com a biomassa morta de diferents mides. La simulació estableix per cada espècie la porció de meteria que va a parar als diferents bins de detritus. 
+No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció se matèria assimilada ($\eta$) és una característica de l'epècie. La metèria no assimilada va a parar a l'entorn com a biomassa morta de diferents mides. La simulació estableix per cada espècie la porció de meteria que va a parar als diferents bins de detritus.
+
+(21) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$$\\
+\Delta db_{ghi} = \Delta b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} \\
+$$
+ 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -350,11 +356,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwNjA4Nzc0LC0yMDY5ODMzNTM5LDQ2Mz
-IxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4
-LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOT
-Q4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2Mjkx
-ODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMT
-g0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgy
-OTc4XX0=
+eyJoaXN0b3J5IjpbLTE0NDY4NjA1NDgsLTIwNjk4MzM1MzksND
+YzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0
+NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNj
+M5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYy
+OTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OC
+wxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAz
+ODI5NzhdfQ==
 -->
