@@ -164,12 +164,11 @@ $$
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
 (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
+$$ 
 l_{h \rightarrow (h-1)} = \begin{cases} 
-\frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
-\frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
-\end{array} 
-\right\} 
+\dfrac {1}{e^{sh_{h}}}  &,   h=max\_h \\
+\dfrac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
+\end{cases} 
 $$
 
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
@@ -354,11 +353,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc3ODE2MTkzLDIwNzcxMTA0MTgsNDU2Nz
-UwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywxMjU0MDc1MTcw
-LC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMDEyLDEzND
-g1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgs
-LTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMT
-gwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAx
-ODg5OV19
+eyJoaXN0b3J5IjpbLTE2NDEyNDA0MTgsMjA3NzExMDQxOCw0NT
+Y3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUx
+NzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMT
+M0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYx
+OCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LD
+ExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5
+MDE4ODk5XX0=
 -->
