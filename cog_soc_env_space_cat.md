@@ -284,7 +284,7 @@ $$
 
 on $b_{gh} és la biomasa de les espècies de la dieta del heteròtrof.
 
-No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció se matèria assimilada ($\eta$) és una característica de l'epècie. La metèria no assimilada va a parar a l'en
+No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció se matèria assimilada ($\eta$) és una característica de l'epècie. La metèria no assimilada va a parar a l'entorn com a biomassa morta de diferents mides. La simulació estableix per cada espècie la porció de meteria que va a parar als diferents bins de detritus. 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -350,7 +350,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA2NzQ4MzgyLC0yMDY5ODMzNTM5LDQ2Mz
+eyJoaXN0b3J5IjpbLTQwNjA4Nzc0LC0yMDY5ODMzNTM5LDQ2Mz
 IxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4
 LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOT
 Q4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2Mjkx
