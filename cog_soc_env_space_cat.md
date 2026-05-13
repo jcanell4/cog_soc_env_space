@@ -185,7 +185,7 @@ La fracció calculada no té en compte l'ombra que les plantes d'un estrat proje
 
 $$
 l_h =\begin{cases}
-\frac {1}{e^{Ks·sh_{h}}}  &,   h=max\\\_h \\
+\frac {1}{e^{Ks·sh_{h}}}  &,   h = max\\\_h \\
 \frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h} \\
 \end{cases} 
 $$ 
@@ -196,7 +196,7 @@ Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l
 
 (10) 
 
-$$ \\
+$$ 
 fl_{jk} = \frac { l_{s_{jk}} - min\\\_l_{jk}}{1-min\\\_l_{jk}} \\
 $$
 
@@ -361,11 +361,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxMTU0NzQwMiwtMjEzNDc2NTkwNCwtND
-U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
-NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
-QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
-NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
-EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
-MDU3NTYxOF19
+eyJoaXN0b3J5IjpbLTE4MDM1ODEzNDgsLTIxMzQ3NjU5MDQsLT
+Q1ODE5MzY4MSwtMTU4MjIzMjM5NSwtMjAzODY5MDM0MCwtMTcy
+OTQ2MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcxMT
+A0MTgsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywx
+MjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5Nj
+IxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0
+MjA1NzU2MThdfQ==
 -->
