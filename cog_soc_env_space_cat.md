@@ -194,7 +194,8 @@ Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de desco
 
 Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l_h$) i de la fracció mínima de llum que l'espècie, en cada etapa, necessitarà per aconseguir fer la fotosíntesi. Aquest darrer valor forma part de les característiques de l'espècie i ens permetrà fer el càlcul.  Sigui $s_{jk}$ l'estrat on es troba l'autòtrof $j$ durant l'estadi $k$ de desenvolupament, $l_{s_{jk}}$ serà la fracció de llum incident a l'estrat on es troba i ${min\\\_l}_{jk}$ la fracció mínima de llum que les plantes de l'etapa $k$ de  l'espècie $j$ necessiten per fer la fotosíntesi.   Direm que el factor llum és la relació entre la fracció esperada i la fracció real amb la limitació de la quantitat mínima de llum necessària per a la fotosíntesi:
 
-(10) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(10) 
+
 $$ \\
 fl_{jk} = \frac { l_{s_{jk}} - min\\\_l_{jk}}{1-min\\\_l_{jk}} \\
 $$
@@ -360,11 +361,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzQ3NjU5MDQsLTQ1ODE5MzY4MSwtMT
-U4MjIzMjM5NSwtMjAzODY5MDM0MCwtMTcyOTQ2MDEzMiwtMjAz
-ODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcxMTA0MTgsNDU2NzUwMz
-M2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywxMjU0MDc1MTcwLC0y
-MDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MD
-gwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3
-OTk0MDY1MjZdfQ==
+eyJoaXN0b3J5IjpbLTgxMTU0NzQwMiwtMjEzNDc2NTkwNCwtND
+U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
+NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
+QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
+NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
+EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
+MDU3NTYxOF19
 -->
