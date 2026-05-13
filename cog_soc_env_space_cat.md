@@ -153,12 +153,12 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
 (7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$ \\
+$$\\
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}
 \begin{cases}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
 0 &, s_{j,k} \neq h
-\end{cases}\\
+\end{cases}
 $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
@@ -355,11 +355,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTI1MzYyOTAsNDU2NzUwMzM2LC0xNz
-QyMTg1NzQ2LDMwODA5MjEwMywxMjU0MDc1MTcwLC0yMDY5ODMz
-NTM5LDQ2MzIxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMz
-Y5OTc1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1
-MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC
-0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4
-NTIzOThdfQ==
+eyJoaXN0b3J5IjpbMjA3NzExMDQxOCw0NTY3NTAzMzYsLTE3ND
+IxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUxNzAsLTIwNjk4MzM1
+MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNj
+k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
+NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
+E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
+MjM5OF19
 -->
