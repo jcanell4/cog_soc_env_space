@@ -202,9 +202,11 @@ $$
 
 ##### Càlcul del factor de capacitat màxima
 El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
-(11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\\\_d_{jk}} \\
+
+(11)
+
+$$
+fc_{jk} = 1-\dfrac {\dfrac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\\\_d_{jk}} \\
 $$
 
 on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
@@ -361,11 +363,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDM1ODEzNDgsLTIxMzQ3NjU5MDQsLT
-Q1ODE5MzY4MSwtMTU4MjIzMjM5NSwtMjAzODY5MDM0MCwtMTcy
-OTQ2MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcxMT
-A0MTgsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywx
-MjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5Nj
-IxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0
-MjA1NzU2MThdfQ==
+eyJoaXN0b3J5IjpbMTY5OTU0Mjk4OCwtMjEzNDc2NTkwNCwtND
+U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
+NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
+QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
+NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
+EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
+MDU3NTYxOF19
 -->
