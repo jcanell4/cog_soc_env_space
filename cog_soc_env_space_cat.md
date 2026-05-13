@@ -232,7 +232,7 @@ $$\\
 \phi_{eff_{gh}} = \phi_{gh} · (1 + \delta_{jk}) · \nu \\
 $$
 
-on $\delta_{jk}$ és l'habilitat de localització del caçador/hervibor/recolector i $\nu$ la nitidesa del nínxol. 
+on $\delta_{jk}$ és l'habilitat de localització del caçador/herbívor/recol·lector i $\nu$ la nitidesa del nínxol. 
 
 Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment de la cohort $g$ i etapa $h$. El calcularem amb (15):
 
@@ -241,7 +241,7 @@ $$\\
 \lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} ·  \phi_{eff_{gh}} \\
 $$
 
-on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\rho_{jk}$ es la capacitat de prospecció del nínxol que té el recaptador, mesurada en uniotats de superfície del nínxol. 
+on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\rho_{jk}$ es la capacitat de prospecció del nínxol que té el recaptador, mesurada en unitats de superfície del nínxol. 
 
 El potencial de captura total d'un heteròtrof serà la suma de potencials parcials corresponents a cada ítem de la llista de la seva dieta:
 
@@ -250,7 +250,7 @@ $$\\
 \lambda_{jk} = \sum_{g}^{g \in C_{jk}} \sum_{h}^{h \in E_{jk}} \lambda_{jk,gh} \\
 $$
 
-on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts i etapes de la dieta de l'hetròtrof $j$ en l'etapa $k$.
+on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts i etapes de la dieta de l'heteròtrof $j$ en l'etapa $k$.
 
 El factor de captura que representarà la probabilitat es calcula:
 
@@ -358,11 +358,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4MDkyMTAzLDEyNTQwNzUxNzAsLTIwNj
-k4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3
-NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OT
-QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
-NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
-Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
-MTUyXX0=
+eyJoaXN0b3J5IjpbMTExNzA0NjU5OCwzMDgwOTIxMDMsMTI1ND
+A3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAx
+MiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNT
+c1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3
+OTUsMTE4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMy
+w1NTkwMTg4OTksNjQ0ODUyMzk4LDE4NDg4MTY0ODYsNDc3MDE3
+OTk4XX0=
 -->
