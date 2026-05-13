@@ -200,7 +200,7 @@ $$\\
 fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\\\_d_{jk}} \\
 $$
 
-on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
+on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
 
 #### Fase de creixement individual  per heteròtrofs
 
@@ -262,10 +262,10 @@ El factor de càrrega màxima el calcularem usant el valor de densitat màxima s
 
 (18) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-fc_{jk} = 1-\frac {\frac{\sum^{g \in C_{gh} \land \exists j (j=g) | j \in C_{jk})}_{g} \sum_{h}^{(h \in E_{gh} \land \exists k (k=h) | k \in E{jk})} b_{gh}}{S}}{max\_d_{jk}} \\
+fc_{jk} = 1-\frac {\frac{\sum^{g \in C_{gh} \land \exists j (j=g) | j \in C_{jk})}_{g} \sum_{h}^{(h \in E_{gh} \land \exists k (k=h) | k \in E{jk})} b_{gh}}{S}}{max\\\_d_{jk}} \\
 $$
 
-on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
+on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
 
 ##### Quantitat de biomassa capturada
 La captura que l'heteròtrof aconseguirà realitzar serà: 
@@ -354,7 +354,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjU2OTQ4MDEsLTIwMzg2OTAzNDAsLT
+eyJoaXN0b3J5IjpbLTIwMDM5OTA2MDksLTIwMzg2OTAzNDAsLT
 E3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3
 MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMD
 MsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1
