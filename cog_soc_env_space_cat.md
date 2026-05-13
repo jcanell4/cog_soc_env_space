@@ -153,14 +153,6 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
 (7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}
-\begin{cases}
-\frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
-0 &, s_{j,k} \neq h
-\end{cases}
-$$
-
 $$  
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}  
 \begin{cases}  
@@ -173,8 +165,7 @@ Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estr
 
 (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-l_{h \rightarrow (h-1)} = \left\{ 
-\begin{array}{lcc} 
+l_{h \rightarrow (h-1)} = \begin{cases} 
 \frac {1}{e^{sh_{h}}}  &,   h=max\_h \\
 \frac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
 \end{array} 
@@ -363,11 +354,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzQ5NjUyODAsMjA3NzExMDQxOCw0NT
-Y3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUx
-NzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMT
-M0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYx
-OCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LD
-ExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5
-MDE4ODk5XX0=
+eyJoaXN0b3J5IjpbNjc3ODE2MTkzLDIwNzcxMTA0MTgsNDU2Nz
+UwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywxMjU0MDc1MTcw
+LC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMDEyLDEzND
+g1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1NzU2MTgs
+LTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4MzA3MDc5NSwxMT
+gwMTIyOTU2LC0xNjM2MjkxODA2LC0xMzgwNDE5MjAzLDU1OTAx
+ODg5OV19
 -->
