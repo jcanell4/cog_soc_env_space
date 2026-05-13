@@ -276,14 +276,14 @@ $$\\
 cap_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk}  \\
 $$
 
-la qual es repartirà proporcionalment al potencial de captura de cada especie de la seva dieta. Així
+la qual es repartirà proporcionalment al potencial de captura de cada espècie de la seva dieta. Així
 
 (20) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
 \Delta b_{jk,gh} = - b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} \\
 $$
 
-on $b_{jk,gh} és la biomasa de les espècies (gh) de la dieta del heteròtrof (jk).
+on $b_{jk,gh} és la biomassa de les espècies (gh) de la dieta de l'heteròtrof (jk).
 
 No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat de biomassa capturada es perd durant la ingesta o la digestió. La proporció se matèria assimilada ($\eta$) és una característica de l'epècie. La metèria no assimilada va a parar a l'entorn com a biomassa morta de diferents mides. La simulació estableix per cada espècie la porció de meteria que va a parar als diferents bins de detritus.
 
@@ -358,7 +358,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExNzA0NjU5OCwzMDgwOTIxMDMsMTI1ND
+eyJoaXN0b3J5IjpbMTczMTAzNzU3NywzMDgwOTIxMDMsMTI1ND
 A3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAx
 MiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNT
 c1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3
