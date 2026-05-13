@@ -221,7 +221,7 @@ $$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \eta{jk} · (1- \omega_{jk}) 
 $$
 
-on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
+on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement, $\eta$ l'eficiencia assimiladora i $\omega_{jk}$ la taxa del cost de manteniment.
 
 ##### Càlcul del factor de captura.
 El factor de captura combina diversos càlculs a fi de preveure el potencial de cerca i localització de l'aliment i també l'efectivitat de captura o caça. Per obtenir el potencial de cerca i localització de l'aliment es té en compte el grau de prospecció de l'animal (quantitat de superfície efectiva visitada durant el transcurs d'un cicle), l'habilitat de localització de l'aliment (agudesa dels sentits usats per a la localització de manera que permeten incrementar l'àrea efectiva d'encontre). La densitat d'aliment o preses presenta al nínxol tenint en compte la superfície ocupada i els seus costums d'agrupació, ja que l'agrupament d'individus en colònies disminueix el potencial d'encontre efectiu. 
@@ -380,11 +380,11 @@ $$
 \end{cases} 
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTI3MDE2NiwtMjEzNDc2NTkwNCwtND
-U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
-NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
-QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
-NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
-EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
-MDU3NTYxOF19
+eyJoaXN0b3J5IjpbMjg0NzQ3NzU0LC0yMTM0NzY1OTA0LC00NT
+gxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLTE3Mjk0
+NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3MTEwND
+E4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMDMsMTI1
+NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMT
+AxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIw
+NTc1NjE4XX0=
 -->
