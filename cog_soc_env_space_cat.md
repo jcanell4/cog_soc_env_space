@@ -290,7 +290,7 @@ No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat
 $$\\
 \Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jk}) · \upsilon_{jki} \\
 $$
- on $\Delta db_{jk,ghi}$ és l'increment de materia morta del bin $i$, procedent de la captura d'aliment de l'especie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de materia destinada al bin $i$. És necessari que $\sum_$
+ on $\Delta db_{jk,ghi}$ és l'increment de materia morta del bin $i$, procedent de la captura d'aliment de l'especie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de materia destinada al bin $i$. És necessari que $\sum_{i=0}^{|B|} \upsilon_{jki} = 1$.
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -356,7 +356,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMTA5MTQ1NSwtMjA2OTgzMzUzOSw0Nj
+eyJoaXN0b3J5IjpbMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0Nj
 MyMTYwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3
 OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
 k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
