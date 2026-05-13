@@ -105,6 +105,7 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
   
 #### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
+  
   (3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   $$\\
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k} \\
@@ -355,11 +356,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNT
-QwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEw
-MTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMD
-U3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcw
-Nzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMD
-MsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAx
-Nzk5OF19
+eyJoaXN0b3J5IjpbNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwOD
+A5MjEwMywxMjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4
+MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MD
+k2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5
+NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC
+0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgx
+NjQ4Nl19
 -->
