@@ -215,9 +215,10 @@ on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima su
 
 En aquesta fase, s'avalua la quantitat de matèria consumida per l'heteròtrof a partir del potencial i de l'efectivitat de captura de l'aliment inclòs en la seva dieta tenint en compte la quantitat d'aliment existent i les defenses desenvolupades o la dificultat de captura. A més, igual que els autòtrofs es té en compte el cost de manteniment.  Usarem la fórmula (12).
 
-(12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \eta{jk} · (1- \omega_{jk}) \\
+(12
+
+$$
+  \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \eta{jk} · (1- \omega_{jk}) 
 $$
 on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament de la cohort.  Així, $b_{jk}$ representa la quantitat de biomassa de l'espècie $j$ i etapa $k$;  $\alpha_{jk}$ la taxa màxima de creixement per $jk$;  $fcap_{jk}$, $fc_{jk}$ els modificadors de la taxa de creixement i $\omega_{jk}$ la taxa del cost de manteniment.
 
@@ -226,27 +227,30 @@ El factor de captura combina diversos càlculs a fi de preveure el potencial de 
 
 Anomenarem taxa de cobertura ($\phi$) d'una espècie al grau d'ocupació del nínxol i la calcularem fent:
 
-(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\phi_{gh} = \left( \frac {b_{gh}·\sigma_{gh}}{S} \right)^{(2\kappa_g + 1)} \\
+(13)
+
+$$
+\phi_{gh} = \left( \frac {b_{gh}·\sigma_{gh}}{S} \right)^{(2\kappa_g + 1)} 
 $$
 
 on $b_{gh}$ és la quantitat de biomassa de l'etapa $h$ i l'espècie $g$, $\sigma_{gh}$ és la cobertura o superfície de detecció de l'espècie per unitat de biomassa, $S$ la superfície del nínxol i $\kappa_g$ el coeficient de configuració de colònies de l'espècie. Es calcula $\sigma$ usant la superfície ocupada per un individu en relació amb la seva quantitat de massa.
 
 EL valor de $\phi$ efectiu el trobem en aplicar la taxa de la nitidesa del nínxol i la de l'habilitat de localització de l'animal:
 
-(14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\phi_{eff_{gh}} = \phi_{gh} · (1 + \delta_{jk}) · \nu \\
+(14)
+
+$$
+\phi_{eff_{gh}} = \phi_{gh} · (1 + \delta_{jk}) · \nu 
 $$
 
 on $\delta_{jk}$ és l'habilitat de localització del caçador/herbívor/recol·lector i $\nu$ la nitidesa del nínxol. 
 
 Anomenarem potencial de captura ($\lambda_{jk,gh}$) el coeficient que mesura la facilitat que té l'animal de l'espècie $k$ i etapa $k$ de capturar l'aliment de la cohort $g$ i etapa $h$. El calcularem amb (15):
 
-(15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} ·  \phi_{eff_{gh}} \\
+(15)
+
+$$
+\lambda_{jk,gh} = \left( \prod_{i=0}^{max(|R_{jk}|,|D_{gh}|)}(max(0,min(1,1-(d_{ghi}-r_{jki})))) \right) · \rho_{jk} ·  \phi_{eff_{gh}} 
 $$
 
 on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de factors de defensa amb els quals es calcula l'efectivitat de la captura. $\rho_{jk}$ es la capacitat de prospecció del nínxol que té el recaptador, mesurada en unitats de superfície del nínxol. 
@@ -363,7 +367,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NDA4ODE0MCwtMjEzNDc2NTkwNCwtND
+eyJoaXN0b3J5IjpbMTU0NTgxODIzNSwtMjEzNDc2NTkwNCwtND
 U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
 NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
 QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
