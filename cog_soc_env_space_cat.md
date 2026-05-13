@@ -288,9 +288,9 @@ No tota la biomassa capturada es pot assimilar, en heteròtrofs força quantitat
 
 (21) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · \eta{jki} · fcap_{jk} · fc_{jk} · \frac{\lambda_{jk,gh}}{\lambda_{jk}} \\
+\Delta db_{jk,ghi} = - \Delta b_{jk,gh} · \eta_{jki} \\
 $$
- 
+ on $\Delta db_{jk,ghi}$ és l'increment de materia morta pr
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -356,11 +356,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg3MTcwMTk5LC0yMDY5ODMzNTM5LDQ2Mz
-IxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4
-LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOT
-Q4Mzk5NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2Mjkx
-ODA2LC0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMT
-g0ODgxNjQ4Niw0NzcwMTc5OTgsMjAyODM0MTE1MiwtODkwMzgy
-OTc4XX0=
+eyJoaXN0b3J5IjpbMjA0NjA3MjkyMywtMjA2OTgzMzUzOSw0Nj
+MyMTYwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3
+OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
+k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
+MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LD
+E4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4
+Mjk3OF19
 -->
