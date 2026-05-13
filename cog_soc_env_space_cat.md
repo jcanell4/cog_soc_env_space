@@ -215,7 +215,7 @@ on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima su
 
 En aquesta fase, s'avalua la quantitat de matèria consumida per l'heteròtrof a partir del potencial i de l'efectivitat de captura de l'aliment inclòs en la seva dieta tenint en compte la quantitat d'aliment existent i les defenses desenvolupades o la dificultat de captura. A més, igual que els autòtrofs es té en compte el cost de manteniment.  Usarem la fórmula (12).
 
-(12
+(12)
 
 $$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fcap_{jk} · fc_{jk} · \eta{jk} · (1- \omega_{jk}) 
@@ -257,25 +257,29 @@ on $R_{jk}$ es el vector de factors de recaptació i $D_{gh}$ el vector de facto
 
 El potencial de captura total d'un heteròtrof serà la suma de potencials parcials corresponents a cada ítem de la llista de la seva dieta:
 
-(16)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-\lambda_{jk} = \sum_{g}^{g \in C_{jk}} \sum_{h}^{h \in E_{jk}} \lambda_{jk,gh} \\
+(16)
+
+$$
+\lambda_{jk} = \sum_{g}^{g \in C_{jk}} \sum_{h}^{h \in E_{jk}} \lambda_{jk,gh} 
 $$
 
 on $C_{jk}$ i $E_{jk}$ són el conjunt de cohorts i etapes de la dieta de l'heteròtrof $j$ en l'etapa $k$.
 
 El factor de captura que representarà la probabilitat es calcula:
 
-(17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-fcap_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} \\
+(17)
+
 $$
+fcap_{jk} = 1 - \frac{1}{e^{\lambda_{jk}}} 
+$$
+
 ##### Càlcul del factor de capacitat màxima
 El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada d'espècies que siguin competència del seu aliment,  per cada espècie  en les seves etapes.  
 
-(18) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
-fc_{jk} = 1-\frac {\frac{\sum^{g \in C_{gh} \land \exists j (j=g) | j \in C_{jk})}_{g} \sum_{h}^{(h \in E_{gh} \land \exists k (k=h) | k \in E{jk})} b_{gh}}{S}}{max\\\_d_{jk}} \\
+(18)
+
+$$
+fc_{jk} = 1-\frac {\frac{\sum^{g \in C_{gh} \land \exists j (j=g) | j \in C_{jk})}_{g} \sum_{h}^{(h \in E_{gh} \land \exists k (k=h) | k \in E{jk})} b_{gh}}{S}}{max\\\_d_{jk}}
 $$
 
 on $S$ és la superfície del nínxol i $max\\\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
@@ -367,11 +371,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0NTgxODIzNSwtMjEzNDc2NTkwNCwtND
-U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
-NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
-QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
-NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
-EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
-MDU3NTYxOF19
+eyJoaXN0b3J5IjpbMjQ3MjkyMDIsLTIxMzQ3NjU5MDQsLTQ1OD
+E5MzY4MSwtMTU4MjIzMjM5NSwtMjAzODY5MDM0MCwtMTcyOTQ2
+MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcxMTA0MT
+gsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMywxMjU0
+MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5NjIxMD
+EyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OCw0MjA1
+NzU2MThdfQ==
 -->
