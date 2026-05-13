@@ -84,8 +84,9 @@ A cada cicle el simulador avalua l'evolució de les dades variables a conseqüè
 ### Actualització de nutrients
 L'actualització dels nutrients d'un nínxol implica saber quanta biomassa acaba sent transformada en matèria inorgànica i quanta es perd durant la transformació. La matèria inorgànica generada s'ha d'afegir als nutrients del nínxol i la biomassa gastada s'ha de restar de la matèria morta existent a cada cohort. Usarem la fórmula (1) per calcular els nutrients de cada nínxol de l'entorn.
 
-(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
+(1)
+
+$$
 \Delta N_i = \sum_{j=0}^{C_i} \sum_{k=0}^{M_{i}} b_{i,j,k} · \rho_{i,k} · (1-\kappa_{i}) \\
 $$
 
@@ -93,8 +94,9 @@ on $\Delta N_i$ és l'increment de nutrients que hi haurà en el nínxol $i$ des
 
 La fórmula (2) ens indica el decrement de matèria orgànica que caldrà aplicar a cada contenidor de matèria morta de totes les cohorts de cada nínxol.
 
-(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
+(2)
+
+$$
 \Delta b_{i,j,k} = - b_{i,j,k}·\rho_{i,k} \\
 $$ 
 
@@ -106,8 +108,9 @@ L'actualització de les cohorts presenta diverses fases: a) _creixement individu
 #### Fase de creixement indididual  per autòtrofs
 La fase de _creixement individual_ és una predicció del la variació de biomassa a causa de la ingesta d'aliments. Representa el creixement corporal dels individus i depenent de si l'espècie és autòtrof o consumidor, s'aplicaran regles diferents. Pels autòtrofs, s'han previst 2 tipus de d'alimentació, la catabòlica (per les llavors) i la fotosintètica. Per lLa *catabòlica*, no hi hpresenta ingesta de nutrients, sinó només consum de la pròpia biomassa per a fi d'aconseguir trasnsformar-se en un agent productor. El simulador assumeix que la despesa energètica per a la transformació, es troba inclosa en el cost de manteniment. Així, si anomenaem $\omega_{j,k}$ a la taxa del cost de manteniment que es troba definitda a l'espeècie de la cohort $j$ per a l'etapa $k$, la despesa de biomassa en concreta a la fórmula (3).
   
-  (3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  $$\\
+  (3)
+  
+  $$
   \Delta b_{j,k} = - b_{j,k} \omega_{j,k} \\
   $$
   
@@ -354,7 +357,7 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDM5OTA2MDksLTIwMzg2OTAzNDAsLT
+eyJoaXN0b3J5IjpbLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLT
 E3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3
 MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMD
 MsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1
