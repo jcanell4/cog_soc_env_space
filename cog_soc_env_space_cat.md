@@ -268,6 +268,7 @@ $$
 
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per l'heteròtrof de l'espècie $j$ en l'etapa $k$ i $b_{gh}$ la biomassa de l'espècie g i etapa h que és competència directa.  
 
+##### Quantitat de biomassa capturada
 La captura que l'heteròtrof aconseguirà realitzar serà: 
 
 (19) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -291,6 +292,7 @@ $$\\
 \Delta db_{jk,ghi} = - \Delta b_{jk,gh} · (1 - \eta_{jk}) · \upsilon_{jki} \\
 $$
  on $\Delta db_{jk,ghi}$ és l'increment de materia morta del bin $i$, procedent de la captura d'aliment de l'especie $gh$ per part de l'heteròtrof $jk$ i $\upsilon_{jki}$ la porció de materia destinada al bin $i$. És necessari que $\sum_{i=0}^{|B|} \upsilon_{jki} = 1$.
+
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -356,11 +358,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0Nj
-MyMTYwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3
-OCwzNzA5NjUzNDgsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mz
-k0ODM5OTUsLTE1ODMwNzA3OTUsMTE4MDEyMjk1NiwtMTYzNjI5
-MTgwNiwtMTM4MDQxOTIwMyw1NTkwMTg4OTksNjQ0ODUyMzk4LD
-E4NDg4MTY0ODYsNDc3MDE3OTk4LDIwMjgzNDExNTIsLTg5MDM4
-Mjk3OF19
+eyJoaXN0b3J5IjpbMzA4MDkyMTAzLDEyNTQwNzUxNzAsLTIwNj
+k4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3
+NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OT
+QwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5
+NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LD
+Y0NDg1MjM5OCwxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQx
+MTUyXX0=
 -->
