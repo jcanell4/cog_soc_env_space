@@ -3,11 +3,12 @@
     "data": {
       "autotroph_biomass_per_stratum": [
         0.0,
-        3200.0
+        6000.0,
+        500.0
       ],
       "biomass_by_class": {
-        "autotroph": 3200.0,
-        "heterotroph": 1000.0,
+        "autotroph": 6500.0,
+        "heterotroph": 0.0,
         "other": 0.0
       },
       "cohorts": [
@@ -15,39 +16,39 @@
           "biomass": [
             0.0,
             3000.0,
-            200.0
+            2000.0
           ],
           "death_biomass": [
-            200.0,
+            1200.0,
             200.0,
             0.0
           ],
-          "energy": 70200.0,
+          "energy": 979800.0,
           "id": 3,
           "specie": {
             "best_environmental_conditions": [
               [
-                0.5,
-                0.6,
+                0.9,
+                0.4,
                 0.4
               ],
               [
                 0.6,
-                0.7,
-                0.5
+                0.5,
+                0.2
               ],
               [
                 0.6,
-                0.6,
-                0.5
+                0.4,
+                0.1
               ]
             ],
             "biomass_per_individual_amount": [
               0.01,
               0.04,
-              0.1
+              0.05
             ],
-            "biomass_to_energy_conversion_factor": 19.5,
+            "biomass_to_energy_conversion_factor": 190.5,
             "characteristics_death_biomass": [
               [
                 0.1,
@@ -70,25 +71,35 @@
             "colony_ability_rate": 0.0,
             "cycles_per_stages": [
               2,
-              5,
-              3
+              3,
+              2
             ],
             "death_biomass_fraction_by_size": [
               [
-                0.8,
+                0.9,
                 0.1,
-                0.1
+                0.0
               ],
               [
-                0.2,
                 0.6,
-                0.2
+                0.4,
+                0.0
               ],
               [
-                0.20000000000000004,
-                0.7000000000000001,
-                0.10000000000000002
+                0.5,
+                0.5,
+                0.0
               ]
+            ],
+            "death_biomass_fraction_surface": [
+              0.001,
+              0.01,
+              0.1
+            ],
+            "death_biomass_per_fraction_amount": [
+              0.01,
+              0.04,
+              0.05
             ],
             "death_biomass_to_energy_conversion_factor": 19.5,
             "defense_strategies": [
@@ -138,27 +149,27 @@
             "individual_occupied_surface": [
               0.001,
               0.02,
-              0.1
+              0.03
             ],
             "maintenance_cost": [
-              0.03,
-              0.02,
-              0.3
+              0.04,
+              0.0566,
+              0.0568
             ],
             "max_density": [
-              500.0,
-              30.0,
-              10.0
+              2000.0,
+              600.0,
+              405.0
             ],
             "max_fertility": [
               0.0,
-              0.5,
-              0.15
+              0.75,
+              0.7
             ],
             "max_individual_growth": [
-              0.7,
-              0.6,
-              0.1
+              0.9,
+              0.8,
+              0.7
             ],
             "min_light": [
               0.2,
@@ -173,25 +184,25 @@
             ],
             "recruitment_strategies": [
               [
-                0.2,
-                0.2,
+                0.3,
+                0.3,
                 0.2
               ],
               [
-                0.3,
                 0.4,
+                0.3,
                 0.3
               ],
               [
                 0.3,
-                0.4,
+                0.1,
                 0.5
               ]
             ],
             "resilience": [
-              0.4,
-              0.8,
-              0.3
+              0.2,
+              0.6,
+              0.4
             ],
             "seed_dispersal_rate": 0.15,
             "stratum": [
@@ -199,96 +210,115 @@
               1,
               1
             ],
-            "vulnerability": 0.09999999999999998
+            "vulnerability": 0.2516611478423583
           },
           "specie_name": "AutotrophExampleA",
-          "total_biomass": 3200.0,
-          "total_death_biomass": 400.0
+          "total_biomass": 5000.0,
+          "total_death_biomass": 1400.0
         },
         {
           "biomass": [
             0.0,
-            1000.0
-          ],
-          "death_biomass": [
             1000.0,
-            500.0,
             500.0
           ],
-          "energy": 339500.0,
+          "death_biomass": [
+            200.0,
+            100.0,
+            0.0
+          ],
+          "energy": 384900.0,
           "id": 4,
           "specie": {
-            "assimilation_efficiency": [
-              0.6,
-              0.85,
-              0.85
-            ],
             "best_environmental_conditions": [
               [
-                0.2,
-                0.3,
-                0.3
-              ],
-              [
-                0.3,
+                0.8,
                 0.4,
                 0.4
               ],
               [
-                0.1,
-                0.1,
-                0.1
+                0.65,
+                0.65,
+                0.5
+              ],
+              [
+                0.65,
+                0.6,
+                0.5
+              ],
+              [
+                0.7,
+                0.7,
+                0.5
               ]
             ],
             "biomass_per_individual_amount": [
               0.01,
-              0.04,
-              0.05
+              0.05,
+              0.08,
+              0.1
             ],
-            "biomass_to_energy_conversion_factor": 300.5,
+            "biomass_to_energy_conversion_factor": 250.5,
             "characteristics_death_biomass": [
               [
-                0.2,
-                0.2,
+                0.1,
+                0.1,
                 0.1
               ],
               [
-                0.2,
-                0.4,
+                0.1,
+                0.3,
                 0.3
               ],
               [
-                0.3,
-                0.3,
-                0.3
+                0.1,
+                0.2,
+                0.4
+              ],
+              [
+                0.1,
+                0.2,
+                0.4
               ]
             ],
-            "class_name": "Heterotroph",
-            "class_type": "HETEROTROPH",
+            "class_name": "Autotroph",
+            "class_type": "AUTOTROPH",
             "colony_ability_rate": 0.0,
             "cycles_per_stages": [
-              1,
+              2,
               3,
+              8,
               5
             ],
             "death_biomass_fraction_by_size": [
               [
-                0.4,
-                0.4,
-                0.2
+                0.9,
+                0.1,
+                0.0
               ],
               [
+                0.7,
                 0.3,
-                0.4,
-                0.3
+                0.0
               ],
               [
-                0.2,
-                0.3,
-                0.5
+                0.5,
+                0.5,
+                0.0
+              ],
+              [
+                0.5,
+                0.5,
+                0.0
               ]
             ],
-            "death_biomass_to_energy_conversion_factor": 19.5,
+            "death_biomass_fraction_surface": [
+              0.001,
+              0.01,
+              0.5
+            ],
+            "death_biomass_per_fraction_amount": [],
+            "death_biomass_to_energy_conversion_factor": 30.5,
             "defense_strategies": [
               [
                 0.2,
@@ -304,18 +334,17 @@
                 0.2,
                 0.4,
                 0.2
+              ],
+              [
+                0.2,
+                0.4,
+                0.2
               ]
             ],
             "diet_by_cohort_index": [
               [
                 {
-                  "cohort_index": 0,
-                  "matter_type": 0,
-                  "max_stage": 1,
-                  "min_stage": 0
-                },
-                {
-                  "cohort_index": "PARENTAL_SUPPLY_TYPE",
+                  "cohort_index": "NUTRIENTS_TYPE",
                   "matter_type": 0,
                   "max_stage": 0,
                   "min_stage": 0
@@ -323,96 +352,113 @@
               ],
               [
                 {
-                  "cohort_index": 0,
+                  "cohort_index": "NUTRIENTS_TYPE",
                   "matter_type": 0,
-                  "max_stage": 2,
+                  "max_stage": 0,
                   "min_stage": 0
                 }
               ],
               [
                 {
-                  "cohort_index": 0,
+                  "cohort_index": "NUTRIENTS_TYPE",
                   "matter_type": 0,
-                  "max_stage": 2,
+                  "max_stage": 0,
+                  "min_stage": 0
+                }
+              ],
+              [
+                {
+                  "cohort_index": "NUTRIENTS_TYPE",
+                  "matter_type": 0,
+                  "max_stage": 0,
                   "min_stage": 0
                 }
               ]
             ],
-            "diet_by_food_type": [],
-            "food_type": "0.1.0",
+            "food_type": "0.0.0",
             "individual_occupied_surface": [
-              0.01,
-              0.07,
-              0.07
-            ],
-            "ingestion_residue_fraction_by_size": [
-              [
-                0.3,
-                0.3,
-                0.4
-              ],
-              [
-                0.4,
-                0.3,
-                0.3
-              ],
-              [
-                0.3,
-                0.3,
-                0.4
-              ]
+              0.001,
+              0.03,
+              0.1,
+              0.2
             ],
             "maintenance_cost": [
-              0.1,
-              0.2,
-              0.3
+              0.007,
+              0.0698,
+              0.09,
+              0.09
+            ],
+            "max_density": [
+              500.0,
+              99.0,
+              67.0,
+              56.0
             ],
             "max_fertility": [
               0.0,
-              0.5,
-              0.4
+              0.26,
+              0.6,
+              0.2455
             ],
             "max_individual_growth": [
-              0.7,
+              0.75,
+              0.5123,
+              0.61,
+              0.22
+            ],
+            "min_light": [
+              0.2,
+              0.4,
               0.6,
-              0.5
+              0.6
             ],
-            "name": "HeterotrophExampleA",
-            "prey_location": [
-              1.0
-            ],
-            "prospecting_ability": [
-              50.0,
-              500.0,
-              400.0
+            "name": "AutotrophExampleA",
+            "opacity": [
+              0.001,
+              0.04,
+              0.06,
+              0.08
             ],
             "recruitment_strategies": [
               [
+                0.3,
                 0.2,
-                0.2,
-                0.2
+                0.1
               ],
               [
-                0.3,
-                0.3,
-                0.3
-              ],
-              [
-                0.2,
                 0.4,
-                0.2
+                0.3,
+                0.5
+              ],
+              [
+                0.5,
+                0.3,
+                0.1
+              ],
+              [
+                0.5,
+                0.3,
+                0.1
               ]
             ],
             "resilience": [
+              0.45,
               0.8,
               0.9,
-              0.5
+              0.7
             ],
-            "vulnerability": 0.34641016151377546
+            "seed_dispersal_rate": 0.15,
+            "stratum": [
+              0,
+              1,
+              2,
+              2
+            ],
+            "vulnerability": 0.21602468994692864
           },
-          "specie_name": "HeterotrophExampleA",
-          "total_biomass": 1000.0,
-          "total_death_biomass": 2000.0
+          "specie_name": "AutotrophExampleA",
+          "total_biomass": 1500.0,
+          "total_death_biomass": 300.0
         }
       ],
       "conditions": [
@@ -420,27 +466,28 @@
         0.7,
         0.5
       ],
-      "death_biomass": 2400.0,
+      "death_biomass": 1700.0,
       "ecological_health": 1.0,
       "light_per_stratum": [
-        0.9323938199059483,
-        0.9792189645694596
+        0.9772624837732771,
+        0.9910403787728836,
+        0.9991004048785274
       ],
       "limiting_factors": [
-        0.2,
-        0.1,
+        0.5,
+        0.3,
         0.05
       ],
-      "living_biomass": 4200.0,
-      "nutrients": 10000.0,
+      "living_biomass": 6500.0,
+      "nutrients": 100000.0,
       "prospecting_scan_sharpness": 1.0,
       "return_rate": [
         1.0,
         0.8,
         0.05
       ],
-      "surface": 1000.0,
-      "total_energy": 419700.0
+      "surface": 10000.0,
+      "total_energy": 1464700.0
     },
     "type": "Niche"
   },

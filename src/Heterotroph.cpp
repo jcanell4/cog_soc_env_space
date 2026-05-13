@@ -12,6 +12,7 @@
 #include <map>
 #include <numeric>
 #include <tuple>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -23,22 +24,80 @@ constexpr double kEps = 1e-12;
 
 /** Key: (matter_type, source_cohort_index, prey_stage_or_death_bin). */
 using IngestionMapKey = std::tuple<int, std::size_t, std::size_t>;
-using CaptureItem = std::tuple<int, std::size_t, std::size_t, double, double, double, double>;
+/** (matter_type, cohort_index, stage_or_death_bin, capture_potential, theoretical_capture, maximum_capture). */
+using CaptureItem = std::tuple<int, std::size_t, std::size_t, double, double, double>;
 
 const int MATTER_TYPE = 0;
 const int PREY_COHOR_INDEX = 1;
 const int PREY_STAGE = 2;
 const int CAPTURE_POTENTIAL = 3;
-const int AVAILABLE = 4;
-const int THEORETICAL_CAPTURE = 5;
-const int MAXIMUM_CAPTURE = 6;
+const int THEORETICAL_CAPTURE = 4;
+const int MAXIMUM_CAPTURE = 5;
 const int DONOR_COHOR_INDEX = 1;
 const int DONOR_DEATH_BIN = 2;
-
 
 using CaptureMap = std::map<IngestionMapKey, CaptureItem>;
 /** Same storage as @ref CaptureMap; enables a safe reference cast at mixed diet call sites. */
 using DetritusMap = CaptureMap;
+
+struct PreyWorkingState {
+    std::vector<double> biomass;
+    std::vector<double> death;
+};
+
+using PreyWorkingMap = std::unordered_map<std::size_t, PreyWorkingState>;
+
+PreyWorkingMap buildPreyWorkingMap(Niche::CohortSet& cohorts, const CaptureMap& capture_map) {
+    PreyWorkingMap out;
+    for (const auto& [key, item] : capture_map) {
+        (void)item;
+        const std::size_t cidx = std::get<1>(key);
+        if (cidx >= cohorts.size()) {
+            continue;
+        }
+        out.try_emplace(cidx, PreyWorkingState{cohorts[cidx].getBiomass(), cohorts[cidx].getDeathBiomass()});
+    }
+    return out;
+}
+
+double initialPoolForKey(const PreyWorkingMap& prey_work, const IngestionMapKey& key) {
+    const int matter = std::get<0>(key);
+    const std::size_t cidx = std::get<1>(key);
+    const std::size_t idx = std::get<2>(key);
+    const auto it = prey_work.find(cidx);
+    if (it == prey_work.end()) {
+        return 0.0;
+    }
+    if (matter == MatterType::DEAD) {
+        return idx < it->second.death.size() ? it->second.death[idx] : 0.0;
+    }
+    return idx < it->second.biomass.size() ? it->second.biomass[idx] : 0.0;
+}
+
+/** Same residue routing as @ref Heterotroph::addWasteToDeathBins, on a mutable death vector. */
+void addWasteToDeathVector(std::vector<double>& death,
+                           const std::vector<std::vector<double>>& residue_matrix,
+                           std::size_t stage_index,
+                           double waste) {
+    if (waste <= 0.0) {
+        return;
+    }
+    const std::vector<double> distribution =
+        stage_index < residue_matrix.size() ? residue_matrix[stage_index] : std::vector<double>{};
+    if (distribution.empty()) {
+        if (death.empty()) {
+            death.resize(DEATH_BIOMASS_FINEST_BIN + 1, 0.0);
+        }
+        death.back() += waste;
+        return;
+    }
+    if (death.size() < distribution.size()) {
+        death.resize(distribution.size(), 0.0);
+    }
+    for (std::size_t i = 0; i < distribution.size(); ++i) {
+        death[i] += waste * distribution[i];
+    }
+}
 
 /** Per-prey-stage encounter rate and available living biomass for the capture map. */
 void calculateAvailabilityForLivingBiomass(int min_prey_stage,
@@ -80,7 +139,7 @@ void calculateAvailabilityForLivingBiomass(int min_prey_stage,
         total_capture_potential += capture_potential;
         const auto key = std::make_tuple(MatterType::LIVING, prey_cohort_index, prey_stage);
         auto& item = capture_map[key];
-        item = CaptureItem(MatterType::LIVING, prey_cohort_index, prey_stage, capture_potential, prey_stage_biomass, 0.0, 0.0);
+        item = CaptureItem(MatterType::LIVING, prey_cohort_index, prey_stage, capture_potential, 0.0, 0.0);
     }
 }
 
@@ -127,7 +186,7 @@ void calculateAvailabilityForDeadBiomass(int min_prey_death_bin,
         total_capture_potential += capture_potential;
         const auto key = std::make_tuple(MatterType::DEAD, donor_cohort_index, prey_bin);
         auto& item = detritus_map[key];
-        item = CaptureItem(MatterType::DEAD, donor_cohort_index, prey_bin, capture_potential, detah_bin_biomass, 0.0, 0.0);
+        item = CaptureItem(MatterType::DEAD, donor_cohort_index, prey_bin, capture_potential, 0.0, 0.0);
     }
 }
 
@@ -225,6 +284,16 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
         }
     }
 
+    PreyWorkingMap prey_work = buildPreyWorkingMap(cohorts, capture_map);
+
+    std::size_t consumer_cohort_index = cohorts.size();
+    for (std::size_t i = 0; i < cohorts.size(); ++i) {
+        if (&cohorts[i] == &cohort) {
+            consumer_cohort_index = i;
+            break;
+        }
+    }
+
     double theoretical_accumulated = 0.0;
     double maximum_accumulated = 0.0;
     double surplus = 0.0;
@@ -233,15 +302,15 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
 
     if (total_capture_potential > kEps) {
         for (auto& [key, item] : capture_map) {
-            (void)key;
+            const double pool = initialPoolForKey(prey_work, key);
             double theoretical_capture = predator_biomass[su] * max_growth_stage * total_growth_rate * pcpacity *
                                          (std::get<CAPTURE_POTENTIAL>(item) / total_capture_potential);
             double old_maximum_capture = std::get<MAXIMUM_CAPTURE>(item);
             std::get<THEORETICAL_CAPTURE>(item) += theoretical_capture;
-            std::get<MAXIMUM_CAPTURE>(item) = std::min( std::get<THEORETICAL_CAPTURE>(item) , std::get<AVAILABLE>(item));
+            std::get<MAXIMUM_CAPTURE>(item) = std::min(std::get<THEORETICAL_CAPTURE>(item), pool);
             theoretical_accumulated += theoretical_capture;
             maximum_accumulated += std::get<MAXIMUM_CAPTURE>(item) - old_maximum_capture;
-            surplus += std::get<AVAILABLE>(item) - std::get<MAXIMUM_CAPTURE>(item);
+            surplus += pool - std::get<MAXIMUM_CAPTURE>(item);
         }
     }
 
@@ -249,42 +318,63 @@ void Heterotroph::process_individual_growth(Niche& niche, Cohort& cohort, int st
 
     if (missing > 0.0 && surplus > kEps) {
         for (auto& [key, item] : capture_map) {
-            (void)key;
-            if (std::get<AVAILABLE>(item) - std::get<MAXIMUM_CAPTURE>(item) > 0.0) {
-                std::get<THEORETICAL_CAPTURE>(item) += (std::get<AVAILABLE>(item) - std::get<MAXIMUM_CAPTURE>(item)) * missing / surplus;
-                std::get<MAXIMUM_CAPTURE>(item) = std::min(std::get<THEORETICAL_CAPTURE>(item), std::get<AVAILABLE>(item));
+            const double pool = initialPoolForKey(prey_work, key);
+            if (pool - std::get<MAXIMUM_CAPTURE>(item) > 0.0) {
+                std::get<THEORETICAL_CAPTURE>(item) +=
+                    (pool - std::get<MAXIMUM_CAPTURE>(item)) * missing / surplus;
+                std::get<MAXIMUM_CAPTURE>(item) = std::min(std::get<THEORETICAL_CAPTURE>(item), pool);
             }
         }
     }
 
     double total_ingested_from_prey = 0.0;
-    for (auto& [key, item] : capture_map) {
+    for (const auto& [key, item] : capture_map) {
         (void)key;
-        Cohort& prey_cohort = cohorts[std::get<PREY_COHOR_INDEX>(item)];
-        const double waste = (1.0 - assimilation_stage) * std::get<MAXIMUM_CAPTURE>(item);
+        const std::size_t cidx = std::get<PREY_COHOR_INDEX>(item);
+        const double amount = std::get<MAXIMUM_CAPTURE>(item);
+        const double waste = (1.0 - assimilation_stage) * amount;
+        PreyWorkingState& w = prey_work.at(cidx);
         if (std::get<MATTER_TYPE>(item) == MatterType::DEAD) {
-            std::vector<double> death_biomass = prey_cohort.getDeathBiomass();
-            death_biomass[std::get<DONOR_DEATH_BIN>(item)] = std::get<AVAILABLE>(item) - std::get<MAXIMUM_CAPTURE>(item);
-            prey_cohort.setDeathBiomass(std::move(death_biomass));
+            const std::size_t bin = std::get<DONOR_DEATH_BIN>(item);
+            if (bin < w.death.size()) {
+                w.death[bin] = std::max(0.0, w.death[bin] - amount);
+            }
         } else {
-            std::vector<double> prey_biomass = prey_cohort.getBiomass();
-            prey_biomass[std::get<PREY_STAGE>(item)] = std::get<AVAILABLE>(item) - std::get<MAXIMUM_CAPTURE>(item);
-            prey_cohort.setBiomass(std::move(prey_biomass));
+            const std::size_t st = std::get<PREY_STAGE>(item);
+            if (st < w.biomass.size()) {
+                w.biomass[st] = std::max(0.0, w.biomass[st] - amount);
+            }
         }
-        Heterotroph::addWasteToDeathBins(prey_cohort, residue_by_size, su, waste);
-        total_ingested_from_prey += std::get<MAXIMUM_CAPTURE>(item);
+        addWasteToDeathVector(w.death, residue_by_size, su, waste);
+        total_ingested_from_prey += amount;
     }
     const double parental_supply_gross = Heterotroph::applyParentalSupplyGross(
         has_parental_supply_in_diet, predator_biomass, su, theoretical_accumulated, total_ingested_from_prey, *specie);
 
     const double total_gross_intake = total_ingested_from_prey + parental_supply_gross;
     const double parental_waste = (1.0 - assimilation_stage) * parental_supply_gross;
-    Heterotroph::addWasteToDeathBins(cohort, residue_by_size, su, parental_waste);
+    if (consumer_cohort_index < cohorts.size() && prey_work.count(consumer_cohort_index) > 0) {
+        addWasteToDeathVector(prey_work[consumer_cohort_index].death, residue_by_size, su, parental_waste);
+    } else {
+        Heterotroph::addWasteToDeathBins(cohort, residue_by_size, su, parental_waste);
+    }
 
     const double assimilated = assimilation_stage * total_gross_intake;
     const double maintenance_cost = predator_biomass[su] * m_stage;
     predator_biomass[su] = std::max(0.0, predator_biomass[su] + assimilated - maintenance_cost);
-    cohort.setBiomass(std::move(predator_biomass));
+
+    if (consumer_cohort_index < cohorts.size() && prey_work.count(consumer_cohort_index) > 0 &&
+        su < prey_work[consumer_cohort_index].biomass.size()) {
+        prey_work[consumer_cohort_index].biomass[su] = predator_biomass[su];
+    }
+
+    for (auto& [idx, w] : prey_work) {
+        cohorts[idx].setBiomass(std::move(w.biomass));
+        cohorts[idx].setDeathBiomass(std::move(w.death));
+    }
+    if (consumer_cohort_index >= cohorts.size() || prey_work.find(consumer_cohort_index) == prey_work.end()) {
+        cohort.setBiomass(std::move(predator_biomass));
+    }
     niche.setNutrients(niche.getNutrients() + maintenance_cost);
 }
 
@@ -461,23 +551,7 @@ void Heterotroph::addWasteToDeathBins(Cohort& target,
         return;
     }
     std::vector<double> death = target.getDeathBiomass();
-    const std::vector<double> distribution =
-        stage_index < residue_matrix.size() ? residue_matrix[stage_index] : std::vector<double>{};
-    if (distribution.empty()) {
-        if (death.empty()) {
-            death.resize(DEATH_BIOMASS_FINEST_BIN + 1, 0.0);
-        }
-        death.back() += waste;
-        target.setDeathBiomass(std::move(death));
-        return;
-    }
-
-    if (death.size() < distribution.size()) {
-        death.resize(distribution.size(), 0.0);
-    }
-    for (std::size_t i = 0; i < distribution.size(); ++i) {
-        death[i] += waste * distribution[i];
-    }
+    addWasteToDeathVector(death, residue_matrix, stage_index, waste);
     target.setDeathBiomass(std::move(death));
 }
 
