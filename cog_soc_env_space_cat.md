@@ -124,8 +124,9 @@ Finalment, la densitat vegetal existent (és a dir competència) modificarà tam
 
 Aquests 3 factors, juntament amb la taxa de creixement màxima de l'espècie i la del cost de manteniment, ens permetrà calcular el creixement individual de biomassa de tipus fotosintètic:
 
-(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
+(4)
+
+$$
   \Delta b_{jk} = b_{jk} · \alpha_{jk} · fn_{jk} · fl_{jk} · fc_{jk} · (1- \omega_{jk}) \\
 $$
 
@@ -134,7 +135,8 @@ on $j$ identifica una de les cohorts i $k$, una de les etapes de desenvolupament
 ##### Càlcul del factor nutricional
 L'eficiència de la captació d'energia i  nutrients s'expressarà mitjançant el vector de factors limitants i  les estratègies de recaptació desenvolupades pels individus de l'espècie. En tractar-se de factors limitants, es considerarà que, donat un factor limitant de $valor > 0$ , els individus que no hagin desenvolupat cap estratègia per sortejar el vector, no podran nodrir-se i moriran. Si han desenvolupat alguna estratègia amb una intensitat menor a la del factor limitant, podrà nodrir-se, però només en proporció a la diferència entre factors. Si la intensitat de l'estratègia supera la del factor limitant, aquest no presentarà cap detriment en la recaptació de nutrients. Tots els factors exerceixen la mateixa pressió sobre el resultat final. Això ens permetrà calcular amb quina eficiència, la planta, pot alimentar-se:
 
-(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(5)
+
 $$\\
 eff_{jk} = \prod_{i=0}^{max(|R_{jk}|,|L|)}(max(0,min(1,1-(l_i-r_{jki})))) \\
 $$ 
@@ -143,8 +145,9 @@ on $R_{jk}$ és el vector d'estratègies de recaptació de llum i nutrients (de 
 
 Per calcular el factor nutricional, usarem la quantitat de nutrients disponibles al nínxol en relació amb la quantitat màxima de nutrients que necessiten els individus durant un cicle (saturació) i aplicarem una funció amortidora per obtenir valors de rang 0-1. Disposar de pocs nutrients implicarà valors tendents a 0, reduint el creixement, mentre que disposar de molts nutrients ens acostarà a valors propers a 1 tendint al màxim creixement. Així, direm que el factor nutrients ($fn_{jk}$) és:
 
-(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$$\\
+(6)
+
+$$
 1 - \exp \left( - \frac{N}{Nsat_{jk}} \cdot eff_{jk} \right)\\
 $$
 
@@ -155,7 +158,7 @@ Per calcular el factor llum ($fl$) necessitarem conèixer quina fracció de llum
 
 En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb relació a la biomassa. Això ens permetrà calcular quanta ombra projecten, en un estrat, les plantes de l'estrat superior. Sigui S la superfície total del nínxol,  $op_{j,k}$ és el grau d'opacitat de l'espècie de la cohort $j$ que es troba a l'etapa $k$, sigui $s_{j,k}$ l'estrat que ocupen els seus individus  i $b_{j,k}$ la seva biomassa. Donat l'estrat $h$, anomenarem $sh_h$ a l'ombra exercida per totes les espècies ubicades a l'estrat $h$ i es calcula fent:
 
-(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(7)
 
 $$  
 sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}  
@@ -167,7 +170,7 @@ $$
 
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\\\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
-(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(8)
 
 $$ 
 l_{h \rightarrow (h-1)} = \begin{cases} 
@@ -357,11 +360,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLT
-E3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3
-MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMD
-MsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1
-OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzND
-gsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1
-ODMwNzA3OTVdfQ==
+eyJoaXN0b3J5IjpbLTQ1ODE5MzY4MSwtMTU4MjIzMjM5NSwtMj
+AzODY5MDM0MCwtMTcyOTQ2MDEzMiwtMjAzODY5MDM0MCwxMDM5
+MDQ4Nzc3LDIwNzcxMTA0MTgsNDU2NzUwMzM2LC0xNzQyMTg1Nz
+Q2LDMwODA5MjEwMywxMjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2
+MzIxNjA4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1ND
+c4LDM3MDk2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYz
+OTQ4Mzk5NV19
 -->
