@@ -1,3 +1,6 @@
+# Local clone of the Homebrew tap (for maintenance only; not part of this repo)
+_homebrew_tap_clone/
+
 # Build directories
 build/
 out/
