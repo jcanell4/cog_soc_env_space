@@ -179,7 +179,7 @@ La fracció calculada no té en compte l'ombra que les plantes d'un estrat proje
 
 $$
 l_h =\begin{cases}
-\frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
+\frac {1}{e^{Ks·sh_{h}}}  &,   h=max\\\_h \\
 \frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h} \\
 \end{cases} 
 $$ 
@@ -354,11 +354,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNTgxNDkyNiwtMjAzODY5MDM0MCwtMT
-cyOTQ2MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nzc3LDIwNzcx
-MTA0MTgsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwODA5MjEwMy
-wxMjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4MiwxMzU5
-NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MDk2NTM0OC
-w0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5NSwtMTU4
-MzA3MDc5NV19
+eyJoaXN0b3J5IjpbLTE4NTg5NzI5NDIsLTIwMzg2OTAzNDAsLT
+E3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3
+MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMD
+MsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1
+OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzND
+gsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1
+ODMwNzA3OTVdfQ==
 -->
