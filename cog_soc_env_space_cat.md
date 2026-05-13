@@ -331,13 +331,12 @@ $$
 Usarem la taxa de fertilitat efectiva per calcular la quantitat de naixements nous i la despesa que això suposa pels reproductors.
 
  (23)
+
 $$
-\Delta b_{jkt}=\left\{ 
-\begin{array}{lcc}
+\Delta b_{jkt}=\begin{cases}
 \sum_{k=0}^{|E_j|} b_{jk}·\tau_{jkt} &, k=0 \\
 -b_{jk}·\tau_{jkt} &, k\neq0 
-\end{array} 
-\right\}
+\end{cases} 
 $$ 
 
 En la versió actual es desestima el  cost reproductiu, però en futures versions es preveu afegir. Això farà que la despesa de biomassa dels progenitors sigui més alta que la biomassa de naixements.  
@@ -347,14 +346,18 @@ La mortalitat en el simulador esdevindrà per dues raons, la mortalitat deguda a
 
  La taxa de mortalitat deguda a les condicions adverses s'obté mitjançant el factor de vulnerabilitat i la taxa de resiliència de l'espècie. La vulnerabilitat incrementa la mortalitat, però la resiliència redueix la primera. La vulnerabilitat  s'obté calculant la distància entre el vector de condicions generals del nínxol i el vector de les condicions ideals a les quals l'espècie es troba optimitzada.  
 
-(24)$$
+(24)
+
+$$
 v_{jk} =  \frac{\sqrt{\sum_{i=0}^{|C|}(c_i-b_{jki})^2}}{\sqrt{|C|}}
 $$
+
 Així doncs, la mortalitat en un cicle serà:
 
-(25)$$
-\Delta b_{jk} = \left\{ 
-\begin{array}{lcc}
+(25)
+
+$$
+\Delta b_{jk} = \begin{cases}{lcc}
 -v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
 -(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
 \end{array} 
@@ -377,11 +380,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI3MDMxNzk3LC0yMTM0NzY1OTA0LC00NT
-gxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLTE3Mjk0
-NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3MTEwND
-E4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMDMsMTI1
-NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMT
-AxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIw
-NTc1NjE4XX0=
+eyJoaXN0b3J5IjpbLTk3NDUwMDkyNiwtMjEzNDc2NTkwNCwtND
+U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
+NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
+QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
+NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
+EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
+MDU3NTYxOF19
 -->
