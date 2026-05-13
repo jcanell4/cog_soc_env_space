@@ -284,7 +284,7 @@ $$
 
 on $b_{gh} és la biomasa de les espècies de la dieta del heteròtrof.
 
-No tota la biomassa capturada
+No tota la biomassa capturada es pot assimilar, en heteròtrofs i 
 
 SI el tipus de dieta és catabòlica, es fa servir la mateixa fórmula que pels autòtrofs (3). En el cas de nutrició o suplement per part dels progenitors, es calcula 
 
@@ -350,11 +350,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNT
-k2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4
-LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNT
-gzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0
-MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OCwxODQ4ODE2NDg2LD
-Q3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAzODI5NzgsMTEyODEz
-MjUyNV19
+eyJoaXN0b3J5IjpbLTIwMjA2MTE2MzMsLTIwNjk4MzM1MzksND
+YzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0
+NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNj
+M5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLTE2MzYy
+OTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1MjM5OC
+wxODQ4ODE2NDg2LDQ3NzAxNzk5OCwyMDI4MzQxMTUyLC04OTAz
+ODI5NzhdfQ==
 -->
