@@ -154,11 +154,11 @@ En el simulador, les espècies d'autòtrofs disposen del grau d'opacitat amb rel
 
 (7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} = \left\{
-\begin{array}{lcc}
+sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|} \left
+\begin{cases}
 \frac {b_{j,k} · op_{j,k}} {S} &, s_{j,k} = h \\
 0 &, s_{j,k} \neq h \\
-\end{array}
+\end{cases}
 \right\}
 $$
 
@@ -356,11 +356,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMwOD
-A5MjEwMywxMjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNjA4
-MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3MD
-k2NTM0OCw0MjA1NzU2MTgsLTE3OTk0MDY1MjYsLTYzOTQ4Mzk5
-NSwtMTU4MzA3MDc5NSwxMTgwMTIyOTU2LC0xNjM2MjkxODA2LC
-0xMzgwNDE5MjAzLDU1OTAxODg5OSw2NDQ4NTIzOTgsMTg0ODgx
-NjQ4Nl19
+eyJoaXN0b3J5IjpbMTAzNjQyMDQ0MCw0NTY3NTAzMzYsLTE3ND
+IxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUxNzAsLTIwNjk4MzM1
+MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNj
+k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
+NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
+E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
+MjM5OF19
 -->
