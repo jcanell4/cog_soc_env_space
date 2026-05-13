@@ -374,17 +374,18 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 
 $$
 \Delta b_{jk} = \begin{cases}
--\frac{1}{c_k} &, k = 0 \\ 
-\frac{1}{c_{k-1}} -\frac{1}{c_k}  &, 0<k<  |E_j| -1\\
-\frac{1}{c_{k-1}} &, k = |E_j| - 1  \end{cases}
+-\dfrac{1}{c_k} &, k = 0 \\ 
+\dfrac{1}{c_{k-1}} -\dfrac{1}{c_k}  &, 0<k<  |E_j| -1\\
+\dfrac{1}{c_{k-1}} &, k = |E_j| - 1  
+\end{cases}
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDA0ODEwNzIsMjg0NzQ3NzU0LC0yMT
-M0NzY1OTA0LC00NTgxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2
-OTAzNDAsLTE3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0OD
-c3NywyMDc3MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0Niwz
-MDgwOTIxMDMsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMT
-YwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwz
-NzA5NjUzNDhdfQ==
+eyJoaXN0b3J5IjpbMTEyMjU1NzY4NCwyODQ3NDc3NTQsLTIxMz
+Q3NjU5MDQsLTQ1ODE5MzY4MSwtMTU4MjIzMjM5NSwtMjAzODY5
+MDM0MCwtMTcyOTQ2MDEzMiwtMjAzODY5MDM0MCwxMDM5MDQ4Nz
+c3LDIwNzcxMTA0MTgsNDU2NzUwMzM2LC0xNzQyMTg1NzQ2LDMw
+ODA5MjEwMywxMjU0MDc1MTcwLC0yMDY5ODMzNTM5LDQ2MzIxNj
+A4MiwxMzU5NjIxMDEyLDEzNDg1MDgwNzcsMzY5OTc1NDc4LDM3
+MDk2NTM0OF19
 -->
