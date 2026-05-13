@@ -162,13 +162,13 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}
 \end{cases}  
 $$
 
-Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
+Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\\\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
 (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 $$ 
 l_{h \rightarrow (h-1)} = \begin{cases} 
-\dfrac {1}{e^{sh_{h}}}  &,   h=max\_h \\
+\dfrac {1}{e^{sh_{h}}}  &,   h=max\\\_h \\
 \dfrac {1}{e^{sh_{h}}} · l_{(h+1) \rightarrow h} \\
 \end{cases} 
 $$
@@ -190,14 +190,14 @@ Finalment, calcularem el factor llum ($fl$) a partir de la fracció incident ($l
 
 (10) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$ \\
-fl_{jk} = \frac { l_{s_{jk}} - min\_l_{jk}}{1-min\_l_{jk}} \\
+fl_{jk} = \frac { l_{s_{jk}} - min\\\_l_{jk}}{1-min\\\_l_{jk}} \\
 $$
 
 ##### Càlcul del factor de capacitat màxima
 El factor de càrrega màxima el calcularem usant el valor de densitat màxima suportada per cada espècie vegetal en les seves etapes.  
 (11) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $$\\
-fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\_d_{jk}} \\
+fc_{jk} = 1-\frac {\frac{\sum^{|C|}_{j=0} \sum_{k=0}^{|E_j|} b_jk}{S}}{max\\\_d_{jk}} \\
 $$
 
 on $S$ és la superfície del nínxol i $max\_d_jk$ és la densitat màxima suportada per les plantes de l'espècie $j$ en l'etapa $k$.  
@@ -354,11 +354,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NDA2OTU5LC0yMDM4NjkwMzQwLC0xNz
-I5NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzEx
-MDQxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLD
-EyNTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2
-MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LD
-QyMDU3NTYxOCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgz
-MDcwNzk1XX0=
+eyJoaXN0b3J5IjpbLTE5MjU2OTQ4MDEsLTIwMzg2OTAzNDAsLT
+E3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3
+MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMD
+MsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1
+OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzND
+gsNDIwNTc1NjE4LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1
+ODMwNzA3OTVdfQ==
 -->
