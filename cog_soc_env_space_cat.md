@@ -357,11 +357,10 @@ Així doncs, la mortalitat en un cicle serà:
 (25)
 
 $$
-\Delta b_{jk} = \begin{cases}{lcc}
+\Delta b_{jk} = \begin{cases}
 -v_{jk}·(1-\zeta_{jk}) &, k \neq |E_j| -1 \\ 
 -(v_{jk}·(1-\zeta_{jk}) + \frac{1}{c_k}) &, k = |E_j| -1
-\end{array} 
-\right\}
+\end{cases}
 $$
 
 on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la durada de l'etapa $k$ en cicles.
@@ -370,21 +369,21 @@ on $\zeta_{jk}$ és la resiliència de l'etapa $k$ de l'espècie $j$,  i $c$ la 
 
 En aquesta fase, es pressuposa també que en cada etapa els individus es troben repartits per edat de forma uniforme. El traspàs d'individus es fa sempre des de qualsevol etapa a la immediatament posterior a excepció de la darrera etapa. 
 
-(26)$$
-\Delta b_{jk} = \left\{ 
-\begin{array}{lcc}
+(26)
+
+$$
+\Delta b_{jk} = \begin{cases}
 -\frac{1}{c_k} &, k = 0 \\ 
 \frac{1}{c_{k-1}} -\frac{1}{c_k}  &, 0<k<  |E_j| -1\\
 \frac{1}{c_{k-1}} &, k = |E_j| -1
-\end{array} 
-\right\}
+\end{cases} 
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NDUwMDkyNiwtMjEzNDc2NTkwNCwtND
-U4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4NjkwMzQwLC0xNzI5
-NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3NzcsMjA3NzExMD
-QxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEy
-NTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2Mj
-EwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQy
-MDU3NTYxOF19
+eyJoaXN0b3J5IjpbNzY0MDc4OTM2LC0yMTM0NzY1OTA0LC00NT
+gxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2OTAzNDAsLTE3Mjk0
+NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0ODc3NywyMDc3MTEwND
+E4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMDMsMTI1
+NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMT
+AxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIw
+NTc1NjE4XX0=
 -->
