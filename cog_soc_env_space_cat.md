@@ -161,6 +161,14 @@ sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}
 \end{cases}
 $$
 
+$$  
+sh_h = \sum_{j=0}^{|C|} \sum_{k=0}^{|E_j|}  
+\begin{cases}  
+\dfrac{b_{j,k} \cdot op_{j,k}}{S}, & s_{j,k}=h \\  
+0, & s_{j,k}\neq h  
+\end{cases}  
+$$
+
 Coneguda l'ombra, podem saber la fracció de llum que acaba traspassant els estrats superiors. Sigui $max\_h$ l'estrat de més altitud en un nínxol. Calcularem la fracció de llum que deixa passar un estrat $h$ cap a l'estrat $h-1$ amb l'equació (8).
 
 (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -355,11 +363,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NzExMDQxOCw0NTY3NTAzMzYsLTE3ND
-IxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUxNzAsLTIwNjk4MzM1
-MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNj
-k5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYxOCwtMTc5OTQwNjUy
-NiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LDExODAxMjI5NTYsLT
-E2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5MDE4ODk5LDY0NDg1
-MjM5OF19
+eyJoaXN0b3J5IjpbLTEwMzQ5NjUyODAsMjA3NzExMDQxOCw0NT
+Y3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUx
+NzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMT
+M0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYx
+OCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LD
+ExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5
+MDE4ODk5XX0=
 -->
