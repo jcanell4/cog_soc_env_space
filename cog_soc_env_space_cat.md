@@ -176,13 +176,12 @@ $$
 La fracció calculada no té en compte l'ombra que les plantes d'un estrat projecten sobre elles mateixes. En general, es tracta de quantitats poc significatives, però per aconseguir una simulació més realista, en cas que l'alçada dels estrats fos molt gran, s'ha fet una correcció en la fórmula anterior, usant una constant ($Ks$) que pot modificar-se en cada simulació. Per defecte el valor de la constant és $0.3$.   
 
 (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 $$
-l_h = \left\{ 
-\begin{array}{lcc}
+l_h =\begin{cases}
 \frac {1}{e^{Ks·sh_{h}}}  &,   h=max\_h \\
 \frac {1}{e^{Ks·sh_{h}+sh_{h+1}}} · l_{(h+1) \rightarrow h} \\
-\end{array} 
-\right\}
+\end{cases} 
 $$ 
 
 Anomenarem $l_h$ la fracció de llum que incideix a l'estrat h després de descomptar les fraccions absorbides  pels estrats superiors i l'ombra de les plantes del mateix estrat.
@@ -355,11 +354,11 @@ En aquesta fase, es pressuposa també que en cada etapa els individus es troben 
 \right\}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzIyOTIzODYsMjA3NzExMDQxOCw0NT
-Y3NTAzMzYsLTE3NDIxODU3NDYsMzA4MDkyMTAzLDEyNTQwNzUx
-NzAsLTIwNjk4MzM1MzksNDYzMjE2MDgyLDEzNTk2MjEwMTIsMT
-M0ODUwODA3NywzNjk5NzU0NzgsMzcwOTY1MzQ4LDQyMDU3NTYx
-OCwtMTc5OTQwNjUyNiwtNjM5NDgzOTk1LC0xNTgzMDcwNzk1LD
-ExODAxMjI5NTYsLTE2MzYyOTE4MDYsLTEzODA0MTkyMDMsNTU5
-MDE4ODk5XX0=
+eyJoaXN0b3J5IjpbMTAzOTA0ODc3NywyMDc3MTEwNDE4LDQ1Nj
+c1MDMzNiwtMTc0MjE4NTc0NiwzMDgwOTIxMDMsMTI1NDA3NTE3
+MCwtMjA2OTgzMzUzOSw0NjMyMTYwODIsMTM1OTYyMTAxMiwxMz
+Q4NTA4MDc3LDM2OTk3NTQ3OCwzNzA5NjUzNDgsNDIwNTc1NjE4
+LC0xNzk5NDA2NTI2LC02Mzk0ODM5OTUsLTE1ODMwNzA3OTUsMT
+E4MDEyMjk1NiwtMTYzNjI5MTgwNiwtMTM4MDQxOTIwMyw1NTkw
+MTg4OTldfQ==
 -->
