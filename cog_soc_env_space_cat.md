@@ -376,16 +376,15 @@ $$
 \Delta b_{jk} = \begin{cases}
 -\frac{1}{c_k} &, k = 0 \\ 
 \frac{1}{c_{k-1}} -\frac{1}{c_k}  &, 0<k<  |E_j| -1\\
-\frac{1}{c_{k-1}} &, k = |E_j| -1
-\end{cases}
+\frac{1}{c_{k-1}} &, k = |E_j| - 1  \end{cases}
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE5MjQ2NDIwLDI4NDc0Nzc1NCwtMjEzND
-c2NTkwNCwtNDU4MTkzNjgxLC0xNTgyMjMyMzk1LC0yMDM4Njkw
-MzQwLC0xNzI5NDYwMTMyLC0yMDM4NjkwMzQwLDEwMzkwNDg3Nz
-csMjA3NzExMDQxOCw0NTY3NTAzMzYsLTE3NDIxODU3NDYsMzA4
-MDkyMTAzLDEyNTQwNzUxNzAsLTIwNjk4MzM1MzksNDYzMjE2MD
-gyLDEzNTk2MjEwMTIsMTM0ODUwODA3NywzNjk5NzU0NzgsMzcw
-OTY1MzQ4XX0=
+eyJoaXN0b3J5IjpbLTEwNDA0ODEwNzIsMjg0NzQ3NzU0LC0yMT
+M0NzY1OTA0LC00NTgxOTM2ODEsLTE1ODIyMzIzOTUsLTIwMzg2
+OTAzNDAsLTE3Mjk0NjAxMzIsLTIwMzg2OTAzNDAsMTAzOTA0OD
+c3NywyMDc3MTEwNDE4LDQ1Njc1MDMzNiwtMTc0MjE4NTc0Niwz
+MDgwOTIxMDMsMTI1NDA3NTE3MCwtMjA2OTgzMzUzOSw0NjMyMT
+YwODIsMTM1OTYyMTAxMiwxMzQ4NTA4MDc3LDM2OTk3NTQ3OCwz
+NzA5NjUzNDhdfQ==
 -->
