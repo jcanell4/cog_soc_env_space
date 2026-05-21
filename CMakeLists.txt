@@ -41,7 +41,7 @@ set(COG_SOC_ENV_SPACE_LIB_SOURCES
     src/Heterotroph.cpp
     src/LivingBeing.cpp
     src/Autotroph.cpp
-    src/Cohort.cpp
+    src/Population.cpp
     src/Niche.cpp
     src/Environment.cpp
     src/EnvironmentConfig.cpp

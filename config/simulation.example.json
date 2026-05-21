@@ -2,6 +2,6 @@
   "version": 1,
   "random_seed": 42,
   "total_cycles": 500,
-  "noise_stddev": 0.0,
+  "noise_stddev": 0.00,
   "environment_path": "config/niche.example.000.json"
 }

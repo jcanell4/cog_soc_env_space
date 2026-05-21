@@ -12,7 +12,7 @@
 #include <tuple>
 #include <vector>
 
-class Cohort;
+class Population;
 class Niche;
 
 class Heterotroph : public LivingBeing {
@@ -25,8 +25,8 @@ public:
      * @brief Stage-level ingestion: living prey (unchanged pipeline) then dead-matter uptake when diet
      *        includes @c MatterType::DEAD tuples.
      */
-    void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const override;
-    void process_reproductive_growth(Cohort& cohort,
+    void process_individual_growth(Niche& niche, Population& population, int stage_index) const override;
+    void process_reproductive_growth(Population& population,
                                    int stage_index,
                                    double stage_biomass_before_growth,
                                    double biomass_increment_this_cycle) const override;
@@ -63,16 +63,16 @@ public:
     Heterotroph& setPreyLocation(std::vector<double> values);
 
     /**
-     * @brief Fills @ref LivingBeing::diet_by_cohort_index_ from taxonomic diet rules and cohort species
-     *        food types in @a niche (one tuple per cohort whose prey taxonomy matches a diet rule,
+     * @brief Fills @ref LivingBeing::diet_by_population_index_ from taxonomic diet rules and population species
+     *        food types in @a niche (one tuple per population whose prey taxonomy matches a diet rule,
      *        including matter type 0/1 as the fourth component).
      */
-    void rebuild_diet_by_cohort_index_from_food_type(const Niche& niche);
+    void rebuild_diet_by_population_index_from_food_type(const Niche& niche);
 
 private:
     static std::vector<double> clampUnitInterval(std::vector<double> values);
     static std::vector<double> normalizeResidueRow(std::vector<double> row);
-    static void addWasteToDeathBins(Cohort& target,
+    static void addWasteToDeathBins(Population& target,
                                     const std::vector<std::vector<double>>& residue_matrix,
                                     std::size_t stage_index,
                                     double waste);

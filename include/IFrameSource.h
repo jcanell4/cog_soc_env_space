@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-struct CohortFrameData {
+struct PopulationFrameData {
     int id = -1;
     std::string specie_name;
     std::string class_name;
@@ -25,7 +25,7 @@ struct SimulationFrameData {
     double autotroph_biomass = 0.0;
     double heterotroph_biomass = 0.0;
     double other_living_biomass = 0.0;
-    std::vector<CohortFrameData> cohorts;
+    std::vector<PopulationFrameData> populations;
 };
 
 /**

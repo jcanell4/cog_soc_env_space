@@ -1,6 +1,9 @@
 # Local clone of the Homebrew tap (for maintenance only; not part of this repo)
 _homebrew_tap_clone/
 
+# Generator default output (keep templates in config/; generated JSON here)
+tools/generator/out/
+
 # Build directories
 build/
 out/

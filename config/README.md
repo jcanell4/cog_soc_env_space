@@ -1,6 +1,6 @@
 # Environment configuration (JSON)
 
-This folder holds JSON files that describe an **Environment**: a graph of **Niches**, each with environmental **conditions**, **nutrients**, rates, and **Cohorts** that reference **Species** definitions.
+This folder holds JSON files that describe an **Environment**: a graph of **Niches**, each with environmental **conditions**, **nutrients**, rates, and **Populations** that reference **Species** definitions.
 
 ## Top-level object
 
@@ -18,7 +18,7 @@ Each object must include:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `id` | string | **yes** | Stable key referenced by cohorts (`species_id`). Must be unique. |
+| `id` | string | **yes** | Stable key referenced by populations (`species_id`). Must be unique. |
 | `kind` | string | **yes** | Species implementation. Supported: `autotroph` (legacy alias: `autotroph_by_rates`). |
 | `name` | string | **yes** | Display / model name (passed to the concrete type). |
 
@@ -44,9 +44,9 @@ For `kind: "autotroph"` (or legacy `autotroph_by_rates`), the following optional
 | `nutrients` | number | no | Inorganic nutrients pool. |
 | `return_rate` | array of numbers | **yes** | Recycling rate per dead-biomass size bin (dynamic length). |
 | `conditions` | array of numbers | no | Normalized traits in `[0, 1]` (e.g. humidity, light, temperature). |
-| `cohorts` | array | no | Cohorts living in this niche (see below). |
+| `populations` | array | no | Populations living in this niche (see below). |
 
-## Cohort entry (`niches[].cohorts[]`)
+## Population entry (`niches[].populations[]`)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -73,9 +73,9 @@ Use `loadEnvironmentFromJson` / `loadEnvironmentFromJsonFile` from `EnvironmentC
 
 ## Snapshot-style species constants
 
-When loading niche snapshots that embed full `cohorts[].specie` objects, the following fields accept either numeric codes or strict constant names:
+When loading niche snapshots that embed full `populations[].specie` objects, the following fields accept either numeric codes or strict constant names:
 
 - `specie.class_type`: `AUTOTROPH`, `HETEROTROPH`
-- `specie.diet_by_cohort_index[].cohort_index`: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
+- `specie.diet_by_population_index[].population_index`: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 
 String matching is strict (exact constant names).

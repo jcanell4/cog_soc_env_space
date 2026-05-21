@@ -13,7 +13,7 @@
 #include <vector>
 
 class Niche;
-class Cohort;
+class Population;
 
 /**
  * @class LivingBeing
@@ -36,14 +36,14 @@ public:
     virtual int getClassType() const = 0;
 
     /**
-     * @brief Cohort diet links grouped by consumer stage.
+     * @brief Population diet links grouped by consumer stage.
      *        Outer index is consumer stage; each inner tuple is
-     *        (source_cohort_index, min_stage, max_stage inclusive, matter_type).
+     *        (source_population_index, min_stage, max_stage inclusive, matter_type).
      *        For @c MatterType::LIVING, @a min_stage/@a max_stage are prey life-history stages; for @c MatterType::DEAD,
-     *        donor dead-biomass size-bin indices. Empty per-stage vector means no cohort-indexed source for that stage.
+     *        donor dead-biomass size-bin indices. Empty per-stage vector means no population-indexed source for that stage.
      */
-    const std::vector<std::vector<std::tuple<int, int, int, int>>>& getDietByCohortIndex() const;
-    void setDietByCohortIndex(std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index);
+    const std::vector<std::vector<std::tuple<int, int, int, int>>>& getDietByPopulationIndex() const;
+    void setDietByPopulationIndex(std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_population_index);
 
     const std::string& getName() const;
     float getBiomassToEnergyConversionFactor() const;
@@ -61,7 +61,7 @@ public:
     double getIndividualOccupiedSurface(std::size_t index, double out_of_range_default = 0.0) const;
     /**
      * @brief Per-species descriptors of dead matter by size class.
-     *        Outer index is dead-biomass bin (same order as Cohort::death_biomass_);
+     *        Outer index is dead-biomass bin (same order as Population::death_biomass_);
      *        each row stores chemical/physical/structural traits for that bin.
      */
     const std::vector<std::vector<double>>& getCharacteristicsDeathBiomass() const;
@@ -127,13 +127,13 @@ public:
     int calculateStage(int cycles_elapsed) const;
 
     /**
-     * @brief Redistributes cohort living biomass across life-history stages (mass moved only between stage bins).
-     * @param cohort Cohort bound to this species; must have matching @c getSpecie() == this.
-     * @param elapsed_cycles Monotonic cohort age in simulation cycles (typically incremented once per @c update_step).
+     * @brief Redistributes population living biomass across life-history stages (mass moved only between stage bins).
+     * @param population Population bound to this species; must have matching @c getSpecie() == this.
+     * @param elapsed_cycles Monotonic population age in simulation cycles (typically incremented once per @c update_step).
      *        Uses proportional transfer each cycle: stage i moves roughly @c 1/cycles_per_stages_[i]
      *        to stage i+1 with a small stochastic perturbation.
      */
-    virtual void updateStages(Cohort& cohort, int elapsed_cycles) const;
+    virtual void updateStages(Population& population, int elapsed_cycles) const;
 
     /**
      * @brief For each index i up to max(size), e_i = max(0, min(1, 1 - (D_i - R_i))) with D_i, R_i from the
@@ -151,25 +151,25 @@ public:
                                          const std::vector<double>& best_conditions);
 
     /**
-     * @brief Biomass gained from prey cohort @a cohort_index at stage @a stage_index (heterotroph path).
+     * @brief Biomass gained from prey population @a population_index at stage @a stage_index (heterotroph path).
      *        Default: no uptake; specialized later.
      */
     virtual double calculateObtainedBiomassIncrement(const Niche& niche,
-                                                     int cohort_index,
+                                                     int population_index,
                                                      int stage_index) const;
 
     /**
-     * @brief Per-stage individual growth for this species on the given cohort.
+     * @brief Per-stage individual growth for this species on the given population.
      * @param stage_index Life-history stage to process.
      */
-    virtual void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const;
+    virtual void process_individual_growth(Niche& niche, Population& population, int stage_index) const;
 
     /**
      * @brief Reproductive transfer from the current stage to stage 0 after individual growth.
      * @param stage_biomass_before_growth Stage biomass right before @ref process_individual_growth is applied.
      * @param biomass_increment_this_cycle Net biomass increment at @p stage_index caused by the growth step.
      */
-    virtual void process_reproductive_growth(Cohort& cohort,
+    virtual void process_reproductive_growth(Population& population,
                                              int stage_index,
                                              double stage_biomass_before_growth,
                                              double biomass_increment_this_cycle) const;
@@ -196,7 +196,7 @@ protected:
     std::vector<double> max_individual_growth_;
     std::vector<double> max_density_;
     double colony_ability_rate_{0.0};
-    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index_{};
+    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_population_index_{};
     double vulnerability_{0.0};
     bool initialized_{false};
 };

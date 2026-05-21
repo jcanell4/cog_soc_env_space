@@ -61,8 +61,8 @@ int main(int argc, char* argv[]) {
 
     niche.initialize();
 
-    if (niche.getCohortSet().empty()) {
-        log_fail("expected at least one cohort");
+    if (niche.getPopulationSet().empty()) {
+        log_fail("expected at least one population");
         return 1;
     }
 
@@ -87,8 +87,8 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         const SimulationFrameData& first_frame = reader.frameAt(0);
-        if (first_frame.cohorts.empty()) {
-            log_fail("snapshot reader should preserve cohort entries");
+        if (first_frame.populations.empty()) {
+            log_fail("snapshot reader should preserve population entries");
             return 1;
         }
         const SimulationFrameData interpolated = reader.interpolate(0.0);
@@ -98,12 +98,12 @@ int main(int argc, char* argv[]) {
         }
 
         nlohmann::json named_snapshot = snapshot;
-        named_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"] = "AUTOTROPH";
+        named_snapshot["initial_data"]["data"]["populations"][0]["specie"]["class_type"] = "AUTOTROPH";
         JsonEcosystem::saveJsonToFile(named_snapshot, "output/test_snapshot.json");
         SimulationSnapshotReader named_reader;
         named_reader.load("output/test_snapshot.json");
-        if (named_reader.frameAt(0).cohorts.empty() ||
-            named_reader.frameAt(0).cohorts[0].class_type != LivingBeingClassType::AUTOTROPH) {
+        if (named_reader.frameAt(0).populations.empty() ||
+            named_reader.frameAt(0).populations[0].class_type != LivingBeingClassType::AUTOTROPH) {
             log_fail("snapshot reader must accept class_type as string constant");
             return 1;
         }
@@ -117,18 +117,18 @@ int main(int argc, char* argv[]) {
             {"initial_data",
              {
                  {"data",
-                  {{"cohorts",
+                  {{"populations",
                     nlohmann::json::array(
                         {{{"biomass", {1.0}},
                           {"death_biomass", {0.0}},
                           {"specie",
                            {{"name", "string_class_type"},
                             {"class_type", "AUTOTROPH"},
-                            {"diet_by_cohort_index",
+                            {"diet_by_population_index",
                              nlohmann::json::array(
                                  {nlohmann::json::array(
-                                     {{{"cohort_index", "NUTRIENTS_TYPE"}, {"min_stage", 0}, {"max_stage", 0}},
-                                      {{"cohort_index", 12345}, {"min_stage", 0}, {"max_stage", 0}}})})}}}},
+                                     {{{"population_index", "NUTRIENTS_TYPE"}, {"min_stage", 0}, {"max_stage", 0}},
+                                      {{"population_index", 12345}, {"min_stage", 0}, {"max_stage", 0}}})})}}}},
                          {{"biomass", {1.0}},
                           {"death_biomass", {0.0}},
                           {"specie", {{"name", "int_class_type"}, {"class_type", LivingBeingClassType::HETEROTROPH}}}}})}}}}}};
@@ -141,12 +141,12 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        if (mixed_niche.getCohortSet().size() < 2U) {
-            log_fail("mixed parse should build two cohorts");
+        if (mixed_niche.getPopulationSet().size() < 2U) {
+            log_fail("mixed parse should build two populations");
             return 1;
         }
-        const LivingBeing* first_specie = mixed_niche.getCohortSet()[0].getSpecie();
-        const LivingBeing* second_specie = mixed_niche.getCohortSet()[1].getSpecie();
+        const LivingBeing* first_specie = mixed_niche.getPopulationSet()[0].getSpecie();
+        const LivingBeing* second_specie = mixed_niche.getPopulationSet()[1].getSpecie();
         if (first_specie == nullptr || second_specie == nullptr) {
             log_fail("mixed parse should build species pointers");
             return 1;
@@ -157,30 +157,30 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        const auto& diet_rules = first_specie->getDietByCohortIndex();
+        const auto& diet_rules = first_specie->getDietByPopulationIndex();
         if (diet_rules.empty() || diet_rules[0].size() < 2U ||
             std::get<0>(diet_rules[0][0]) != DietType::NUTRIENTS_TYPE ||
             std::get<0>(diet_rules[0][1]) != 12345) {
-            log_fail("cohort_index should parse from string and integer");
+            log_fail("population_index should parse from string and integer");
             return 1;
         }
 
         const nlohmann::json mixed_snapshot = JsonEcosystem::createJson(mixed_niche);
         const nlohmann::json& mixed_rules =
-            mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["diet_by_cohort_index"][0];
-        if (!mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"].is_string() ||
-            mixed_snapshot["initial_data"]["data"]["cohorts"][0]["specie"]["class_type"].get<std::string>() != "AUTOTROPH") {
+            mixed_snapshot["initial_data"]["data"]["populations"][0]["specie"]["diet_by_population_index"][0];
+        if (!mixed_snapshot["initial_data"]["data"]["populations"][0]["specie"]["class_type"].is_string() ||
+            mixed_snapshot["initial_data"]["data"]["populations"][0]["specie"]["class_type"].get<std::string>() != "AUTOTROPH") {
             log_fail("known class_type should serialize to string constant");
             return 1;
         }
-        if (!mixed_rules[0]["cohort_index"].is_string() ||
-            mixed_rules[0]["cohort_index"].get<std::string>() != "NUTRIENTS_TYPE") {
-            log_fail("known cohort_index should serialize to string constant");
+        if (!mixed_rules[0]["population_index"].is_string() ||
+            mixed_rules[0]["population_index"].get<std::string>() != "NUTRIENTS_TYPE") {
+            log_fail("known population_index should serialize to string constant");
             return 1;
         }
-        if (!mixed_rules[1]["cohort_index"].is_number_integer() ||
-            mixed_rules[1]["cohort_index"].get<int>() != 12345) {
-            log_fail("unknown cohort_index should serialize as numeric fallback");
+        if (!mixed_rules[1]["population_index"].is_number_integer() ||
+            mixed_rules[1]["population_index"].get<int>() != 12345) {
+            log_fail("unknown population_index should serialize as numeric fallback");
             return 1;
         }
     }
@@ -192,22 +192,22 @@ int main(int argc, char* argv[]) {
     }
 
     std::cout << "Niche nutrients: " << niche.getNutrients() << "\n";
-    for (const Cohort& cohort : niche.getCohortSet()) {
-        std::cout << "Cohort death biomass " << cohort.getId() << ": " << cohort.getTotalDeathBiomass() << "\n";
+    for (const Population& population : niche.getPopulationSet()) {
+        std::cout << "Population death biomass " << population.getId() << ": " << population.getTotalDeathBiomass() << "\n";
     }
     niche.update_nutrients();
     std::cout << "Niche nutrients after update: " << niche.getNutrients() << "\n";
-    for (const Cohort& cohort : niche.getCohortSet()) {
-        std::cout << "Cohort (" << cohort.getId() << ") death biomass: " << cohort.getTotalDeathBiomass() << "\n";
+    for (const Population& population : niche.getPopulationSet()) {
+        std::cout << "Population (" << population.getId() << ") death biomass: " << population.getTotalDeathBiomass() << "\n";
     }
-    for (Cohort& cohort : niche.getCohortSet()) {
-        std::cout << "Cohort (" << cohort.getId() << ") biomass: " << cohort.getTotalBiomass() << "\n";
-        for (int stage = 0; stage < cohort.getBiomass().size(); ++stage) {
-            std::cout << "   - Stage " << stage << ": " << cohort.getBiomass()[stage] << "\n";
-            cohort.update_deaths(stage);
-            std::cout << "   - Stage " << stage << " after update deaths: " << cohort.getBiomass()[stage] << "\n";
+    for (Population& population : niche.getPopulationSet()) {
+        std::cout << "Population (" << population.getId() << ") biomass: " << population.getTotalBiomass() << "\n";
+        for (int stage = 0; stage < population.getBiomass().size(); ++stage) {
+            std::cout << "   - Stage " << stage << ": " << population.getBiomass()[stage] << "\n";
+            population.update_deaths(stage);
+            std::cout << "   - Stage " << stage << " after update deaths: " << population.getBiomass()[stage] << "\n";
         }
-        std::cout << "Cohort (" << cohort.getId() << ") biomass after update deaths: " << cohort.getTotalBiomass() << "\n";
+        std::cout << "Population (" << population.getId() << ") biomass after update deaths: " << population.getTotalBiomass() << "\n";
     }
 
     utilities::seedRng(12345ULL);
@@ -215,21 +215,21 @@ int main(int argc, char* argv[]) {
     stage_species.setName("stage_test");
     stage_species.setCyclesPerStages({10, 10});
     {
-        Cohort cohort;
-        cohort.setSpecie(stage_species);
-        cohort.setBiomass({100.0, 0.0});
-        const double total0 = cohort.getTotalBiomass();
-        stage_species.updateStages(cohort, 1);
-        const double total1 = cohort.getTotalBiomass();
+        Population population;
+        population.setSpecie(stage_species);
+        population.setBiomass({100.0, 0.0});
+        const double total0 = population.getTotalBiomass();
+        stage_species.updateStages(population, 1);
+        const double total1 = population.getTotalBiomass();
         if (std::fabs(total0 - total1) > 1e-9) {
             log_fail("updateStages: total living biomass should be conserved");
             return 1;
         }
-        if (cohort.getBiomass()[0] >= total0 - 1e-9) {
+        if (population.getBiomass()[0] >= total0 - 1e-9) {
             log_fail("updateStages: stage 0 should lose biomass");
             return 1;
         }
-        if (cohort.getBiomass()[1] <= 0.0) {
+        if (population.getBiomass()[1] <= 0.0) {
             log_fail("updateStages: stage 1 should gain biomass");
             return 1;
         }

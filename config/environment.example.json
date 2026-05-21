@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "Example environment: niches, conditions, cohorts, and species definitions.",
+  "description": "Example environment: niches, conditions, populations, and species definitions.",
 
   "species": [
     {
@@ -33,7 +33,7 @@
       "nutrients": 40.0,
       "return_rate": [0.08, 0.04, 0.02],
       "conditions": [0.6, 0.65, 0.55],
-      "cohorts": [
+      "populations": [
         {
           "species_id": "diatom_a",
           "biomass": 12.5,
@@ -53,7 +53,7 @@
       "nutrients": 25.0,
       "return_rate": [0.1, 0.05, 0.02],
       "conditions": [0.55, 0.7, 0.5],
-      "cohorts": [
+      "populations": [
         {
           "species_id": "green_algae_b",
           "biomass": 5.0,

@@ -8,13 +8,13 @@
 
 class Niche;
 
-class Cohort {
+class Population {
 public:
-    Cohort();
-    Cohort(const Cohort& other);
-    Cohort(Cohort&& other) noexcept;
-    Cohort& operator=(const Cohort& other);
-    Cohort& operator=(Cohort&& other) noexcept;
+    Population();
+    Population(const Population& other);
+    Population(Population&& other) noexcept;
+    Population& operator=(const Population& other);
+    Population& operator=(Population&& other) noexcept;
 
     std::uint64_t getId() const;
 
@@ -30,16 +30,16 @@ public:
 
     const LivingBeing* getSpecie() const;
 
-    Cohort& setSpecie(const LivingBeing& value);
-    Cohort& setBiomass(std::vector<double> value);
-    Cohort& setDeathBiomass(std::vector<double> value);
+    Population& setSpecie(const LivingBeing& value);
+    Population& setBiomass(std::vector<double> value);
+    Population& setDeathBiomass(std::vector<double> value);
 
     void update_deaths(int stage);
     double decrement_death_biomass(std::vector<double> amounts);
     void update_step(Niche& niche);
     void initialize(const Niche& niche);
 
-    std::uint64_t getCohortElapsedCycles() const;
+    std::uint64_t getPopulationElapsedCycles() const;
 
     void transferStageBiomass(int from_stage, int to_stage, double amount);
     void death_by_age(double dead_biomass_by_age);
@@ -49,5 +49,5 @@ private:
     const LivingBeing* specie_{nullptr};
     std::vector<double> biomass_{0.0};
     std::vector<double> death_biomass_;
-    std::uint64_t cohort_elapsed_cycles_{0};
+    std::uint64_t population_elapsed_cycles_{0};
 };

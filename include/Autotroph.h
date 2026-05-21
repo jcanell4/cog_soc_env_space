@@ -24,8 +24,8 @@ public:
 
     void initialize(const Niche& niche) override;
 
-    void process_individual_growth(Niche& niche, Cohort& cohort, int stage_index) const override;
-    void process_reproductive_growth(Cohort& cohort,
+    void process_individual_growth(Niche& niche, Population& population, int stage_index) const override;
+    void process_reproductive_growth(Population& population,
                                      int stage_index,
                                      double stage_biomass_before_growth,
                                      double biomass_increment_this_cycle) const override;
@@ -38,7 +38,7 @@ public:
     int getStratum(std::size_t index, int out_of_range_default = 0) const;
     void setStratum(std::vector<int> value);
 
-    /** Minimum light required at each life-history stage for photosynthesis (same indexing as cohort biomass). */
+    /** Minimum light required at each life-history stage for photosynthesis (same indexing as population biomass). */
     const std::vector<double>& getMinLight() const;
     double getMinLight(std::size_t index, double out_of_range_default = 0.0) const;
     void setMinLight(std::vector<double> value);

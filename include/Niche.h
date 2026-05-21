@@ -5,22 +5,22 @@
  * @brief Minimal niche container for the restart.
  */
 
-#include "Cohort.h"
+#include "Population.h"
 
 #include <cstddef>
 #include <vector>
 
 class Niche {
 public:
-    using CohortSet = std::vector<Cohort>;
+    using PopulationSet = std::vector<Population>;
 
     Niche() = default;
 
     double getSurface() const;
     double getEcologicalHealth() const;
     double getNutrients() const;
-    const CohortSet& getCohortSet() const;
-    CohortSet& getCohortSet();
+    const PopulationSet& getPopulationSet() const;
+    PopulationSet& getPopulationSet();
     const std::vector<double>& getReturnRate() const;
     double getReturnRate(std::size_t index, double out_of_range_default = 0.0) const;
     const std::vector<double>& getConditions() const;
@@ -32,7 +32,7 @@ public:
     Niche& setSurface(double value);
     Niche& setEcologicalHealth(double value);
     Niche& setNutrients(double value);
-    Niche& setCohortSet(CohortSet value);
+    Niche& setPopulationSet(PopulationSet value);
     Niche& setReturnRate(std::vector<double> value);
     Niche& setConditions(std::vector<double> value);
     Niche& setLimitingFactors(std::vector<double> value);
@@ -44,7 +44,7 @@ public:
     double getEnergy() const;
     double getAutotrophBiomass() const;
     double getHeterotrophBiomass() const;
-    double getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_cohort_index) const;
+    double getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_population_index) const;
 
     /**
      * @brief Per-height-stratum sum of living autotroph biomass.
@@ -68,12 +68,12 @@ public:
     void initialize();
 
 private:
-    void update_cohorts();
+    void update_populations();
 
     double surface_{0.0};
     double ecological_health_{1.0};
     double nutrients_{0.0};
-    CohortSet cohort_set_;
+    PopulationSet population_set_;
     std::vector<double> return_rate_{};
     double return_cost_{0.0};
     std::vector<double> conditions_;

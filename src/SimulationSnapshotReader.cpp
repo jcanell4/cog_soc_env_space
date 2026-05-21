@@ -86,25 +86,25 @@ SimulationFrameData parseFrameData(const json& data_object, int elapsed_cycles) 
         frame.other_living_biomass = readNumberOrDefault(by_class, "other");
     }
 
-    if (data_object.contains("cohorts") && data_object["cohorts"].is_array()) {
-        for (const json& cohort_json : data_object["cohorts"]) {
-            if (!cohort_json.is_object()) {
+    if (data_object.contains("populations") && data_object["populations"].is_array()) {
+        for (const json& population_json : data_object["populations"]) {
+            if (!population_json.is_object()) {
                 continue;
             }
-            CohortFrameData cohort;
-            cohort.id = readIntOrDefault(cohort_json, "id", -1);
-            cohort.specie_name = readStringOrDefault(cohort_json, "specie_name");
-            cohort.energy = readNumberOrDefault(cohort_json, "energy");
-            cohort.total_biomass = readNumberOrDefault(cohort_json, "total_biomass");
-            cohort.total_death_biomass = readNumberOrDefault(cohort_json, "total_death_biomass");
-            cohort.stage_biomass = readNumberArrayOrDefault(cohort_json, "biomass");
+            PopulationFrameData population;
+            population.id = readIntOrDefault(population_json, "id", -1);
+            population.specie_name = readStringOrDefault(population_json, "specie_name");
+            population.energy = readNumberOrDefault(population_json, "energy");
+            population.total_biomass = readNumberOrDefault(population_json, "total_biomass");
+            population.total_death_biomass = readNumberOrDefault(population_json, "total_death_biomass");
+            population.stage_biomass = readNumberArrayOrDefault(population_json, "biomass");
 
-            if (cohort_json.contains("specie") && cohort_json["specie"].is_object()) {
-                const json& specie_json = cohort_json["specie"];
-                cohort.class_type = readClassTypeOrDefault(specie_json, "class_type", -1);
-                cohort.class_name = readStringOrDefault(specie_json, "class_name");
+            if (population_json.contains("specie") && population_json["specie"].is_object()) {
+                const json& specie_json = population_json["specie"];
+                population.class_type = readClassTypeOrDefault(specie_json, "class_type", -1);
+                population.class_name = readStringOrDefault(specie_json, "class_name");
             }
-            frame.cohorts.push_back(std::move(cohort));
+            frame.populations.push_back(std::move(population));
         }
     }
 

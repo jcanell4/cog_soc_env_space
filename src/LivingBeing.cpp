@@ -1,5 +1,5 @@
 #include "LivingBeing.h"
-#include "Cohort.h"
+#include "Population.h"
 #include "Niche.h"
 #include "SimulationConfig.h"
 #include "Utilities.h"
@@ -52,13 +52,13 @@ void LivingBeing::initialize(const Niche& niche) {
     initialized_ = true;
 }
 
-const std::vector<std::vector<std::tuple<int, int, int, int>>>& LivingBeing::getDietByCohortIndex() const {
-    return diet_by_cohort_index_;
+const std::vector<std::vector<std::tuple<int, int, int, int>>>& LivingBeing::getDietByPopulationIndex() const {
+    return diet_by_population_index_;
 }
 
-void LivingBeing::setDietByCohortIndex(
-    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_cohort_index) {
-    diet_by_cohort_index_ = std::move(diet_by_cohort_index);
+void LivingBeing::setDietByPopulationIndex(
+    std::vector<std::vector<std::tuple<int, int, int, int>>> diet_by_population_index) {
+    diet_by_population_index_ = std::move(diet_by_population_index);
 }
 
 const std::string& LivingBeing::getFoodType() const {
@@ -341,11 +341,11 @@ int LivingBeing::calculateStage(int cycles_elapsed) const {
     return d.size() - 1;
 }
 
-void LivingBeing::updateStages(Cohort& cohort, int elapsed_cycles) const {
+void LivingBeing::updateStages(Population& population, int elapsed_cycles) const {
     if (elapsed_cycles < 0) {
         return;
     }
-    if (cohort.getSpecie() != this) {
+    if (population.getSpecie() != this) {
         return;
     }
     const auto& d = cycles_per_stages_;
@@ -361,14 +361,14 @@ void LivingBeing::updateStages(Cohort& cohort, int elapsed_cycles) const {
         const double base = 1.0 / static_cast<double>(Ti);
         const double frac = std::clamp(
             base * (1.0 + utilities::randomNormal(0.0, noise_scale)), 0.0, 1.0);
-        const std::vector<double>& current_biomass = cohort.getBiomass();
+        const std::vector<double>& current_biomass = population.getBiomass();
         const double available =
             from < current_biomass.size() ? std::max(0.0, current_biomass[from]) : 0.0;
         const double transfer = available * frac;
         if (i == max_i) {
-            cohort.death_by_age(transfer);
+            population.death_by_age(transfer);
         }else{
-            cohort.transferStageBiomass(static_cast<int>(from), static_cast<int>(i), transfer);
+            population.transferStageBiomass(static_cast<int>(from), static_cast<int>(i), transfer);
         }
     }    
 }
@@ -397,17 +397,17 @@ double LivingBeing::calculate_effective_recruitment_efficiency(
 }
 
 double LivingBeing::calculateObtainedBiomassIncrement(const Niche& /*niche*/,
-                                                      int /*cohort_index*/,
+                                                      int /*population_index*/,
                                                       int /*stage_index*/) const {
     return 0.0;
 }
 
-void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, int stage) const {
-    if (cohort.getSpecie() == nullptr || cohort.getBiomass().empty() || stage < 0) {
-        throw std::invalid_argument("Invalid cohort specie or stage");
+void LivingBeing::process_individual_growth(Niche& /*niche*/, Population& population, int stage) const {
+    if (population.getSpecie() == nullptr || population.getBiomass().empty() || stage < 0) {
+        throw std::invalid_argument("Invalid population specie or stage");
     }
     const std::size_t su = static_cast<std::size_t>(stage);
-    if (su >= cohort.getBiomass().size()) {
+    if (su >= population.getBiomass().size()) {
         throw std::invalid_argument("Invalid stage index");
     }
 
@@ -415,7 +415,7 @@ void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, in
 
 /**
  * @brief Processes the reproductive growth of a species.
- * @param cohort The cohort of the species.
+ * @param population The population of the species.
  * @param stage_index The stage index of the species.
  * @param stage_biomass_before_growth The biomass of the species before growth.
  * @param biomass_increment_this_cycle The biomass increment of the species this cycle.
@@ -425,15 +425,15 @@ void LivingBeing::process_individual_growth(Niche& /*niche*/, Cohort& cohort, in
  *         where biomass_k is the biomass of the stage k, f is the fertility of the satage k of the specie and food_factor_k is the food factor of the stage k 
  *        of the specie which is determined by the ratio between the actual growth due to nutrition and the maximum growth due to nutrition.
  */
-void LivingBeing::process_reproductive_growth(Cohort& cohort,
+void LivingBeing::process_reproductive_growth(Population& population,
                                               int stage_index,
                                               double stage_biomass_before_growth,
                                               double biomass_increment_this_cycle) const {
-    if (cohort.getSpecie() == nullptr || cohort.getBiomass().empty() || stage_index < 0) {
-        throw std::invalid_argument("Invalid cohort specie or stage");
+    if (population.getSpecie() == nullptr || population.getBiomass().empty() || stage_index < 0) {
+        throw std::invalid_argument("Invalid population specie or stage");
     }
     const std::size_t su = static_cast<std::size_t>(stage_index);
-    std::vector<double> biomass = cohort.getBiomass();
+    std::vector<double> biomass = population.getBiomass();
     if (su >= biomass.size()) {
         throw std::invalid_argument("Invalid stage index");
     }
@@ -465,7 +465,7 @@ void LivingBeing::process_reproductive_growth(Cohort& cohort,
 
     biomass[su] = std::max(0.0, biomass[su] - reproductive_biomass);
     biomass[0] += reproductive_biomass;
-    cohort.setBiomass(std::move(biomass));
+    population.setBiomass(std::move(biomass));
 }
 
 /**

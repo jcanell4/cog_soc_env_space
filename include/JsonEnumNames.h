@@ -13,10 +13,10 @@ namespace json_enum_names {
 int parseClassTypeValue(const nlohmann::json& value, std::string_view field_path);
 
 /**
- * @brief Parse diet cohort_index JSON value supporting integer and strict constant names.
+ * @brief Parse diet population_index JSON value supporting integer and strict constant names.
  * @throws std::runtime_error on invalid type or unknown string constant.
  */
-int parseDietCohortIndexValue(const nlohmann::json& value, std::string_view field_path);
+int parseDietPopulationIndexValue(const nlohmann::json& value, std::string_view field_path);
 
 /**
  * @brief Serialize class type using constant name when known, numeric literal otherwise.
@@ -24,8 +24,8 @@ int parseDietCohortIndexValue(const nlohmann::json& value, std::string_view fiel
 nlohmann::json classTypeToJson(int class_type);
 
 /**
- * @brief Serialize diet cohort index using constant name when known, numeric literal otherwise.
+ * @brief Serialize diet population index using constant name when known, numeric literal otherwise.
  */
-nlohmann::json dietCohortIndexToJson(int cohort_index);
+nlohmann::json dietPopulationIndexToJson(int population_index);
 
 }  // namespace json_enum_names

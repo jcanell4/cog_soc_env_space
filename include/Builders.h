@@ -6,7 +6,7 @@
  */
 
 #include "Autotroph.h"
-#include "Cohort.h"
+#include "Population.h"
 #include "Environment.h"
 #include "Heterotroph.h"
 #include "Niche.h"
@@ -54,17 +54,17 @@ private:
     Heterotroph object_;
 };
 
-class CohortBuilder {
+class PopulationBuilder {
 public:
-    CohortBuilder& withSpecie(const LivingBeing& value);
-    CohortBuilder& withBiomass(std::vector<double> value);
-    CohortBuilder& withDeathBiomass(std::vector<double> value);
-    CohortBuilder& fromJson(const nlohmann::json& j);
-    CohortBuilder& fromJson(const nlohmann::json& j, const SpeciesRegistry& registry);
-    Cohort build() const;
+    PopulationBuilder& withSpecie(const LivingBeing& value);
+    PopulationBuilder& withBiomass(std::vector<double> value);
+    PopulationBuilder& withDeathBiomass(std::vector<double> value);
+    PopulationBuilder& fromJson(const nlohmann::json& j);
+    PopulationBuilder& fromJson(const nlohmann::json& j, const SpeciesRegistry& registry);
+    Population build() const;
 
 private:
-    Cohort object_;
+    Population object_;
 };
 
 class NicheBuilder {
@@ -72,7 +72,7 @@ public:
     NicheBuilder& withSurface(double value);
     NicheBuilder& withEcologicalHealth(double value);
     NicheBuilder& withNutrients(double value);
-    NicheBuilder& withCohortSet(Niche::CohortSet value);
+    NicheBuilder& withPopulationSet(Niche::PopulationSet value);
     NicheBuilder& withReturnRate(std::vector<double> value);
     NicheBuilder& withConditions(std::vector<double> value);
     NicheBuilder& withProspectingScanSharpness(double value);

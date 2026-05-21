@@ -43,12 +43,12 @@ double Niche::getNutrients() const {
     return nutrients_;
 }
 
-const Niche::CohortSet& Niche::getCohortSet() const {
-    return cohort_set_;
+const Niche::PopulationSet& Niche::getPopulationSet() const {
+    return population_set_;
 }
 
-Niche::CohortSet& Niche::getCohortSet() {
-    return cohort_set_;
+Niche::PopulationSet& Niche::getPopulationSet() {
+    return population_set_;
 }
 
 const std::vector<double>& Niche::getReturnRate() const {
@@ -94,8 +94,8 @@ Niche& Niche::setNutrients(double value) {
     return *this;
 }
 
-Niche& Niche::setCohortSet(CohortSet value) {
-    cohort_set_ = std::move(value);
+Niche& Niche::setPopulationSet(PopulationSet value) {
+    population_set_ = std::move(value);
     return *this;
 }
 
@@ -121,24 +121,24 @@ Niche& Niche::setProspectingScanSharpness(double value) {
 
 double Niche::getDeathBiomass() const {
     double total = 0.0;
-    for (const Cohort& cohort : cohort_set_) {
-        total += cohort.getTotalDeathBiomass();
+    for (const Population& population : population_set_) {
+        total += population.getTotalDeathBiomass();
     }
     return total;
 }
 
 double Niche::getLivingBiomass() const {
     double total = 0.0;
-    for (const Cohort& cohort : cohort_set_) {
-        total += cohort.getTotalBiomass();
+    for (const Population& population : population_set_) {
+        total += population.getTotalBiomass();
     }
     return total;
 }
 
 double Niche::calculateEnergy() const {
     double total_energy = std::max(0.0, getNutrients());
-    for (const Cohort& cohort : cohort_set_) {
-        total_energy += cohort.getEnergy();
+    for (const Population& population : population_set_) {
+        total_energy += population.getEnergy();
     }
     return total_energy;
 }
@@ -149,10 +149,10 @@ double Niche::getEnergy() const {
 
 double Niche::getAutotrophBiomass() const {
     double total = 0.0;
-    for (const Cohort& cohort : cohort_set_) {
-        const LivingBeing* sp = cohort.getSpecie();
+    for (const Population& population : population_set_) {
+        const LivingBeing* sp = population.getSpecie();
         if (sp != nullptr && sp->getClassType() == LivingBeingClassType::AUTOTROPH) {
-            total += cohort.getTotalBiomass();
+            total += population.getTotalBiomass();
         }
     }
     return total;
@@ -160,31 +160,31 @@ double Niche::getAutotrophBiomass() const {
 
 double Niche::getHeterotrophBiomass() const {
     double total = 0.0;
-    for (const Cohort& cohort : cohort_set_) {
-        const LivingBeing* sp = cohort.getSpecie();
+    for (const Population& population : population_set_) {
+        const LivingBeing* sp = population.getSpecie();
         if (sp != nullptr && sp->getClassType() == LivingBeingClassType::HETEROTROPH) {
-            total += cohort.getTotalBiomass();
+            total += population.getTotalBiomass();
         }
     }
     return total;
 }
 
-double Niche::getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_cohort_index) const {
+double Niche::getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>> diet_by_population_index) const {
     double total = 0.0;
-    for (const Cohort& cohort : cohort_set_) {
-        const LivingBeing* sp = cohort.getSpecie();
+    for (const Population& population : population_set_) {
+        const LivingBeing* sp = population.getSpecie();
         if (sp == nullptr) {
             continue;
         }
-        const auto& diet = sp->getDietByCohortIndex();
+        const auto& diet = sp->getDietByPopulationIndex();
         if (diet.empty()) {
             continue;
         }
         for (const auto& all_diet_entry : diet) {
             for(std::size_t i = 0; i < all_diet_entry.size(); ++i) {
                 const auto& diet_entry = all_diet_entry[i];
-                if (contains(diet_by_cohort_index, diet_entry)) {
-                    total += cohort.getBiomass(i, 0.0);
+                if (contains(diet_by_population_index, diet_entry)) {
+                    total += population.getBiomass(i, 0.0);
                 }
             }
         }
@@ -194,14 +194,14 @@ double Niche::getBiomassForDietIndex(std::vector<std::tuple<int, int, int, int>>
 
 std::vector<double> Niche::getAutotrophBiomassPerStratum() const {
     std::vector<double> per_stratum;
-    for (const Cohort& cohort : cohort_set_) {
-        const LivingBeing* sp = cohort.getSpecie();
+    for (const Population& population : population_set_) {
+        const LivingBeing* sp = population.getSpecie();
         if (sp == nullptr || sp->getClassType() != LivingBeingClassType::AUTOTROPH) {
             continue;
         }
         const Autotroph* autotroph = static_cast<const Autotroph*>(sp);
         const std::vector<int>& stratum = autotroph->getStratum();
-        const std::vector<double>& biomass = cohort.getBiomass();
+        const std::vector<double>& biomass = population.getBiomass();
         for (std::size_t stage = 0; stage < biomass.size(); ++stage) {
             if (stage >= stratum.size()) {
                 continue;
@@ -230,15 +230,15 @@ std::vector<double> Niche::getAutotrophBiomassPerStratum() const {
  */
 std::vector<double> Niche::getLithPerStratum() const {
     std::vector<double> shadow_accumulated;
-    for (const Cohort& cohort : cohort_set_) {
-        const LivingBeing* sp = cohort.getSpecie();
+    for (const Population& population : population_set_) {
+        const LivingBeing* sp = population.getSpecie();
         if (sp == nullptr || sp->getClassType() != LivingBeingClassType::AUTOTROPH) {
             continue;
         }
         const Autotroph* autotroph = static_cast<const Autotroph*>(sp);
         const std::vector<int>& stratum = autotroph->getStratum();
         const std::vector<double>& opacity = autotroph->getOpacity();
-        const std::vector<double>& biomass = cohort.getBiomass();
+        const std::vector<double>& biomass = population.getBiomass();
         for (std::size_t stage = 0; stage < biomass.size(); ++stage) {
             if (stage >= stratum.size() || stage >= opacity.size()) {
                 continue;
@@ -294,8 +294,8 @@ void Niche::update_nutrients() {
     const double effective_return_cost = std::clamp(return_cost_, 0.0, 1.0);
     const double nutrient_factor = 1.0 - effective_return_cost;
 
-    for (Cohort& cohort : cohort_set_) {
-        const std::vector<double>& death = cohort.getDeathBiomass();
+    for (Population& population : population_set_) {
+        const std::vector<double>& death = population.getDeathBiomass();
         if (death.empty() || return_rate_.empty()) {
             continue;
         }
@@ -311,7 +311,7 @@ void Niche::update_nutrients() {
             processed[i] = death_i * return_i * multiplicative;
         }
 
-        const double extracted = cohort.decrement_death_biomass(std::move(processed));
+        const double extracted = population.decrement_death_biomass(std::move(processed));
         nutrients_ += extracted * nutrient_factor;
     }
 }
@@ -324,20 +324,20 @@ void Niche::update_niche() {
 }
 
 void Niche::step() {
-    update_cohorts();
+    update_populations();
     update_nutrients();
     update_niche();
 }
 
 void Niche::initialize() {
-    for (Cohort& cohort : cohort_set_) {
-        cohort.initialize(*this);
+    for (Population& population : population_set_) {
+        population.initialize(*this);
     }
 }
 
-void Niche::update_cohorts() {
-    for (Cohort& cohort : cohort_set_) {
-        cohort.update_step(*this);
+void Niche::update_populations() {
+    for (Population& population : population_set_) {
+        population.update_step(*this);
     }
 }
 

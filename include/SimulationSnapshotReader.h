@@ -26,7 +26,7 @@ public:
     /**
      * @brief Returns an interpolated frame for fractional indices.
      *
-     * Interpolation is linear for niche aggregate metrics. Cohort data is taken
+     * Interpolation is linear for niche aggregate metrics. Population data is taken
      * from the closest source frame.
      */
     SimulationFrameData interpolate(double frame_position) const;

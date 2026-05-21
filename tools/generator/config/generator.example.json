@@ -1,0 +1,111 @@
+{
+  "version": 2,
+  "description": "Niche builder: niche_conf (NicheGen / NicheConf schema), species_type recipes, food_web populations.",
+  "random_seed": 42,
+
+  "niche_conf": {
+    "surface": 10000.0,
+    "n_bins": 4,
+    "generation_config": {
+      "nutrients_conf": 3,
+      "prospecting_scan_sharpness": 1.0
+    }
+  },
+
+  "species_type": {
+    "autotroph_a": {
+      "class": "autotroph",
+      "name": "AutotrophExampleA",
+      "cycles_per_stages": [3, 1, 2],
+      "food_type": "0.0.0.0",
+      "generation_config": {
+        "biomass_energy": {"std": 0.1},
+        "death_biomass_energy": {"std": 0.2},
+        "maintenance_cost_range": [0.05, 0.3],
+        "max_fertility_range": [0.5, 0.9],
+        "size": [0, 0, 1],
+        "death_biomass": {"size":{"1": 0, "2": 1}, "fraction":{"0": 0.6}},
+        "max_individual_growth": {"mean": 0.85, "std": 0.1},
+        "stratum_config": {"n_strata": 2, "stage_height_class": {"0": 0, "1": 0, "2": 1}}
+      }
+    },
+    "autotroph_b": {
+      "class": "autotroph",
+      "name": "AutotrophExampleB",
+      "cycles_per_stages": [2, 3, 5, 10],
+      "food_type": "0.0.1.0",
+      "generation_config": {
+        "biomass_energy": {"mean":200, "std": 0.3},
+        "death_biomass_energy": {"std": 0.2},
+        "maintenance_cost_range": [0.05, 0.1],
+        "max_fertility_range": [0.5, 0.7],
+        "size": [0, 1, 2, 3],
+        "death_biomass": {"size":{"1": 1, "2": 2}, "fraction":{"1": 0.5}},
+        "max_individual_growth": {"mean": 0.6, "std": 0.3},
+        "colony": {"mean": 0, "std": 0},
+        "stratum_config": {"n_strata": 3, "stage_height_class": {"0": 0, "1": 1, "2": 2, "3": 2}}
+      }
+    },
+    "heterotroph_a": {
+      "class": "heterotroph",
+      "name": "HeterotrophExampleA",
+      "cycles_per_stages": [2, 3, 5],
+      "food_type": "0.1.0.0",
+      "generation_config": {
+        "biomass_energy": {"mean":250, "std": 0.1},
+        "death_biomass_energy": {"mean":25, "std": 0.1},
+        "maintenance_cost_range": [0.1, 0.2],
+        "max_fertility_range": [0.5, 0.6],
+        "size_classes": [0, 0, 1],
+        "death_biomass": {"size_clases":{"1": 0, "2": 1}, "fraction":{"1": 0.5}},
+        "max_individual_growth": {"mean": 0.6, "std": 0.3},
+        "prospecting_range": [10, 50],
+        "assimilation_efficiency_range": [0.4, 0.6],
+        "ingestion_residue_fraction": {"1": 0.3, "2": 0.3},
+        "prey_location": {"mean": 0.5, "std": 0.3},
+        "diet_by_food_type": [
+          [{"food_type": "0.0", "min_stage": 0, "max_stage": 1, "matter_type": 0}],
+          [{"food_type": "0.0.1", "min_bin": 2, "max_bin": 2, "matter_type": 1}]
+        ]
+      }
+    }
+  },
+
+  "food_web": [
+    {
+      "species_type": "autotroph_a",
+      "spacie_name": "Autotroph_1",
+      "biomass": [0, 2000, 1000],
+      "death_biomass": [1200.0, 200.0, 0.0],
+      "id": 1
+    },
+    {
+      "species_type": "autotroph_a",
+      "specie_name": "Autotroph_1",
+      "biomass": [0, 2000, 1000],
+      "death_biomass": [1200.0, 200.0, 0.0],
+      "id": 1
+    },
+    {
+      "species_type": "autotroph_b",
+      "specie_name": "Autotroph_1",
+      "biomass": [0, 300, 200],
+      "death_biomass": [1200.0, 200.0, 0.0],
+      "id": 1
+    },
+    {
+      "species_type": "heterotroph_a",
+      "spacie_name": "Heterotroph_1",
+      "biomass": [0.0, 1000.0, 500.0],
+      "death_biomass": [100.0, 200.0, 50.0],
+      "id": 2
+    },
+    {
+      "species_type": "heterotroph_a",
+      "spacie_name": "Heterotroph_1",
+      "biomass": [0.0, 1000.0, 500.0],
+      "death_biomass": [100.0, 200.0, 50.0],
+      "id": 2
+    }
+  ]
+}

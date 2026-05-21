@@ -126,38 +126,38 @@ doxygen Doxyfile
 | Type | Header | Role |
 |------|--------|------|
 | **LivingBeing** | `LivingBeing.h` | Abstract species: name, energy per biomass, death & growth demand contracts. |
-| **Heterotroph** | `Heterotroph.h` | Consumer: living prey (`MatterType::LIVING`) and/or detritus (`MatterType::DEAD`) via `diet_by_cohort_index`; assimilation, residue routing, prospecting, `diet_by_food_type`, and optional parental supply. |
+| **Heterotroph** | `Heterotroph.h` | Consumer: living prey (`MatterType::LIVING`) and/or detritus (`MatterType::DEAD`) via `diet_by_population_index`; assimilation, residue routing, prospecting, `diet_by_food_type`, and optional parental supply. |
 | **Autotroph** | `Autotroph.h` | Producer: tolerances, stress death ratio, environment coupling, nutrient-limited growth/death; JSON via `AutotrophBuilder`. |
-| **Cohort** | `Cohort.h` | Population of one species: living/dead biomass, `update_biomass`, `calculate_growth_demand`. |
-| **Niche** | `Niche.h` | Contains cohorts, nutrients, conditions; `step()` runs nutrient recycling and cohort updates. |
+| **Population** | `Population.h` | Population of one species: living/dead biomass, `update_biomass`, `calculate_growth_demand`. |
+| **Niche** | `Niche.h` | Contains populations, nutrients, conditions; `step()` runs nutrient recycling and population updates. |
 | **Constants** | `Constants.h` | `NUTRIENTS_POS` — channel code for nutrient-limited growth tuples. |
 | **SimulationConfig** | `SimulationConfig.h` | Global simulation parameters loaded once from JSON; `global()` read-only access. |
 
 ### Growth-demand tuple convention
 
-`LivingBeing::calculate_growth_biomass` / `Cohort::calculate_growth_demand` return `std::vector<std::tuple<int,double>>`:
+`LivingBeing::calculate_growth_biomass` / `Population::calculate_growth_demand` return `std::vector<std::tuple<int,double>>`:
 
-- **`NUTRIENTS_POS`** (`Constants.h`) — first int: demand competes for niche **nutrients** (autotroph path in `Niche::update_cohorts`).
-- **Non-negative `code`** (and not `NUTRIENTS_POS`) — consumer: source cohort index = `code` (living prey or donor dead pool per `matter_type`); a consumer may emit several tuples (split intake across sources).
+- **`NUTRIENTS_POS`** (`Constants.h`) — first int: demand competes for niche **nutrients** (autotroph path in `Niche::update_populations`).
+- **Non-negative `code`** (and not `NUTRIENTS_POS`) — consumer: source population index = `code` (living prey or donor dead pool per `matter_type`); a consumer may emit several tuples (split intake across sources).
 
-`LivingBeing::diet_by_cohort_index` is stage-indexed and stores per-consumer-stage diet rules:
+`LivingBeing::diet_by_population_index` is stage-indexed and stores per-consumer-stage diet rules:
 
 - C++ type: `std::vector<std::vector<std::tuple<int,int,int,int>>>`
 - Outer index: consumer stage
-- Inner tuple: `(source_cohort_index, min_stage, max_stage, matter_type)` with **inclusive** bounds
+- Inner tuple: `(source_population_index, min_stage, max_stage, matter_type)` with **inclusive** bounds
 
 For **`MatterType::LIVING`**, `min_stage`…`max_stage` are prey life-history stages; for **`MatterType::DEAD`**, they are donor **dead-biomass bin** indices.
 
-`cohort_index` accepts both formats in input JSON:
+`population_index` accepts both formats in input JSON:
 - integer code (legacy/current)
 - strict constant name (exact match): `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 
 JSON shape under each species:
 
 ```json
-"diet_by_cohort_index": [
+"diet_by_population_index": [
   [
-    { "cohort_index": 3, "min_stage": 0, "max_stage": 1 }
+    { "population_index": 3, "min_stage": 0, "max_stage": 1 }
   ],
   [
     [5, 1, 2]
@@ -166,7 +166,7 @@ JSON shape under each species:
 ```
 
 Rule formats accepted inside each stage list:
-- object: `{ "cohort_index": X, "min_stage": Y, "max_stage": Z }`
+- object: `{ "population_index": X, "min_stage": Y, "max_stage": Z }`
 - numeric triplet: `[X, Y, Z]`
 
 `Heterotroph::diet_by_food_type` also uses stage-indexed structure:
@@ -190,8 +190,8 @@ JSON shape:
 
 ### Simulation flow (niche)
 
-1. **`Niche::update_nutrients`** — per cohort, move `return_rate × death_biomass` into `nutrients` and out of dead pool; then **`update_ecological_health`** with the nutrient delta.
-2. **`Niche::update_cohorts`** — random starting index, for each cohort resolve growth demand tuples and update nutrients / biomass transfers.
+1. **`Niche::update_nutrients`** — per population, move `return_rate × death_biomass` into `nutrients` and out of dead pool; then **`update_ecological_health`** with the nutrient delta.
+2. **`Niche::update_populations`** — random starting index, for each population resolve growth demand tuples and update nutrients / biomass transfers.
 
 ### Heterotroph encounter and ingestion model
 
@@ -215,7 +215,7 @@ JSON shape:
    - Capture compatibility is computed via
      `LivingBeing::calculate_effective_recruitment_efficiency(recruitment, defense)`.
    - The algorithm performs two passes:
-     - build theoretical captures for every prey cohort/stage,
+     - build theoretical captures for every prey population/stage,
      - scale all captures uniformly so total gross ingestion does not exceed the growth-limited cap derived from:
        - predator stage biomass,
        - `max_individual_growth`,
@@ -229,17 +229,17 @@ JSON shape:
    - Predator gain is assimilated intake minus maintenance cost.
 
 4. **Parental supply extension**
-   - If diet contains `DietType::PARENTAL_SUPPLY_TYPE`, remaining unmet ingestion can be sourced from fertile stages of the same cohort.
+   - If diet contains `DietType::PARENTAL_SUPPLY_TYPE`, remaining unmet ingestion can be sourced from fertile stages of the same population.
   - Donor contribution is proportional to fertility weights, with stochastic correction (`SimulationConfig::noise_stdv`) to avoid deterministic full-cap attainment each step.
-   - Non-assimilated parental intake is routed to the cohort dead-biomass size bins.
+   - Non-assimilated parental intake is routed to the population dead-biomass size bins.
 
-**Dead matter** — After the living pass, for each `DEAD` diet rule and donor cohort, for each death-bin index `s` with positive mass, a theoretical gross take uses prospecting (scan), a fixed decomposition-intensity factor, donor availability, and `calculate_effective_recruitment_efficiency` against the donor’s death-trait row for `s`. A global `α` caps total gross ingestion; realized take debits donor dead pools; non-assimilated mass returns to the donor’s death bins; optional parental supply uses the same helper as the living path.
+**Dead matter** — After the living pass, for each `DEAD` diet rule and donor population, for each death-bin index `s` with positive mass, a theoretical gross take uses prospecting (scan), a fixed decomposition-intensity factor, donor availability, and `calculate_effective_recruitment_efficiency` against the donor’s death-trait row for `s`. A global `α` caps total gross ingestion; realized take debits donor dead pools; non-assimilated mass returns to the donor’s death bins; optional parental supply uses the same helper as the living path.
 
 Restart scaffolding: **`HeterotrophBuilder`** exposes consumer parameters (assimilation, residue grids, diet rules) and `prospecting_ability` (absolute searched surface units per cycle).
 
 ### Dead biomass size bins (dynamic length)
 
-- `death_biomass` is a dynamic vector (`std::vector<double>`) per cohort; there is no fixed bin count.
+- `death_biomass` is a dynamic vector (`std::vector<double>`) per population; there is no fixed bin count.
 - Bin convention: index `0` is the finest / most degraded detritus class.
 - `Niche::return_rate` is also dynamic; nutrient recycling applies per bin index and treats missing
   indices as `0`.
@@ -271,14 +271,14 @@ Example: [`config/simulation.example.json`](config/simulation.example.json).
 `JsonEcosystem` provides helper methods to serialize runtime ecosystem state into an append-only JSON structure:
 
 - `createJson(const Niche&)` creates:
-  - `initial_data` with a full `Niche` snapshot (including cohorts and species details)
+  - `initial_data` with a full `Niche` snapshot (including populations and species details)
   - `step_data` as an empty array
 - `updateJson(const Niche&, int elapsed_cycles, json&)` appends one full niche snapshot to `step_data`
 - `saveJsonToFile(const json&, const std::string&, int indent = 2)` writes JSON to disk
 
 Enum-like fields support mixed input and named output:
 - `specie.class_type` input accepts integer or strict constant name: `AUTOTROPH`, `HETEROTROPH`
-- `specie.diet_by_cohort_index[].cohort_index` input accepts integer or strict constant name: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
+- `specie.diet_by_population_index[].population_index` input accepts integer or strict constant name: `NUTRIENTS_TYPE`, `CATABOLIC_TYPE`, `PARENTAL_SUPPLY_TYPE`, `HETEROTROPH_TYPE`
 - Output prefers constant names when a mapping exists; otherwise writes the numeric literal in the same field
 
 Output shape:

@@ -1,4 +1,4 @@
-#include "Cohort.h"
+#include "Population.h"
 #include "Constants.h"
 #include "Niche.h"
 #include "SimulationConfig.h"
@@ -9,7 +9,7 @@
 
 namespace {
 
-std::uint64_t allocate_cohort_id() {
+std::uint64_t allocate_population_id() {
     static std::uint64_t next = 1;
     return next++;
 }
@@ -33,63 +33,63 @@ std::vector<double> normalizeNonNegative(std::vector<double> value) {
 
 }
 
-Cohort::Cohort() : id_(allocate_cohort_id()) {}
+Population::Population() : id_(allocate_population_id()) {}
 
-Cohort::Cohort(const Cohort& other)
-    : id_(allocate_cohort_id()),
+Population::Population(const Population& other)
+    : id_(allocate_population_id()),
       specie_(other.specie_),
       biomass_(other.biomass_),
       death_biomass_(other.death_biomass_),
-      cohort_elapsed_cycles_(0) {}
+      population_elapsed_cycles_(0) {}
 
-Cohort::Cohort(Cohort&& other) noexcept
+Population::Population(Population&& other) noexcept
     : id_(other.id_),
       specie_(other.specie_),
       biomass_(std::move(other.biomass_)),
       death_biomass_(std::move(other.death_biomass_)),
-      cohort_elapsed_cycles_(other.cohort_elapsed_cycles_) {
+      population_elapsed_cycles_(other.population_elapsed_cycles_) {
     other.specie_ = nullptr;
     other.id_ = 0;
-    other.cohort_elapsed_cycles_ = 0;
+    other.population_elapsed_cycles_ = 0;
 }
 
-Cohort& Cohort::operator=(const Cohort& other) {
+Population& Population::operator=(const Population& other) {
     if (this != &other) {
         specie_ = other.specie_;
         biomass_ = other.biomass_;
         death_biomass_ = other.death_biomass_;
-        cohort_elapsed_cycles_ = other.cohort_elapsed_cycles_;
+        population_elapsed_cycles_ = other.population_elapsed_cycles_;
     }
     return *this;
 }
 
-Cohort& Cohort::operator=(Cohort&& other) noexcept {
+Population& Population::operator=(Population&& other) noexcept {
     if (this != &other) {
         specie_ = other.specie_;
         biomass_ = std::move(other.biomass_);
         death_biomass_ = std::move(other.death_biomass_);
-        cohort_elapsed_cycles_ = other.cohort_elapsed_cycles_;
+        population_elapsed_cycles_ = other.population_elapsed_cycles_;
         other.specie_ = nullptr;
         other.id_ = 0;
-        other.cohort_elapsed_cycles_ = 0;
+        other.population_elapsed_cycles_ = 0;
     }
     return *this;
 }
 
-std::uint64_t Cohort::getId() const {
+std::uint64_t Population::getId() const {
     return id_;
 }
 
-const std::string& Cohort::getSpecieName() const {
+const std::string& Population::getSpecieName() const {
     static const std::string empty_name;
     return specie_ ? specie_->getName() : empty_name;
 }
 
-double Cohort::getEnergy() const {
+double Population::getEnergy() const {
     return calculateEnergy();
 }
 
-double Cohort::calculateEnergy() const {
+double Population::calculateEnergy() const {
     if (specie_ == nullptr) {
         return 0.0;
     }
@@ -100,15 +100,15 @@ double Cohort::calculateEnergy() const {
     return living_energy + death_energy;
 }
 
-const std::vector<double>& Cohort::getBiomass() const {
+const std::vector<double>& Population::getBiomass() const {
     return biomass_;
 }
 
-double Cohort::getBiomass(std::size_t index, double out_of_range_default) const {
+double Population::getBiomass(std::size_t index, double out_of_range_default) const {
     return index < biomass_.size() ? biomass_[index] : out_of_range_default;
 }
 
-double Cohort::getTotalBiomass() const {
+double Population::getTotalBiomass() const {
     double total = 0.0;
     for (double value : biomass_) {
         total += value;
@@ -116,15 +116,15 @@ double Cohort::getTotalBiomass() const {
     return total;
 }
 
-const std::vector<double>& Cohort::getDeathBiomass() const {
+const std::vector<double>& Population::getDeathBiomass() const {
     return death_biomass_;
 }
 
-double Cohort::getDeathBiomass(std::size_t index, double out_of_range_default) const {
+double Population::getDeathBiomass(std::size_t index, double out_of_range_default) const {
     return index < death_biomass_.size() ? death_biomass_[index] : out_of_range_default;
 }
 
-double Cohort::getTotalDeathBiomass() const {
+double Population::getTotalDeathBiomass() const {
     double total = 0.0;
     for (double value : death_biomass_) {
         total += value;
@@ -132,38 +132,38 @@ double Cohort::getTotalDeathBiomass() const {
     return total;
 }
 
-const LivingBeing* Cohort::getSpecie() const {
+const LivingBeing* Population::getSpecie() const {
     return specie_;
 }
 
-Cohort& Cohort::setSpecie(const LivingBeing& value) {
+Population& Population::setSpecie(const LivingBeing& value) {
     specie_ = &value;
     return *this;
 }
 
-Cohort& Cohort::setBiomass(std::vector<double> value) {
+Population& Population::setBiomass(std::vector<double> value) {
     biomass_ = normalizeNonNegative(std::move(value));
     return *this;
 }
 
-Cohort& Cohort::setDeathBiomass(std::vector<double> value) {
+Population& Population::setDeathBiomass(std::vector<double> value) {
     death_biomass_ = normalizeDeathBins(std::move(value));
     return *this;
 }
 
 /**
- * @brief Updates the deaths of a cohort.
- * @param stage The stage of the cohort.
+ * @brief Updates the deaths of a population.
+ * @param stage The stage of the population.
  *        The deaths are determined by the resilience of the specie (resistance to the adverse conditions).
- *        The deaths are determined by the vulnerability of the specie as euclidean distance between the environment conditions and the best 
+ *        The deaths are determined by the vulnerability of the specie as euclidean distance between the environment conditions and the best
  *        conditions for this stage of the specie.
  *        The equation for death_factor is:
  *        death_factor = vulnerability * (1-resilience)
  *        The equation for dead_i is:
  *        dead_i = biomass_[i] * death_factor
- *        where biomass_[i] is the biomass of the stage i of the cohort.
+ *        where biomass_[i] is the biomass of the stage i of the population.
  */
-void Cohort::update_deaths(int stage) {
+void Population::update_deaths(int stage) {
     if (specie_ == nullptr || biomass_.empty() || stage < 0) {
         return;
     }
@@ -200,11 +200,11 @@ void Cohort::update_deaths(int stage) {
     }
 }
 
-std::uint64_t Cohort::getCohortElapsedCycles() const {
-    return cohort_elapsed_cycles_;
+std::uint64_t Population::getPopulationElapsedCycles() const {
+    return population_elapsed_cycles_;
 }
 
-void Cohort::transferStageBiomass(int from_stage, int to_stage, double amount) {
+void Population::transferStageBiomass(int from_stage, int to_stage, double amount) {
     if (from_stage < 0 || to_stage < 0 || amount <= 0.0) {
         return;
     }
@@ -222,7 +222,7 @@ void Cohort::transferStageBiomass(int from_stage, int to_stage, double amount) {
     biomass_[to] += take;
 }
 
-void Cohort::death_by_age(double dead_biomass_by_age) {
+void Population::death_by_age(double dead_biomass_by_age) {
     if (dead_biomass_by_age <= 0.0 || biomass_.empty()) {
         return;
     }
@@ -257,7 +257,7 @@ void Cohort::death_by_age(double dead_biomass_by_age) {
     }
 }
 
-double Cohort::decrement_death_biomass(std::vector<double> amounts) {
+double Population::decrement_death_biomass(std::vector<double> amounts) {
     amounts = normalizeDeathBins(std::move(amounts));
     const double before = getTotalDeathBiomass();
     const std::size_t n = std::min(death_biomass_.size(), amounts.size());
@@ -268,11 +268,11 @@ double Cohort::decrement_death_biomass(std::vector<double> amounts) {
     return before - getTotalDeathBiomass();
 }
 
-void Cohort::update_step(Niche& niche) {
+void Population::update_step(Niche& niche) {
     if (specie_ == nullptr || biomass_.empty()) {
         return;
     }
-    ++cohort_elapsed_cycles_;
+    ++population_elapsed_cycles_;
     for (std::size_t stage = 0; stage < biomass_.size(); ++stage) {
         const std::vector<double>& biomass_before_growth = getBiomass();
         const double stage_biomass_before_growth = stage < biomass_before_growth.size() ? biomass_before_growth[stage] : 0.0;
@@ -288,15 +288,14 @@ void Cohort::update_step(Niche& niche) {
             biomass_increment_this_cycle);
         update_deaths(static_cast<int>(stage));
     }
-    specie_->updateStages(*this, static_cast<int>(cohort_elapsed_cycles_));
+    specie_->updateStages(*this, static_cast<int>(population_elapsed_cycles_));
 }
 
-void Cohort::initialize(const Niche& niche) {
+void Population::initialize(const Niche& niche) {
     if (specie_ == nullptr) {
         return;
     }
-    // Species initialize is non-const, but cohorts store a const species pointer by design.
+    // Species initialize is non-const, but populations store a const species pointer by design.
     LivingBeing* specie = const_cast<LivingBeing*>(specie_);
     specie->initialize(niche);
 }
-

@@ -46,14 +46,14 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int, int>& out_rul
         const int matter_type =
             rule_json.size() >= 4U && rule_json[3].is_number_integer() ? rule_json[3].get<int>() : MatterType::LIVING;
         out_rule = std::make_tuple(
-            json_enum_names::parseDietCohortIndexValue(rule_json[0], "diet_by_cohort_index[][0]"),
+            json_enum_names::parseDietPopulationIndexValue(rule_json[0], "diet_by_population_index[][0]"),
             rule_json[1].get<int>(),
             rule_json[2].get<int>(),
             matter_type);
         return true;
     }
     if (rule_json.is_object()) {
-        if (!rule_json.contains("cohort_index")) {
+        if (!rule_json.contains("population_index")) {
             return false;
         }
         const bool has_stage_names = rule_json.contains("min_stage") && rule_json.contains("max_stage");
@@ -68,7 +68,7 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int, int>& out_rul
         }
         const int matter_type = rule_json.value("matter_type", MatterType::LIVING);
         out_rule = std::make_tuple(
-            json_enum_names::parseDietCohortIndexValue(rule_json["cohort_index"], "diet_by_cohort_index[].cohort_index"),
+            json_enum_names::parseDietPopulationIndexValue(rule_json["population_index"], "diet_by_population_index[].population_index"),
             rule_json[min_key].get<int>(),
             rule_json[max_key].get<int>(),
             matter_type);
@@ -77,7 +77,7 @@ bool readDietRule(const json& rule_json, std::tuple<int, int, int, int>& out_rul
     return false;
 }
 
-std::vector<std::vector<std::tuple<int, int, int, int>>> readDietByCohortIndex(const json& j) {
+std::vector<std::vector<std::tuple<int, int, int, int>>> readDietByPopulationIndex(const json& j) {
     std::vector<std::vector<std::tuple<int, int, int, int>>> out;
     if (!j.is_array()) {
         return out;
@@ -194,8 +194,8 @@ void applyLivingBeingCommonFields(LivingBeing& target, const json& specie_j) {
     if (specie_j.contains("colony_ability_rate")) {
         target.setColonyAbilityRate(specie_j["colony_ability_rate"].get<double>());
     }
-    if (specie_j.contains("diet_by_cohort_index")) {
-        target.setDietByCohortIndex(readDietByCohortIndex(specie_j["diet_by_cohort_index"]));
+    if (specie_j.contains("diet_by_population_index")) {
+        target.setDietByPopulationIndex(readDietByPopulationIndex(specie_j["diet_by_population_index"]));
     }
 }
 
@@ -216,11 +216,11 @@ void applyHeterotrophConsumerFields(Heterotroph& target, const json& specie_j) {
     }
 }
 
-const LivingBeing* buildSpecieFromSnapshotJson(const json& cohort_j) {
-    if (!cohort_j.contains("specie") || !cohort_j["specie"].is_object()) {
+const LivingBeing* buildSpecieFromSnapshotJson(const json& population_j) {
+    if (!population_j.contains("specie") || !population_j["specie"].is_object()) {
         return nullptr;
     }
-    const json& specie_j = cohort_j["specie"];
+    const json& specie_j = population_j["specie"];
     int class_type = LivingBeingClassType::AUTOTROPH;
     if (specie_j.contains("class_type")) {
         class_type = json_enum_names::parseClassTypeValue(specie_j["class_type"], "specie.class_type");
@@ -394,32 +394,32 @@ Heterotroph HeterotrophBuilder::build() const {
     return object_;
 }
 
-CohortBuilder& CohortBuilder::withSpecie(const LivingBeing& value) {
+PopulationBuilder& PopulationBuilder::withSpecie(const LivingBeing& value) {
     object_.setSpecie(value);
     return *this;
 }
 
-CohortBuilder& CohortBuilder::withBiomass(std::vector<double> value) {
+PopulationBuilder& PopulationBuilder::withBiomass(std::vector<double> value) {
     object_.setBiomass(std::move(value));
     return *this;
 }
 
-CohortBuilder& CohortBuilder::withDeathBiomass(std::vector<double> value) {
+PopulationBuilder& PopulationBuilder::withDeathBiomass(std::vector<double> value) {
     object_.setDeathBiomass(value);
     return *this;
 }
 
-CohortBuilder& CohortBuilder::fromJson(const nlohmann::json&, const SpeciesRegistry&) {
+PopulationBuilder& PopulationBuilder::fromJson(const nlohmann::json&, const SpeciesRegistry&) {
     // Kept as scaffolding for legacy config format.
     return *this;
 }
 
-CohortBuilder& CohortBuilder::fromJson(const nlohmann::json& j) {
+PopulationBuilder& PopulationBuilder::fromJson(const nlohmann::json& j) {
     const SpeciesRegistry empty_registry;
     return fromJson(j, empty_registry);
 }
 
-Cohort CohortBuilder::build() const {
+Population PopulationBuilder::build() const {
     return object_;
 }
 
@@ -438,8 +438,8 @@ NicheBuilder& NicheBuilder::withNutrients(double value) {
     return *this;
 }
 
-NicheBuilder& NicheBuilder::withCohortSet(Niche::CohortSet value) {
-    object_.setCohortSet(std::move(value));
+NicheBuilder& NicheBuilder::withPopulationSet(Niche::PopulationSet value) {
+    object_.setPopulationSet(std::move(value));
     return *this;
 }
 
@@ -503,29 +503,29 @@ NicheBuilder& NicheBuilder::fromJson(const nlohmann::json& j) {
         object_.setProspectingScanSharpness((*snapshot)["prospecting_scan_sharpness"].get<double>());
     }
 
-    Niche::CohortSet cohorts;
-    if (snapshot->contains("cohorts") && (*snapshot)["cohorts"].is_array()) {
-        for (const json& cohort_j : (*snapshot)["cohorts"]) {
-            if (!cohort_j.is_object()) {
+    Niche::PopulationSet populations;
+    if (snapshot->contains("populations") && (*snapshot)["populations"].is_array()) {
+        for (const json& population_j : (*snapshot)["populations"]) {
+            if (!population_j.is_object()) {
                 continue;
             }
-            Cohort cohort;
-            if (cohort_j.contains("biomass")) {
-                cohort.setBiomass(readDoubleVector(cohort_j, "biomass"));
+            Population population;
+            if (population_j.contains("biomass")) {
+                population.setBiomass(readDoubleVector(population_j, "biomass"));
             }
-            if (cohort_j.contains("death_biomass")) {
-                cohort.setDeathBiomass(readDoubleVector(cohort_j, "death_biomass"));
+            if (population_j.contains("death_biomass")) {
+                population.setDeathBiomass(readDoubleVector(population_j, "death_biomass"));
             }
 
-            const LivingBeing* specie = buildSpecieFromSnapshotJson(cohort_j);
+            const LivingBeing* specie = buildSpecieFromSnapshotJson(population_j);
             if (specie != nullptr) {
-                cohort.setSpecie(*specie);
+                population.setSpecie(*specie);
             }
 
-            cohorts.push_back(std::move(cohort));
+            populations.push_back(std::move(population));
         }
     }
-    object_.setCohortSet(std::move(cohorts));
+    object_.setPopulationSet(std::move(populations));
 
     return *this;
 }

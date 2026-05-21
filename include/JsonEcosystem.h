@@ -10,7 +10,7 @@
 #include <string>
 
 class Niche;
-class Cohort;
+class Population;
 class LivingBeing;
 class Autotroph;
 class Heterotroph;
@@ -35,7 +35,7 @@ public:
 
 private:
     static void updateJson(const Niche& niche, nlohmann::json& out);
-    static void updateJson(const Cohort& cohort, nlohmann::json& out);
+    static void updateJson(const Population& population, nlohmann::json& out);
     static void updateJson(const LivingBeing& living_being, nlohmann::json& out);
     static void updateJson(const Autotroph& autotroph, nlohmann::json& out);
     static void updateJson(const Heterotroph& heterotroph, nlohmann::json& out);

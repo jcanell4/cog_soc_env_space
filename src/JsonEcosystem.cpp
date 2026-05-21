@@ -1,7 +1,7 @@
 #include "JsonEcosystem.h"
 
 #include "Autotroph.h"
-#include "Cohort.h"
+#include "Population.h"
 #include "Constants.h"
 #include "Heterotroph.h"
 #include "JsonEnumNames.h"
@@ -31,13 +31,13 @@ const char* classTypeToName(int class_type) {
     }
 }
 
-json toJsonDietByCohortIndex(const std::vector<std::vector<std::tuple<int, int, int, int>>>& diet_by_stage) {
+json toJsonDietByPopulationIndex(const std::vector<std::vector<std::tuple<int, int, int, int>>>& diet_by_stage) {
     json out = json::array();
     for (const auto& stage_rules : diet_by_stage) {
         json stage_json = json::array();
         for (const auto& entry : stage_rules) {
             stage_json.push_back({
-                {"cohort_index", json_enum_names::dietCohortIndexToJson(std::get<0>(entry))},
+                {"population_index", json_enum_names::dietPopulationIndexToJson(std::get<0>(entry))},
                 {"min_stage", std::get<1>(entry)},
                 {"max_stage", std::get<2>(entry)},
                 {"matter_type", std::get<3>(entry)},
@@ -88,7 +88,7 @@ void writeLivingBeingCommon(const LivingBeing& living_being, json& out) {
     out["recruitment_strategies"] = living_being.getRecruitmentStrategies();
     out["max_individual_growth"] = living_being.getMaxIndividualGrowth();
     out["colony_ability_rate"] = living_being.getColonyAbilityRate();
-    out["diet_by_cohort_index"] = toJsonDietByCohortIndex(living_being.getDietByCohortIndex());
+    out["diet_by_population_index"] = toJsonDietByPopulationIndex(living_being.getDietByPopulationIndex());
 }
 
 }  // namespace
@@ -160,32 +160,32 @@ void JsonEcosystem::updateJson(const Niche& niche, nlohmann::json& out) {
     out["autotroph_biomass_per_stratum"] = niche.getAutotrophBiomassPerStratum();
     out["light_per_stratum"] = niche.getLithPerStratum();
 
-    out["cohorts"] = json::array();
+    out["populations"] = json::array();
     double autotroph_biomass = 0.0;
     double heterotroph_biomass = 0.0;
     double other_living_biomass = 0.0;
-    const Niche::CohortSet& cohorts = niche.getCohortSet();
-    for (const Cohort& cohort : cohorts) {
-        const LivingBeing* specie = cohort.getSpecie();
-        const double cohort_biomass = std::max(0.0, cohort.getTotalBiomass());
+    const Niche::PopulationSet& populations = niche.getPopulationSet();
+    for (const Population& population : populations) {
+        const LivingBeing* specie = population.getSpecie();
+        const double population_biomass = std::max(0.0, population.getTotalBiomass());
         if (specie == nullptr) {
-            other_living_biomass += cohort_biomass;
+            other_living_biomass += population_biomass;
         } else {
             switch (specie->getClassType()) {
             case LivingBeingClassType::AUTOTROPH:
-                autotroph_biomass += cohort_biomass;
+                autotroph_biomass += population_biomass;
                 break;
             case LivingBeingClassType::HETEROTROPH:
-                heterotroph_biomass += cohort_biomass;
+                heterotroph_biomass += population_biomass;
                 break;
             default:
-                other_living_biomass += cohort_biomass;
+                other_living_biomass += population_biomass;
                 break;
             }
         }
-        json cohort_json = json::object();
-        updateJson(cohort, cohort_json);
-        out["cohorts"].push_back(std::move(cohort_json));
+        json population_json = json::object();
+        updateJson(population, population_json);
+        out["populations"].push_back(std::move(population_json));
     }
     out["biomass_by_class"] = {
         {"autotroph", autotroph_biomass},
@@ -194,17 +194,17 @@ void JsonEcosystem::updateJson(const Niche& niche, nlohmann::json& out) {
     };
 }
 
-void JsonEcosystem::updateJson(const Cohort& cohort, nlohmann::json& out) {
+void JsonEcosystem::updateJson(const Population& population, nlohmann::json& out) {
     out = json::object();
-    out["id"] = cohort.getId();
-    out["specie_name"] = cohort.getSpecieName();
-    out["energy"] = cohort.getEnergy();
-    out["total_biomass"] = cohort.getTotalBiomass();
-    out["total_death_biomass"] = cohort.getTotalDeathBiomass();
-    out["biomass"] = cohort.getBiomass();
-    out["death_biomass"] = cohort.getDeathBiomass();
+    out["id"] = population.getId();
+    out["specie_name"] = population.getSpecieName();
+    out["energy"] = population.getEnergy();
+    out["total_biomass"] = population.getTotalBiomass();
+    out["total_death_biomass"] = population.getTotalDeathBiomass();
+    out["biomass"] = population.getBiomass();
+    out["death_biomass"] = population.getDeathBiomass();
 
-    const LivingBeing* specie = cohort.getSpecie();
+    const LivingBeing* specie = population.getSpecie();
     if (specie != nullptr) {
         json specie_json = json::object();
         updateJson(*specie, specie_json);

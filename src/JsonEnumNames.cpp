@@ -24,7 +24,7 @@ constexpr std::array<NamedCode, 2> kClassTypeNames{{
     {"HETEROTROPH", LivingBeingClassType::HETEROTROPH},
 }};
 
-constexpr std::array<NamedCode, 4> kDietCohortIndexNames{{
+constexpr std::array<NamedCode, 4> kDietPopulationIndexNames{{
     {"NUTRIENTS_TYPE", DietType::NUTRIENTS_TYPE},
     {"CATABOLIC_TYPE", DietType::CATABOLIC_TYPE},
     {"PARENTAL_SUPPLY_TYPE", DietType::PARENTAL_SUPPLY_TYPE},
@@ -84,14 +84,14 @@ int json_enum_names::parseClassTypeValue(const nlohmann::json& value, std::strin
     return parseNamedOrNumericValue(value, field_path, kClassTypeNames);
 }
 
-int json_enum_names::parseDietCohortIndexValue(const nlohmann::json& value, std::string_view field_path) {
-    return parseNamedOrNumericValue(value, field_path, kDietCohortIndexNames);
+int json_enum_names::parseDietPopulationIndexValue(const nlohmann::json& value, std::string_view field_path) {
+    return parseNamedOrNumericValue(value, field_path, kDietPopulationIndexNames);
 }
 
 nlohmann::json json_enum_names::classTypeToJson(int class_type) {
     return toJsonNamedOrNumeric(class_type, kClassTypeNames);
 }
 
-nlohmann::json json_enum_names::dietCohortIndexToJson(int cohort_index) {
-    return toJsonNamedOrNumeric(cohort_index, kDietCohortIndexNames);
+nlohmann::json json_enum_names::dietPopulationIndexToJson(int population_index) {
+    return toJsonNamedOrNumeric(population_index, kDietPopulationIndexNames);
 }

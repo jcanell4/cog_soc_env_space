@@ -8,7 +8,7 @@
       "conditions": [0.6, 0.7, 0.5],
       "prospecting_scan_sharpness": 1.0,
       "limiting_factors": [0.5,0.3, 0.05],
-      "cohorts": [
+      "populations": [
         {
           "id": 1,
           "biomass": [0, 3000, 2000],
@@ -53,15 +53,15 @@
               [0.4, 0.3, 0.3],
               [0.3, 0.1, 0.5]
             ],
-            "diet_by_cohort_index": [
+            "diet_by_population_index": [
               [
-                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+                { "population_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ],
               [
                 ["NUTRIENTS_TYPE", 0, 0]
               ],
               [
-                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+                { "population_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ]
             ],
             "max_individual_growth": [0.9, 0.8, 0.7],
@@ -121,18 +121,18 @@
               [0.5, 0.3, 0.1],
               [0.5, 0.3, 0.1]
             ],
-            "diet_by_cohort_index": [
+            "diet_by_population_index": [
               [
-                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+                { "population_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ],
               [
                 ["NUTRIENTS_TYPE", 0, 0]
               ],
               [
-                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+                { "population_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ],
               [
-                { "cohort_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
+                { "population_index": "NUTRIENTS_TYPE", "min_stage": 0, "max_stage": 0 }
               ]
             ],
             "max_individual_growth": [0.75, 0.5123, 0.61, 0.22],
